@@ -3,8 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 5173;
-const ROOT_DIR = path.join(__dirname, 'rekolet.framer.website');
-const PAGES_DIR = path.join(ROOT_DIR, 'rekolet.framer.website');
+const ROOT_DIR = __dirname;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -38,46 +37,28 @@ const server = http.createServer((req, res) => {
 
   let filePath = null;
 
-  // 1. Check direct pages routing
   if (urlPath === '/' || urlPath === '/index.html') {
-    filePath = path.join(PAGES_DIR, 'index.html');
+    filePath = path.join(ROOT_DIR, 'index.html');
   } else if (urlPath === '/service' || urlPath === '/service.html') {
-    filePath = path.join(PAGES_DIR, 'service.html');
+    filePath = path.join(ROOT_DIR, 'service.html');
   } else if (urlPath === '/projects' || urlPath === '/projects.html') {
-    filePath = path.join(PAGES_DIR, 'projects.html');
+    filePath = path.join(ROOT_DIR, 'projects.html');
   } else if (urlPath === '/blogs' || urlPath === '/blogs.html') {
-    filePath = path.join(PAGES_DIR, 'blogs.html');
+    filePath = path.join(ROOT_DIR, 'blogs.html');
   } else if (urlPath === '/contact' || urlPath === '/contact.html') {
-    filePath = path.join(PAGES_DIR, 'contact.html');
+    filePath = path.join(ROOT_DIR, 'contact.html');
   } else if (urlPath === '/about') {
-    filePath = path.join(PAGES_DIR, 'service.html');
+    filePath = path.join(ROOT_DIR, 'service.html');
   } else {
-    // Check if path exists inside ROOT_DIR directly
     const directPath = path.join(ROOT_DIR, urlPath);
     if (fs.existsSync(directPath) && !fs.statSync(directPath).isDirectory()) {
       filePath = directPath;
-    } else {
-      // Check in pages dir
-      const pagePath = path.join(PAGES_DIR, urlPath);
-      if (fs.existsSync(pagePath) && !fs.statSync(pagePath).isDirectory()) {
-        filePath = pagePath;
-      } else {
-        // Check under subdirectories
-        const possibleSubdirs = ['framerusercontent.com', 'app.framerstatic.com', 'fonts.gstatic.com', 'api.framer.com', '_DataURI'];
-        for (const sub of possibleSubdirs) {
-          const subPath = path.join(ROOT_DIR, sub, urlPath);
-          if (fs.existsSync(subPath) && !fs.statSync(subPath).isDirectory()) {
-            filePath = subPath;
-            break;
-          }
-        }
-      }
     }
   }
 
   // Fallback to index.html for dynamic SPA navigation if not found and is HTML request
   if (!filePath && (req.headers.accept || '').includes('text/html')) {
-    filePath = path.join(PAGES_DIR, 'index.html');
+    filePath = path.join(ROOT_DIR, 'index.html');
   }
 
   if (filePath && fs.existsSync(filePath)) {

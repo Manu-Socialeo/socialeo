@@ -1,14 +1,7 @@
 {
-  "version": 2,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/rekolet.framer.website/rekolet.framer.website/index.html" },
-    { "source": "/service", "destination": "/rekolet.framer.website/rekolet.framer.website/service.html" },
-    { "source": "/projects", "destination": "/rekolet.framer.website/rekolet.framer.website/projects.html" },
-    { "source": "/blogs", "destination": "/rekolet.framer.website/rekolet.framer.website/blogs.html" },
-    { "source": "/contact", "destination": "/rekolet.framer.website/rekolet.framer.website/contact.html" },
-    { "source": "/about", "destination": "/rekolet.framer.website/rekolet.framer.website/service.html" },
-    { "source": "/(.*)", "destination": "/rekolet.framer.website/$1" }
+    { "source": "/about", "destination": "/service.html" }
   ],
   "headers": [
     {
