@@ -19,8 +19,11 @@ Tracking the end-to-end design, development, optimization, and deployment tasks 
 
 ## 🟢 Phase 2: Brand Profile & Location Links (Status: Complete ✅)
 - [x] **Brand Identity**: Rebuilt with **Socialeo** logo and messaging.
+- [x] **Official Email**: Configured `socialeopvtltd@gmail.com` across contact forms, footer, and Schema.org metadata.
 - [x] **Instagram Integration**: Direct links to [`https://www.instagram.com/socialeo.in`](https://www.instagram.com/socialeo.in) across Contact & Footer.
 - [x] **Google Maps Studio Integration**: Direct studio link to [`https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8`](https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8).
+- [x] **Dark / Light Mode Switcher**: Added persistent theme toggle button (🌙/☀️) with light mode token styles.
+- [x] **SEO Blogs Section**: Created dedicated [`blogs.html`](file:///c:/Users/manpr/OneDrive/Documents/Antigravity%20Projects/socialeo/blogs.html) with 6 in-depth articles, live search, and Schema.org `Blog` schema.
 - [x] **Repository & CI/CD**: Pushed to GitHub [`Manu-Socialeo/socialeo`](https://github.com/Manu-Socialeo/socialeo) with auto-deploy on Vercel.
 
 ---

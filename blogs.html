@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socialeo Blog — Insights on Web Design, UI/UX, & Digital Product Growth</title>
+  <meta name="description" content="Explore in-depth articles on bespoke web design, UI/UX systems, Next.js frontend performance, and conversion-driven digital product strategy from Socialeo.">
+  <meta name="keywords" content="web design blog, UI UX design insights, frontend architecture, web development SEO, digital agency blog, Socialeo">
+  <meta name="author" content="Socialeo">
+  <meta name="theme-color" content="#050507">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FF416C'/><circle cx='50' cy='50' r='22' fill='%23FFFFFF'/></svg>">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Socialeo Blog — Insights on Web Design, UI/UX, & Digital Product Growth">
+  <meta property="og:description" content="Actionable guides and technical insights on high-converting websites, web apps, and design engineering.">
+  <meta property="og:image" content="https://socialeo.vercel.app/assets/hero-bg.jpg">
+  <meta property="og:url" content="https://socialeo.vercel.app/blogs.html">
+  <meta property="og:type" content="blog">
+
+  <!-- Canonical & Manifest -->
+  <link rel="canonical" href="https://socialeo.vercel.app/blogs.html">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Schema.org Blog & Organization JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Socialeo Blog",
+    "url": "https://socialeo.vercel.app/blogs.html",
+    "description": "Expert insights on bespoke web design, full-stack development, and digital brand scaling.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Socialeo",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://socialeo.vercel.app/assets/hero-bg.jpg"
+      }
+    }
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .blog-hero {
+      padding-top: calc(var(--header-height) + 60px);
+      padding-bottom: 50px;
+      text-align: center;
+      position: relative;
+    }
+    .blog-search-bar {
+      max-width: 540px;
+      margin: 30px auto 0 auto;
+      position: relative;
+    }
+    .blog-search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 14px 24px 14px 50px;
+      color: var(--text-primary);
+      font-size: 15px;
+      outline: none;
+      transition: all var(--transition-fast);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .blog-search-input:focus {
+      border-color: var(--text-accent);
+      box-shadow: 0 0 20px rgba(255, 94, 58, 0.3);
+    }
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+    .featured-article {
+      background: var(--bg-card);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+      margin-bottom: 60px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+    }
+    .featured-article:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 60px rgba(255, 94, 58, 0.2);
+    }
+    .featured-img-box {
+      height: 100%;
+      min-height: 320px;
+      overflow: hidden;
+    }
+    .featured-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .featured-article:hover .featured-img-box img {
+      transform: scale(1.05);
+    }
+    .featured-body {
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .article-meta span.tag {
+      color: var(--text-accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .article-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .article-snippet {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-normal);
+      cursor: pointer;
+    }
+    .article-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-active);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .article-thumb {
+      height: 200px;
+      overflow: hidden;
+    }
+    .article-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    .article-card:hover .article-thumb img {
+      transform: scale(1.08);
+    }
+    .article-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .article-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .read-more-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-accent);
+      margin-top: 14px;
+    }
+    .cta-banner {
+      background: radial-gradient(circle at center, rgba(255, 94, 58, 0.15) 0%, rgba(18, 18, 24, 0.95) 100%);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-lg);
+      padding: 60px 40px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    @media (max-width: 900px) {
+      .featured-article { grid-template-columns: 1fr; }
+      .articles-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Atmosphere -->
+  <div class="bg-atmosphere"></div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html#hero" class="logo" id="brand-logo">
+        <div class="logo-icon"></div>
+        <span>Socialeo</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About Us</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="index.html#process" class="nav-link">Process</a></li>
+          <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+          <li><a href="blogs.html" class="nav-link active">Blogs</a></li>
+          <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Dark / Light Mode" title="Toggle Mode">🌙</button>
+        <a href="index.html#contact" class="btn btn-primary" id="nav-cta-btn">Contact Us</a>
+        <button class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <a href="index.html#hero" class="nav-link">Home</a>
+    <a href="index.html#about" class="nav-link">About Us</a>
+    <a href="index.html#services" class="nav-link">Services</a>
+    <a href="index.html#process" class="nav-link">Our Process</a>
+    <a href="index.html#projects" class="nav-link">Projects</a>
+    <a href="blogs.html" class="nav-link active">Blogs &amp; Insights</a>
+    <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+    <a href="index.html#contact" class="nav-link">Contact Us</a>
+    <a href="index.html#contact" class="btn btn-primary" style="margin-top: 12px; text-align:center;">Start a Project</a>
+  </div>
+
+  <!-- ==========================================================================
+       BLOG HERO SECTION
+       ========================================================================== -->
+  <section class="blog-hero">
+    <div class="container">
+      <div class="section-tag">Socialeo Insights</div>
+      <h1 class="section-title">Digital Craft, Strategy &amp; Growth</h1>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Actionable blueprints on bespoke web design, conversion engineering, and scaling digital brands.
+      </p>
+
+      <div class="blog-search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="blog-search" class="blog-search-input" placeholder="Search insights by keyword (e.g. SEO, Next.js, UI/UX, Conversion)..." aria-label="Search articles">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ARTICLES CONTAINER
+       ========================================================================== -->
+  <main class="container" style="padding-bottom: 80px;">
+    
+    <!-- Featured Article (SEO Target: Bespoke Web Design ROI) -->
+    <article class="featured-article" data-tags="web design roi conversion business">
+      <div class="featured-img-box">
+        <img src="assets/project-saas.jpg" alt="Bespoke Web Design ROI Guide" fetchpriority="high">
+      </div>
+      <div class="featured-body">
+        <div class="article-meta">
+          <span class="tag">Featured Insight</span> • <span>8 min read</span> • <span>August 2026</span>
+        </div>
+        <h2 class="article-title">Why Bespoke Web Design Outperforms Generic Templates in 2026: The Ultimate ROI Guide</h2>
+        <p class="article-snippet">
+          Discover why high-growth brands are moving away from bloated website builders toward custom-engineered digital experiences that deliver higher conversions, superior organic SEO rankings, and distinctive brand credibility.
+        </p>
+        <div>
+          <span class="read-more-link">Read Full Blueprint →</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Articles Grid (SEO Targets) -->
+    <div class="articles-grid" id="articles-container">
+      
+      <!-- Article 1 -->
+      <article class="article-card" data-tags="design process startup uiux scale">
+        <div class="article-thumb">
+          <img src="assets/process-blueprints.jpg" alt="5-Step Product Design Process" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-body">
+          <div>
+            <div class="article-meta">
+              <span class="tag">UI/UX Strategy</span> • <span>6 min read</span>
+            </div>
+            <h3 class="article-card-title">The 5-Step Digital Product Design Process That Scales Startups</h3>
+            <p class="article-snippet">A transparent breakdown of how Discovery, Architecture, High-Fidelity UI, and Performance Engineering create market leaders.</p>
+          </div>
+          <span class="read-more-link">Read Article →</span>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="article-card" data-tags="nextjs seo frontend architecture performance speed">
+        <div class="article-thumb">
+          <img src="assets/project-cloud.jpg" alt="Next.js and Frontend Architecture SEO Guide" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-body">
+          <div>
+            <div class="article-meta">
+              <span class="tag">Engineering &amp; SEO</span> • <span>7 min read</span>
+            </div>
+            <h3 class="article-card-title">How Next.js &amp; Modern Frontend Architecture Boost Organic Search by 180%</h3>
+            <p class="article-snippet">Mastering Server-Side Rendering (SSR), Core Web Vitals, and edge caching to outrank competitors on Google Search.</p>
+          </div>
+          <span class="read-more-link">Read Article →</span>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="article-card" data-tags="ecommerce branding typography streetwear conversion">
+        <div class="article-thumb">
+          <img src="assets/project-ecommerce.jpg" alt="Luxury E-Commerce Conversion Optimization" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-body">
+          <div>
+            <div class="article-meta">
+              <span class="tag">E-Commerce</span> • <span>5 min read</span>
+            </div>
+            <h3 class="article-card-title">Designing High-Converting Editorial E-Commerce Experiences</h3>
+            <p class="article-snippet">How typography hierarchy, fluid micro-interactions, and frictionless checkout funnels turn casual shoppers into brand advocates.</p>
+          </div>
+          <span class="read-more-link">Read Article →</span>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="article-card" data-tags="mobile apps flutter fintech dark mode">
+        <div class="article-thumb">
+          <img src="assets/project-fintech.jpg" alt="Mobile App UI UX Guidelines" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-body">
+          <div>
+            <div class="article-meta">
+              <span class="tag">Mobile Apps</span> • <span>6 min read</span>
+            </div>
+            <h3 class="article-card-title">Ergonomics of Dark-Mode Fintech &amp; Trading Mobile Interfaces</h3>
+            <p class="article-snippet">Optimizing high-frequency user interfaces with tactile feedback, high-contrast typography, and instantaneous gesture response.</p>
+          </div>
+          <span class="read-more-link">Read Article →</span>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="article-card" data-tags="web3 3d webgl interactive future design">
+        <div class="article-thumb">
+          <img src="assets/project-web3.jpg" alt="WebGL 3D Web Design Trends" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-body">
+          <div>
+            <div class="article-meta">
+              <span class="tag">Creative Tech</span> • <span>8 min read</span>
+            </div>
+            <h3 class="article-card-title">From Wireframe to WebGL: Creating Immersive 3D Web Experiences</h3>
+            <p class="article-snippet">Implementing shader canvases and lightweight 3D scenes without compromising mobile performance or loading speed.</p>
+          </div>
+          <span class="read-more-link">Read Article →</span>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article class="article-card" data-tags="ai health biometric design systems data">
+        <div class="article-thumb">
+          <img src="assets/project-ai.jpg" alt="AI Interface Design Patterns" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-body">
+          <div>
+            <div class="article-meta">
+              <span class="tag">AI &amp; Data UI</span> • <span>5 min read</span>
+            </div>
+            <h3 class="article-card-title">Human-Centered UI Patterns for AI &amp; Biometric Analytics</h3>
+            <p class="article-snippet">How to visualize complex real-time telemetry into glanceable, intuitive charts that empower daily decision making.</p>
+          </div>
+          <span class="read-more-link">Read Article →</span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Conversion Lead Magnet CTA -->
+    <div class="cta-banner">
+      <h2 class="section-title" style="margin-bottom: 12px;">Ready to elevate your digital presence?</h2>
+      <p class="section-subtitle" style="margin: 0 auto 28px auto;">
+        Let's build a bespoke high-converting website engineered to dominate your market.
+      </p>
+      <a href="index.html#contact" class="btn btn-primary">Start Your Project With Socialeo ⚡</a>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER SECTION
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="index.html#hero" class="logo footer-logo">
+          <div class="logo-icon"></div>
+          <span>Socialeo</span>
+        </a>
+
+        <ul class="footer-links">
+          <li><a href="index.html#hero" class="footer-link">Home</a></li>
+          <li><a href="index.html#about" class="footer-link">About Us</a></li>
+          <li><a href="index.html#services" class="footer-link">Services</a></li>
+          <li><a href="index.html#process" class="footer-link">Process</a></li>
+          <li><a href="index.html#projects" class="footer-link">Projects</a></li>
+          <li><a href="blogs.html" class="footer-link">Blogs</a></li>
+          <li><a href="index.html#testimonials" class="footer-link">Testimonials</a></li>
+          <li><a href="index.html#contact" class="footer-link">Contact</a></li>
+        </ul>
+
+        <div class="social-links" style="margin-top: 10px;">
+          <a href="https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8" target="_blank" rel="noopener" class="social-btn" aria-label="Google Maps" title="Google Maps">📍</a>
+          <a href="https://www.instagram.com/socialeo.in" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">ig</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">f</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="https://github.com/Manu-Socialeo/socialeo" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">gh</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Copyright &copy; 2026 Socialeo. All rights reserved. &bull; <a href="mailto:socialeopvtltd@gmail.com" style="color:var(--text-muted); text-decoration:none;">socialeopvtltd@gmail.com</a></div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Blog Article Reader Modal -->
+  <div class="modal-backdrop" id="blog-modal">
+    <div class="modal-card" style="max-height: 85vh; overflow-y: auto;">
+      <button class="modal-close-btn" aria-label="Close article modal">✕</button>
+      <div class="modal-media" style="height: 240px;">
+        <img src="" id="blog-modal-img" alt="Article Cover">
+      </div>
+      <div class="modal-body" style="padding: 32px 28px;">
+        <div class="article-meta" id="blog-modal-meta"></div>
+        <h2 class="modal-title" id="blog-modal-title" style="font-size: 1.8rem;"></h2>
+        <div class="modal-desc" id="blog-modal-content" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;"></div>
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <span style="font-size: 13px; color: var(--text-muted);">Have questions? Contact us at <strong>socialeopvtltd@gmail.com</strong></span>
+          <a href="index.html#contact" class="btn btn-primary" onclick="document.getElementById('blog-modal').classList.remove('active'); document.body.style.overflow='';">Book Consultation ⚡</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container"></div>
+
+  <!-- Back to Top Floating Button -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+  <script>
+    // Blog Search & Filtering
+    const blogSearch = document.getElementById('blog-search');
+    const articles = document.querySelectorAll('.article-card, .featured-article');
+
+    blogSearch?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      articles.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        if (text.includes(q) || tags.includes(q)) {
+          card.style.display = card.classList.contains('featured-article') ? 'grid' : 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Blog Article Reader Modal Opener
+    const blogModal = document.getElementById('blog-modal');
+    const blogModalImg = document.getElementById('blog-modal-img');
+    const blogModalTitle = document.getElementById('blog-modal-title');
+    const blogModalMeta = document.getElementById('blog-modal-meta');
+    const blogModalContent = document.getElementById('blog-modal-content');
+
+    articles.forEach(article => {
+      article.addEventListener('click', () => {
+        const title = article.querySelector('.article-title, .article-card-title')?.textContent || 'Article';
+        const meta = article.querySelector('.article-meta')?.innerHTML || '';
+        const img = article.querySelector('img')?.src || '';
+        const snippet = article.querySelector('.article-snippet')?.textContent || '';
+
+        if (blogModalTitle) blogModalTitle.textContent = title;
+        if (blogModalMeta) blogModalMeta.innerHTML = meta;
+        if (blogModalImg) blogModalImg.src = img;
+        if (blogModalContent) {
+          blogModalContent.innerHTML = `
+            <p style="margin-bottom:16px;">${snippet}</p>
+            <h3 style="color:var(--text-primary); margin: 20px 0 10px 0; font-size:1.3rem;">1. Strategic Foundation &amp; User Intent</h3>
+            <p style="margin-bottom:16px;">In modern digital ecosystems, high-performing websites must align brand narrative directly with buyer psychology. When every visual component serves a conversion purpose, visitors naturally progress from discovery to action.</p>
+            <h3 style="color:var(--text-primary); margin: 20px 0 10px 0; font-size:1.3rem;">2. Engineering Excellence &amp; SEO Velocity</h3>
+            <p style="margin-bottom:16px;">Search engines prioritize websites that load in sub-second timelines, provide flawless mobile responsiveness, and maintain semantic hierarchy. By optimizing Core Web Vitals and utilizing structured JSON-LD schemas, brands secure durable first-page visibility.</p>
+            <blockquote style="border-left: 3px solid var(--text-accent); padding-left: 16px; margin: 20px 0; color: #fff; font-style: italic;">
+              “Design isn't just how it looks; it's how smoothly it turns interest into revenue.”
+            </blockquote>
+          `;
+        }
+
+        blogModal?.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    blogModal?.querySelector('.modal-close-btn')?.addEventListener('click', () => {
+      blogModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    blogModal?.addEventListener('click', (e) => {
+      if (e.target === blogModal) {
+        blogModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>

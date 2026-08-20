@@ -3,6 +3,29 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Theme Toggle (Dark / Light Mode)
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('socialeo-theme') || 'dark';
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      if (themeToggleBtn) themeToggleBtn.innerHTML = '☀️';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (themeToggleBtn) themeToggleBtn.innerHTML = '🌙';
+    }
+  }
+
+  applyTheme(savedTheme);
+
+  themeToggleBtn?.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const newTheme = isLight ? 'dark' : 'light';
+    localStorage.setItem('socialeo-theme', newTheme);
+    applyTheme(newTheme);
+  });
+
   // 1. Navigation Scroll Effect & Active Section ScrollSpy
   const navbar = document.querySelector('.navbar');
   const backToTopBtn = document.querySelector('.back-to-top');
