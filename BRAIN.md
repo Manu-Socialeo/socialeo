@@ -20,7 +20,7 @@
   * Website: [https://socialeo.vercel.app/](https://socialeo.vercel.app/)
   * Email: `hello@socialeo.in` / `contact@socialeo.in`
   * Phone: Indian contact standard (+91)
-  * Location Map: Centered on Vijayanagar 2nd Stage, Mysuru
+  * Google Maps: [https://maps.app.goo.gl/6XWmh4ZGQLrrvE3y9](https://maps.app.goo.gl/6XWmh4ZGQLrrvE3y9) (Vijayanagar 2nd Stage, Mysuru)
 * **GitHub Repository**: [https://github.com/Manu-Socialeo/socialeo](https://github.com/Manu-Socialeo/socialeo)
 
 ---
