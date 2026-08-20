@@ -19,7 +19,7 @@ const bootstrap = {
 		events: "https://events.framer.com",
 		login: "https://framer.com/login",
 		userContent: "https://framerusercontent.com",
-		modulesCDN: "https://framerusercontent.com/modules",
+		modulesCDN: "/framerusercontent.com/modules",
 		modulesShortLink: "https://framer.com/m",
 		previewDomain: "framer.app",
 	},
