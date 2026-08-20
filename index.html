@@ -7,13 +7,36 @@
   <meta name="description" content="Socialeo is an elite digital product studio crafting high-converting websites, bespoke design systems, full-stack applications, and growth strategies for ambitious brands.">
   <meta name="keywords" content="web design agency, UI UX design, web development, mobile apps, digital studio, Socialeo">
   <meta name="author" content="Socialeo">
+  <meta name="theme-color" content="#050507">
 
-  <!-- Open Graph -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FF416C'/><circle cx='50' cy='50' r='22' fill='%23FFFFFF'/></svg>">
+
+  <!-- Open Graph / Meta -->
   <meta property="og:title" content="Socialeo — We Design Websites That Grow Businesses">
   <meta property="og:description" content="Award-winning digital product studio crafting high-converting websites and software.">
-  <meta property="og:image" content="assets/hero-bg.jpg">
+  <meta property="og:image" content="https://socialeo.vercel.app/assets/hero-bg.jpg">
   <meta property="og:url" content="https://socialeo.vercel.app/">
   <meta property="og:type" content="website">
+
+  <!-- Schema.org JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Socialeo",
+    "url": "https://socialeo.vercel.app/",
+    "logo": "https://socialeo.vercel.app/assets/hero-bg.jpg",
+    "description": "We Design Websites That Grow Businesses. Handcrafted web solutions that turn visitors into loyal customers.",
+    "sameAs": [
+      "https://www.instagram.com/socialeo.in",
+      "https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8",
+      "https://github.com/Manu-Socialeo/socialeo"
+    ],
+    "hasMap": "https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8",
+    "priceRange": "$$$"
+  }
+  </script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +98,7 @@
        ========================================================================== -->
   <section class="hero-section" id="hero">
     <div class="hero-bg-container">
-      <img src="assets/hero-bg.jpg" alt="Socialeo 3D Topographical Mountain" class="hero-bg-img">
+      <img src="assets/hero-bg.jpg" alt="Socialeo 3D Topographical Mountain" class="hero-bg-img" fetchpriority="high">
       <div class="hero-bg-gradient"></div>
     </div>
 
@@ -137,7 +160,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrapper">
-          <img src="assets/about-studio.jpg" alt="Socialeo Creative Studio" class="about-image">
+          <img src="assets/about-studio.jpg" alt="Socialeo Creative Studio" class="about-image" loading="lazy" decoding="async">
           <div class="about-floating-badge">
             <div class="badge-icon">✦</div>
             <div class="badge-text">
@@ -290,7 +313,7 @@
   </section>
 
   <!-- ==========================================================================
-       5. PROCESS SECTION (Matching 2-top + 3-horizontal cards layout)
+       5. PROCESS SECTION
        ========================================================================== -->
   <section class="section-spacing" id="process">
     <div class="container">
@@ -301,7 +324,7 @@
 
       <!-- Process Blueprint Showcase Banner -->
       <div class="process-banner">
-        <img src="assets/process-blueprints.jpg" alt="Socialeo Design Process Blueprints">
+        <img src="assets/process-blueprints.jpg" alt="Socialeo Design Process Blueprints" loading="lazy" decoding="async">
         <div class="process-banner-overlay"></div>
       </div>
 
@@ -386,7 +409,7 @@
         <!-- Project 1 -->
         <div class="project-card" data-category="webapp designsystem">
           <div class="project-media">
-            <img src="assets/project-saas.jpg" alt="Astra SaaS Analytics Dashboard">
+            <img src="assets/project-saas.jpg" alt="Astra SaaS Analytics Dashboard" loading="lazy" decoding="async">
             <div class="project-overlay-btn">↗</div>
           </div>
           <div class="project-info">
@@ -407,7 +430,7 @@
         <!-- Project 2 -->
         <div class="project-card" data-category="designsystem webapp">
           <div class="project-media">
-            <img src="assets/project-ecommerce.jpg" alt="Studio Néon E-Commerce Platform">
+            <img src="assets/project-ecommerce.jpg" alt="Studio Néon E-Commerce Platform" loading="lazy" decoding="async">
             <div class="project-overlay-btn">↗</div>
           </div>
           <div class="project-info">
@@ -428,7 +451,7 @@
         <!-- Project 3 -->
         <div class="project-card" data-category="webapp">
           <div class="project-media">
-            <img src="assets/project-cloud.jpg" alt="NexaCloud Enterprise Ops">
+            <img src="assets/project-cloud.jpg" alt="NexaCloud Enterprise Ops" loading="lazy" decoding="async">
             <div class="project-overlay-btn">↗</div>
           </div>
           <div class="project-info">
@@ -449,7 +472,7 @@
         <!-- Project 4 -->
         <div class="project-card" data-category="mobile">
           <div class="project-media">
-            <img src="assets/project-fintech.jpg" alt="NeoTrade Mobile Crypto App">
+            <img src="assets/project-fintech.jpg" alt="NeoTrade Mobile Crypto App" loading="lazy" decoding="async">
             <div class="project-overlay-btn">↗</div>
           </div>
           <div class="project-info">
@@ -470,7 +493,7 @@
         <!-- Project 5 -->
         <div class="project-card" data-category="webapp designsystem">
           <div class="project-media">
-            <img src="assets/project-web3.jpg" alt="Neon Nexus Web3 Arcade">
+            <img src="assets/project-web3.jpg" alt="Neon Nexus Web3 Arcade" loading="lazy" decoding="async">
             <div class="project-overlay-btn">↗</div>
           </div>
           <div class="project-info">
@@ -491,7 +514,7 @@
         <!-- Project 6 -->
         <div class="project-card" data-category="mobile">
           <div class="project-media">
-            <img src="assets/project-ai.jpg" alt="VitalPulse AI Health Tracker">
+            <img src="assets/project-ai.jpg" alt="VitalPulse AI Health Tracker" loading="lazy" decoding="async">
             <div class="project-overlay-btn">↗</div>
           </div>
           <div class="project-info">
@@ -517,7 +540,7 @@
        ========================================================================== -->
   <section class="testimonial-section" id="testimonials">
     <div class="testimonial-bg-container">
-      <img src="assets/testimonial-wave.jpg" alt="Testimonial Glowing Wave Background" class="testimonial-bg-img">
+      <img src="assets/testimonial-wave.jpg" alt="Testimonial Glowing Wave Background" class="testimonial-bg-img" loading="lazy" decoding="async">
       <div class="testimonial-bg-overlay"></div>
     </div>
 
@@ -559,19 +582,19 @@
         <!-- Avatar Selector with 5 Avatars & Active Indicator -->
         <div class="testimonial-nav">
           <button class="avatar-btn active" aria-label="Client 1">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 1">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 1" loading="lazy" decoding="async">
           </button>
           <button class="avatar-btn" aria-label="Client 2">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 2">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 2" loading="lazy" decoding="async">
           </button>
           <button class="avatar-btn" aria-label="Client 3">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 3">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 3" loading="lazy" decoding="async">
           </button>
           <button class="avatar-btn" aria-label="Client 4">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 4">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 4" loading="lazy" decoding="async">
           </button>
           <button class="avatar-btn" aria-label="Client 5">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 5">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 5" loading="lazy" decoding="async">
           </button>
         </div>
       </div>
@@ -648,10 +671,10 @@
             <div class="form-group">
               <label class="form-label" for="phone">Phone Number</label>
               <div style="display: flex; gap: 8px;">
-                <select class="form-select" style="width: 90px; flex-shrink: 0;">
+                <select class="form-select" style="width: 90px; flex-shrink: 0;" aria-label="Country Code">
                   <option value="+1">🇺🇸 +1</option>
                   <option value="+44">🇬🇧 +44</option>
-                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+91" selected>🇮🇳 +91</option>
                   <option value="+61">🇦🇺 +61</option>
                   <option value="+49">🇩🇪 +49</option>
                 </select>

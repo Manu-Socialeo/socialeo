@@ -1,25 +1,47 @@
 /* ==========================================================================
-   SOCIALEO INTERACTIVE LOGIC (main.js)
+   SOCIALEO INTERACTIVE LOGIC & PERFORMANCE OPTIMIZATIONS (main.js)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Navigation Scroll Effect
+  // 1. Navigation Scroll Effect & Active Section ScrollSpy
   const navbar = document.querySelector('.navbar');
   const backToTopBtn = document.querySelector('.back-to-top');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+  function updateNavbar() {
+    const scrollY = window.scrollY;
+    if (scrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
 
-    if (window.scrollY > 400) {
+    if (scrollY > 400) {
       backToTopBtn?.classList.add('visible');
     } else {
       backToTopBtn?.classList.remove('visible');
     }
-  });
+
+    // ScrollSpy Highlight
+    let currentSectionId = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      const sectionHeight = section.offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        currentSectionId = section.getAttribute('id');
+      }
+    });
+
+    if (currentSectionId) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${currentSectionId}`);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+  updateNavbar();
 
   // Back to Top Click
   backToTopBtn?.addEventListener('click', () => {
@@ -35,12 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileDrawer.classList.toggle('active');
       const isExpanded = mobileDrawer.classList.contains('active');
       mobileMenuBtn.innerHTML = isExpanded ? '✕' : '☰';
+      document.body.style.overflow = isExpanded ? 'hidden' : '';
     });
 
-    mobileDrawer.querySelectorAll('.nav-link').forEach(link => {
+    mobileDrawer.querySelectorAll('.nav-link, .btn').forEach(link => {
       link.addEventListener('click', () => {
         mobileDrawer.classList.remove('active');
         mobileMenuBtn.innerHTML = '☰';
+        document.body.style.overflow = '';
       });
     });
   }
@@ -57,20 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
           const target = parseInt(stat.getAttribute('data-target'), 10);
           const suffix = stat.getAttribute('data-suffix') || '';
           let current = 0;
-          const increment = Math.ceil(target / 40);
+          const stepTime = Math.max(15, Math.floor(1200 / target));
           const interval = setInterval(() => {
-            current += increment;
+            current += Math.ceil(target / 35);
             if (current >= target) {
               stat.textContent = target + suffix;
               clearInterval(interval);
             } else {
               stat.textContent = current + suffix;
             }
-          }, 30);
+          }, stepTime);
         });
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
 
   const statsContainer = document.querySelector('.about-stats');
   if (statsContainer) {
@@ -92,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const category = card.getAttribute('data-category');
         if (filter === 'all' || category.includes(filter)) {
           card.style.display = 'flex';
-          card.style.animation = 'fadeInTestimonial 0.4s ease-out forwards';
+          card.style.animation = 'fadeInTestimonial 0.35s ease-out forwards';
         } else {
           card.style.display = 'none';
         }
@@ -100,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Testimonial Slider & Avatars
+  // 5. Testimonial Slider & Avatars with Keyboard / Touch Support
   const testimonialCards = document.querySelectorAll('.testimonial-card');
   const avatarBtns = document.querySelectorAll('.avatar-btn');
   let currentTestimonial = 0;
@@ -130,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function resetAutoSlide() {
     clearInterval(testimonialTimer);
-    testimonialTimer = setInterval(nextTestimonial, 6000);
+    testimonialTimer = setInterval(nextTestimonial, 6500);
   }
 
   resetAutoSlide();
@@ -144,25 +168,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTags = document.getElementById('modal-tags');
 
   projectCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // ignore if clicked directly on external link
-      const title = card.querySelector('.project-title').textContent;
-      const desc = card.querySelector('.project-desc').textContent;
-      const imgSrc = card.querySelector('.project-media img').src;
+    card.addEventListener('click', () => {
+      const title = card.querySelector('.project-title')?.textContent || 'Project';
+      const desc = card.querySelector('.project-desc')?.textContent || '';
+      const img = card.querySelector('.project-media img');
+      const imgSrc = img ? img.src : '';
       const tags = Array.from(card.querySelectorAll('.project-tag')).map(t => t.textContent);
 
-      modalTitle.textContent = title;
-      modalDesc.textContent = desc + " - Engineered with high-performance frameworks, customized design systems, and responsive layouts tailored to scale conversion rates.";
-      modalImg.src = imgSrc;
-      modalTags.innerHTML = tags.map(tag => `<span class="project-tag" style="color:#FF5E3A;border-color:rgba(255,94,58,0.3)">${tag}</span>`).join(' ');
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalDesc) modalDesc.textContent = desc + " — Tailor-made with bespoke visual architecture, high conversion ergonomics, and clean modern code standards.";
+      if (modalImg && imgSrc) modalImg.src = imgSrc;
+      if (modalTags) {
+        modalTags.innerHTML = tags.map(tag => `<span class="project-tag" style="color:#FF5E3A;border-color:rgba(255,94,58,0.3)">${tag}</span>`).join(' ');
+      }
 
-      modalBackdrop.classList.add('active');
+      modalBackdrop?.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
   });
 
   function closeModal() {
-    modalBackdrop.classList.remove('active');
+    modalBackdrop?.classList.remove('active');
     document.body.style.overflow = '';
   }
 
@@ -176,7 +202,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 7. Contact Form Handling with Toast
+  // 7. Interactive 3D Card Spotlight Glow on Mouse Move (Desktop)
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const interactiveCards = document.querySelectorAll('.service-card, .project-card, .process-step-card');
+    interactiveCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  }
+
+  // 8. Contact Form Handling with Toast
   const contactForm = document.getElementById('contact-form');
   const toastContainer = document.querySelector('.toast-container');
 
@@ -184,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.innerHTML = `<span style="color:#FFA800;font-size:18px;">${icon}</span> <span>${message}</span>`;
-    toastContainer.appendChild(toast);
+    toastContainer?.appendChild(toast);
 
     setTimeout(() => {
       toast.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
@@ -206,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
       contactForm.reset();
-      showToast('Thank you! Your project request has been sent to the Socialeo team.', '🚀');
-    }, 1200);
+      showToast('Thank you! Your inquiry has been sent to Socialeo. We will be in touch shortly!', '🚀');
+    }, 1000);
   });
 });
