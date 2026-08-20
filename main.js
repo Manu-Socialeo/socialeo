@@ -262,15 +262,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
 
+    const firstName = document.getElementById('first-name')?.value || '';
+    const lastName = document.getElementById('last-name')?.value || '';
+    const email = document.getElementById('email')?.value || '';
+    const phoneSelect = contactForm.querySelector('select')?.value || '+91';
+    const phone = document.getElementById('phone')?.value || '';
+    const message = document.getElementById('message')?.value || '';
+
     submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Sending... ⏳';
+    submitBtn.innerHTML = 'Connecting WhatsApp... 💬';
+
+    const whatsappMessage = `*🚀 New Project Inquiry — Socialeo Website*
+
+👤 *Client*: ${firstName} ${lastName}
+✉️ *Email*: ${email}
+📞 *Phone*: ${phoneSelect} ${phone}
+💬 *Project Details*:
+${message}
+
+---
+_Sent via Socialeo Instant Web Portal_`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=918722163256&text=${encodeURIComponent(whatsappMessage)}`;
 
     setTimeout(() => {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
+      window.open(whatsappUrl, '_blank');
       contactForm.reset();
-      showToast('Thank you! Your inquiry has been sent to Socialeo. We will be in touch shortly!', '🚀');
-    }, 1000);
+      showToast('Opening WhatsApp to send your inquiry to Socialeo (+91 87221 63256)...', '💬');
+    }, 800);
   });
 
   // 9. Interactive Floating Embers Canvas (Hero Section)

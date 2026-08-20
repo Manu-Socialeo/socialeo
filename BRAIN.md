@@ -3,6 +3,8 @@
 ## Company Profile
 - **Brand Name**: Socialeo
 - **Email**: socialeopvtltd@gmail.com
+- **WhatsApp / Phone**: +91 87221 63256
+- **WhatsApp Direct Link**: https://wa.me/918722163256
 - **Instagram**: https://www.instagram.com/socialeo.in
 - **Google Maps**: https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8
 - **Repository**: https://github.com/Manu-Socialeo/socialeo
