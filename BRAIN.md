@@ -17,6 +17,7 @@
 * **Neighborhood**: Vijayanagar 2nd Stage, Mysore
 * **State / Country**: Karnataka, India - 570017
 * **Primary Channels**:
+  * Website: [https://socialeo.vercel.app/](https://socialeo.vercel.app/)
   * Email: `hello@socialeo.in` / `contact@socialeo.in`
   * Phone: Indian contact standard (+91)
   * Location Map: Centered on Vijayanagar 2nd Stage, Mysuru
