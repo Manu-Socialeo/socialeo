@@ -1,0 +1,9 @@
+{
+  "name": "Socialeo — Digital Product Studio",
+  "short_name": "Socialeo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050507",
+  "theme_color": "#050507",
+  "description": "We Design Websites That Grow Businesses."
+}

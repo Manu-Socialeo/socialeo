@@ -249,4 +249,57 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Thank you! Your inquiry has been sent to Socialeo. We will be in touch shortly!', '🚀');
     }, 1000);
   });
+
+  // 9. Interactive Floating Embers Canvas (Hero Section)
+  const heroCanvas = document.getElementById('hero-particles');
+  if (heroCanvas) {
+    const ctx = heroCanvas.getContext('2d');
+    let width = (heroCanvas.width = heroCanvas.parentElement.offsetWidth);
+    let height = (heroCanvas.height = heroCanvas.parentElement.offsetHeight);
+
+    window.addEventListener('resize', () => {
+      if (!heroCanvas.parentElement) return;
+      width = heroCanvas.width = heroCanvas.parentElement.offsetWidth;
+      height = heroCanvas.height = heroCanvas.parentElement.offsetHeight;
+    });
+
+    const particles = Array.from({ length: 35 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2.2 + 0.8,
+      speedY: Math.random() * 0.4 + 0.15,
+      speedX: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.6 + 0.2,
+      color: Math.random() > 0.5 ? '#FF5E3A' : '#FFA800'
+    }));
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.y -= p.speedY;
+        p.x += p.speedX;
+
+        if (p.y < 0) {
+          p.y = height;
+          p.x = Math.random() * width;
+        }
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = p.color;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+  }
 });
+

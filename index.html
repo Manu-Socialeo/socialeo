@@ -38,10 +38,13 @@
   }
   </script>
 
-  <!-- Google Fonts -->
+  <link rel="canonical" href="https://socialeo.vercel.app/">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Google Fonts: Plus Jakarta Sans & DM Sans matching reference font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -99,6 +102,7 @@
   <section class="hero-section" id="hero">
     <div class="hero-bg-container">
       <img src="assets/hero-bg.jpg" alt="Socialeo 3D Topographical Mountain" class="hero-bg-img" fetchpriority="high">
+      <canvas id="hero-particles" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;"></canvas>
       <div class="hero-bg-gradient"></div>
     </div>
 
