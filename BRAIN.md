@@ -2,6 +2,7 @@
 
 ## Company Profile
 - **Brand Name**: Socialeo
+- **Instagram**: https://www.instagram.com/socialeo.in
 - **Repository**: https://github.com/Manu-Socialeo/socialeo
 - **Production Domain**: https://socialeo.vercel.app/
 
