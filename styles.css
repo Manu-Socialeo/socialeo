@@ -1264,6 +1264,13 @@ body {
   gap: 18px;
 }
 
+.contact-channels {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .contact-channel-item {
   display: flex;
   align-items: center;
@@ -1271,54 +1278,177 @@ body {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 15px;
-  transition: color var(--transition-fast);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-fast);
 }
 
 .contact-channel-item:hover {
   color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 94, 58, 0.45);
+  transform: translateX(4px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 8px 24px -4px rgba(255, 94, 58, 0.25);
+}
+
+.contact-channel-item .channel-title {
+  color: #FFFFFF;
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+  transition: color var(--transition-fast);
+}
+
+[data-theme="light"] .contact-channel-item .channel-title {
+  color: var(--text-primary);
+}
+
+.contact-channel-item .channel-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--transition-fast);
+}
+
+.contact-channel-item:hover .channel-desc {
+  color: var(--text-accent);
 }
 
 .channel-icon {
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-accent);
-  font-size: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all var(--transition-fast);
+}
+
+.channel-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.contact-channel-item:hover .channel-icon {
+  background: var(--grad-primary);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 0 16px rgba(255, 94, 58, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.contact-channel-item:hover .channel-icon svg {
+  transform: scale(1.08);
 }
 
 .social-links {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 14px;
 }
 
 .social-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-md);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.25);
   transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.social-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  z-index: 0;
 }
 
 .social-btn:hover {
-  background: var(--grad-primary);
+  color: #FFFFFF;
+  border-color: rgba(255, 94, 58, 0.6);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 24px rgba(255, 94, 58, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.social-btn:hover::before {
+  opacity: 1;
+}
+
+.social-btn:hover svg {
+  transform: scale(1.12);
+  color: #FFFFFF;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] .contact-channel-item {
+  background: rgba(0, 0, 0, 0.025);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .contact-channel-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: var(--text-accent);
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.15);
+}
+
+[data-theme="light"] .channel-icon {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: var(--text-accent);
+}
+
+[data-theme="light"] .social-btn {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: var(--text-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .social-btn:hover {
   color: #FFFFFF;
   border-color: transparent;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(255, 94, 58, 0.4);
 }
 
 /* Contact Form */
@@ -1712,3 +1842,18 @@ body {
     top: 10%;
   }
 }
+
+/* Secret Admin Trigger */
+.secret-admin-trigger {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.secret-admin-trigger:hover {
+  color: var(--text-primary);
+  opacity: 0.95;
+}
+

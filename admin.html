@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socialeo Admin Studio — Client CRM & Bill Generator</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#050507">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FF416C'/><circle cx='50' cy='50' r='22' fill='%23FFFFFF'/></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- QR Code Library (Local + CDN fallback for UPI QR generation) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Admin Styles -->
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Top Admin Bar -->
+  <header class="admin-header no-print">
+    <div class="admin-header-left">
+      <a href="index.html" class="admin-brand" title="Socialeo Studio">
+        <div class="brand-badge-dot"></div>
+        <span class="brand-name">Socialeo</span>
+        <span class="admin-badge">ADMIN HUB</span>
+      </a>
+      <div class="header-divider"></div>
+      <nav class="admin-tabs-nav">
+        <button class="admin-tab-btn active" data-tab="generator-tab">
+          <span class="tab-icon">🧾</span> Bill Generator
+        </button>
+        <button class="admin-tab-btn" data-tab="crm-tab">
+          <span class="tab-icon">👥</span> Client CRM
+        </button>
+        <button class="admin-tab-btn" data-tab="invoices-tab">
+          <span class="tab-icon">📁</span> Saved Invoices (<span id="saved-invoices-count">0</span>)
+        </button>
+        <button class="admin-tab-btn" data-tab="settings-tab">
+          <span class="tab-icon">⚙️</span> Agency & Bank
+        </button>
+      </nav>
+    </div>
+
+    <div class="admin-header-right">
+      <button class="admin-btn admin-btn-ghost" id="theme-toggle" title="Toggle Light/Dark Theme">🌙</button>
+      <button class="admin-btn admin-btn-primary" id="top-print-btn" title="Download or Print PDF">
+        <span>🖨️</span> Download / Print PDF
+      </button>
+      <a href="index.html" class="admin-btn admin-btn-outline" title="Return to public website">
+        <span>←</span> Exit Admin
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="admin-main">
+
+    <!-- ==========================================
+         TAB 1: BILL GENERATOR
+         ========================================== -->
+    <section class="admin-tab-content active" id="generator-tab">
+      <div class="bill-studio-layout">
+
+        <!-- LEFT: STUDIO CONTROLS & MISSING COMPONENTS FORM -->
+        <div class="studio-controls-pane no-print">
+          
+          <!-- Top Quick Actions Toolbar -->
+          <div class="controls-card quick-toolbar-card">
+            <div class="toolbar-header">
+              <h3>⚡ Quick Presets & Actions</h3>
+              <span class="live-tag">● Live Auto-Syncing</span>
+            </div>
+            <div class="toolbar-actions">
+              <button type="button" class="tool-btn preset-btn" id="load-sample-bill-btn" title="Load sample bill from reference">
+                ✨ Load "Yoga with Srinatha" Bill
+              </button>
+              <button type="button" class="tool-btn" id="new-invoice-btn" title="Clear form for a new bill">
+                📄 Blank Invoice
+              </button>
+              <button type="button" class="tool-btn save-btn" id="save-invoice-btn" title="Save this invoice to local database">
+                💾 Save Invoice
+              </button>
+            </div>
+          </div>
+
+          <!-- Section 1: Invoice Meta -->
+          <div class="controls-card">
+            <div class="card-title-row">
+              <h4>1. Invoice Details</h4>
+              <span class="card-badge">Header Info</span>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="inv-number-input">Invoice Number</label>
+                <input type="text" id="inv-number-input" class="admin-input" value="7272" placeholder="e.g. 7272 or INV-2026-01">
+              </div>
+              <div class="form-group">
+                <label for="inv-date-input">Invoice Date</label>
+                <input type="text" id="inv-date-input" class="admin-input" value="22nd July 2026" placeholder="e.g. 22nd July 2026">
+              </div>
+            </div>
+            <div class="form-grid-2" style="margin-top: 10px;">
+              <div class="form-group">
+                <label for="inv-status-input">Invoice Status</label>
+                <select id="inv-status-input" class="admin-input">
+                  <option value="Paid">Paid (100% Discounted / Settled)</option>
+                  <option value="Pending">Pending Payment</option>
+                  <option value="Draft">Draft</option>
+                  <option value="Overdue">Overdue</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inv-currency-input">Currency Symbol</label>
+                <select id="inv-currency-input" class="admin-input">
+                  <option value="₹">₹ (INR Rupee)</option>
+                  <option value="$">$ (USD Dollar)</option>
+                  <option value="€">€ (Euro)</option>
+                  <option value="£">£ (British Pound)</option>
+                  <option value="AED">AED (Dirham)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Client Details ("Billed to:") -->
+          <div class="controls-card">
+            <div class="card-title-row">
+              <h4>2. Client Details (Billed To)</h4>
+              <div class="client-picker-wrapper">
+                <select id="crm-client-select" class="admin-input client-select-dropdown">
+                  <option value="">-- Quick Pick Saved Client --</option>
+                  <option value="yoga-srinatha" selected>Yoga with Srinatha</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="client-name-input">Client / Business Name</label>
+              <input type="text" id="client-name-input" class="admin-input" value="Yoga with Srinatha" placeholder="e.g. Yoga with Srinatha">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label for="client-address1-input">Address Line 1</label>
+              <input type="text" id="client-address1-input" class="admin-input" value="14, Contour Rd, Gokulam 3rd Stage," placeholder="e.g. 14, Contour Rd, Gokulam 3rd Stage,">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label for="client-address2-input">Address Line 2 / City / State / Pincode</label>
+              <input type="text" id="client-address2-input" class="admin-input" value="Gokulam, Mysuru, Karnataka 570002" placeholder="e.g. Gokulam, Mysuru, Karnataka 570002">
+            </div>
+            <div class="form-grid-2" style="margin-top: 10px;">
+              <div class="form-group">
+                <label for="client-phone-input">Client Phone (Optional)</label>
+                <input type="text" id="client-phone-input" class="admin-input" placeholder="+91 9876543210">
+              </div>
+              <div class="form-group">
+                <label for="client-email-input">Client Email (Optional)</label>
+                <input type="email" id="client-email-input" class="admin-input" placeholder="client@domain.com">
+              </div>
+            </div>
+            <button type="button" class="btn-subtle-link" id="save-current-to-crm-btn">
+              ➕ Save this client to CRM
+            </button>
+          </div>
+
+          <!-- Section 3: Line Items (Itemized Services) -->
+          <div class="controls-card">
+            <div class="card-title-row">
+              <h4>3. Service Line Items</h4>
+              <div class="preset-service-picker">
+                <select id="quick-service-dropdown" class="admin-input quick-service-select">
+                  <option value="">➕ Add Standard Service...</option>
+                  <option value="web-design">Website Design & UX / UI (₹40,000)</option>
+                  <option value="web-dev">Website Development (Full-Stack, incl. Backend) (₹1,23,000)</option>
+                  <option value="mobile-app">Mobile App Development (Full-Stack) (₹1,65,000)</option>
+                  <option value="admin-dash">Custom Admin Dashboard (Product Add/Delete, Inventory Mgmt) (₹75,000)</option>
+                  <option value="seo">On-Page SEO (₹15,000)</option>
+                  <option value="user-manual">User Manual / Documentation (Free - 1 - ₹0)</option>
+                  <option value="hosting">Hosting & Support (Client Managed - Self - ₹0)</option>
+                  <option value="ssl">SSL certificate (Offer - 1 - ₹0)</option>
+                  <option value="maintenance">Annual Maintenance Contract (₹35,000)</option>
+                  <option value="branding">Brand Identity & Visual System (₹50,000)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="items-list-container" id="items-inputs-list">
+              <!-- Dynamic item editor rows injected by admin.js -->
+            </div>
+
+            <div class="add-item-row-action">
+              <button type="button" class="admin-btn admin-btn-outline full-width" id="add-item-row-btn">
+                ➕ Add Custom Blank Item
+              </button>
+            </div>
+          </div>
+
+          <!-- Section 4: Pricing, Discounts & Tax Calculation -->
+          <div class="controls-card">
+            <div class="card-title-row">
+              <h4>4. Calculation & Discount Rules</h4>
+              <span class="card-badge">Financials</span>
+            </div>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="tax-rate-input">Tax % (e.g. 0% or 18% GST)</label>
+                <input type="number" id="tax-rate-input" class="admin-input" value="0" min="0" max="100" step="0.5">
+              </div>
+              <div class="form-group">
+                <label for="discount-type-input">Discount Type</label>
+                <select id="discount-type-input" class="admin-input">
+                  <option value="percent" selected>Percentage (%)</option>
+                  <option value="fixed">Fixed Amount (₹)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="discount-value-input">Discount Value</label>
+                <input type="number" id="discount-value-input" class="admin-input" value="100" min="0" step="1">
+              </div>
+            </div>
+
+            <!-- Financial Summary Pill -->
+            <div class="financials-preview-box">
+              <div class="fin-row">
+                <span>Calculated Subtotal:</span>
+                <strong id="calc-subtotal-display">₹4,18,000</strong>
+              </div>
+              <div class="fin-row">
+                <span>Tax Amount:</span>
+                <strong id="calc-tax-display">₹0</strong>
+              </div>
+              <div class="fin-row">
+                <span>Discount Amount:</span>
+                <strong id="calc-discount-display">-₹4,18,000</strong>
+              </div>
+              <div class="fin-row total-highlight">
+                <span>Final Payable Total:</span>
+                <strong id="calc-total-display">₹0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Payment Info & UPI QR -->
+          <div class="controls-card">
+            <div class="card-title-row">
+              <h4>5. Payment & Bank Information</h4>
+              <span class="card-badge">Bottom Footer</span>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="bank-beneficiary-input">Account Holder Name</label>
+                <input type="text" id="bank-beneficiary-input" class="admin-input" value="MANPREETH N">
+              </div>
+              <div class="form-group">
+                <label for="bank-name-input">Bank Name</label>
+                <input type="text" id="bank-name-input" class="admin-input" value="STATE BANK OF INDIA">
+              </div>
+            </div>
+            <div class="form-grid-2" style="margin-top: 10px;">
+              <div class="form-group">
+                <label for="bank-acc-input">Account Number</label>
+                <input type="text" id="bank-acc-input" class="admin-input" value="20340118904">
+              </div>
+              <div class="form-group">
+                <label for="bank-ifsc-input">IFSC Code</label>
+                <input type="text" id="bank-ifsc-input" class="admin-input" value="SBIN0016500">
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label for="upi-id-input">UPI ID for Dynamic Payment QR</label>
+              <input type="text" id="upi-id-input" class="admin-input" value="8722163256@sbi" placeholder="e.g. 8722163256@sbi or your-upi@okhdfcbank">
+              <small class="form-hint">Generates standard instant UPI QR code on the live invoice sheet.</small>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="controls-card sticky-bottom-bar">
+            <button type="button" class="admin-btn admin-btn-primary full-width" id="bottom-print-btn">
+              🖨️ Download / Print Invoice (A4 PDF)
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: LIVE A4 PRINTABLE INVOICE SHEET -->
+        <div class="studio-preview-pane">
+          
+          <div class="preview-toolbar no-print">
+            <div class="preview-status-indicator">
+              <span class="pulse-indicator"></span>
+              <strong>Live A4 Sheet Preview</strong> (Updates automatically as you type)
+            </div>
+            <div class="preview-actions">
+              <button type="button" class="preview-tool-btn" id="zoom-fit-btn" title="Fit to width">🔍 Fit</button>
+              <button type="button" class="preview-tool-btn" id="zoom-100-btn" title="100% Scale">100%</button>
+              <button type="button" class="preview-tool-btn preview-primary" id="pane-print-btn">🖨️ Print / Save PDF</button>
+            </div>
+          </div>
+
+          <!-- A4 Paper Container -->
+          <div class="a4-sheet-wrapper" id="a4-preview-wrapper">
+            <article class="invoice-a4-sheet" id="invoice-printable-target">
+              
+              <!-- Top Header -->
+              <header class="inv-top-header">
+                <div class="inv-title-col">
+                  <h1 class="inv-main-heading">Invoice</h1>
+                </div>
+                <div class="inv-meta-col">
+                  <div class="inv-brand-logo">
+                    <span class="brand-text">Socialeo</span>
+                    <span class="brand-accent-dot"></span>
+                  </div>
+                  <div class="inv-date-text" id="live-inv-date">22nd July 2026</div>
+                  <div class="inv-number-text" id="live-inv-number">Invoice No. 7272</div>
+                </div>
+              </header>
+
+              <!-- Top Divider -->
+              <hr class="inv-divider-line">
+
+              <!-- Billed To Section -->
+              <section class="inv-client-section">
+                <div class="inv-billed-label">Billed to:</div>
+                <div class="inv-client-name" id="live-client-name">Yoga with Srinatha</div>
+                <div class="inv-client-address" id="live-client-address">
+                  14, Contour Rd, Gokulam 3rd Stage,<br>
+                  Gokulam, Mysuru, Karnataka 570002
+                </div>
+              </section>
+
+              <!-- Line Items Table -->
+              <section class="inv-table-section">
+                <table class="inv-items-table">
+                  <thead>
+                    <tr>
+                      <th class="col-desc">Description</th>
+                      <th class="col-price">Price</th>
+                      <th class="col-qty">Quantity</th>
+                      <th class="col-amount">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody id="live-table-tbody">
+                    <!-- Dynamic rendered rows -->
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- Financial Totals Section -->
+              <section class="inv-totals-section">
+                <div class="inv-totals-card">
+                  <div class="totals-line">
+                    <span class="total-label">Subtotal</span>
+                    <span class="total-val" id="live-subtotal-val">₹4,18,000</span>
+                  </div>
+                  <div class="totals-line" id="live-tax-row">
+                    <span class="total-label" id="live-tax-label">Tax (0%)</span>
+                    <span class="total-val" id="live-tax-val">₹0</span>
+                  </div>
+                  <div class="totals-line" id="live-discount-row">
+                    <span class="total-label" id="live-discount-label">Discount<br><small>(100%)</small></span>
+                    <span class="total-val" id="live-discount-val">₹4,18,000</span>
+                  </div>
+                  <div class="totals-line total-grand-line">
+                    <span class="total-label">Total</span>
+                    <span class="total-val" id="live-total-val">₹0</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Bottom Divider -->
+              <hr class="inv-divider-line">
+
+              <!-- Footer Section (3 Columns: Bank, QR, Company) -->
+              <footer class="inv-bottom-footer">
+                
+                <!-- Left: Payment Info -->
+                <div class="inv-footer-col col-payment">
+                  <div class="footer-col-title">Payment Information</div>
+                  <div class="footer-info-line bold" id="live-bank-beneficiary">MANPREETH N</div>
+                  <div class="footer-info-line" id="live-bank-name">STATE BANK OF INDIA</div>
+                  <div class="footer-info-line" id="live-bank-acc">Account no - 20340118904</div>
+                  <div class="footer-info-line" id="live-bank-ifsc">IFSC - SBIN0016500</div>
+                </div>
+
+                <!-- Middle: QR Code -->
+                <div class="inv-footer-col col-qr">
+                  <div class="qr-code-frame" id="live-qr-frame">
+                    <div id="live-upi-qrcode" title="Scan to pay via any UPI App"></div>
+                  </div>
+                </div>
+
+                <!-- Right: Socialeo Address & Info -->
+                <div class="inv-footer-col col-agency">
+                  <div class="footer-col-title" id="live-agency-name">Socialeo</div>
+                  <div class="footer-info-line" id="live-agency-addr1">1646, 5th Main, Vijayanagar 2nd Stage,</div>
+                  <div class="footer-info-line" id="live-agency-addr2">Mysore, Karnataka - 570017</div>
+                  <div class="footer-info-line" id="live-agency-phone">+91 8722163256</div>
+                  <div class="footer-info-line" id="live-agency-email">socialeopvtltd@gmail.com</div>
+                </div>
+
+              </footer>
+
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 2: CLIENT CRM
+         ========================================== -->
+    <section class="admin-tab-content no-print" id="crm-tab">
+      <div class="crm-container">
+        
+        <div class="crm-header-row">
+          <div>
+            <h2>👥 Client Relationship Management (CRM)</h2>
+            <p>Manage your client directory, past billing records, and generate fresh invoices with 1 click.</p>
+          </div>
+          <button type="button" class="admin-btn admin-btn-primary" id="crm-add-client-modal-btn">
+            ➕ Add New Client
+          </button>
+        </div>
+
+        <div class="crm-stats-grid">
+          <div class="crm-stat-card">
+            <span class="stat-number" id="crm-total-clients">1</span>
+            <span class="stat-label">Total Clients</span>
+          </div>
+          <div class="crm-stat-card">
+            <span class="stat-number" id="crm-total-billed">₹4,18,000</span>
+            <span class="stat-label">Total Volume Billed</span>
+          </div>
+          <div class="crm-stat-card">
+            <span class="stat-number" id="crm-active-projects">3</span>
+            <span class="stat-label">Active Deployments</span>
+          </div>
+        </div>
+
+        <div class="crm-table-card">
+          <div class="table-search-bar">
+            <input type="text" id="crm-search-input" class="admin-input" placeholder="🔍 Search clients by name, location, or email...">
+          </div>
+
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>Client Name</th>
+                <th>Address & Location</th>
+                <th>Contact</th>
+                <th>Invoices</th>
+                <th>Total Value</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="crm-clients-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 3: SAVED INVOICES
+         ========================================== -->
+    <section class="admin-tab-content no-print" id="invoices-tab">
+      <div class="saved-invoices-container">
+        
+        <div class="crm-header-row">
+          <div>
+            <h2>📁 Saved Invoices & Billing Archive</h2>
+            <p>Access all issued bills, duplicate existing templates, or re-print past invoices.</p>
+          </div>
+          <button type="button" class="admin-btn admin-btn-primary" id="archive-new-bill-btn">
+            🧾 Create New Bill
+          </button>
+        </div>
+
+        <div class="crm-table-card">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>Invoice #</th>
+                <th>Client Name</th>
+                <th>Date</th>
+                <th>Items Count</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="saved-invoices-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 4: AGENCY & BANK SETTINGS
+         ========================================== -->
+    <section class="admin-tab-content no-print" id="settings-tab">
+      <div class="settings-container">
+        
+        <div class="crm-header-row">
+          <div>
+            <h2>⚙️ Agency & Banking Default Settings</h2>
+            <p>Configure your default agency contact details, banking info, and UPI settings.</p>
+          </div>
+          <button type="button" class="admin-btn admin-btn-primary" id="save-settings-btn">
+            💾 Save Default Settings
+          </button>
+        </div>
+
+        <div class="settings-grid">
+          
+          <div class="controls-card">
+            <h4>🏢 Agency Profile</h4>
+            <div class="form-group" style="margin-top: 12px;">
+              <label>Agency Name</label>
+              <input type="text" id="set-agency-name" class="admin-input" value="Socialeo">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label>Address Line 1</label>
+              <input type="text" id="set-agency-addr1" class="admin-input" value="1646, 5th Main, Vijayanagar 2nd Stage,">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label>Address Line 2 (City, State, Pincode)</label>
+              <input type="text" id="set-agency-addr2" class="admin-input" value="Mysore, Karnataka - 570017">
+            </div>
+            <div class="form-grid-2" style="margin-top: 10px;">
+              <div class="form-group">
+                <label>Official Phone</label>
+                <input type="text" id="set-agency-phone" class="admin-input" value="+91 8722163256">
+              </div>
+              <div class="form-group">
+                <label>Official Email</label>
+                <input type="email" id="set-agency-email" class="admin-input" value="socialeopvtltd@gmail.com">
+              </div>
+            </div>
+          </div>
+
+          <div class="controls-card">
+            <h4>🏦 Default Bank & UPI Details</h4>
+            <div class="form-group" style="margin-top: 12px;">
+              <label>Account Holder</label>
+              <input type="text" id="set-bank-beneficiary" class="admin-input" value="MANPREETH N">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label>Bank Name</label>
+              <input type="text" id="set-bank-name" class="admin-input" value="STATE BANK OF INDIA">
+            </div>
+            <div class="form-grid-2" style="margin-top: 10px;">
+              <div class="form-group">
+                <label>Account Number</label>
+                <input type="text" id="set-bank-acc" class="admin-input" value="20340118904">
+              </div>
+              <div class="form-group">
+                <label>IFSC Code</label>
+                <input type="text" id="set-bank-ifsc" class="admin-input" value="SBIN0016500">
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label>Default UPI ID</label>
+              <input type="text" id="set-bank-upi" class="admin-input" value="8722163256@sbi">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Add Client Modal -->
+  <div class="admin-modal-backdrop no-print" id="new-client-modal">
+    <div class="admin-modal-card">
+      <div class="modal-header">
+        <h3>Add New Client to CRM</h3>
+        <button class="modal-close" id="close-client-modal-btn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Client Name / Entity</label>
+          <input type="text" id="modal-client-name" class="admin-input" placeholder="e.g. Zenith Tech Labs">
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+          <label>Address Line 1</label>
+          <input type="text" id="modal-client-addr1" class="admin-input" placeholder="e.g. 102, Silicon Heights, Indiranagar">
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+          <label>City, State, Pincode</label>
+          <input type="text" id="modal-client-addr2" class="admin-input" placeholder="e.g. Bengaluru, Karnataka 560038">
+        </div>
+        <div class="form-grid-2" style="margin-top: 10px;">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" id="modal-client-phone" class="admin-input" placeholder="+91 9845012345">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="modal-client-email" class="admin-input" placeholder="contact@zenithlabs.io">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="admin-btn admin-btn-outline" id="cancel-client-modal-btn">Cancel</button>
+        <button type="button" class="admin-btn admin-btn-primary" id="save-modal-client-btn">Save Client</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="admin-toast-container no-print" id="toast-container"></div>
+
+  <!-- Admin JavaScript -->
+  <script src="admin.js"></script>
+</body>
+</html>
