@@ -772,6 +772,49 @@ body.admin-body {
   font-weight: 500;
 }
 
+/* Compact Table Mode for Large Invoices (e.g. VO2 Max with 10+ items) */
+.invoice-a4-sheet.compact-mode {
+  padding: 14mm 16mm 14mm 16mm;
+}
+
+.invoice-a4-sheet.compact-mode .inv-top-header {
+  margin-bottom: 14px;
+}
+
+.invoice-a4-sheet.compact-mode .inv-main-heading {
+  font-size: 42px;
+}
+
+.invoice-a4-sheet.compact-mode .inv-divider-line {
+  margin: 8px 0 12px 0;
+}
+
+.invoice-a4-sheet.compact-mode .inv-client-section {
+  margin-bottom: 12px;
+}
+
+.invoice-a4-sheet.compact-mode .inv-items-table th {
+  padding: 5px 3px 6px 3px;
+  font-size: 11.5px;
+}
+
+.invoice-a4-sheet.compact-mode .inv-items-table td {
+  padding: 5px 3px;
+  font-size: 11px;
+}
+
+.invoice-a4-sheet.compact-mode .inv-items-table td.cell-desc {
+  line-height: 1.25;
+}
+
+.invoice-a4-sheet.compact-mode .inv-totals-section {
+  margin-bottom: 4px;
+}
+
+.invoice-a4-sheet.compact-mode .inv-bottom-footer {
+  padding-top: 6px;
+}
+
 /* Totals Box */
 .inv-totals-section {
   display: flex;

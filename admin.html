@@ -78,8 +78,14 @@
               <span class="live-tag">● Live Auto-Syncing</span>
             </div>
             <div class="toolbar-actions">
-              <button type="button" class="tool-btn preset-btn" id="load-sample-bill-btn" title="Load sample bill from reference">
-                ✨ Load "Yoga with Srinatha" Bill
+              <button type="button" class="tool-btn preset-btn" id="load-vo2max-full-btn" title="Load VO2 MAX Full Clinical Solution (Part 1 + 2 + 3)">
+                🏥 Load VO2 MAX (All 3 Parts - ₹1,35,300)
+              </button>
+              <button type="button" class="tool-btn preset-btn" id="load-vo2max-base-btn" title="Load VO2 MAX Base Clinical Website (Part 1 - ₹61,500)">
+                🏥 Load VO2 MAX (Base - ₹61,500)
+              </button>
+              <button type="button" class="tool-btn preset-btn" id="load-sample-bill-btn" title="Load sample bill for Yoga with Srinatha">
+                ✨ Load "Yoga with Srinatha"
               </button>
               <button type="button" class="tool-btn" id="new-invoice-btn" title="Clear form for a new bill">
                 📄 Blank Invoice
@@ -173,17 +179,31 @@
               <h4>3. Service Line Items</h4>
               <div class="preset-service-picker">
                 <select id="quick-service-dropdown" class="admin-input quick-service-select">
-                  <option value="">➕ Add Standard Service...</option>
-                  <option value="web-design">Website Design & UX / UI (₹40,000)</option>
-                  <option value="web-dev">Website Development (Full-Stack, incl. Backend) (₹1,23,000)</option>
-                  <option value="mobile-app">Mobile App Development (Full-Stack) (₹1,65,000)</option>
-                  <option value="admin-dash">Custom Admin Dashboard (Product Add/Delete, Inventory Mgmt) (₹75,000)</option>
-                  <option value="seo">On-Page SEO (₹15,000)</option>
-                  <option value="user-manual">User Manual / Documentation (Free - 1 - ₹0)</option>
-                  <option value="hosting">Hosting & Support (Client Managed - Self - ₹0)</option>
-                  <option value="ssl">SSL certificate (Offer - 1 - ₹0)</option>
-                  <option value="maintenance">Annual Maintenance Contract (₹35,000)</option>
-                  <option value="branding">Brand Identity & Visual System (₹50,000)</option>
+                  <option value="">➕ Add Standard / Medical Service...</option>
+                  <optgroup label="🏥 VO2 MAX Medical Deliverables">
+                    <option value="vo2-ux-strategy">1.0 UI/UX Strategy & Medical Design System (₹10,000)</option>
+                    <option value="vo2-core-pages">2.0 Core Public Pages - 9 Pages (₹22,500)</option>
+                    <option value="vo2-doc-portals">3.0 Specialist Doctor Credential Portals - 2 Portals (₹3,000)</option>
+                    <option value="vo2-conversion-engines">4.0 Patient Conversion Engines - 3 Portals (₹6,500)</option>
+                    <option value="vo2-legal-suite">5.0 Medical Legal & Compliance Suite - 5 Pages (₹4,000)</option>
+                    <option value="vo2-lead-widgets">6.0 Lead-Gen & Interactive Widgets (₹5,500)</option>
+                    <option value="vo2-healthcare-seo">7.0 Technical Healthcare SEO, Medical Schema & CDN (₹10,000)</option>
+                    <option value="vo2-treatment-pages">Upsell: 14 Specialized Treatment Detail Pages (₹21,000)</option>
+                    <option value="vo2-health-articles">Upsell: 14 Health Hub Clinical SEO Articles (₹28,800)</option>
+                    <option value="vo2-amc-hosting">Part 3: Annual Managed Hosting, SSL & AMC (₹24,000/yr)</option>
+                  </optgroup>
+                  <optgroup label="💻 General Studio Services">
+                    <option value="web-design">Website Design & UX / UI (₹40,000)</option>
+                    <option value="web-dev">Website Development (Full-Stack, incl. Backend) (₹1,23,000)</option>
+                    <option value="mobile-app">Mobile App Development (Full-Stack) (₹1,65,000)</option>
+                    <option value="admin-dash">Custom Admin Dashboard (₹75,000)</option>
+                    <option value="seo">On-Page SEO (₹15,000)</option>
+                    <option value="user-manual">User Manual / Documentation (Free)</option>
+                    <option value="hosting">Hosting & Support (Client Managed)</option>
+                    <option value="ssl">SSL certificate (Offer)</option>
+                    <option value="maintenance">Annual Maintenance Contract (₹35,000)</option>
+                    <option value="branding">Brand Identity & Visual System (₹50,000)</option>
+                  </optgroup>
                 </select>
               </div>
             </div>

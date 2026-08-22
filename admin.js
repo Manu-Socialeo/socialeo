@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. DATA STATE & STORAGE
   // ==========================================
   
-  // Reference Sample Bill (Yoga with Srinatha #7272)
+  // 1. Reference Sample Bill: Yoga with Srinatha (#7272)
   const SAMPLE_BILL = {
     invoiceNumber: "7272",
     invoiceDate: "22nd July 2026",
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { description: "SSL certificate", price: "Offer", qty: "1", amount: "0" }
     ],
     taxRate: 0,
-    discountType: "percent", // 'percent' or 'fixed'
+    discountType: "percent",
     discountValue: 100,
     bankInfo: {
       beneficiary: "MANPREETH N",
@@ -51,8 +51,105 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Standard Service Preset Catalog
+  // 2. VO2 MAX — Complete Comprehensive Clinical Solution (Parts 1 + 2 + 3: ₹1,35,300)
+  const VO2_MAX_FULL_BILL = {
+    invoiceNumber: "8104",
+    invoiceDate: "22nd August 2026",
+    status: "Pending",
+    currency: "₹",
+    client: {
+      id: "vo2-max-mysuru",
+      name: "VO2 MAX Sports Physiotherapy & Rehab",
+      addressLine1: "14, Contour Rd, Gokulam 2nd Stage,",
+      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
+      phone: "+91 8722163256",
+      email: "vo2maxphysio@gmail.com"
+    },
+    items: [
+      { description: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
+      { description: "2.0 Core Public Clinical Pages - 9 Pages (Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
+      { description: "3.0 Specialist Doctor Credential Portals - 2 Portals (Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
+      { description: "4.0 Patient Conversion Engines - 3 Portals (/book-appointment, /request-callback, /location Navigation)", price: "6500", qty: "3", amount: "6500" },
+      { description: "5.0 Medical Legal & Compliance Suite - 5 Pages (Privacy Policy, Terms, Medical Disclaimer, Appointment & Cookie Policy)", price: "800", qty: "5", amount: "4000" },
+      { description: "6.0 Lead-Gen & Interactive Widgets (Floating WhatsApp Quick-Chat, Direct Calling, Hero Carousel, FAQ Accordions)", price: "5500", qty: "1", amount: "5500" },
+      { description: "7.0 Technical Healthcare SEO, Medical Schema & Cloud CDN (JSON-LD MedicalClinic & Physician Schema, Sitemap, Robots)", price: "10000", qty: "1", amount: "10000" },
+      { description: "🚀 [Growth Add-On 1] 14 Specialized Treatment Detail Pages (Manual Physio, Sports Rehab, Cardiac, Neuro, Post-Surgery)", price: "1500", qty: "14", amount: "21000" },
+      { description: "🚀 [Growth Add-On 2] 14 Health Hub Clinical SEO Articles (14,000+ words + Google Schema for Mysuru Healthcare)", price: "28800", qty: "14", amount: "28800" },
+      { description: "🛡️ [Annual Retainer] Managed Cloud Edge Hosting, Automated SSL Security & Quarterly SEO Audits (12 Months AMC)", price: "24000", qty: "1 yr", amount: "24000" }
+    ],
+    taxRate: 0,
+    discountType: "percent",
+    discountValue: 0,
+    bankInfo: {
+      beneficiary: "MANPREETH N",
+      bankName: "STATE BANK OF INDIA",
+      accountNumber: "20340118904",
+      ifsc: "SBIN0016500",
+      upiId: "8722163256@sbi"
+    },
+    agencyInfo: {
+      name: "Socialeo",
+      addressLine1: "1646, 5th Main, Vijayanagar 2nd Stage,",
+      addressLine2: "Mysore, Karnataka - 570017",
+      phone: "+91 8722163256",
+      email: "socialeopvtltd@gmail.com"
+    }
+  };
+
+  // 3. VO2 MAX — Base Website (Part 1 Only: ₹61,500)
+  const VO2_MAX_BASE_BILL = {
+    invoiceNumber: "8104",
+    invoiceDate: "22nd August 2026",
+    status: "Pending",
+    currency: "₹",
+    client: {
+      id: "vo2-max-mysuru",
+      name: "VO2 MAX Sports Physiotherapy & Rehab",
+      addressLine1: "14, Contour Rd, Gokulam 2nd Stage,",
+      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
+      phone: "+91 8722163256",
+      email: "vo2maxphysio@gmail.com"
+    },
+    items: [
+      { description: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
+      { description: "2.0 Core Public Clinical Pages - 9 Pages (Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
+      { description: "3.0 Specialist Doctor Credential Portals - 2 Portals (Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
+      { description: "4.0 Patient Conversion Engines - 3 Portals (/book-appointment, /request-callback, /location Navigation)", price: "6500", qty: "3", amount: "6500" },
+      { description: "5.0 Medical Legal & Compliance Suite - 5 Pages (Privacy Policy, Terms, Medical Disclaimer, Appointment & Cookie Policy)", price: "800", qty: "5", amount: "4000" },
+      { description: "6.0 Lead-Gen & Interactive Widgets (Floating WhatsApp Quick-Chat, Direct Calling, Hero Carousel, FAQ Accordions)", price: "5500", qty: "1", amount: "5500" },
+      { description: "7.0 Technical Healthcare SEO, Medical Schema & Cloud CDN (JSON-LD MedicalClinic & Physician Schema, Sitemap, Robots)", price: "10000", qty: "1", amount: "10000" }
+    ],
+    taxRate: 0,
+    discountType: "percent",
+    discountValue: 0,
+    bankInfo: {
+      beneficiary: "MANPREETH N",
+      bankName: "STATE BANK OF INDIA",
+      accountNumber: "20340118904",
+      ifsc: "SBIN0016500",
+      upiId: "8722163256@sbi"
+    },
+    agencyInfo: {
+      name: "Socialeo",
+      addressLine1: "1646, 5th Main, Vijayanagar 2nd Stage,",
+      addressLine2: "Mysore, Karnataka - 570017",
+      phone: "+91 8722163256",
+      email: "socialeopvtltd@gmail.com"
+    }
+  };
+
+  // Standard & Medical Service Preset Catalog
   const SERVICE_CATALOG = {
+    "vo2-ux-strategy": { desc: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, wireframes)", price: "10000", qty: "1", amount: "10000" },
+    "vo2-core-pages": { desc: "2.0 Core Public Clinical Pages (9 Pages - Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
+    "vo2-doc-portals": { desc: "3.0 Specialist Doctor Credential Portals (Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
+    "vo2-conversion-engines": { desc: "4.0 Patient Conversion Engines (Appointment Booker, Callback Portal, Maps Navigation)", price: "6500", qty: "3", amount: "6500" },
+    "vo2-legal-suite": { desc: "5.0 Medical Legal & Compliance Suite (Privacy Policy, Terms, Medical Disclaimer, Appointment & Cookie Policy)", price: "800", qty: "5", amount: "4000" },
+    "vo2-lead-widgets": { desc: "6.0 Lead-Gen & Interactive Widgets (Floating WhatsApp Quick-Chat, Direct Calling, Hero Carousel, FAQ Accordions)", price: "5500", qty: "1", amount: "5500" },
+    "vo2-healthcare-seo": { desc: "7.0 Technical Healthcare SEO, Medical Schema & Cloud CDN (JSON-LD MedicalClinic & Physician Schema, Sitemap, Robots)", price: "10000", qty: "1", amount: "10000" },
+    "vo2-treatment-pages": { desc: "🚀 14 Specialized Treatment Detail Pages (Manual Physio, Sports Rehab, Cardiac, Neuro, Post-Surgery)", price: "1500", qty: "14", amount: "21000" },
+    "vo2-health-articles": { desc: "🚀 14 Health Hub Clinical SEO Articles (14,000+ words + Google Schema for Mysuru Healthcare)", price: "28800", qty: "14", amount: "28800" },
+    "vo2-amc-hosting": { desc: "🛡️ Annual Managed Cloud Edge Hosting, Automated SSL Security & Quarterly SEO Audits (12 Months AMC)", price: "24000", qty: "1 yr", amount: "24000" },
     "web-design": { desc: "Website Design & UX / UI", price: "40000", qty: "1", amount: "40000" },
     "web-dev": { desc: "Website Development (Full-Stack, incl. Backend)", price: "123000", qty: "1", amount: "123000" },
     "mobile-app": { desc: "Mobile App Development (Full-Stack)", price: "165000", qty: "1", amount: "165000" },
@@ -65,10 +162,23 @@ document.addEventListener('DOMContentLoaded', () => {
     "branding": { desc: "Brand Identity, Typography & Visual System", price: "50000", qty: "1", amount: "50000" }
   };
 
-  // Load state from localStorage or default
-  let currentBill = JSON.parse(localStorage.getItem('socialeo_active_bill')) || JSON.parse(JSON.stringify(SAMPLE_BILL));
-  let savedInvoices = JSON.parse(localStorage.getItem('socialeo_saved_invoices')) || [ JSON.parse(JSON.stringify(SAMPLE_BILL)) ];
+  // Load state from localStorage or default to VO2 MAX full bill
+  let currentBill = JSON.parse(localStorage.getItem('socialeo_active_bill')) || JSON.parse(JSON.stringify(VO2_MAX_FULL_BILL));
+  let savedInvoices = JSON.parse(localStorage.getItem('socialeo_saved_invoices')) || [
+    JSON.parse(JSON.stringify(VO2_MAX_FULL_BILL)),
+    JSON.parse(JSON.stringify(SAMPLE_BILL))
+  ];
   let crmClients = JSON.parse(localStorage.getItem('socialeo_crm_clients')) || [
+    {
+      id: "vo2-max-mysuru",
+      name: "VO2 MAX Sports Physiotherapy & Rehab",
+      addressLine1: "14, Contour Rd, Gokulam 2nd Stage,",
+      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
+      phone: "+91 8722163256",
+      email: "vo2maxphysio@gmail.com",
+      totalBilled: "₹1,35,300",
+      invoicesCount: 1
+    },
     {
       id: "yoga-srinatha",
       name: "Yoga with Srinatha",
@@ -414,6 +524,16 @@ document.addEventListener('DOMContentLoaded', () => {
     liveBankAcc.textContent = `Account no - ${bankAccInput.value || '---'}`;
     liveBankIfsc.textContent = `IFSC - ${bankIfscInput.value || '---'}`;
 
+    // Toggle compact mode on A4 sheet for bills with 7+ items to fit cleanly
+    const sheetElem = document.getElementById('invoice-printable-target');
+    if (sheetElem) {
+      if (currentBill.items.length >= 7) {
+        sheetElem.classList.add('compact-mode');
+      } else {
+        sheetElem.classList.remove('compact-mode');
+      }
+    }
+
     // 7. Render QR Code
     updateQrCode(total, curr);
 
@@ -527,6 +647,20 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLivePreviewAndCalculations();
     e.target.value = "";
     showToast(`Added "${SERVICE_CATALOG[key].desc}"`);
+  });
+
+  // Load VO2 MAX Full Bill (Parts 1 + 2 + 3: ₹1,35,300)
+  document.getElementById('load-vo2max-full-btn')?.addEventListener('click', () => {
+    currentBill = JSON.parse(JSON.stringify(VO2_MAX_FULL_BILL));
+    populateFormFromBill(currentBill);
+    showToast("Loaded VO2 MAX Complete Bill (19 Pages + Upsells + AMC - ₹1,35,300)", "🏥");
+  });
+
+  // Load VO2 MAX Base Website (Part 1: ₹61,500)
+  document.getElementById('load-vo2max-base-btn')?.addEventListener('click', () => {
+    currentBill = JSON.parse(JSON.stringify(VO2_MAX_BASE_BILL));
+    populateFormFromBill(currentBill);
+    showToast("Loaded VO2 MAX Base Clinical Website (Part 1 - ₹61,500)", "🏥");
   });
 
   // Load Sample Bill Button ("Yoga with Srinatha #7272")
