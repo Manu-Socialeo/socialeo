@@ -823,8 +823,9 @@ function generateServicePage(service) {
       <div class="footer-bottom">
         <div>Copyright &copy; 2026 Socialeo. All rights reserved.</div>
         <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+          <a href="../cookie-policy.html">Cookie Policy</a>
         </div>
       </div>
     </div>

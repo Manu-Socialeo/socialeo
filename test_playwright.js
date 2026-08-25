@@ -162,7 +162,7 @@ async function runE2ETests() {
 
     // 4.1 Verify Header & Controls
     const headerTitle = await page.textContent('#topbar-active-tab-name');
-    assert(headerTitle.trim() === 'Bill Generator Studio', 'Header displays clean section title "Bill Generator Studio"');
+    assert(headerTitle.trim() === 'Bill Management', 'Header displays clean section title "Bill Management"');
 
     const topbarNewBillBtn = await page.$('#topbar-new-bill-btn');
     assert(topbarNewBillBtn !== null, 'Top header contains "➕ New Bill" button');

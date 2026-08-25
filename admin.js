@@ -391,6 +391,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Pane Column Collapse Toggle (Matches Sidebar Arrow)
+  const billStudioLayout = document.getElementById('bill-studio-layout');
+  const studioControlsPane = document.getElementById('studio-controls-pane');
+  const paneToggleBtn = document.getElementById('pane-toggle-btn');
+  const isPaneCollapsed = localStorage.getItem('socialeo_admin_pane_collapsed') === 'true';
+  if (isPaneCollapsed) {
+    billStudioLayout?.classList.add('pane-collapsed');
+  }
+
+  paneToggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isCol = billStudioLayout?.classList.toggle('pane-collapsed');
+    studioControlsPane?.classList.remove('hover-expanded');
+    localStorage.setItem('socialeo_admin_pane_collapsed', isCol ? 'true' : 'false');
+  });
+
+  studioControlsPane?.addEventListener('mouseenter', () => {
+    if (billStudioLayout?.classList.contains('pane-collapsed')) {
+      studioControlsPane.classList.add('hover-expanded');
+    }
+  });
+
+  studioControlsPane?.addEventListener('mouseleave', () => {
+    if (billStudioLayout?.classList.contains('pane-collapsed')) {
+      studioControlsPane.classList.remove('hover-expanded');
+    }
+  });
+
   // Close mobile sidebar on selection
   function closeMobileSidebarOnSelection() {
     if (window.innerWidth <= 992) {
@@ -402,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabContents = document.querySelectorAll('.admin-tab-content');
 
   const tabNameMap = {
-    'generator-tab': 'Bill Generator Studio',
+    'generator-tab': 'Bill Management',
     'crm-tab': 'Client CRM Database',
     'invoices-tab': 'Saved Invoices Directory',
     'settings-tab': 'Agency & Bank Setup'

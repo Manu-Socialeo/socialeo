@@ -55,9 +55,9 @@
         <div class="sidebar-nav-group">
           <div class="nav-group-label">WORKSPACE</div>
           <nav class="sidebar-nav-list">
-            <button class="admin-tab-btn sidebar-nav-item active" data-tab="generator-tab" title="Bill Generator Studio">
+            <button class="admin-tab-btn sidebar-nav-item active" data-tab="generator-tab" title="Bill Management">
               <span class="tab-icon">🧾</span>
-              <span class="nav-text">Bill Generator</span>
+              <span class="nav-text">Bill Management</span>
             </button>
             <button class="admin-tab-btn sidebar-nav-item" data-tab="crm-tab" title="Client CRM Database">
               <span class="tab-icon">👥</span>
@@ -137,7 +137,7 @@
             <span class="toggle-icon">☰</span>
           </button>
           <div class="topbar-breadcrumbs">
-            <span class="crumb-active" id="topbar-active-tab-name">Bill Generator Studio</span>
+            <span class="crumb-active" id="topbar-active-tab-name">Bill Management</span>
           </div>
         </div>
         <div class="topbar-right">
@@ -216,24 +216,23 @@
   <main class="admin-main">
 
     <!-- ==========================================
-         TAB 1: BILL GENERATOR & LIVE STUDIO
+         TAB 1: BILL MANAGEMENT & LIVE STUDIO
          ========================================== -->
     <section class="admin-tab-content active" id="generator-tab">
-      <div class="bill-studio-layout">
+      <div class="bill-studio-layout" id="bill-studio-layout">
         
         <!-- LEFT: STUDIO CONTROLS & MISSING COMPONENTS FORM -->
-        <div class="studio-controls-pane no-print">
+        <div class="studio-controls-pane no-print" id="studio-controls-pane">
           
           <!-- Top Quick Actions Toolbar -->
           <div class="controls-card quick-toolbar-card" id="bill-mgmt-card">
             <div class="toolbar-header">
               <div style="display: flex; align-items: center; gap: 8px;">
-                <h3>⚡ Bill Management</h3>
-                <button type="button" class="bill-mgmt-toggle-btn" id="bill-mgmt-toggle-btn" title="Toggle Lock / Collapse Bill Management">
-                  <span class="toggle-icon">▾</span>
+                <button type="button" class="sidebar-toggle-btn pane-toggle-btn" id="pane-toggle-btn" title="Collapse / Expand Bill Management Column">
+                  <span class="toggle-arrow">◀</span>
                 </button>
+                <h3>⚡ Bill Management</h3>
               </div>
-              <span class="live-tag">● Live Real-Time Sync</span>
             </div>
             <div class="toolbar-actions real-time-bill-actions">
               <button type="button" class="tool-btn save-btn action-save-bill-btn" id="save-invoice-btn" title="Save this invoice to database in real time">

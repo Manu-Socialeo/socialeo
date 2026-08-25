@@ -681,12 +681,47 @@ body.admin-body {
   display: block;
 }
 
-/* BILL GENERATOR SPLIT STUDIO (Compact 370px controls pane for maximum 60%+ preview canvas) */
+/* PANE TOGGLE BUTTON (MATCHES SIDEBAR ARROW) */
+.pane-toggle-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--admin-border-subtle);
+  color: var(--admin-text-secondary);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 0;
+  font-size: 11px;
+}
+
+.pane-toggle-btn:hover {
+  background: rgba(255, 94, 58, 0.15);
+  border-color: rgba(255, 94, 58, 0.4);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.pane-toggle-btn .toggle-arrow {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* BILL MANAGEMENT SPLIT STUDIO (Collapsible controls column with arrow) */
 .bill-studio-layout {
   display: grid;
   grid-template-columns: 370px 1fr;
   gap: 20px;
   align-items: start;
+  position: relative;
+  transition: grid-template-columns 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bill-studio-layout.pane-collapsed {
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
 }
 
 .studio-controls-pane {
@@ -696,6 +731,82 @@ body.admin-body {
   max-height: calc(100vh - 104px);
   overflow-y: auto;
   padding-right: 6px;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bill-studio-layout.pane-collapsed .studio-controls-pane {
+  width: 44px;
+  min-width: 44px;
+  overflow: visible;
+  padding: 0;
+}
+
+.bill-studio-layout.pane-collapsed .studio-controls-pane .controls-card:not(.quick-toolbar-card) {
+  display: none;
+}
+
+.bill-studio-layout.pane-collapsed .quick-toolbar-card {
+  padding: 8px 4px;
+  background: #0e0e13;
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bill-studio-layout.pane-collapsed .quick-toolbar-card h3,
+.bill-studio-layout.pane-collapsed .quick-toolbar-card .real-time-bill-actions {
+  display: none !important;
+}
+
+.bill-studio-layout.pane-collapsed .toolbar-header {
+  margin-bottom: 0;
+  justify-content: center;
+}
+
+.bill-studio-layout.pane-collapsed .pane-toggle-btn .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+/* Hover Peek for Collapsed Column */
+.bill-studio-layout.pane-collapsed .studio-controls-pane:hover,
+.bill-studio-layout.pane-collapsed .studio-controls-pane.hover-expanded {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 370px;
+  background: #0d0d12;
+  border: 1px solid rgba(255, 94, 58, 0.4);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  z-index: 50;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
+  max-height: calc(100vh - 104px);
+  overflow-y: auto;
+}
+
+.bill-studio-layout.pane-collapsed .studio-controls-pane:hover .controls-card,
+.bill-studio-layout.pane-collapsed .studio-controls-pane.hover-expanded .controls-card {
+  display: block !important;
+}
+
+.bill-studio-layout.pane-collapsed .studio-controls-pane:hover .quick-toolbar-card,
+.bill-studio-layout.pane-collapsed .studio-controls-pane.hover-expanded .quick-toolbar-card {
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(255, 94, 58, 0.1) 0%, rgba(18, 18, 26, 1) 100%);
+  display: block;
+}
+
+.bill-studio-layout.pane-collapsed .studio-controls-pane:hover .quick-toolbar-card h3,
+.bill-studio-layout.pane-collapsed .studio-controls-pane.hover-expanded .quick-toolbar-card h3 {
+  display: block !important;
+}
+
+.bill-studio-layout.pane-collapsed .studio-controls-pane:hover .quick-toolbar-card .real-time-bill-actions,
+.bill-studio-layout.pane-collapsed .studio-controls-pane.hover-expanded .quick-toolbar-card .real-time-bill-actions {
+  display: grid !important;
 }
 
 .studio-controls-pane::-webkit-scrollbar {
