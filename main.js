@@ -208,28 +208,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
   resetAutoSlide();
 
-  // 6. Project Modal Quick View
-  const modalBackdrop = document.querySelector('.modal-backdrop');
-  const modalCloseBtn = document.querySelector('.modal-close-btn');
+  // GA4 Telemetry Helper
+  function trackGAEvent(name, params = {}) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params);
+    }
+  }
+
+  // Auto-track Outbound Links (WhatsApp, Phone, Email, Google Maps)
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('a');
+    if (!target) return;
+    const href = target.getAttribute('href') || '';
+    if (href.startsWith('tel:')) {
+      trackGAEvent('contact_action', { method: 'phone', destination: href.replace('tel:', '') });
+    } else if (href.startsWith('mailto:')) {
+      trackGAEvent('contact_action', { method: 'email', destination: href.replace('mailto:', '') });
+    } else if (href.includes('api.whatsapp.com') || href.includes('wa.me')) {
+      trackGAEvent('whatsapp_click', { link_url: href });
+    } else if (href.includes('maps.app.goo.gl')) {
+      trackGAEvent('view_location', { platform: 'google_maps' });
+    }
+  });
+
+  // 6. Project Cards & Quick-View Modal
+  const modalBackdrop = document.getElementById('project-modal');
   const modalImg = document.getElementById('modal-img');
   const modalTitle = document.getElementById('modal-title');
-  const modalDesc = document.getElementById('modal-desc');
   const modalTags = document.getElementById('modal-tags');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalCloseBtn = document.querySelector('.modal-close-btn');
 
   projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.querySelector('.project-title')?.textContent || 'Project';
-      const desc = card.querySelector('.project-desc')?.textContent || '';
-      const img = card.querySelector('.project-media img');
-      const imgSrc = img ? img.src : '';
-      const tags = Array.from(card.querySelectorAll('.project-tag')).map(t => t.textContent);
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.project-link')) return;
+
+      const title = card.getAttribute('data-title') || 'Featured Project';
+      const desc = card.getAttribute('data-desc') || 'Project details coming soon.';
+      const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
+      const img = card.querySelector('img')?.getAttribute('src') || '';
 
       if (modalTitle) modalTitle.textContent = title;
-      if (modalDesc) modalDesc.textContent = desc + " — Tailor-made with bespoke visual architecture, high conversion ergonomics, and clean modern code standards.";
-      if (modalImg && imgSrc) modalImg.src = imgSrc;
+      if (modalDesc) modalDesc.textContent = desc;
+      if (modalImg) modalImg.src = img;
       if (modalTags) {
         modalTags.innerHTML = tags.map(tag => `<span class="project-tag" style="color:#FF5E3A;border-color:rgba(255,94,58,0.3)">${tag}</span>`).join(' ');
       }
+
+      trackGAEvent('view_item', { item_name: title, item_category: 'portfolio_project' });
 
       modalBackdrop?.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -310,6 +336,12 @@ ${message}
 _Sent via Socialeo Instant Web Portal_`;
 
     const whatsappUrl = `https://api.whatsapp.com/send?phone=918722163256&text=${encodeURIComponent(whatsappMessage)}`;
+
+    trackGAEvent('generate_lead', {
+      event_category: 'inbound_lead',
+      client_name: `${firstName} ${lastName}`,
+      channel: 'whatsapp_portal'
+    });
 
     setTimeout(() => {
       submitBtn.disabled = false;
