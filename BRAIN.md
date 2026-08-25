@@ -8,6 +8,7 @@
 ## 1. Company Profile & Official Endpoints
 
 - **Brand Entity**: Socialeo Digital Product Studio (Socialeo)
+- **Founder & CEO**: **Manpreeth N (Manu)** *(Industry veteran since 2019 graduation; Specialist in Digital Marketing, UI/UX Systems, Agentic AI & Workflow Automation)*
 - **Primary Email**: `socialeopvtltd@gmail.com`
 - **Official Phone / WhatsApp**: `+91 87221 63256`
 - **Instant WhatsApp Link**: [https://wa.me/918722163256](https://wa.me/918722163256)

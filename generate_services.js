@@ -300,6 +300,11 @@ function generateServicePage(service) {
     "provider": {
       "@type": "ProfessionalService",
       "name": "Socialeo",
+      "founder": {
+        "@type": "Person",
+        "name": "Manpreeth N (Manu)",
+        "jobTitle": "Founder & CEO"
+      },
       "url": "https://socialeo.vercel.app/",
       "telephone": "+918722163256",
       "email": "socialeopvtltd@gmail.com",
@@ -695,7 +700,7 @@ function generateServicePage(service) {
         <h1 class="service-headline">${service.title}</h1>
         
         <div class="service-meta-row">
-          <span>By <strong>Socialeo Studio</strong></span>
+          <span>By <strong>Manpreeth N (Manu)</strong> &bull; Founder &amp; CEO</span>
           <span>&bull;</span>
           <span>⏱️ ${service.readTime}</span>
           <span>&bull;</span>
@@ -736,7 +741,7 @@ function generateServicePage(service) {
             <div class="wa-icon-box">💬</div>
             <div>
               <h2 class="wa-title">Quick WhatsApp Inquiry</h2>
-              <div class="wa-subtitle">Instant reply from Socialeo founders</div>
+              <div class="wa-subtitle">Direct line to Manpreeth N (Founder &amp; CEO)</div>
             </div>
           </div>
 
