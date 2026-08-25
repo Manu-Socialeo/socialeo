@@ -51,10 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 2. VO2 MAX — Complete Comprehensive Clinical Solution (Parts 1 + 2 + 3: ₹1,35,300)
-  const VO2_MAX_FULL_BILL = {
+  // 2. VO2 MAX — BILL 1: Work Done Till Now (19 Pages + Lead Infrastructure: ₹57,000 Standard)
+  const VO2_MAX_BILL_1 = {
     invoiceNumber: "8104",
-    invoiceDate: "22nd August 2026",
+    invoiceDate: "25th August 2026",
     status: "Pending",
     currency: "₹",
     client: {
@@ -66,19 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
       email: "vo2maxphysio@gmail.com"
     },
     items: [
-      { description: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
-      { description: "2.0 Core Public Clinical Pages - 9 Pages (Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
-      { description: "3.0 Specialist Doctor Credential Portals - 2 Portals (Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
-      { description: "4.0 Patient Conversion Engines - 3 Portals (/book-appointment, /request-callback, /location Navigation)", price: "6500", qty: "3", amount: "6500" },
-      { description: "5.0 Medical Legal & Compliance Suite - 5 Pages (Privacy Policy, Terms, Medical Disclaimer, Appointment & Cookie Policy)", price: "800", qty: "5", amount: "4000" },
-      { description: "6.0 Lead-Gen & Interactive Widgets (Floating WhatsApp Quick-Chat, Direct Calling, Hero Carousel, FAQ Accordions)", price: "5500", qty: "1", amount: "5500" },
-      { description: "7.0 Technical Healthcare SEO, Medical Schema & Cloud CDN (JSON-LD MedicalClinic & Physician Schema, Sitemap, Robots)", price: "10000", qty: "1", amount: "10000" },
-      { description: "🚀 [Growth Add-On 1] 14 Specialized Treatment Detail Pages (Manual Physio, Sports Rehab, Cardiac, Neuro, Post-Surgery)", price: "1500", qty: "14", amount: "21000" },
-      { description: "🚀 [Growth Add-On 2] 14 Health Hub Clinical SEO Articles (14,000+ words + Google Schema for Mysuru Healthcare)", price: "28800", qty: "14", amount: "28800" },
-      { description: "🛡️ [Annual Retainer] Managed Cloud Edge Hosting, Automated SSL Security & Quarterly SEO Audits (12 Months AMC)", price: "24000", qty: "1 yr", amount: "24000" }
+      { description: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, responsive wireframes)", price: "10000", qty: "1", amount: "10000" },
+      { description: "2.0 Core Public Pages (9 Pages) — Home, About, Services Directory, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs (9 × ₹2,500)", price: "2500", qty: "9", amount: "22500" },
+      { description: "3.0 Specialist Doctor Credential Portals (2 Pages) — Dr. Pradeep Kumar (MPT) & Dr. Pinakin Ayare (MPT) verified credential portals (2 × ₹1,500)", price: "1500", qty: "2", amount: "3000" },
+      { description: "4.0 Patient Conversion Engines & Interactive Lead Widgets — Online Appointment Booker (/book-appointment), Callback Portal (/request-callback), Maps Navigation (/location), Floating WhatsApp Quick-Chat, Mobile One-Touch Calling, Dynamic Hero Carousel, Interactive FAQs", price: "7500", qty: "1", amount: "7500" },
+      { description: "5.0 Medical Legal & Compliance Suite (5 Pages) — Privacy Policy, Terms & Conditions, Medical Disclaimer, Appointment Policy, Cookie Policy (5 × ₹800)", price: "800", qty: "5", amount: "4000" },
+      { description: "6.0 Healthcare Technical SEO & Cloud Performance — JSON-LD MedicalClinic & Physician Schema, XML Sitemap, Robots.txt, Edge CDN Cloud hosting, SSL security & Sub-second speed optimization", price: "10000", qty: "1", amount: "10000" }
     ],
     taxRate: 0,
-    discountType: "percent",
+    discountType: "fixed",
     discountValue: 0,
     bankInfo: {
       beneficiary: "MANPREETH N",
@@ -96,10 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 3. VO2 MAX — Base Website (Part 1 Only: ₹61,500)
-  const VO2_MAX_BASE_BILL = {
-    invoiceNumber: "8104",
-    invoiceDate: "22nd August 2026",
+  // 3. VO2 MAX — BILL 1: Special Launch Offer (₹52,000 with ₹5,000 Launch Discount)
+  const VO2_MAX_OFFER_BILL = {
+    ...JSON.parse(JSON.stringify(VO2_MAX_BILL_1)),
+    discountType: "fixed",
+    discountValue: 5000
+  };
+
+  // 4. VO2 MAX — BILL 2: Future Scope & Annual Retainers (28 Expansion Pages + 1 Year AMC: ₹66,000)
+  const VO2_MAX_BILL_2 = {
+    invoiceNumber: "8105",
+    invoiceDate: "25th August 2026",
     status: "Pending",
     currency: "₹",
     client: {
@@ -111,16 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
       email: "vo2maxphysio@gmail.com"
     },
     items: [
-      { description: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
-      { description: "2.0 Core Public Clinical Pages - 9 Pages (Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
-      { description: "3.0 Specialist Doctor Credential Portals - 2 Portals (Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
-      { description: "4.0 Patient Conversion Engines - 3 Portals (/book-appointment, /request-callback, /location Navigation)", price: "6500", qty: "3", amount: "6500" },
-      { description: "5.0 Medical Legal & Compliance Suite - 5 Pages (Privacy Policy, Terms, Medical Disclaimer, Appointment & Cookie Policy)", price: "800", qty: "5", amount: "4000" },
-      { description: "6.0 Lead-Gen & Interactive Widgets (Floating WhatsApp Quick-Chat, Direct Calling, Hero Carousel, FAQ Accordions)", price: "5500", qty: "1", amount: "5500" },
-      { description: "7.0 Technical Healthcare SEO, Medical Schema & Cloud CDN (JSON-LD MedicalClinic & Physician Schema, Sitemap, Robots)", price: "10000", qty: "1", amount: "10000" }
+      { description: "2.1 14 Specialized Clinical Treatment Detail Pages — Dedicated deep pages for all 14 clinical therapies with recovery stages & protocol breakdowns (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
+      { description: "2.2 14 Health Hub Clinical SEO Articles — 14,000+ words of evidence-based medical articles + BlogPosting & FAQPage Google Schema (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
+      { description: "2.3 Managed Cloud Edge Hosting & CDN — Global Edge CDN hosting, sub-second load speeds, unlimited bandwidth, 99.99% uptime guarantee", price: "15000", qty: "1 yr", amount: "15000" },
+      { description: "2.4 Automated SSL Security & DNS Management — Enterprise HTTPS padlock encryption, automated certificate renewals, domain protection", price: "4000", qty: "1 yr", amount: "4000" },
+      { description: "2.5 Quarterly SEO Audits, Speed Tuning & Content Updates — Google Search Console monitoring, index coverage checks, Core Web Vitals speed tuning & updates", price: "5000", qty: "1 yr", amount: "5000" }
     ],
     taxRate: 0,
-    discountType: "percent",
+    discountType: "fixed",
     discountValue: 0,
     bankInfo: {
       beneficiary: "MANPREETH N",
@@ -140,16 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Standard & Medical Service Preset Catalog
   const SERVICE_CATALOG = {
-    "vo2-ux-strategy": { desc: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, wireframes)", price: "10000", qty: "1", amount: "10000" },
-    "vo2-core-pages": { desc: "2.0 Core Public Clinical Pages (9 Pages - Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
-    "vo2-doc-portals": { desc: "3.0 Specialist Doctor Credential Portals (Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
-    "vo2-conversion-engines": { desc: "4.0 Patient Conversion Engines (Appointment Booker, Callback Portal, Maps Navigation)", price: "6500", qty: "3", amount: "6500" },
-    "vo2-legal-suite": { desc: "5.0 Medical Legal & Compliance Suite (Privacy Policy, Terms, Medical Disclaimer, Appointment & Cookie Policy)", price: "800", qty: "5", amount: "4000" },
-    "vo2-lead-widgets": { desc: "6.0 Lead-Gen & Interactive Widgets (Floating WhatsApp Quick-Chat, Direct Calling, Hero Carousel, FAQ Accordions)", price: "5500", qty: "1", amount: "5500" },
-    "vo2-healthcare-seo": { desc: "7.0 Technical Healthcare SEO, Medical Schema & Cloud CDN (JSON-LD MedicalClinic & Physician Schema, Sitemap, Robots)", price: "10000", qty: "1", amount: "10000" },
-    "vo2-treatment-pages": { desc: "🚀 14 Specialized Treatment Detail Pages (Manual Physio, Sports Rehab, Cardiac, Neuro, Post-Surgery)", price: "1500", qty: "14", amount: "21000" },
-    "vo2-health-articles": { desc: "🚀 14 Health Hub Clinical SEO Articles (14,000+ words + Google Schema for Mysuru Healthcare)", price: "28800", qty: "14", amount: "28800" },
-    "vo2-amc-hosting": { desc: "🛡️ Annual Managed Cloud Edge Hosting, Automated SSL Security & Quarterly SEO Audits (12 Months AMC)", price: "24000", qty: "1 yr", amount: "24000" },
+    "vo2-ux-strategy": { desc: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
+    "vo2-core-pages": { desc: "2.0 Core Public Pages (9 Pages — Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
+    "vo2-doc-portals": { desc: "3.0 Specialist Doctor Credential Portals (2 Pages — Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
+    "vo2-lead-widgets": { desc: "4.0 Patient Conversion Engines & Interactive Lead Widgets (Booker, Callback, Maps, WhatsApp, Calling, Hero, FAQs)", price: "7500", qty: "1", amount: "7500" },
+    "vo2-legal-suite": { desc: "5.0 Medical Legal & Compliance Suite (5 Pages — Privacy, Terms, Disclaimer, Appointment, Cookie Policies)", price: "800", qty: "5", amount: "4000" },
+    "vo2-healthcare-seo": { desc: "6.0 Healthcare Technical SEO & Cloud Performance (JSON-LD Medical Schema, Sitemap, Robots, Cloud CDN, SSL & Speed)", price: "10000", qty: "1", amount: "10000" },
+    "vo2-treatment-pages": { desc: "2.1 14 Specialized Clinical Treatment Detail Pages (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
+    "vo2-health-articles": { desc: "2.2 14 Health Hub Clinical SEO Articles (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
+    "vo2-hosting-cdn": { desc: "2.3 Managed Cloud Edge Hosting & CDN (Unlimited Bandwidth, 99.99% Uptime)", price: "15000", qty: "1 yr", amount: "15000" },
+    "vo2-ssl-dns": { desc: "2.4 Automated SSL Security & DNS Management (Enterprise Padlock & Protection)", price: "4000", qty: "1 yr", amount: "4000" },
+    "vo2-seo-audits": { desc: "2.5 Quarterly SEO Audits, Speed Tuning & Routine Updates (Core Web Vitals & Content)", price: "5000", qty: "1 yr", amount: "5000" },
     "web-design": { desc: "Website Design & UX / UI", price: "40000", qty: "1", amount: "40000" },
     "web-dev": { desc: "Website Development (Full-Stack, incl. Backend)", price: "123000", qty: "1", amount: "123000" },
     "mobile-app": { desc: "Mobile App Development (Full-Stack)", price: "165000", qty: "1", amount: "165000" },
@@ -162,10 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
     "branding": { desc: "Brand Identity, Typography & Visual System", price: "50000", qty: "1", amount: "50000" }
   };
 
-  // Load state from localStorage or default to VO2 MAX full bill
-  let currentBill = JSON.parse(localStorage.getItem('socialeo_active_bill')) || JSON.parse(JSON.stringify(VO2_MAX_FULL_BILL));
+  // Load state from localStorage or default to VO2 MAX Bill 1
+  let currentBill = JSON.parse(localStorage.getItem('socialeo_active_bill')) || JSON.parse(JSON.stringify(VO2_MAX_BILL_1));
   let savedInvoices = JSON.parse(localStorage.getItem('socialeo_saved_invoices')) || [
-    JSON.parse(JSON.stringify(VO2_MAX_FULL_BILL)),
+    JSON.parse(JSON.stringify(VO2_MAX_BILL_1)),
+    JSON.parse(JSON.stringify(VO2_MAX_BILL_2)),
     JSON.parse(JSON.stringify(SAMPLE_BILL))
   ];
   let crmClients = JSON.parse(localStorage.getItem('socialeo_crm_clients')) || [
@@ -176,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       addressLine2: "Gokulam, Mysuru, Karnataka 570002",
       phone: "+91 8722163256",
       email: "vo2maxphysio@gmail.com",
-      totalBilled: "₹1,35,300",
+      totalBilled: "₹57,000",
       invoicesCount: 1
     },
     {
@@ -649,18 +652,25 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast(`Added "${SERVICE_CATALOG[key].desc}"`);
   });
 
-  // Load VO2 MAX Full Bill (Parts 1 + 2 + 3: ₹1,35,300)
-  document.getElementById('load-vo2max-full-btn')?.addEventListener('click', () => {
-    currentBill = JSON.parse(JSON.stringify(VO2_MAX_FULL_BILL));
+  // Load VO2 MAX Bill 1 (Work Done Till Now - ₹57,000)
+  document.getElementById('load-vo2max-bill1-btn')?.addEventListener('click', () => {
+    currentBill = JSON.parse(JSON.stringify(VO2_MAX_BILL_1));
     populateFormFromBill(currentBill);
-    showToast("Loaded VO2 MAX Complete Bill (19 Pages + Upsells + AMC - ₹1,35,300)", "🏥");
+    showToast("Loaded VO2 MAX Bill 1 (19 Pages + Infrastructure - ₹57,000)", "🏥");
   });
 
-  // Load VO2 MAX Base Website (Part 1: ₹61,500)
-  document.getElementById('load-vo2max-base-btn')?.addEventListener('click', () => {
-    currentBill = JSON.parse(JSON.stringify(VO2_MAX_BASE_BILL));
+  // Load VO2 MAX Bill 2 (Future Scope & AMC - ₹66,000)
+  document.getElementById('load-vo2max-bill2-btn')?.addEventListener('click', () => {
+    currentBill = JSON.parse(JSON.stringify(VO2_MAX_BILL_2));
     populateFormFromBill(currentBill);
-    showToast("Loaded VO2 MAX Base Clinical Website (Part 1 - ₹61,500)", "🏥");
+    showToast("Loaded VO2 MAX Bill 2 (28 Expansion Pages + 1 Yr AMC - ₹66,000)", "🚀");
+  });
+
+  // Load VO2 MAX Bill 1 Special Launch Offer (₹52,000)
+  document.getElementById('load-vo2max-offer-btn')?.addEventListener('click', () => {
+    currentBill = JSON.parse(JSON.stringify(VO2_MAX_OFFER_BILL));
+    populateFormFromBill(currentBill);
+    showToast("Loaded VO2 MAX Special Launch Offer (₹52,000)", "🏷️");
   });
 
   // Load Sample Bill Button ("Yoga with Srinatha #7272")
