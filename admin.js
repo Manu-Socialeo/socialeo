@@ -328,6 +328,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const liveAgencyPhone = document.getElementById('live-agency-phone');
   const liveAgencyEmail = document.getElementById('live-agency-email');
 
+  // Interactive Live Action Buttons
+  const liveBtnWhatsapp = document.getElementById('live-btn-whatsapp');
+  const liveBtnEmail = document.getElementById('live-btn-email');
+  const liveBtnPaynow = document.getElementById('live-btn-paynow');
+
   // Financial preview displays
   const calcSubtotalDisplay = document.getElementById('calc-subtotal-display');
   const calcTaxDisplay = document.getElementById('calc-tax-display');
@@ -540,6 +545,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Render QR Code
     updateQrCode(total, curr);
 
+    // 8. Update Interactive Action Buttons (WhatsApp, Email with CC, Direct UPI App)
+    const invNum = invNumberInput.value.trim() || 'INV';
+    const clientName = clientNameInput.value.trim() || 'Valued Client';
+    const totalFormatted = formatCurrency(total, curr);
+    const agencyPhoneRaw = (currentBill.agencyInfo?.phone || '+918722163256').replace(/[^0-9]/g, '');
+    const agencyEmail = currentBill.agencyInfo?.email || 'socialeopvtltd@gmail.com';
+    const ccEmail = 'socialeopvtltd@gmail.com';
+
+    // WhatsApp Direct Deep Link
+    if (liveBtnWhatsapp) {
+      const waMsg = `Hi Socialeo Team, contacting regarding Invoice #${invNum} for "${clientName}" with total payable amount: ${totalFormatted}.`;
+      liveBtnWhatsapp.href = `https://wa.me/${agencyPhoneRaw}?text=${encodeURIComponent(waMsg)}`;
+    }
+
+    // Email with CC Deep Link
+    if (liveBtnEmail) {
+      const subject = `Invoice #${invNum} - ${clientName} | Socialeo Studio`;
+      const body = `Hi Socialeo Team,\n\nI am reaching out regarding Invoice #${invNum} issued for ${clientName}.\n\nTotal Payable Amount: ${totalFormatted}\nDate: ${invDateInput.value}\n\nClient Name: ${clientName}\nAddress: ${clientAddr1Input.value} ${clientAddr2Input.value}\nPhone: ${clientPhoneInput.value || 'N/A'}\n\nPlease find this billing acknowledgment.\n\nThank you!`;
+      liveBtnEmail.href = `mailto:${agencyEmail}?cc=${encodeURIComponent(ccEmail)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    // Pay Now UPI Mobile Deep Link
+    if (liveBtnPaynow) {
+      const upiId = upiIdInput.value.trim() || '8722163256@sbi';
+      const beneficiary = bankBeneficiaryInput.value.trim() || 'MANPREETH N';
+      const upiPayUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(beneficiary)}&am=${total}&tn=${encodeURIComponent('Socialeo Inv ' + invNum)}&cu=INR`;
+      liveBtnPaynow.href = upiPayUri;
+
+      liveBtnPaynow.onclick = function() {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (!isMobile) {
+          showToast(`Opening UPI payment prompt for ₹${total} (UPI: ${upiId})`, "⚡");
+        }
+      };
+    }
+
     // Save active working state to localStorage
     saveCurrentStateToLocalStorage();
   }
@@ -559,8 +600,8 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         new QRCode(liveUpiQrcode, {
           text: upiUri,
-          width: 92,
-          height: 92,
+          width: 76,
+          height: 76,
           colorDark: "#000000",
           colorLight: "#ffffff",
           correctLevel: QRCode.CorrectLevel.M
@@ -728,6 +769,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
     updateSavedInvoicesCount();
+  });
+
+  // Delete Active Invoice Button
+  document.getElementById('delete-active-bill-btn')?.addEventListener('click', () => {
+    const currentNum = invNumberInput.value.trim() || currentBill.invoiceNumber;
+    if (confirm(`Are you sure you want to delete / remove Invoice #${currentNum}?`)) {
+      const idx = savedInvoices.findIndex(inv => inv.invoiceNumber === currentNum);
+      if (idx >= 0) {
+        savedInvoices.splice(idx, 1);
+        localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
+        updateSavedInvoicesCount();
+        showToast(`Deleted Invoice #${currentNum} from database`, "🗑️");
+      } else {
+        showToast(`Cleared active Invoice #${currentNum}`, "🗑️");
+      }
+      document.getElementById('new-invoice-btn')?.click();
+    }
   });
 
   // Print / PDF Triggers
@@ -945,9 +1003,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <td><span class="status-badge ${inv.status === 'Paid' ? 'paid' : 'pending'}">${inv.status || 'Paid'}</span></td>
         <td>
           <div class="table-btn-group">
-            <button class="tool-btn" onclick="window.loadSavedInvoice(${index})">Open</button>
-            <button class="tool-btn" onclick="window.printSavedInvoice(${index})">🖨️</button>
-            <button class="tool-btn" style="color:#ef4444;" onclick="window.deleteSavedInvoice(${index})">✕</button>
+            <button class="tool-btn" onclick="window.loadSavedInvoice(${index})" title="Open and edit this bill in studio">📂 Edit</button>
+            <button class="tool-btn" onclick="window.printSavedInvoice(${index})" title="Print or save as PDF">🖨️ Print</button>
+            <button class="tool-btn" style="color:#ef4444;" onclick="window.deleteSavedInvoice(${index})" title="Permanently delete this bill">🗑️ Delete</button>
           </div>
         </td>
       `;

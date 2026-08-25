@@ -90,11 +90,14 @@
               <button type="button" class="tool-btn preset-btn" id="load-sample-bill-btn" title="Load sample bill for Yoga with Srinatha">
                 ✨ Load "Yoga with Srinatha"
               </button>
-              <button type="button" class="tool-btn" id="new-invoice-btn" title="Clear form for a new bill">
-                📄 Blank Invoice
+              <button type="button" class="tool-btn" id="new-invoice-btn" title="Create a blank new bill">
+                ➕ New Bill
               </button>
-              <button type="button" class="tool-btn save-btn" id="save-invoice-btn" title="Save this invoice to local database">
-                💾 Save Invoice
+              <button type="button" class="tool-btn save-btn" id="save-invoice-btn" title="Save this invoice to database">
+                💾 Save Bill
+              </button>
+              <button type="button" class="tool-btn delete-btn" id="delete-active-bill-btn" title="Delete this invoice from database" style="color:#ef4444; border-color:rgba(239, 68, 68, 0.4);">
+                🗑️ Delete Bill
               </button>
             </div>
           </div>
@@ -413,11 +416,12 @@
                   <div class="footer-info-line" id="live-bank-ifsc">IFSC - SBIN0016500</div>
                 </div>
 
-                <!-- Middle: QR Code -->
+                <!-- Middle: QR Code + Scan Instruction -->
                 <div class="inv-footer-col col-qr">
                   <div class="qr-code-frame" id="live-qr-frame">
                     <div id="live-upi-qrcode" title="Scan to pay via any UPI App"></div>
                   </div>
+                  <div class="qr-label-subtext">Scan to Pay via UPI</div>
                 </div>
 
                 <!-- Right: Socialeo Address & Info -->
@@ -430,6 +434,22 @@
                 </div>
 
               </footer>
+
+              <!-- Interactive Action Buttons Bar (WhatsApp, Email with CC, Instant Pay Now) -->
+              <div class="inv-actions-bar" id="live-actions-bar">
+                <a href="#" id="live-btn-whatsapp" target="_blank" rel="noopener" class="inv-action-pill btn-pill-whatsapp" title="Chat on WhatsApp regarding this bill">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.68-1.2 1.25-1.66 1.29-.44.04-1 .06-3.23-.86-2.86-1.18-4.7-4.1-4.84-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.24-.28.53-.35.71-.35.18 0 .35 0 .5.01.16.01.38-.06.59.45.23.55.78 1.9.85 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.3.35-.43.47-.14.14-.29.3-.12.59.16.29.73 1.2 1.57 1.95 1.08.96 1.99 1.26 2.27 1.4.28.14.45.12.62-.07.17-.19.73-.85.92-1.14.19-.29.38-.24.64-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/></svg>
+                  <span>WhatsApp Chat</span>
+                </a>
+                <a href="#" id="live-btn-email" class="inv-action-pill btn-pill-email" title="Send official email regarding this invoice">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>Email Socialeo (CC Included)</span>
+                </a>
+                <a href="#" id="live-btn-paynow" class="inv-action-pill btn-pill-paynow" title="Direct UPI Instant Payment via GPay, PhonePe, Paytm, BHIM">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  <span>Pay Now (UPI App)</span>
+                </a>
+              </div>
 
             </article>
           </div>
