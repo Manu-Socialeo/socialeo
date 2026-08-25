@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     client: {
       id: "vo2-max-mysuru",
       name: "VO2 MAX Sports Physiotherapy & Rehab",
-      addressLine1: "14, Contour Rd, Gokulam 2nd Stage,",
-      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
-      phone: "+91 8722163256",
+      addressLine1: "H1, Srihari Medical Trust, Opp. Learner's PU College,",
+      addressLine2: "Vijayanagar 2nd Stage, Mysuru, Karnataka 570017",
+      phone: "+91 99728 36999",
       email: "vo2maxphysio@gmail.com"
     },
     items: [
@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     client: {
       id: "vo2-max-mysuru",
       name: "VO2 MAX Sports Physiotherapy & Rehab",
-      addressLine1: "14, Contour Rd, Gokulam 2nd Stage,",
-      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
-      phone: "+91 8722163256",
+      addressLine1: "H1, Srihari Medical Trust, Opp. Learner's PU College,",
+      addressLine2: "Vijayanagar 2nd Stage, Mysuru, Karnataka 570017",
+      phone: "+91 99728 36999",
       email: "vo2maxphysio@gmail.com"
     },
     items: [
@@ -152,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: "vo2-max-mysuru",
       name: "VO2 MAX Sports Physiotherapy & Rehab",
-      addressLine1: "14, Contour Rd, Gokulam 2nd Stage,",
-      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
-      phone: "+91 8722163256",
+      addressLine1: "H1, Srihari Medical Trust, Opp. Learner's PU College,",
+      addressLine2: "Vijayanagar 2nd Stage, Mysuru, Karnataka 570017",
+      phone: "+91 99728 36999",
       email: "vo2maxphysio@gmail.com",
       totalBilled: "₹1,23,000",
       invoicesCount: 2

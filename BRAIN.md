@@ -80,6 +80,13 @@ SOCIALEO STUDIO — COMPREHENSIVE PRODUCTION VERIFICATION CHECKLIST
 
 ## 3. Ground Truth: VO2 MAX Bill Specifications
 
+- **Client Entity**: VO2 MAX Sports Physiotherapy & Rehab
+- **Address Line 1**: H1, Srihari Medical Trust, Opp. Learner's PU College,
+- **Address Line 2**: Vijayanagar 2nd Stage, Mysuru, Karnataka 570017
+- **Phone**: +91 99728 36999
+- **Email**: vo2maxphysio@gmail.com
+- **Google Maps Location**: https://share.google/H8xdkgfJAcoVpi42D
+
 ### 📄 BILL 1: Work Completed Till Now (19 Pages + Lead Infrastructure)
 - **Invoice Number**: `#8104` | **Date**: `25th August 2026`
 - **Standard Total**: `₹57,000` | **Client Offer**: `₹52,000`
