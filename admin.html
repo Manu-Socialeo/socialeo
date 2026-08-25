@@ -106,6 +106,19 @@
     </div>
   </div>
 
+  <script>
+    // Instant pre-render auth check to prevent login modal flicker on remembered devices
+    (function() {
+      try {
+        var token = localStorage.getItem('socialeo_admin_session') || sessionStorage.getItem('socialeo_admin_session');
+        if (token === 'authenticated_socialeo_studio') {
+          var el = document.getElementById('admin-auth-overlay');
+          if (el) el.classList.add('auth-granted');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Main Workspace -->
   <main class="admin-main">
 
