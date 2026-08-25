@@ -786,9 +786,9 @@ document.addEventListener('DOMContentLoaded', () => {
       upiId: upiIdInput.value
     };
 
-    currentBill.taxRate = parseFloat(taxInput.value) || 0;
-    currentBill.discountType = discountTypeSelect.value;
-    currentBill.discountValue = parseFloat(discountValInput.value) || 0;
+    currentBill.taxRate = parseFloat(taxRateInput.value) || 0;
+    currentBill.discountType = discountTypeInput.value;
+    currentBill.discountValue = parseFloat(discountValueInput.value) || 0;
 
     localStorage.setItem('socialeo_active_bill', JSON.stringify(currentBill));
   }

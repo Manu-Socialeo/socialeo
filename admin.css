@@ -60,15 +60,6 @@ body.admin-body {
 }
 
 /* ==========================================================================
-   TOP HEADER
-   ========================================================================== */
-.admin-header {
-  background: var(--admin-bg-surface);
-  border-bottom: 1px solid var(--admin-border-subtle);
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
    LAYOUT STRUCTURE: LEFT SIDEBAR + MAIN WORKSPACE
    ========================================================================== */
 .admin-layout-container {
@@ -878,15 +869,6 @@ body.admin-body {
   max-height: calc(100vh - 104px);
 }
 
-.preview-toolbar {
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
 .preview-status-indicator {
   display: flex;
   align-items: center;
@@ -907,7 +889,12 @@ body.admin-body {
 @keyframes pulse {
   0% { transform: scale(0.95); opacity: 0.8; }
   50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
 .preview-toolbar {
+  width: 100%;
+  max-width: 860px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -918,6 +905,7 @@ body.admin-body {
   border-radius: var(--radius-md);
   gap: 12px;
   flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
 .preview-zoom-group {
