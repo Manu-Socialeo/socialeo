@@ -68,6 +68,10 @@
               <span class="nav-text">Saved Invoices</span>
               <span class="sidebar-badge" id="saved-invoices-count">2</span>
             </button>
+            <button class="admin-tab-btn sidebar-nav-item" data-tab="settings-tab" title="Agency & Bank Setup">
+              <span class="tab-icon">⚙️</span>
+              <span class="nav-text">Agency & Bank Setup</span>
+            </button>
           </nav>
         </div>
 
@@ -417,38 +421,7 @@
             </div>
           </div>
 
-          <!-- Section 5: Payment Info & UPI QR -->
-          <div class="controls-card">
-            <div class="card-title-row">
-              <h4>5. Payment & Bank Information</h4>
-              <span class="card-badge">Bottom Footer</span>
-            </div>
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="bank-beneficiary-input">Account Holder Name</label>
-                <input type="text" id="bank-beneficiary-input" class="admin-input" value="MANPREETH N">
-              </div>
-              <div class="form-group">
-                <label for="bank-name-input">Bank Name</label>
-                <input type="text" id="bank-name-input" class="admin-input" value="STATE BANK OF INDIA">
-              </div>
-            </div>
-            <div class="form-grid-2" style="margin-top: 10px;">
-              <div class="form-group">
-                <label for="bank-acc-input">Account Number</label>
-                <input type="text" id="bank-acc-input" class="admin-input" value="20340118904">
-              </div>
-              <div class="form-group">
-                <label for="bank-ifsc-input">IFSC Code</label>
-                <input type="text" id="bank-ifsc-input" class="admin-input" value="SBIN0016500">
-              </div>
-            </div>
-            <div class="form-group" style="margin-top: 10px;">
-              <label for="upi-id-input">UPI ID for Dynamic Payment QR</label>
-              <input type="text" id="upi-id-input" class="admin-input" value="8722163256@sbi" placeholder="e.g. 8722163256@sbi or your-upi@okhdfcbank">
-              <small class="form-hint">Generates standard instant UPI QR code on the live invoice sheet.</small>
-            </div>
-          </div>
+
 
           <!-- Bottom Action Button (Single Unified Download / Print) -->
           <div class="controls-card sticky-bottom-bar">
@@ -569,16 +542,26 @@
                   <div class="footer-col-title">Payment Information</div>
                   <div class="footer-info-line bold" id="live-bank-beneficiary">MANPREETH N</div>
                   <div class="footer-info-line" id="live-bank-name">STATE BANK OF INDIA</div>
-                  <div class="footer-info-line" id="live-bank-acc">Account no - 20340118904</div>
-                  <div class="footer-info-line" id="live-bank-ifsc">IFSC - SBIN0016500</div>
+                  <div class="footer-info-line bank-copyable-row" id="live-bank-acc-row" title="Click to copy Account Number">
+                    <span id="live-bank-acc">Account no - 20340118904</span>
+                    <button type="button" class="copy-bank-btn" id="copy-acc-btn" title="Copy Account Number">
+                      <span class="copy-icon">📋</span>
+                    </button>
+                  </div>
+                  <div class="footer-info-line bank-copyable-row" id="live-bank-ifsc-row" title="Click to copy IFSC Code">
+                    <span id="live-bank-ifsc">IFSC - SBIN0016500</span>
+                    <button type="button" class="copy-bank-btn" id="copy-ifsc-btn" title="Copy IFSC Code">
+                      <span class="copy-icon">📋</span>
+                    </button>
+                  </div>
                 </div>
 
-                <!-- Middle: QR Code + Scan Instruction -->
+                <!-- Middle: QR Code + Scan / Tap to Download Instruction -->
                 <div class="inv-footer-col col-qr">
-                  <div class="qr-code-frame" id="live-qr-frame">
-                    <div id="live-upi-qrcode" title="Scan to pay via any UPI App"></div>
+                  <div class="qr-code-frame clickable-qr" id="live-qr-frame" title="Click / Tap to download payment QR code image">
+                    <div id="live-upi-qrcode"></div>
                   </div>
-                  <div class="qr-label-subtext">Scan to Pay</div>
+                  <div class="qr-label-subtext" id="qr-subtext-instruction" title="Click to download QR code">Scan / Tap to Download</div>
                 </div>
 
                 <!-- Right: Socialeo Address & Info -->

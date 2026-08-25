@@ -74,9 +74,25 @@ const tests = [
           mainJs.includes("pagebreak: { mode: 'css' }")
   },
   { 
-    suite: 'Payment & Hyperlinks',
-    name: 'Live UPI deep link intent preserved', 
-    pass: adminJs.includes('upi://pay?pa=') 
+    suite: 'Payment & Bank Information',
+    name: 'Copy buttons for Account Number and IFSC exist on live invoice sheet', 
+    pass: adminHtml.includes('id="copy-acc-btn"') && 
+          adminHtml.includes('id="copy-ifsc-btn"') && 
+          adminJs.includes('copyTextToClipboard')
+  },
+  { 
+    suite: 'Payment & Bank Information',
+    name: 'Tap-to-download Payment QR Code capability is wired up', 
+    pass: adminHtml.includes('clickable-qr') && 
+          adminJs.includes('downloadPaymentQrImage')
+  },
+  { 
+    suite: 'Global Agency & Banking Setup',
+    name: 'Agency & Bank Setup tab exists in sidebar and auto-syncs globally', 
+    pass: adminHtml.includes('data-tab="settings-tab"') && 
+          adminJs.includes('getGlobalBankProfile') &&
+          adminJs.includes('getGlobalAgencyProfile') &&
+          adminJs.includes('loadSettingsTab')
   },
   { 
     suite: 'Branding Links',

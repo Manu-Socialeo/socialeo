@@ -316,7 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabNameMap = {
     'generator-tab': 'Bill Generator Studio',
     'crm-tab': 'Client CRM Database',
-    'invoices-tab': 'Saved Invoices Directory'
+    'invoices-tab': 'Saved Invoices Directory',
+    'settings-tab': 'Agency & Bank Setup'
   };
 
   function switchTab(targetTabId) {
@@ -332,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeMobileSidebarOnSelection();
     if (targetTabId === 'crm-tab') renderCRM();
     if (targetTabId === 'invoices-tab') renderSavedInvoices();
+    if (targetTabId === 'settings-tab') loadSettingsTab();
   }
 
   tabBtns.forEach(btn => {
@@ -387,6 +389,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. BILL GENERATOR FORM BINDINGS & RENDER
   // ==========================================
   
+  // Global Agency & Bank Profile Helpers
+  function getGlobalAgencyProfile() {
+    const saved = localStorage.getItem('socialeo_agency_profile');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return { ...VO2_MAX_BILL_1.agencyInfo };
+  }
+
+  function getGlobalBankProfile() {
+    const saved = localStorage.getItem('socialeo_bank_profile');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return { ...VO2_MAX_BILL_1.bankInfo };
+  }
+
   // Input References
   const invNumberInput = document.getElementById('inv-number-input');
   const invDateInput = document.getElementById('inv-date-input');
@@ -407,12 +426,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const taxRateInput = document.getElementById('tax-rate-input');
   const discountTypeInput = document.getElementById('discount-type-input');
   const discountValueInput = document.getElementById('discount-value-input');
-
-  const bankBeneficiaryInput = document.getElementById('bank-beneficiary-input');
-  const bankNameInput = document.getElementById('bank-name-input');
-  const bankAccInput = document.getElementById('bank-acc-input');
-  const bankIfscInput = document.getElementById('bank-ifsc-input');
-  const upiIdInput = document.getElementById('upi-id-input');
 
   // Live Sheet Target References
   const liveInvDate = document.getElementById('live-inv-date');
@@ -455,26 +468,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Populate Form Fields from state
   function populateFormFromBill(bill) {
-    invNumberInput.value = bill.invoiceNumber || "";
-    invDateInput.value = bill.invoiceDate || "";
-    invStatusInput.value = bill.status || "Paid";
-    invCurrencyInput.value = bill.currency || "₹";
+    if (invNumberInput) invNumberInput.value = bill.invoiceNumber || "";
+    if (invDateInput) invDateInput.value = bill.invoiceDate || "";
+    if (invStatusInput) invStatusInput.value = bill.status || "Paid";
+    if (invCurrencyInput) invCurrencyInput.value = bill.currency || "₹";
 
-    clientNameInput.value = bill.client?.name || "";
-    clientAddr1Input.value = bill.client?.addressLine1 || "";
-    clientAddr2Input.value = bill.client?.addressLine2 || "";
-    clientPhoneInput.value = bill.client?.phone || "";
-    clientEmailInput.value = bill.client?.email || "";
+    if (clientNameInput) clientNameInput.value = bill.client?.name || "";
+    if (clientAddr1Input) clientAddr1Input.value = bill.client?.addressLine1 || "";
+    if (clientAddr2Input) clientAddr2Input.value = bill.client?.addressLine2 || "";
+    if (clientPhoneInput) clientPhoneInput.value = bill.client?.phone || "";
+    if (clientEmailInput) clientEmailInput.value = bill.client?.email || "";
 
-    taxRateInput.value = bill.taxRate ?? 0;
-    discountTypeInput.value = bill.discountType || "percent";
-    discountValueInput.value = bill.discountValue ?? 0;
-
-    bankBeneficiaryInput.value = bill.bankInfo?.beneficiary || "";
-    bankNameInput.value = bill.bankInfo?.bankName || "";
-    bankAccInput.value = bill.bankInfo?.accountNumber || "";
-    bankIfscInput.value = bill.bankInfo?.ifsc || "";
-    upiIdInput.value = bill.bankInfo?.upiId || "";
+    if (taxRateInput) taxRateInput.value = bill.taxRate ?? 0;
+    if (discountTypeInput) discountTypeInput.value = bill.discountType || "percent";
+    if (discountValueInput) discountValueInput.value = bill.discountValue ?? 0;
 
     renderItemInputRows();
     updateLivePreviewAndCalculations();
@@ -655,11 +662,20 @@ document.addEventListener('DOMContentLoaded', () => {
     calcDiscountDisplay.textContent = `-${formatCurrency(discountAmount, curr)}`;
     calcTotalDisplay.textContent = formatCurrency(total, curr);
 
-    // 6. Update Bank & Payment Info
-    liveBankBeneficiary.textContent = bankBeneficiaryInput.value || "MANPREETH N";
-    liveBankName.textContent = bankNameInput.value || "STATE BANK OF INDIA";
-    liveBankAcc.textContent = `Account no - ${bankAccInput.value || '---'}`;
-    liveBankIfsc.textContent = `IFSC - ${bankIfscInput.value || '---'}`;
+    // 5. Update Bank & Agency Info from Global Profile
+    const agency = currentBill.agencyInfo || getGlobalAgencyProfile();
+    const bank = currentBill.bankInfo || getGlobalBankProfile();
+
+    if (liveAgencyName) liveAgencyName.textContent = agency.name || "Socialeo";
+    if (liveAgencyAddr1) liveAgencyAddr1.textContent = agency.addressLine1 || "";
+    if (liveAgencyAddr2) liveAgencyAddr2.textContent = agency.addressLine2 || "";
+    if (liveAgencyPhone) liveAgencyPhone.textContent = agency.phone || "";
+    if (liveAgencyEmail) liveAgencyEmail.textContent = agency.email || "";
+
+    if (liveBankBeneficiary) liveBankBeneficiary.textContent = bank.beneficiary || "MANPREETH N";
+    if (liveBankName) liveBankName.textContent = bank.bankName || "STATE BANK OF INDIA";
+    if (liveBankAcc) liveBankAcc.textContent = `Account no - ${bank.accountNumber || '20340118904'}`;
+    if (liveBankIfsc) liveBankIfsc.textContent = `IFSC - ${bank.ifsc || 'SBIN0016500'}`;
 
     // Toggle compact mode on A4 sheet for bills with 7+ items to fit cleanly
     const sheetElem = document.getElementById('invoice-printable-target');
@@ -672,14 +688,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 7. Render QR Code
-    updateQrCode(total, curr);
+    updateQrCode(total, curr, bank);
 
     // 8. Update Interactive Action Buttons (WhatsApp, Email, Instant Pay Now)
-    const invNum = invNumberInput.value.trim() || '8104';
-    const clientName = clientNameInput.value.trim() || 'VO2 MAX Sports Physiotherapy & Rehab';
+    const invNum = invNumberInput ? invNumberInput.value.trim() || '8104' : '8104';
+    const clientName = clientNameInput ? clientNameInput.value.trim() || 'VO2 MAX Sports Physiotherapy & Rehab' : 'VO2 MAX';
     const totalFormatted = formatCurrency(total, curr);
-    const agencyPhoneRaw = (currentBill.agencyInfo?.phone || '+918722163256').replace(/[^0-9]/g, '');
-    const agencyEmail = currentBill.agencyInfo?.email || 'socialeopvtltd@gmail.com';
+    const agencyPhoneRaw = (agency.phone || '+918722163256').replace(/[^0-9]/g, '');
+    const agencyEmail = agency.email || 'socialeopvtltd@gmail.com';
     const ccEmail = 'socialeopvtltd@gmail.com';
 
     // WhatsApp Direct Deep Link (100% clickable in Web & PDF)
@@ -691,14 +707,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Email with CC Deep Link (100% clickable in Web & PDF)
     if (liveBtnEmail) {
       const subject = `Invoice #${invNum} - ${clientName} | Socialeo Studio`;
-      const body = `Hi Socialeo Team,\n\nI am reaching out regarding Invoice #${invNum} issued for ${clientName}.\n\nTotal Payable Amount: ${totalFormatted}\nDate: ${invDateInput.value}\n\nClient Name: ${clientName}\nAddress: ${clientAddr1Input.value} ${clientAddr2Input.value}\nPhone: ${clientPhoneInput.value || 'N/A'}\n\nPlease find this billing acknowledgment.\n\nThank you!`;
+      const body = `Hi Socialeo Team,\n\nI am reaching out regarding Invoice #${invNum} issued for ${clientName}.\n\nTotal Payable Amount: ${totalFormatted}\nDate: ${invDateInput?.value || ''}\n\nClient Name: ${clientName}\nAddress: ${clientAddr1Input?.value || ''} ${clientAddr2Input?.value || ''}\nPhone: ${clientPhoneInput?.value || 'N/A'}\n\nPlease find this billing acknowledgment.\n\nThank you!`;
       liveBtnEmail.href = `mailto:${agencyEmail}?cc=${encodeURIComponent(ccEmail)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
     // 8.3 Pay Now UPI Link (Direct Native UPI Intent: Triggers PhonePe, GPay, Paytm, BHIM, CRED)
     if (liveBtnPaynow) {
-      const upiId = upiIdInput.value.trim() || '8722163256@sbi';
-      const beneficiary = bankBeneficiaryInput.value.trim() || 'MANPREETH N';
+      const upiId = bank.upiId || '8722163256@sbi';
+      const beneficiary = bank.beneficiary || 'MANPREETH N';
       const totalNumeric = typeof total === 'number' ? total.toFixed(2) : total;
       
       // Standard NPCI UPI URI Specification
@@ -711,10 +727,8 @@ document.addEventListener('DOMContentLoaded', () => {
       liveBtnPaynow.onclick = function(e) {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         if (isMobile) {
-          // On mobile, trigger installed UPI app chooser (GPay, PhonePe, Paytm, etc.)
           window.location.href = upiPayUri;
         } else {
-          // On desktop web preview, notify user
           e.preventDefault();
           showToast(`UPI ID: ${upiId} | Total: ${totalFormatted} (On mobile, this opens your UPI apps)`, "📱");
         }
@@ -726,17 +740,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Generate UPI Payment QR Code
-  function updateQrCode(totalAmount, currencySymbol) {
-    const upiId = upiIdInput.value.trim() || '8722163256@sbi';
-    const beneficiary = bankBeneficiaryInput.value.trim() || 'Socialeo';
-    const invNum = invNumberInput.value.trim() || '8104';
+  function updateQrCode(totalAmount, currencySymbol, bankObj = null) {
+    const bank = bankObj || currentBill.bankInfo || getGlobalBankProfile();
+    const upiId = bank.upiId || '8722163256@sbi';
+    const beneficiary = bank.beneficiary || 'MANPREETH N';
+    const invNum = invNumberInput ? invNumberInput.value.trim() || '8104' : '8104';
     
     // Standard UPI URI format
     const upiUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(beneficiary)}&am=${totalAmount}&tn=Socialeo_Inv_${encodeURIComponent(invNum)}&cu=INR`;
     
-    liveUpiQrcode.innerHTML = '';
+    if (liveUpiQrcode) liveUpiQrcode.innerHTML = '';
     
-    if (typeof QRCode !== 'undefined') {
+    if (typeof QRCode !== 'undefined' && liveUpiQrcode) {
       try {
         new QRCode(liveUpiQrcode, {
           text: upiUri,
@@ -750,12 +765,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('QR Code generation fallback:', err);
         renderFallbackQrSvg();
       }
-    } else {
+    } else if (liveUpiQrcode) {
       renderFallbackQrSvg();
     }
   }
 
   function renderFallbackQrSvg() {
+    if (!liveUpiQrcode) return;
     liveUpiQrcode.innerHTML = `
       <svg width="76" height="76" viewBox="0 0 100 100" fill="#000">
         <rect width="100" height="100" fill="#fff"/>
@@ -765,48 +781,120 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function saveCurrentStateToLocalStorage() {
-    currentBill.invoiceNumber = invNumberInput.value;
-    currentBill.invoiceDate = invDateInput.value;
-    currentBill.status = invStatusInput.value;
-    currentBill.currency = invCurrencyInput.value;
+    if (invNumberInput) currentBill.invoiceNumber = invNumberInput.value;
+    if (invDateInput) currentBill.invoiceDate = invDateInput.value;
+    if (invStatusInput) currentBill.status = invStatusInput.value;
+    if (invCurrencyInput) currentBill.currency = invCurrencyInput.value;
 
     currentBill.client = {
-      name: clientNameInput.value,
-      addressLine1: clientAddr1Input.value,
-      addressLine2: clientAddr2Input.value,
-      phone: clientPhoneInput.value,
-      email: clientEmailInput.value
+      name: clientNameInput ? clientNameInput.value : '',
+      addressLine1: clientAddr1Input ? clientAddr1Input.value : '',
+      addressLine2: clientAddr2Input ? clientAddr2Input.value : '',
+      phone: clientPhoneInput ? clientPhoneInput.value : '',
+      email: clientEmailInput ? clientEmailInput.value : ''
     };
 
-    currentBill.bankInfo = {
-      beneficiary: bankBeneficiaryInput.value,
-      bankName: bankNameInput.value,
-      accountNumber: bankAccInput.value,
-      ifsc: bankIfscInput.value,
-      upiId: upiIdInput.value
-    };
+    currentBill.bankInfo = getGlobalBankProfile();
+    currentBill.agencyInfo = getGlobalAgencyProfile();
 
-    currentBill.taxRate = parseFloat(taxRateInput.value) || 0;
-    currentBill.discountType = discountTypeInput.value;
-    currentBill.discountValue = parseFloat(discountValueInput.value) || 0;
+    if (taxRateInput) currentBill.taxRate = parseFloat(taxRateInput.value) || 0;
+    if (discountTypeInput) currentBill.discountType = discountTypeInput.value;
+    if (discountValueInput) currentBill.discountValue = parseFloat(discountValueInput.value) || 0;
 
     localStorage.setItem('socialeo_active_bill', JSON.stringify(currentBill));
   }
 
   // ==========================================
-  // 6. EVENT LISTENERS FOR INPUTS
+  // 6. EVENT LISTENERS FOR INPUTS & INTERACTION
   // ==========================================
   
   // All basic form inputs trigger instant live preview update on input
   [
     invNumberInput, invDateInput, invStatusInput, invCurrencyInput,
     clientNameInput, clientAddr1Input, clientAddr2Input, clientPhoneInput, clientEmailInput,
-    taxRateInput, discountTypeInput, discountValueInput,
-    bankBeneficiaryInput, bankNameInput, bankAccInput, bankIfscInput, upiIdInput
+    taxRateInput, discountTypeInput, discountValueInput
   ].forEach(input => {
     input?.addEventListener('input', updateLivePreviewAndCalculations);
     input?.addEventListener('change', updateLivePreviewAndCalculations);
   });
+
+  // Copy to Clipboard Helpers
+  function copyTextToClipboard(text, label) {
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`Copied ${label}: ${text}`, "📋");
+      }).catch(() => {
+        fallbackCopy(text, label);
+      });
+    } else {
+      fallbackCopy(text, label);
+    }
+  }
+
+  function fallbackCopy(text, label) {
+    const temp = document.createElement('input');
+    temp.value = text;
+    document.body.appendChild(temp);
+    temp.select();
+    try {
+      document.execCommand('copy');
+      showToast(`Copied ${label}: ${text}`, "📋");
+    } catch (e) {}
+    document.body.removeChild(temp);
+  }
+
+  document.getElementById('copy-acc-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const bank = currentBill.bankInfo || getGlobalBankProfile();
+    copyTextToClipboard(bank.accountNumber || '20340118904', 'Account Number');
+  });
+
+  document.getElementById('live-bank-acc-row')?.addEventListener('click', () => {
+    const bank = currentBill.bankInfo || getGlobalBankProfile();
+    copyTextToClipboard(bank.accountNumber || '20340118904', 'Account Number');
+  });
+
+  document.getElementById('copy-ifsc-btn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const bank = currentBill.bankInfo || getGlobalBankProfile();
+    copyTextToClipboard(bank.ifsc || 'SBIN0016500', 'IFSC Code');
+  });
+
+  document.getElementById('live-bank-ifsc-row')?.addEventListener('click', () => {
+    const bank = currentBill.bankInfo || getGlobalBankProfile();
+    copyTextToClipboard(bank.ifsc || 'SBIN0016500', 'IFSC Code');
+  });
+
+  // Tap to Download Payment QR Code
+  function downloadPaymentQrImage() {
+    const canvas = liveUpiQrcode?.querySelector('canvas');
+    const img = liveUpiQrcode?.querySelector('img');
+    const invNum = invNumberInput ? invNumberInput.value.trim() || '8104' : '8104';
+
+    if (canvas) {
+      const a = document.createElement('a');
+      a.download = `Socialeo_Payment_QR_Inv_${invNum}.png`;
+      a.href = canvas.toDataURL('image/png');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("Downloaded Payment QR Code image", "📥");
+    } else if (img && img.src) {
+      const a = document.createElement('a');
+      a.download = `Socialeo_Payment_QR_Inv_${invNum}.png`;
+      a.href = img.src;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("Downloaded Payment QR Code image", "📥");
+    } else {
+      showToast("Payment QR Code ready for scan", "ℹ️");
+    }
+  }
+
+  document.getElementById('live-qr-frame')?.addEventListener('click', downloadPaymentQrImage);
+  document.getElementById('qr-subtext-instruction')?.addEventListener('click', downloadPaymentQrImage);
 
   // Add Item Row Button
   addItemRowBtn.addEventListener('click', () => {
@@ -1237,43 +1325,62 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 9. SETTINGS TAB
+  // 9. SETTINGS TAB (GLOBAL AGENCY & BANK SETUP)
   // ==========================================
+  function loadSettingsTab() {
+    const agency = getGlobalAgencyProfile();
+    const bank = getGlobalBankProfile();
+    
+    const setAgencyName = document.getElementById('set-agency-name');
+    const setAgencyAddr1 = document.getElementById('set-agency-addr1');
+    const setAgencyAddr2 = document.getElementById('set-agency-addr2');
+    const setAgencyPhone = document.getElementById('set-agency-phone');
+    const setAgencyEmail = document.getElementById('set-agency-email');
+
+    const setBankBeneficiary = document.getElementById('set-bank-beneficiary');
+    const setBankName = document.getElementById('set-bank-name');
+    const setBankAcc = document.getElementById('set-bank-acc');
+    const setBankIfsc = document.getElementById('set-bank-ifsc');
+    const setBankUpi = document.getElementById('set-bank-upi');
+
+    if (setAgencyName) setAgencyName.value = agency.name || 'Socialeo';
+    if (setAgencyAddr1) setAgencyAddr1.value = agency.addressLine1 || '';
+    if (setAgencyAddr2) setAgencyAddr2.value = agency.addressLine2 || '';
+    if (setAgencyPhone) setAgencyPhone.value = agency.phone || '';
+    if (setAgencyEmail) setAgencyEmail.value = agency.email || '';
+
+    if (setBankBeneficiary) setBankBeneficiary.value = bank.beneficiary || '';
+    if (setBankName) setBankName.value = bank.bankName || '';
+    if (setBankAcc) setBankAcc.value = bank.accountNumber || '';
+    if (setBankIfsc) setBankIfsc.value = bank.ifsc || '';
+    if (setBankUpi) setBankUpi.value = bank.upiId || '';
+  }
+
   document.getElementById('save-settings-btn')?.addEventListener('click', () => {
     const newAgency = {
-      name: document.getElementById('set-agency-name').value,
-      addressLine1: document.getElementById('set-agency-addr1').value,
-      addressLine2: document.getElementById('set-agency-addr2').value,
-      phone: document.getElementById('set-agency-phone').value,
-      email: document.getElementById('set-agency-email').value
+      name: document.getElementById('set-agency-name')?.value.trim() || 'Socialeo',
+      addressLine1: document.getElementById('set-agency-addr1')?.value.trim() || '',
+      addressLine2: document.getElementById('set-agency-addr2')?.value.trim() || '',
+      phone: document.getElementById('set-agency-phone')?.value.trim() || '+91 8722163256',
+      email: document.getElementById('set-agency-email')?.value.trim() || 'socialeopvtltd@gmail.com'
     };
 
     const newBank = {
-      beneficiary: document.getElementById('set-bank-beneficiary').value,
-      bankName: document.getElementById('set-bank-name').value,
-      accountNumber: document.getElementById('set-bank-acc').value,
-      ifsc: document.getElementById('set-bank-ifsc').value,
-      upiId: document.getElementById('set-bank-upi').value
+      beneficiary: document.getElementById('set-bank-beneficiary')?.value.trim() || 'MANPREETH N',
+      bankName: document.getElementById('set-bank-name')?.value.trim() || 'STATE BANK OF INDIA',
+      accountNumber: document.getElementById('set-bank-acc')?.value.trim() || '20340118904',
+      ifsc: document.getElementById('set-bank-ifsc')?.value.trim() || 'SBIN0016500',
+      upiId: document.getElementById('set-bank-upi')?.value.trim() || '8722163256@sbi'
     };
+
+    localStorage.setItem('socialeo_agency_profile', JSON.stringify(newAgency));
+    localStorage.setItem('socialeo_bank_profile', JSON.stringify(newBank));
 
     currentBill.agencyInfo = newAgency;
     currentBill.bankInfo = newBank;
 
-    // Update active generator fields
-    bankBeneficiaryInput.value = newBank.beneficiary;
-    bankNameInput.value = newBank.bankName;
-    bankAccInput.value = newBank.accountNumber;
-    bankIfscInput.value = newBank.ifsc;
-    upiIdInput.value = newBank.upiId;
-
-    liveAgencyName.textContent = newAgency.name;
-    liveAgencyAddr1.textContent = newAgency.addressLine1;
-    liveAgencyAddr2.textContent = newAgency.addressLine2;
-    liveAgencyPhone.textContent = newAgency.phone;
-    liveAgencyEmail.textContent = newAgency.email;
-
     updateLivePreviewAndCalculations();
-    showToast("Saved default agency & bank settings", "💾");
+    showToast("Saved default agency & bank settings (Applied to all bills)", "💾");
   });
 
   // ==========================================
@@ -1282,4 +1389,5 @@ document.addEventListener('DOMContentLoaded', () => {
   populateFormFromBill(currentBill);
   renderClientDropdown();
   updateSavedInvoicesCount();
+  loadSettingsTab();
 });

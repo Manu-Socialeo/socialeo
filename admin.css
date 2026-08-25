@@ -1349,6 +1349,44 @@ body.admin-body {
   font-weight: 700;
 }
 
+.bank-copyable-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 1px 3px;
+  margin-left: -3px;
+  transition: all 0.15s ease;
+}
+
+.bank-copyable-row:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #ff5e3a;
+}
+
+.copy-bank-btn {
+  background: rgba(255, 94, 58, 0.12);
+  border: 1px solid rgba(255, 94, 58, 0.3);
+  border-radius: 3px;
+  color: #ff5e3a;
+  cursor: pointer;
+  padding: 1px 4px;
+  font-size: 10px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  vertical-align: middle;
+}
+
+.bank-copyable-row:hover .copy-bank-btn {
+  background: #ff5e3a;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
 .col-qr {
   display: flex;
   flex-direction: column;
@@ -1366,6 +1404,17 @@ body.admin-body {
   justify-content: center;
   border: 1px solid #cbd5e1;
   border-radius: 6px; /* Rectangular box with curved edges */
+  transition: all 0.2s ease;
+}
+
+.qr-code-frame.clickable-qr {
+  cursor: pointer;
+}
+
+.qr-code-frame.clickable-qr:hover {
+  border-color: #ff5e3a;
+  box-shadow: 0 0 10px rgba(255, 94, 58, 0.35);
+  transform: translateY(-1px);
 }
 
 .qr-code-frame img, .qr-code-frame canvas {
@@ -1375,13 +1424,19 @@ body.admin-body {
 }
 
 .qr-label-subtext {
-  font-size: 8.5px;
+  font-size: 8px;
   font-weight: 700;
   text-transform: uppercase;
   color: #475569;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   text-align: center;
   margin-top: 2px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.qr-label-subtext:hover {
+  color: #ff5e3a;
 }
 
 .col-agency {
