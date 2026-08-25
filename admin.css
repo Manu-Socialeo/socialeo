@@ -596,18 +596,18 @@ body.admin-body {
   display: block;
 }
 
-/* BILL GENERATOR SPLIT STUDIO */
+/* BILL GENERATOR SPLIT STUDIO (Compact 370px controls pane for maximum 60%+ preview canvas) */
 .bill-studio-layout {
   display: grid;
-  grid-template-columns: 480px 1fr;
-  gap: 24px;
+  grid-template-columns: 370px 1fr;
+  gap: 20px;
   align-items: start;
 }
 
 .studio-controls-pane {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   max-height: calc(100vh - 104px);
   overflow-y: auto;
   padding-right: 6px;
@@ -1366,14 +1366,12 @@ body.admin-body {
 }
 
 .copy-bank-btn {
-  background: rgba(255, 94, 58, 0.12);
-  border: 1px solid rgba(255, 94, 58, 0.3);
-  border-radius: 3px;
-  color: #ff5e3a;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  color: #000000;
   cursor: pointer;
-  padding: 1px 4px;
-  font-size: 10px;
-  line-height: 1;
+  padding: 2px 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1381,10 +1379,15 @@ body.admin-body {
   vertical-align: middle;
 }
 
+.copy-bank-btn svg {
+  display: block;
+}
+
 .bank-copyable-row:hover .copy-bank-btn {
-  background: #ff5e3a;
+  background: #000000;
+  border-color: #000000;
   color: #ffffff;
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .col-qr {

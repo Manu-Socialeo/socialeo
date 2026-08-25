@@ -96,6 +96,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // 4. Yoga with Srinatha — Reference Bill (Inv #7272: ₹5,000)
+  const SRINATHA_BILL = {
+    invoiceNumber: "7272",
+    invoiceDate: "20th August 2026",
+    status: "Paid",
+    currency: "₹",
+    client: {
+      id: "yoga-srinatha-mysuru",
+      name: "Yoga with Srinatha",
+      addressLine1: "Gokulam 3rd Stage,",
+      addressLine2: "Mysuru, Karnataka - 570002",
+      phone: "+91 98450 12345",
+      email: "contact@yogawithsrinatha.com"
+    },
+    items: [
+      { sno: "1.0", description: "Yoga Studio Branding & Digital Web Architecture", price: "5000", qty: "1", amount: "5000" }
+    ],
+    taxRate: 0,
+    discountType: "fixed",
+    discountValue: 0,
+    bankInfo: {
+      beneficiary: "MANPREETH N",
+      bankName: "STATE BANK OF INDIA",
+      accountNumber: "20340118904",
+      ifsc: "SBIN0016500",
+      upiId: "8722163256@sbi"
+    },
+    agencyInfo: {
+      name: "Socialeo",
+      addressLine1: "1646, 5th Main, Vijayanagar 2nd Stage,",
+      addressLine2: "Mysore, Karnataka - 570017",
+      phone: "+91 8722163256",
+      email: "socialeopvtltd@gmail.com"
+    }
+  };
+
   // Standard & Medical Service Preset Catalog
   const SERVICE_CATALOG = {
     "vo2-ux-strategy": { sno: "1.0", desc: "UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
@@ -123,32 +159,27 @@ document.addEventListener('DOMContentLoaded', () => {
     "branding": { sno: "10.0", desc: "Brand Identity & Visual System", price: "50000", qty: "1", amount: "50000" }
   };
 
-  // Load state from localStorage and sanitize (Strictly 2 VO2 MAX Bills only)
-  let rawSavedInvoices = JSON.parse(localStorage.getItem('socialeo_saved_invoices'));
-  let savedInvoices = [
+  // Load state from localStorage with full multi-client defaults
+  const defaultSavedInvoices = [
     JSON.parse(JSON.stringify(VO2_MAX_BILL_1)),
-    JSON.parse(JSON.stringify(VO2_MAX_BILL_2))
+    JSON.parse(JSON.stringify(VO2_MAX_BILL_2)),
+    JSON.parse(JSON.stringify(SRINATHA_BILL))
   ];
 
-  if (Array.isArray(rawSavedInvoices) && rawSavedInvoices.length > 0) {
-    // Purge unwanted bills (e.g. invoice #7272, Yoga with Srinatha)
-    const validSaved = rawSavedInvoices.filter(inv => {
-      const isYoga = (inv.invoiceNumber === "7272") || (inv.client?.name && inv.client.name.toLowerCase().includes("yoga"));
-      return !isYoga;
-    });
-    if (validSaved.length > 0) {
-      savedInvoices = validSaved;
-    }
+  let rawSavedInvoices = JSON.parse(localStorage.getItem('socialeo_saved_invoices'));
+  let savedInvoices = Array.isArray(rawSavedInvoices) && rawSavedInvoices.length >= 2
+    ? rawSavedInvoices
+    : defaultSavedInvoices;
+
+  // Ensure Srinatha bill is present in saved invoices
+  if (!savedInvoices.some(inv => inv.invoiceNumber === "7272")) {
+    savedInvoices.push(JSON.parse(JSON.stringify(SRINATHA_BILL)));
   }
   localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
 
   let currentBill = JSON.parse(localStorage.getItem('socialeo_active_bill')) || JSON.parse(JSON.stringify(VO2_MAX_BILL_1));
-  if (currentBill.invoiceNumber === "7272" || (currentBill.client?.name && currentBill.client.name.toLowerCase().includes("yoga"))) {
-    currentBill = JSON.parse(JSON.stringify(VO2_MAX_BILL_1));
-    localStorage.setItem('socialeo_active_bill', JSON.stringify(currentBill));
-  }
 
-  let crmClients = [
+  const defaultClients = [
     {
       id: "vo2-max-mysuru",
       name: "VO2 MAX Sports Physiotherapy & Rehab",
@@ -158,8 +189,24 @@ document.addEventListener('DOMContentLoaded', () => {
       email: "vo2maxphysio@gmail.com",
       totalBilled: "₹1,23,000",
       invoicesCount: 2
+    },
+    {
+      id: "yoga-srinatha-mysuru",
+      name: "Yoga with Srinatha",
+      addressLine1: "Gokulam 3rd Stage,",
+      addressLine2: "Mysuru, Karnataka - 570002",
+      phone: "+91 98450 12345",
+      email: "contact@yogawithsrinatha.com",
+      totalBilled: "₹5,000",
+      invoicesCount: 1
     }
   ];
+
+  let rawClients = JSON.parse(localStorage.getItem('socialeo_crm_clients'));
+  let crmClients = Array.isArray(rawClients) && rawClients.length >= 2
+    ? rawClients
+    : defaultClients;
+
   localStorage.setItem('socialeo_crm_clients', JSON.stringify(crmClients));
 
   // ==========================================
@@ -357,6 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
     switchTab('generator-tab');
     loadBillIntoStudio(JSON.parse(JSON.stringify(VO2_MAX_BILL_2)));
     showToast("Loaded VO2 MAX Bill 2 Future Scope (₹66,000)", "🚀");
+  });
+
+  document.getElementById('sidebar-preset-srinatha')?.addEventListener('click', () => {
+    switchTab('generator-tab');
+    loadBillIntoStudio(JSON.parse(JSON.stringify(SRINATHA_BILL)));
+    showToast("Loaded Yoga with Srinatha #7272 (₹5,000)", "🧘");
   });
 
   // Sidebar Quick Action Tools
