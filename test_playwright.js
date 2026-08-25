@@ -217,6 +217,43 @@ async function runE2ETests() {
     const liveClientName = await page.textContent('#live-client-name');
     assert(liveClientName.includes('VO2 MAX'), 'Sidebar preset VO2 MAX Bill 1 loaded seamlessly');
 
+    // ==========================================
+    // SUITE 5: LEGAL PAGES (Privacy, Terms, Cookie)
+    // ==========================================
+    console.log('\n[Suite 5] Testing Legal Suites (Privacy Policy, Terms of Service, Cookie Policy)...');
+
+    // 5.1 Test Privacy Policy
+    await page.goto(`${BASE_URL}/privacy-policy.html`, { waitUntil: 'domcontentloaded' });
+    const privacyTitle = await page.title();
+    assert(privacyTitle.includes('Privacy Policy'), 'Privacy Policy page loaded with proper title');
+    const privacyNavbar = await page.$('.navbar');
+    const privacyFooter = await page.$('.footer');
+    assert(privacyNavbar !== null && privacyFooter !== null, 'Privacy Policy contains responsive Navbar and Footer');
+
+    // Test Theme Toggle on Privacy Policy
+    await page.click('#theme-toggle');
+    await page.waitForTimeout(200);
+    const privacyTheme = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+    assert(privacyTheme === 'light', 'Theme Toggle switches to Light Mode on Privacy Policy');
+    await page.click('#theme-toggle'); // switch back
+    await page.waitForTimeout(100);
+
+    // 5.2 Test Terms of Service
+    await page.goto(`${BASE_URL}/terms.html`, { waitUntil: 'domcontentloaded' });
+    const termsTitle = await page.title();
+    assert(termsTitle.includes('Terms of Service'), 'Terms of Service page loaded with proper title');
+    const termsNavbar = await page.$('.navbar');
+    const termsFooter = await page.$('.footer');
+    assert(termsNavbar !== null && termsFooter !== null, 'Terms of Service contains responsive Navbar and Footer');
+
+    // 5.3 Test Cookie Policy
+    await page.goto(`${BASE_URL}/cookie-policy.html`, { waitUntil: 'domcontentloaded' });
+    const cookieTitle = await page.title();
+    assert(cookieTitle.includes('Cookie Policy'), 'Cookie Policy page loaded with proper title');
+    const cookieNavbar = await page.$('.navbar');
+    const cookieFooter = await page.$('.footer');
+    assert(cookieNavbar !== null && cookieFooter !== null, 'Cookie Policy contains responsive Navbar and Footer');
+
   } catch (error) {
     console.error('\n❌ Unhandled error during Playwright execution:', error);
   } finally {
