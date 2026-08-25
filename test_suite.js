@@ -50,13 +50,14 @@ const tests = [
   },
   { 
     suite: 'A4 Sheet Zoom Engine',
-    name: 'Zoom 25%, 50%, 75%, 100%, Fit, and Custom exist', 
-    pass: adminHtml.includes('data-zoom="0.25"') && 
-          adminHtml.includes('data-zoom="0.50"') && 
-          adminHtml.includes('data-zoom="0.75"') && 
-          adminHtml.includes('data-zoom="1.00"') && 
-          adminHtml.includes('id="zoom-custom-btn"') &&
-          adminHtml.includes('id="custom-zoom-slider"')
+    name: 'Simple Zoom Dropdown Button exists with 25%, 50%, 75%, 100%, and Fit options', 
+    pass: adminHtml.includes('id="zoom-select-dropdown"') && 
+          adminHtml.includes('value="0.25"') && 
+          adminHtml.includes('value="0.50"') && 
+          adminHtml.includes('value="0.75"') && 
+          adminHtml.includes('value="1.00"') && 
+          adminHtml.includes('value="fit"') &&
+          adminJs.includes('zoomSelectDropdown')
   },
   { 
     suite: 'Client Ground Truth Data',

@@ -970,60 +970,34 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('bottom-download-print-btn')?.addEventListener('click', downloadPdfWithLinks);
   document.getElementById('sidebar-quick-download-print')?.addEventListener('click', downloadPdfWithLinks);
 
-  // Zoom / Scale View Engine (25%, 50%, 75%, 100%, Fit, Custom)
+  // Simple Clean Zoom Dropdown Engine (25%, 50%, 75%, 100%, Fit)
   const a4Sheet = document.getElementById('invoice-printable-target');
   const a4PreviewWrapper = document.getElementById('a4-preview-wrapper');
-  const customZoomBox = document.getElementById('custom-zoom-box');
-  const customZoomSlider = document.getElementById('custom-zoom-slider');
-  const customZoomVal = document.getElementById('custom-zoom-val');
-  const zoomBtns = document.querySelectorAll('.zoom-pill-btn');
+  const zoomSelectDropdown = document.getElementById('zoom-select-dropdown');
 
-  function applyZoom(scale, activeBtn = null) {
+  function applyZoom(scale) {
     if (!a4Sheet) return;
     a4Sheet.style.transform = `scale(${scale})`;
     const a4HeightPx = 1122.5; // 297mm in standard 96dpi pixels
     if (a4PreviewWrapper) {
       a4PreviewWrapper.style.minHeight = `${Math.round(a4HeightPx * scale + 40)}px`;
     }
-    if (activeBtn) {
-      zoomBtns.forEach(btn => btn.classList.toggle('active', btn === activeBtn));
-    }
   }
 
   // Set default view scale to 75%
   applyZoom(0.75);
 
-  zoomBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const zoomVal = btn.dataset.zoom;
-      if (zoomVal === 'fit') {
-        if (customZoomBox) customZoomBox.style.display = 'none';
-        const containerWidth = (a4PreviewWrapper?.clientWidth || 800) - 30;
-        const sheetWidth = 793.7; // 210mm in pixels
-        const fitScale = Math.min(1, Math.max(0.2, containerWidth / sheetWidth));
-        applyZoom(fitScale, btn);
-      } else if (btn.id === 'zoom-custom-btn') {
-        if (customZoomBox) {
-          const isVisible = customZoomBox.style.display !== 'none';
-          customZoomBox.style.display = isVisible ? 'none' : 'flex';
-          if (!isVisible && customZoomSlider) {
-            const scale = parseInt(customZoomSlider.value) / 100;
-            applyZoom(scale, btn);
-          }
-        }
-      } else if (zoomVal) {
-        if (customZoomBox) customZoomBox.style.display = 'none';
-        const scale = parseFloat(zoomVal);
-        applyZoom(scale, btn);
-      }
-    });
-  });
-
-  customZoomSlider?.addEventListener('input', (e) => {
+  zoomSelectDropdown?.addEventListener('change', (e) => {
     const val = e.target.value;
-    if (customZoomVal) customZoomVal.textContent = `${val}%`;
-    const scale = parseInt(val) / 100;
-    applyZoom(scale, document.getElementById('zoom-custom-btn'));
+    if (val === 'fit') {
+      const containerWidth = (a4PreviewWrapper?.clientWidth || 800) - 30;
+      const sheetWidth = 793.7; // 210mm in pixels
+      const fitScale = Math.min(1, Math.max(0.2, containerWidth / sheetWidth));
+      applyZoom(fitScale);
+    } else {
+      const scale = parseFloat(val) || 0.75;
+      applyZoom(scale);
+    }
   });
 
   // ==========================================

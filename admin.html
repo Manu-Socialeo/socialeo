@@ -472,22 +472,17 @@
         <div class="studio-preview-pane">
           
           <div class="preview-toolbar no-print">
-            <!-- Zoom Controls Segmented Toolbar -->
-            <div class="preview-zoom-group">
-              <span class="zoom-label">🔍 Zoom:</span>
-              <div class="zoom-btn-group">
-                <button type="button" class="zoom-pill-btn" data-zoom="0.25" title="View at 25% scale">25%</button>
-                <button type="button" class="zoom-pill-btn" data-zoom="0.50" title="View at 50% scale">50%</button>
-                <button type="button" class="zoom-pill-btn active" data-zoom="0.75" title="View at 75% scale">75%</button>
-                <button type="button" class="zoom-pill-btn" data-zoom="1.00" title="View at 100% full scale">100%</button>
-                <button type="button" class="zoom-pill-btn" id="zoom-fit-btn" data-zoom="fit" title="Fit to workspace width">Fit</button>
-                <button type="button" class="zoom-pill-btn" id="zoom-custom-btn" title="Custom zoom slider">Custom</button>
-              </div>
-
-              <!-- Interactive Custom Zoom Box -->
-              <div class="custom-zoom-box" id="custom-zoom-box" style="display: none;">
-                <input type="range" id="custom-zoom-slider" min="20" max="150" value="75" step="5" class="zoom-slider" title="Drag to adjust zoom">
-                <span class="custom-zoom-val" id="custom-zoom-val">75%</span>
+            <!-- Simple Clean Zoom Dropdown Button -->
+            <div class="zoom-dropdown-wrapper">
+              <div class="zoom-select-container">
+                <span class="zoom-icon">🔍</span>
+                <select id="zoom-select-dropdown" class="zoom-select-input" title="Change invoice preview zoom scale">
+                  <option value="0.25">25% Scale</option>
+                  <option value="0.50">50% Scale</option>
+                  <option value="0.75" selected>75% Scale (Default)</option>
+                  <option value="1.00">100% Full Size</option>
+                  <option value="fit">Fit to Screen</option>
+                </select>
               </div>
             </div>
 

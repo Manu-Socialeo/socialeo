@@ -908,90 +908,59 @@ body.admin-body {
   box-sizing: border-box;
 }
 
-.preview-zoom-group {
+.zoom-dropdown-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
 }
 
-.zoom-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--admin-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.zoom-btn-group {
-  display: flex;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 3px;
-  border-radius: 8px;
-  border: 1px solid var(--admin-border-subtle);
-  gap: 2px;
-}
-
-.zoom-pill-btn {
-  background: transparent;
-  border: none;
-  color: var(--admin-text-secondary);
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.zoom-pill-btn:hover {
-  color: var(--admin-text-primary);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.zoom-pill-btn.active {
-  background: var(--admin-bg-card-elevated);
-  color: var(--admin-text-primary);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-.custom-zoom-box {
-  display: flex;
+.zoom-select-container {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 4px 10px;
-  border-radius: 8px;
+  background: var(--admin-bg-surface);
   border: 1px solid var(--admin-border-subtle);
-  animation: fadeInZoom 0.2s ease;
+  border-radius: var(--radius-sm);
+  padding: 0 12px;
+  height: 38px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes fadeInZoom {
-  from { opacity: 0; transform: translateY(-2px); }
-  to { opacity: 1; transform: translateY(0); }
+.zoom-select-container:hover {
+  border-color: rgba(255, 94, 58, 0.4);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.zoom-slider {
-  width: 90px;
-  height: 4px;
-  accent-color: #ff5e3a;
-  cursor: pointer;
+.zoom-icon {
+  font-size: 13px;
+  color: var(--admin-accent-primary);
 }
 
-.custom-zoom-val {
-  font-size: 11.5px;
-  font-weight: 700;
+.zoom-select-input {
+  background: transparent;
+  border: none;
   color: var(--admin-text-primary);
-  min-width: 32px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  padding-right: 4px;
+}
+
+.zoom-select-input option {
+  background: #12121a;
+  color: #ffffff;
+  padding: 8px 12px;
 }
 
 .unified-pdf-action-btn {
-  padding: 8px 18px;
+  padding: 9px 18px;
   font-size: 13px;
   font-weight: 700;
   gap: 8px;
   box-shadow: 0 4px 14px rgba(255, 94, 58, 0.35);
+  border-radius: var(--radius-sm);
 }
 
 /* ==========================================================================
