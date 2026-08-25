@@ -628,24 +628,28 @@ document.addEventListener('DOMContentLoaded', () => {
       liveBtnEmail.href = `mailto:${agencyEmail}?cc=${encodeURIComponent(ccEmail)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
-    // Pay Now UPI / Direct WhatsApp Confirmation Link (100% clickable in Web & PDF)
+    // 8.3 Pay Now UPI Link (Direct Native UPI Intent: Triggers PhonePe, GPay, Paytm, BHIM, CRED)
     if (liveBtnPaynow) {
       const upiId = upiIdInput.value.trim() || '8722163256@sbi';
       const beneficiary = bankBeneficiaryInput.value.trim() || 'MANPREETH N';
+      const totalNumeric = typeof total === 'number' ? total.toFixed(2) : total;
       
-      const payConfirmMsg = `Hi Socialeo, I am initiating payment for Invoice #${invNum} (${totalFormatted}) to UPI ID: ${upiId} (Beneficiary: ${beneficiary}).`;
-      const universalPayLink = `https://wa.me/${agencyPhoneRaw}?text=${encodeURIComponent(payConfirmMsg)}`;
-      const upiPayUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(beneficiary)}&am=${total}&tn=${encodeURIComponent('Socialeo Inv ' + invNum)}&cu=INR`;
+      // Standard NPCI UPI URI Specification
+      const upiPayUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(beneficiary)}&am=${encodeURIComponent(totalNumeric)}&tn=${encodeURIComponent('Socialeo Invoice ' + invNum)}&cu=INR`;
       
-      // Use universal link as default so PDF readers on any device can open it directly
-      liveBtnPaynow.href = universalPayLink;
+      // Assign directly to href so html2pdf embeds this exact native URI into the exported PDF
+      liveBtnPaynow.href = upiPayUri;
       liveBtnPaynow.setAttribute('data-upi-uri', upiPayUri);
 
       liveBtnPaynow.onclick = function(e) {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         if (isMobile) {
-          e.preventDefault();
+          // On mobile, trigger installed UPI app chooser (GPay, PhonePe, Paytm, etc.)
           window.location.href = upiPayUri;
+        } else {
+          // On desktop web preview, notify user
+          e.preventDefault();
+          showToast(`UPI ID: ${upiId} | Total: ${totalFormatted} (On mobile, this opens your UPI apps)`, "📱");
         }
       };
     }

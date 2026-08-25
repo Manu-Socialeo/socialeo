@@ -63,6 +63,7 @@ SOCIALEO STUDIO — COMPREHENSIVE PRODUCTION VERIFICATION CHECKLIST
     ├── [✓] Live Invoices Meter correctly indicates '2' saved bills
     ├── [✓] Full-length divided 3-column action buttons (WhatsApp, Email, Pay Now)
     ├── [✓] Clean button labels: 'WhatsApp Chat', 'Email Socialeo', 'Pay Now'
+    ├── [✓] Native UPI Deep Link Integration: 'Pay Now' button triggers installed UPI payment apps (GPay, PhonePe, Paytm, BHIM, CRED) directly on mobile phones via standard NPCI upi://pay?pa=...&am=...&cu=INR intent
     ├── [✓] QR code caption: 'Scan to Pay'
     └── [✓] Live clickable links preserved in exported invoice PDFs
 
