@@ -107,18 +107,6 @@
                 <span class="preset-price">₹5,000</span>
               </div>
             </button>
-          </div>
-        </div>
-
-        <!-- Quick Studio Actions Group -->
-        <div class="sidebar-nav-group">
-          <div class="nav-group-label">STUDIO TOOLS</div>
-          <div class="sidebar-presets-list">
-            <button type="button" class="sidebar-preset-item action-tool" id="sidebar-quick-download-print" title="Download direct A4 PDF or open print options">
-              <span class="tab-icon">📥</span>
-              <span class="nav-text">Download / Print PDF</span>
-            </button>
-          </div>
         </div>
 
       </div>
@@ -239,9 +227,14 @@
         <div class="studio-controls-pane no-print">
           
           <!-- Top Quick Actions Toolbar -->
-          <div class="controls-card quick-toolbar-card">
+          <div class="controls-card quick-toolbar-card" id="bill-mgmt-card">
             <div class="toolbar-header">
-              <h3>⚡ Bill Management</h3>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <h3>⚡ Bill Management</h3>
+                <button type="button" class="bill-mgmt-toggle-btn" id="bill-mgmt-toggle-btn" title="Toggle Lock / Collapse Bill Management">
+                  <span class="toggle-icon">▾</span>
+                </button>
+              </div>
               <span class="live-tag">● Live Real-Time Sync</span>
             </div>
             <div class="toolbar-actions real-time-bill-actions">

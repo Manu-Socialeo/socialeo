@@ -343,12 +343,53 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       const isCollapsed = sidebarElem?.classList.toggle('collapsed');
       layoutContainer?.classList.toggle('sidebar-collapsed', isCollapsed);
+      sidebarElem?.classList.remove('hover-expanded');
       localStorage.setItem('socialeo_sidebar_collapsed', isCollapsed ? 'true' : 'false');
     }
   }
 
   sidebarCollapseBtn?.addEventListener('click', toggleSidebar);
   topbarSidebarToggle?.addEventListener('click', toggleSidebar);
+
+  // Sidebar Hover Peek when closed with arrow key; stays locked open if uncollapsed
+  sidebarElem?.addEventListener('mouseenter', () => {
+    if (sidebarElem.classList.contains('collapsed')) {
+      sidebarElem.classList.add('hover-expanded');
+    }
+  });
+
+  sidebarElem?.addEventListener('mouseleave', () => {
+    if (sidebarElem.classList.contains('collapsed')) {
+      sidebarElem.classList.remove('hover-expanded');
+    }
+  });
+
+  // Bill Management Card Hover & Lock Toggle
+  const billMgmtCard = document.getElementById('bill-mgmt-card');
+  const billMgmtToggleBtn = document.getElementById('bill-mgmt-toggle-btn');
+  const isBillMgmtCollapsed = localStorage.getItem('socialeo_bill_mgmt_collapsed') === 'true';
+  if (isBillMgmtCollapsed) {
+    billMgmtCard?.classList.add('collapsed');
+  }
+
+  billMgmtToggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isCol = billMgmtCard?.classList.toggle('collapsed');
+    billMgmtCard?.classList.remove('hover-open');
+    localStorage.setItem('socialeo_bill_mgmt_collapsed', isCol ? 'true' : 'false');
+  });
+
+  billMgmtCard?.addEventListener('mouseenter', () => {
+    if (billMgmtCard?.classList.contains('collapsed')) {
+      billMgmtCard.classList.add('hover-open');
+    }
+  });
+
+  billMgmtCard?.addEventListener('mouseleave', () => {
+    if (billMgmtCard?.classList.contains('collapsed')) {
+      billMgmtCard.classList.remove('hover-open');
+    }
+  });
 
   // Close mobile sidebar on selection
   function closeMobileSidebarOnSelection() {

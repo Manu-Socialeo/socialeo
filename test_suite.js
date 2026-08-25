@@ -45,8 +45,15 @@ const tests = [
   },
   { 
     suite: 'Unified PDF Controls',
-    name: 'Single Download / Print button in sidebar studio tools', 
-    pass: adminHtml.includes('id="sidebar-quick-download-print"') 
+    name: 'Sidebar Studio Tools group removed as requested', 
+    pass: !adminHtml.includes('STUDIO TOOLS') && !adminHtml.includes('id="sidebar-quick-download-print"')
+  },
+  { 
+    suite: 'Collapsible & Hover Behavior',
+    name: 'Sidebar and Bill Management cards support hover peek when closed and locked open when expanded', 
+    pass: adminCss.includes('.admin-sidebar.collapsed:hover') && 
+          adminCss.includes('.quick-toolbar-card.collapsed:hover') && 
+          adminJs.includes('socialeo_bill_mgmt_collapsed')
   },
   { 
     suite: 'A4 Sheet Zoom Engine',

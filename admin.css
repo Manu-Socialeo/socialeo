@@ -333,6 +333,7 @@ body.admin-body {
    ========================================================================== */
 .admin-sidebar.collapsed {
   width: 68px;
+  transition: width 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
 }
 
 .admin-sidebar.collapsed .sidebar-header {
@@ -374,6 +375,88 @@ body.admin-body {
 .admin-sidebar.collapsed .sidebar-footer {
   flex-direction: column;
   padding: 8px 6px;
+}
+
+/* Auto-expand on hover when closed with arrow key; stays locked open if uncollapsed */
+.admin-sidebar.collapsed:hover,
+.admin-sidebar.collapsed.hover-expanded {
+  width: 260px;
+  box-shadow: 12px 0 36px rgba(0, 0, 0, 0.85);
+  z-index: 100;
+}
+
+.admin-sidebar.collapsed:hover .brand-name,
+.admin-sidebar.collapsed:hover .admin-badge,
+.admin-sidebar.collapsed:hover .nav-group-label,
+.admin-sidebar.collapsed:hover .nav-text,
+.admin-sidebar.collapsed:hover .sidebar-badge,
+.admin-sidebar.collapsed:hover .preset-info,
+.admin-sidebar.collapsed.hover-expanded .brand-name,
+.admin-sidebar.collapsed.hover-expanded .admin-badge,
+.admin-sidebar.collapsed.hover-expanded .nav-group-label,
+.admin-sidebar.collapsed.hover-expanded .nav-text,
+.admin-sidebar.collapsed.hover-expanded .sidebar-badge,
+.admin-sidebar.collapsed.hover-expanded .preset-info {
+  display: block !important;
+}
+
+.admin-sidebar.collapsed:hover .sidebar-header,
+.admin-sidebar.collapsed.hover-expanded .sidebar-header {
+  padding: 0 16px;
+  justify-content: space-between;
+}
+
+.admin-sidebar.collapsed:hover .sidebar-nav-item,
+.admin-sidebar.collapsed:hover .sidebar-preset-item,
+.admin-sidebar.collapsed:hover .sidebar-footer-btn,
+.admin-sidebar.collapsed.hover-expanded .sidebar-nav-item,
+.admin-sidebar.collapsed.hover-expanded .sidebar-preset-item,
+.admin-sidebar.collapsed.hover-expanded .sidebar-footer-btn {
+  justify-content: flex-start;
+  padding: 8px 12px;
+}
+
+.admin-sidebar.collapsed:hover .sidebar-footer,
+.admin-sidebar.collapsed.hover-expanded .sidebar-footer {
+  flex-direction: row;
+  padding: 10px 14px;
+}
+
+/* Collapsible Bill Management Card & Hover State */
+.quick-toolbar-card {
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.quick-toolbar-card.collapsed .real-time-bill-actions {
+  display: none;
+}
+
+.quick-toolbar-card.collapsed:hover .real-time-bill-actions,
+.quick-toolbar-card.collapsed.hover-open .real-time-bill-actions {
+  display: grid;
+  animation: fadeInSlide 0.2s ease forwards;
+}
+
+.bill-mgmt-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--admin-text-muted);
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bill-mgmt-toggle-btn:hover {
+  color: var(--admin-text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.quick-toolbar-card.collapsed .bill-mgmt-toggle-btn .toggle-icon {
+  transform: rotate(-90deg);
 }
 
 /* ==========================================================================
