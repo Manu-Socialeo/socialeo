@@ -26,18 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme(newTheme);
   });
 
-  // 1. Navigation Scroll Effect & Active Section ScrollSpy
+  // 1. Navigation Scroll Effect & Dynamic Active Section ScrollSpy
   const navbar = document.querySelector('.navbar');
   const backToTopBtn = document.querySelector('.back-to-top');
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+
+  function getSectionIdFromHref(href) {
+    if (!href) return '';
+    const hashIndex = href.indexOf('#');
+    if (hashIndex !== -1) {
+      return href.substring(hashIndex + 1);
+    }
+    return '';
+  }
 
   function updateNavbar() {
     const scrollY = window.scrollY;
     if (scrollY > 50) {
-      navbar.classList.add('scrolled');
+      navbar?.classList.add('scrolled');
     } else {
-      navbar.classList.remove('scrolled');
+      navbar?.classList.remove('scrolled');
     }
 
     if (scrollY > 400) {
@@ -46,24 +55,41 @@ document.addEventListener('DOMContentLoaded', () => {
       backToTopBtn?.classList.remove('visible');
     }
 
-    // ScrollSpy Highlight
-    let currentSectionId = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.offsetHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        currentSectionId = section.getAttribute('id');
-      }
-    });
+    // ScrollSpy Highlight - dynamically moves the underline to the current active section
+    if (sections.length > 0) {
+      let currentSectionId = '';
 
-    if (currentSectionId) {
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${currentSectionId}`);
-      });
+      // Check if user scrolled to bottom of page (e.g. contact section)
+      if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 80)) {
+        const lastSec = sections[sections.length - 1];
+        if (lastSec) currentSectionId = lastSec.getAttribute('id');
+      } else {
+        const triggerPoint = scrollY + 160;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          if (section.offsetTop <= triggerPoint) {
+            currentSectionId = section.getAttribute('id');
+            break;
+          }
+        }
+        if (!currentSectionId && sections.length > 0) {
+          currentSectionId = sections[0].getAttribute('id');
+        }
+      }
+
+      if (currentSectionId) {
+        navLinks.forEach(link => {
+          const targetId = getSectionIdFromHref(link.getAttribute('href'));
+          if (targetId) {
+            link.classList.toggle('active', targetId === currentSectionId);
+          }
+        });
+      }
     }
   }
 
   window.addEventListener('scroll', updateNavbar, { passive: true });
+  window.addEventListener('resize', updateNavbar, { passive: true });
   updateNavbar();
 
   // Back to Top Click
