@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
       email: "contact@yogawithsrinatha.com"
     },
     items: [
-      { description: "Website Design & UX / UI", price: "40000", qty: "1", amount: "40000" },
-      { description: "Website Development (Full-Stack, incl. Backend)", price: "123000", qty: "1", amount: "123000" },
-      { description: "Mobile App Development (Full-Stack)", price: "165000", qty: "1", amount: "165000" },
-      { description: "Custom Admin Dashboard (Product Add/Delete, Inventory Mgmt)", price: "75000", qty: "1", amount: "75000" },
-      { description: "On-Page SEO", price: "15000", qty: "1", amount: "15000" },
-      { description: "User Manual / Documentation", price: "Free", qty: "1", amount: "0" },
-      { description: "Hosting & Support", price: "Client Managed", qty: "Self", amount: "0" },
-      { description: "SSL certificate", price: "Offer", qty: "1", amount: "0" }
+      { sno: "1.0", description: "Website Design & UX / UI", price: "40000", qty: "1", amount: "40000" },
+      { sno: "2.0", description: "Website Development (Full-Stack, incl. Backend)", price: "123000", qty: "1", amount: "123000" },
+      { sno: "3.0", description: "Mobile App Development (Full-Stack)", price: "165000", qty: "1", amount: "165000" },
+      { sno: "4.0", description: "Custom Admin Dashboard (Product Add/Delete, Inventory Mgmt)", price: "75000", qty: "1", amount: "75000" },
+      { sno: "5.0", description: "On-Page SEO", price: "15000", qty: "1", amount: "15000" },
+      { sno: "6.0", description: "User Manual / Documentation", price: "Free", qty: "1", amount: "0" },
+      { sno: "7.0", description: "Hosting & Support", price: "Client Managed", qty: "Self", amount: "0" },
+      { sno: "8.0", description: "SSL certificate", price: "Offer", qty: "1", amount: "0" }
     ],
     taxRate: 0,
     discountType: "percent",
@@ -66,12 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
       email: "vo2maxphysio@gmail.com"
     },
     items: [
-      { description: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, responsive wireframes)", price: "10000", qty: "1", amount: "10000" },
-      { description: "2.0 Core Public Pages (9 Pages) — Home, About, Services Directory, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs (9 × ₹2,500)", price: "2500", qty: "9", amount: "22500" },
-      { description: "3.0 Specialist Doctor Credential Portals (2 Pages) — Dr. Pradeep Kumar (MPT) & Dr. Pinakin Ayare (MPT) verified credential portals (2 × ₹1,500)", price: "1500", qty: "2", amount: "3000" },
-      { description: "4.0 Patient Conversion Engines & Interactive Lead Widgets — Online Appointment Booker (/book-appointment), Callback Portal (/request-callback), Maps Navigation (/location), Floating WhatsApp Quick-Chat, Mobile One-Touch Calling, Dynamic Hero Carousel, Interactive FAQs", price: "7500", qty: "1", amount: "7500" },
-      { description: "5.0 Medical Legal & Compliance Suite (5 Pages) — Privacy Policy, Terms & Conditions, Medical Disclaimer, Appointment Policy, Cookie Policy (5 × ₹800)", price: "800", qty: "5", amount: "4000" },
-      { description: "6.0 Healthcare Technical SEO & Cloud Performance — JSON-LD MedicalClinic & Physician Schema, XML Sitemap, Robots.txt, Edge CDN Cloud hosting, SSL security & Sub-second speed optimization", price: "10000", qty: "1", amount: "10000" }
+      { sno: "1.0", description: "UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, responsive wireframes)", price: "10000", qty: "1", amount: "10000" },
+      { sno: "2.0", description: "Core Public Pages (9 Pages) — Home, About, Services Directory, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs (9 × ₹2,500)", price: "2500", qty: "9", amount: "22500" },
+      { sno: "3.0", description: "Specialist Doctor Credential Portals (2 Pages) — Dr. Pradeep Kumar (MPT) & Dr. Pinakin Ayare (MPT) verified credential portals (2 × ₹1,500)", price: "1500", qty: "2", amount: "3000" },
+      { sno: "4.0", description: "Patient Conversion Engines & Interactive Lead Widgets — Online Appointment Booker (/book-appointment), Callback Portal (/request-callback), Maps Navigation (/location), Floating WhatsApp Quick-Chat, Mobile One-Touch Calling, Dynamic Hero Carousel, Interactive FAQs", price: "7500", qty: "1", amount: "7500" },
+      { sno: "5.0", description: "Medical Legal & Compliance Suite (5 Pages) — Privacy Policy, Terms & Conditions, Medical Disclaimer, Appointment Policy, Cookie Policy (5 × ₹800)", price: "800", qty: "5", amount: "4000" },
+      { sno: "6.0", description: "Healthcare Technical SEO & Cloud Performance — JSON-LD MedicalClinic & Physician Schema, XML Sitemap, Robots.txt, Edge CDN Cloud hosting, SSL security & Sub-second speed optimization", price: "10000", qty: "1", amount: "10000" }
     ],
     taxRate: 0,
     discountType: "fixed",
@@ -114,11 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
       email: "vo2maxphysio@gmail.com"
     },
     items: [
-      { description: "2.1 14 Specialized Clinical Treatment Detail Pages — Dedicated deep pages for all 14 clinical therapies with recovery stages & protocol breakdowns (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
-      { description: "2.2 14 Health Hub Clinical SEO Articles — 14,000+ words of evidence-based medical articles + BlogPosting & FAQPage Google Schema (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
-      { description: "2.3 Managed Cloud Edge Hosting & CDN — Global Edge CDN hosting, sub-second load speeds, unlimited bandwidth, 99.99% uptime guarantee", price: "15000", qty: "1 yr", amount: "15000" },
-      { description: "2.4 Automated SSL Security & DNS Management — Enterprise HTTPS padlock encryption, automated certificate renewals, domain protection", price: "4000", qty: "1 yr", amount: "4000" },
-      { description: "2.5 Quarterly SEO Audits, Speed Tuning & Content Updates — Google Search Console monitoring, index coverage checks, Core Web Vitals speed tuning & updates", price: "5000", qty: "1 yr", amount: "5000" }
+      { sno: "2.1", description: "14 Specialized Clinical Treatment Detail Pages — Dedicated deep pages for all 14 clinical therapies with recovery stages & protocol breakdowns (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
+      { sno: "2.2", description: "14 Health Hub Clinical SEO Articles — 14,000+ words of evidence-based medical articles + BlogPosting & FAQPage Google Schema (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
+      { sno: "2.3", description: "Managed Cloud Edge Hosting & CDN — Global Edge CDN hosting, sub-second load speeds, unlimited bandwidth, 99.99% uptime guarantee", price: "15000", qty: "1 yr", amount: "15000" },
+      { sno: "2.4", description: "Automated SSL Security & DNS Management — Enterprise HTTPS padlock encryption, automated certificate renewals, domain protection", price: "4000", qty: "1 yr", amount: "4000" },
+      { sno: "2.5", description: "Quarterly SEO Audits, Speed Tuning & Content Updates — Google Search Console monitoring, index coverage checks, Core Web Vitals speed tuning & updates", price: "5000", qty: "1 yr", amount: "5000" }
     ],
     taxRate: 0,
     discountType: "fixed",
@@ -141,27 +141,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Standard & Medical Service Preset Catalog
   const SERVICE_CATALOG = {
-    "vo2-ux-strategy": { desc: "1.0 UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
-    "vo2-core-pages": { desc: "2.0 Core Public Pages (9 Pages — Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
-    "vo2-doc-portals": { desc: "3.0 Specialist Doctor Credential Portals (2 Pages — Dr. Pradeep Kumar MPT & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
-    "vo2-lead-widgets": { desc: "4.0 Patient Conversion Engines & Interactive Lead Widgets (Booker, Callback, Maps, WhatsApp, Calling, Hero, FAQs)", price: "7500", qty: "1", amount: "7500" },
-    "vo2-legal-suite": { desc: "5.0 Medical Legal & Compliance Suite (5 Pages — Privacy, Terms, Disclaimer, Appointment, Cookie Policies)", price: "800", qty: "5", amount: "4000" },
-    "vo2-healthcare-seo": { desc: "6.0 Healthcare Technical SEO & Cloud Performance (JSON-LD Medical Schema, Sitemap, Robots, Cloud CDN, SSL & Speed)", price: "10000", qty: "1", amount: "10000" },
-    "vo2-treatment-pages": { desc: "2.1 14 Specialized Clinical Treatment Detail Pages (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
-    "vo2-health-articles": { desc: "2.2 14 Health Hub Clinical SEO Articles (14 × ₹1,500)", price: "1500", qty: "14", amount: "21000" },
-    "vo2-hosting-cdn": { desc: "2.3 Managed Cloud Edge Hosting & CDN (Unlimited Bandwidth, 99.99% Uptime)", price: "15000", qty: "1 yr", amount: "15000" },
-    "vo2-ssl-dns": { desc: "2.4 Automated SSL Security & DNS Management (Enterprise Padlock & Protection)", price: "4000", qty: "1 yr", amount: "4000" },
-    "vo2-seo-audits": { desc: "2.5 Quarterly SEO Audits, Speed Tuning & Routine Updates (Core Web Vitals & Content)", price: "5000", qty: "1 yr", amount: "5000" },
-    "web-design": { desc: "Website Design & UX / UI", price: "40000", qty: "1", amount: "40000" },
-    "web-dev": { desc: "Website Development (Full-Stack, incl. Backend)", price: "123000", qty: "1", amount: "123000" },
-    "mobile-app": { desc: "Mobile App Development (Full-Stack)", price: "165000", qty: "1", amount: "165000" },
-    "admin-dash": { desc: "Custom Admin Dashboard (Product Add/Delete, Inventory Mgmt)", price: "75000", qty: "1", amount: "75000" },
-    "seo": { desc: "On-Page SEO", price: "15000", qty: "1", amount: "15000" },
-    "user-manual": { desc: "User Manual / Documentation", price: "Free", qty: "1", amount: "0" },
-    "hosting": { desc: "Hosting & Support", price: "Client Managed", qty: "Self", amount: "0" },
-    "ssl": { desc: "SSL certificate", price: "Offer", qty: "1", amount: "0" },
-    "maintenance": { desc: "Annual Maintenance & Support Contract", price: "35000", qty: "1", amount: "35000" },
-    "branding": { desc: "Brand Identity, Typography & Visual System", price: "50000", qty: "1", amount: "50000" }
+    "vo2-ux-strategy": { sno: "1.0", desc: "UI/UX Strategy & Medical Design System (Custom athletic-medical UI, typography, color tokens, wireframes)", price: "10000", qty: "1", amount: "10000" },
+    "vo2-core-pages": { sno: "2.0", desc: "Core Public Pages (9 Pages — Home, About, Services, Specialists, Pricing, Gallery, Contact, Testimonials, FAQs)", price: "2500", qty: "9", amount: "22500" },
+    "vo2-doc-portals": { sno: "3.0", desc: "Specialist Doctor Credential Portals (2 Pages — Dr. Pradeep Kumar & Dr. Pinakin Ayare MPT)", price: "1500", qty: "2", amount: "3000" },
+    "vo2-lead-widgets": { sno: "4.0", desc: "Patient Conversion Engines & Interactive Lead Widgets (Booker, Callback, WhatsApp, Maps)", price: "7500", qty: "1", amount: "7500" },
+    "vo2-legal-suite": { sno: "5.0", desc: "Medical Legal & Compliance Suite (5 Pages — Privacy, Terms, Disclaimer, Appointment & Cookie Policies)", price: "800", qty: "5", amount: "4000" },
+    "vo2-healthcare-seo": { sno: "6.0", desc: "Healthcare Technical SEO & Cloud Performance (MedicalClinic Schema, CDN Hosting, SSL, Speed)", price: "10000", qty: "1", amount: "10000" },
+    
+    "vo2-treatment-pages": { sno: "2.1", desc: "14 Specialized Clinical Treatment Detail Pages (Recovery stages & clinical breakdowns)", price: "1500", qty: "14", amount: "21000" },
+    "vo2-health-articles": { sno: "2.2", desc: "14 Health Hub Clinical SEO Articles (14,000+ words + Medical BlogPosting Schema)", price: "1500", qty: "14", amount: "21000" },
+    "vo2-hosting-cdn": { sno: "2.3", desc: "Managed Cloud Edge Hosting & CDN (Global Edge CDN, sub-second speed, 99.99% uptime)", price: "15000", qty: "1 yr", amount: "15000" },
+    "vo2-ssl-dns": { sno: "2.4", desc: "Automated SSL Security & DNS Management (Enterprise HTTPS padlock & domain security)", price: "4000", qty: "1 yr", amount: "4000" },
+    "vo2-seo-audits": { sno: "2.5", desc: "Quarterly SEO Audits, Speed Tuning & Updates (Google Search Console & Core Web Vitals)", price: "5000", qty: "1 yr", amount: "5000" },
+    
+    "web-design": { sno: "1.0", desc: "Website Design & UX / UI", price: "40000", qty: "1", amount: "40000" },
+    "web-dev": { sno: "2.0", desc: "Website Development (Full-Stack, incl. Backend)", price: "123000", qty: "1", amount: "123000" },
+    "mobile-app": { sno: "3.0", desc: "Mobile App Development (Full-Stack)", price: "165000", qty: "1", amount: "165000" },
+    "admin-dash": { sno: "4.0", desc: "Custom Admin Dashboard (Inventory & Content Manager)", price: "75000", qty: "1", amount: "75000" },
+    "seo": { sno: "5.0", desc: "On-Page SEO & Schema Setup", price: "15000", qty: "1", amount: "15000" },
+    "user-manual": { sno: "6.0", desc: "User Manual / Video Documentation", price: "Free", qty: "1", amount: "0" },
+    "hosting": { sno: "7.0", desc: "Hosting & Support", price: "Client Managed", qty: "Self", amount: "0" },
+    "ssl": { sno: "8.0", desc: "SSL certificate", price: "Offer", qty: "1", amount: "0" },
+    "maintenance": { sno: "9.0", desc: "Annual Maintenance Contract (AMC)", price: "35000", qty: "1 yr", amount: "35000" },
+    "branding": { sno: "10.0", desc: "Brand Identity & Visual System", price: "50000", qty: "1", amount: "50000" }
   };
 
   // Load state from localStorage or default to VO2 MAX Bill 1
@@ -370,11 +372,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderItemInputRows() {
     itemsInputsList.innerHTML = "";
     currentBill.items.forEach((item, index) => {
+      const defaultSno = item.sno || `${index + 1}.0`;
       const row = document.createElement('div');
       row.className = 'item-edit-row';
       row.innerHTML = `
         <div class="item-row-top">
-          <input type="text" class="admin-input item-desc-input" data-index="${index}" data-field="description" value="${escapeHtml(item.description)}" placeholder="Item / Service description">
+          <div class="item-sno-wrapper">
+            <label>Sl. No.</label>
+            <input type="text" class="admin-input item-sno-input" data-index="${index}" data-field="sno" value="${escapeHtml(defaultSno)}" placeholder="1.0">
+          </div>
+          <div class="item-desc-wrapper">
+            <label>Deliverable Scope / Description</label>
+            <input type="text" class="admin-input item-desc-input" data-index="${index}" data-field="description" value="${escapeHtml(item.description)}" placeholder="Item / Service description">
+          </div>
           <button type="button" class="item-delete-btn" data-index="${index}" title="Remove this line">✕</button>
         </div>
         <div class="item-row-bottom">
@@ -459,8 +469,14 @@ document.addEventListener('DOMContentLoaded', () => {
     liveTableTbody.innerHTML = "";
     let subtotal = 0;
 
-    currentBill.items.forEach(item => {
+    currentBill.items.forEach((item, index) => {
       const tr = document.createElement('tr');
+
+      // Sl. No. extraction or default
+      let displaySno = item.sno;
+      if (!displaySno || String(displaySno).trim() === '') {
+        displaySno = `${index + 1}.0`;
+      }
 
       // Price Formatting: numerical vs text like "Free", "Client Managed", "Offer"
       let priceDisplay = item.price;
@@ -478,6 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       tr.innerHTML = `
+        <td class="cell-sno">${escapeHtml(displaySno)}</td>
         <td class="cell-desc">${escapeHtml(item.description)}</td>
         <td class="cell-price">${escapeHtml(priceDisplay)}</td>
         <td class="cell-qty">${escapeHtml(item.qty)}</td>
@@ -671,6 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add Item Row Button
   addItemRowBtn.addEventListener('click', () => {
     currentBill.items.push({
+      sno: `${currentBill.items.length + 1}.0`,
       description: "Custom Service / Deliverable",
       price: "10000",
       qty: "1",
@@ -678,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     renderItemInputRows();
     updateLivePreviewAndCalculations();
-    showToast("Added new blank line item");
+    showToast("Added new blank line item", "➕");
   });
 
   // Quick Preset Service Dropdown
@@ -686,11 +704,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const key = e.target.value;
     if (!key || !SERVICE_CATALOG[key]) return;
     
-    currentBill.items.push({ ...SERVICE_CATALOG[key] });
+    const s = SERVICE_CATALOG[key];
+    currentBill.items.push({
+      sno: s.sno || `${currentBill.items.length + 1}.0`,
+      description: s.desc,
+      price: s.price,
+      qty: s.qty,
+      amount: s.amount
+    });
     renderItemInputRows();
     updateLivePreviewAndCalculations();
     e.target.value = "";
-    showToast(`Added "${SERVICE_CATALOG[key].desc}"`);
+    showToast(`Added "${s.desc.substring(0, 32)}..."`, "➕");
   });
 
   // Load VO2 MAX Bill 1 (Work Done Till Now - ₹57,000)
@@ -741,7 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
         email: ""
       },
       items: [
-        { description: "Website Development & UI Design", price: "50000", qty: "1", amount: "50000" }
+        { sno: "1.0", description: "Website Development & UI Design", price: "50000", qty: "1", amount: "50000" }
       ],
       taxRate: 0,
       discountType: "percent",

@@ -423,26 +423,51 @@ body.admin-body {
 .item-row-top {
   display: flex;
   gap: 8px;
-  align-items: flex-start;
+  align-items: flex-end;
+}
+
+.item-sno-wrapper {
+  width: 65px;
+  flex-shrink: 0;
+}
+
+.item-desc-wrapper {
+  flex: 1;
+}
+
+.item-sno-wrapper label, .item-desc-wrapper label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.item-sno-input {
+  font-weight: 700;
+  text-align: center;
+  font-family: var(--admin-font-mono);
 }
 
 .item-desc-input {
-  flex: 1;
+  width: 100%;
 }
 
 .item-delete-btn {
   background: rgba(239, 68, 68, 0.15);
   color: #ef4444;
   border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 4px;
-  width: 28px;
-  height: 28px;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-bottom: 1px;
 }
 
 .item-delete-btn:hover {
@@ -458,9 +483,10 @@ body.admin-body {
 
 .item-sub-field label {
   font-size: 10px;
+  font-weight: 600;
   color: var(--admin-text-muted);
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 /* Financials Preview Box */
@@ -599,7 +625,7 @@ body.admin-body {
   box-sizing: border-box;
   background: #ffffff;
   color: #000000;
-  padding: 14mm 16mm 12mm 16mm;
+  padding: 12mm 14mm 10mm 14mm;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   font-family: 'DM Sans', 'Inter', -apple-system, sans-serif;
   display: flex;
@@ -614,13 +640,13 @@ body.admin-body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .inv-main-heading {
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 800;
-  letter-spacing: -1.5px;
+  letter-spacing: -1.2px;
   color: #000000;
   line-height: 1;
   font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
@@ -631,24 +657,24 @@ body.admin-body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 3px;
+  gap: 2px;
 }
 
 .inv-brand-logo {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #000000;
   display: inline-flex;
   align-items: baseline;
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
 }
 
 .brand-accent-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background-color: #f59e0b;
   border-radius: 50%;
   display: inline-block;
@@ -656,13 +682,13 @@ body.admin-body {
 }
 
 .inv-date-text {
-  font-size: 12.5px;
-  color: #222222;
+  font-size: 11.5px;
+  color: #334155;
   font-weight: 500;
 }
 
 .inv-number-text {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #000000;
 }
@@ -671,45 +697,46 @@ body.admin-body {
 .inv-divider-line {
   border: none;
   border-top: 1.5px solid #000000;
-  margin: 6px 0 10px 0;
+  margin: 5px 0 8px 0;
 }
 
 /* Client Section */
 .inv-client-section {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .inv-billed-label {
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #000000;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .inv-client-name {
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
   color: #000000;
   margin-bottom: 2px;
 }
 
 .inv-client-address {
-  font-size: 12px;
-  line-height: 1.35;
-  color: #222222;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #334155;
   font-weight: 500;
 }
 
 /* Items Table */
 .inv-table-section {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   flex: 1;
 }
 
 .inv-items-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: 11.5px;
+  table-layout: fixed;
 }
 
 .inv-items-table thead tr {
@@ -717,30 +744,36 @@ body.admin-body {
 }
 
 .inv-items-table th {
-  padding: 6px 4px 8px 4px;
+  padding: 5px 3px 6px 3px;
   font-weight: 700;
   color: #000000;
-  font-size: 12.5px;
+  font-size: 11.5px;
+  letter-spacing: -0.2px;
+}
+
+.inv-items-table th.col-sno {
+  text-align: left;
+  width: 8.5%;
 }
 
 .inv-items-table th.col-desc {
   text-align: left;
-  width: 50%;
+  width: 48.5%;
 }
 
 .inv-items-table th.col-price {
   text-align: right;
-  width: 17%;
+  width: 15%;
 }
 
 .inv-items-table th.col-qty {
   text-align: center;
-  width: 15%;
+  width: 12%;
 }
 
 .inv-items-table th.col-amount {
   text-align: right;
-  width: 18%;
+  width: 16%;
 }
 
 .inv-items-table tbody tr {
@@ -748,73 +781,85 @@ body.admin-body {
 }
 
 .inv-items-table td {
-  padding: 6px 4px;
+  padding: 4px 3px;
   vertical-align: middle;
   color: #000000;
+  font-size: 11px;
+}
+
+.inv-items-table td.cell-sno {
+  text-align: left;
+  font-weight: 700;
+  color: #334155;
+  white-space: nowrap;
 }
 
 .inv-items-table td.cell-desc {
   text-align: left;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.25;
+  word-break: break-word;
 }
 
 .inv-items-table td.cell-price {
   text-align: right;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .inv-items-table td.cell-qty {
   text-align: center;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .inv-items-table td.cell-amount {
   text-align: right;
-  font-weight: 500;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-/* Compact Table Mode for Large Invoices (e.g. 7+ items) */
+/* Compact Table Mode for Large Invoices (Capacity for 10-12 items) */
 .invoice-a4-sheet.compact-mode {
-  padding: 11mm 14mm 10mm 14mm;
+  padding: 8mm 12mm 7mm 12mm;
 }
 
 .invoice-a4-sheet.compact-mode .inv-top-header {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .invoice-a4-sheet.compact-mode .inv-main-heading {
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .invoice-a4-sheet.compact-mode .inv-divider-line {
-  margin: 5px 0 8px 0;
+  margin: 3px 0 5px 0;
 }
 
 .invoice-a4-sheet.compact-mode .inv-client-section {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .invoice-a4-sheet.compact-mode .inv-items-table th {
-  padding: 4px 3px 5px 3px;
-  font-size: 11px;
-}
-
-.invoice-a4-sheet.compact-mode .inv-items-table td {
-  padding: 4.5px 3px;
+  padding: 3px 2px 4px 2px;
   font-size: 10.5px;
 }
 
+.invoice-a4-sheet.compact-mode .inv-items-table td {
+  padding: 3px 2px;
+  font-size: 10px;
+}
+
 .invoice-a4-sheet.compact-mode .inv-items-table td.cell-desc {
-  line-height: 1.2;
+  line-height: 1.18;
 }
 
 .invoice-a4-sheet.compact-mode .inv-totals-section {
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .invoice-a4-sheet.compact-mode .inv-bottom-footer {
-  padding-top: 4px;
+  padding-top: 3px;
   gap: 8px;
 }
 
@@ -822,14 +867,14 @@ body.admin-body {
 .inv-totals-section {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .inv-totals-card {
-  width: 240px;
+  width: 230px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2.5px;
   padding-top: 2px;
 }
 
@@ -837,7 +882,7 @@ body.admin-body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: #000000;
 }
 
@@ -849,14 +894,14 @@ body.admin-body {
 .totals-line .total-val {
   font-weight: 600;
   text-align: right;
-  min-width: 90px;
+  min-width: 85px;
 }
 
 .totals-line.total-grand-line {
   border-top: 1px solid #000000;
-  padding-top: 4px;
+  padding-top: 3px;
   margin-top: 2px;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 800;
 }
 
@@ -867,23 +912,23 @@ body.admin-body {
 /* Bottom 3-Column Footer */
 .inv-bottom-footer {
   display: grid;
-  grid-template-columns: 1.2fr 0.85fr 1.2fr;
-  gap: 12px;
+  grid-template-columns: 1.2fr 0.8fr 1.2fr;
+  gap: 10px;
   align-items: start;
   margin-top: auto;
-  padding-top: 6px;
+  padding-top: 4px;
 }
 
 .inv-footer-col {
-  font-size: 11.5px;
-  line-height: 1.35;
+  font-size: 11px;
+  line-height: 1.3;
   color: #000000;
 }
 
 .footer-col-title {
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   color: #000000;
 }
 
@@ -903,15 +948,15 @@ body.admin-body {
 }
 
 .qr-code-frame {
-  width: 78px;
-  height: 78px;
+  width: 72px;
+  height: 72px;
   background: #ffffff;
   padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px; /* Rectangular box with curved edges */
 }
 
 .qr-code-frame img, .qr-code-frame canvas {
@@ -921,13 +966,13 @@ body.admin-body {
 }
 
 .qr-label-subtext {
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 700;
   text-transform: uppercase;
   color: #475569;
   letter-spacing: 0.5px;
   text-align: center;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 .col-agency {
@@ -939,62 +984,66 @@ body.admin-body {
 }
 
 /* ==========================================================================
-   INTERACTIVE INVOICE ACTIONS BAR (WHATSAPP, EMAIL WITH CC, PAY NOW)
+   INTERACTIVE INVOICE ACTIONS BAR (RECTANGULAR WITH CURVED EDGES)
    ========================================================================== */
 .inv-actions-bar {
   display: flex;
   gap: 8px;
   justify-content: center;
   align-items: center;
-  padding-top: 8px;
-  margin-top: 6px;
+  padding-top: 6px;
+  margin-top: 4px;
   border-top: 1px dashed #cbd5e1;
 }
 
 .inv-action-pill {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   padding: 5px 12px;
-  border-radius: 9999px;
-  font-size: 11px;
+  border-radius: 6px; /* Rectangular box with curved edges */
+  font-size: 10.5px;
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   cursor: pointer;
   white-space: nowrap;
+  border: 1px solid transparent;
 }
 
 .btn-pill-whatsapp {
-  background: #25D366;
+  background: #0f766e;
   color: #ffffff !important;
-  box-shadow: 0 2px 6px rgba(37, 211, 102, 0.25);
+  border: 1px solid #115e59;
+  box-shadow: 0 1px 3px rgba(15, 118, 110, 0.2);
 }
 
 .btn-pill-whatsapp:hover {
-  background: #20ba59;
+  background: #115e59;
   transform: translateY(-1px);
 }
 
 .btn-pill-email {
-  background: #0f172a;
+  background: #1e293b;
   color: #ffffff !important;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+  border: 1px solid #334155;
+  box-shadow: 0 1px 3px rgba(30, 41, 59, 0.2);
 }
 
 .btn-pill-email:hover {
-  background: #1e293b;
+  background: #0f172a;
   transform: translateY(-1px);
 }
 
 .btn-pill-paynow {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  background: #b91c1c;
   color: #ffffff !important;
-  box-shadow: 0 2px 6px rgba(255, 65, 108, 0.35);
+  border: 1px solid #991b1b;
+  box-shadow: 0 1px 3px rgba(185, 28, 28, 0.25);
 }
 
 .btn-pill-paynow:hover {
-  opacity: 0.95;
+  background: #991b1b;
   transform: translateY(-1px);
 }
 
@@ -1279,11 +1328,44 @@ body.admin-body {
   }
 
   .inv-items-table th {
-    padding: 5px 4px 6px 4px !important;
+    padding: 4px 3px 5px 3px !important;
+    font-size: 11px !important;
+  }
+
+  .inv-items-table th.col-sno {
+    width: 8.5% !important;
+    text-align: left !important;
+  }
+
+  .inv-items-table th.col-desc {
+    width: 48.5% !important;
+    text-align: left !important;
+  }
+
+  .inv-items-table th.col-price {
+    width: 15% !important;
+    text-align: right !important;
+  }
+
+  .inv-items-table th.col-qty {
+    width: 12% !important;
+    text-align: center !important;
+  }
+
+  .inv-items-table th.col-amount {
+    width: 16% !important;
+    text-align: right !important;
   }
 
   .inv-items-table td {
-    padding: 5px 4px !important;
+    padding: 3.5px 3px !important;
+    font-size: 10.5px !important;
+  }
+
+  .inv-items-table td.cell-sno {
+    font-weight: 700 !important;
+    color: #334155 !important;
+    white-space: nowrap !important;
   }
 
   .brand-accent-dot {
@@ -1294,16 +1376,17 @@ body.admin-body {
 
   .inv-actions-bar {
     border-top: 1px dashed #cbd5e1 !important;
-    padding-top: 6px !important;
-    margin-top: 4px !important;
+    padding-top: 4px !important;
+    margin-top: 3px !important;
   }
 
   .inv-action-pill {
     border: 1px solid #000000 !important;
+    border-radius: 4px !important;
     background: transparent !important;
     color: #000000 !important;
-    font-size: 9.5px !important;
-    padding: 2px 8px !important;
+    font-size: 9px !important;
+    padding: 2px 6px !important;
     box-shadow: none !important;
     text-decoration: none !important;
   }
