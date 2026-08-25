@@ -939,21 +939,30 @@ body.admin-body {
   width: 100%;
   max-width: 860px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 16px;
-  padding: 10px 14px;
+  padding: 8px 12px;
   background: var(--admin-bg-card);
   border: 1px solid var(--admin-border-subtle);
   border-radius: var(--radius-md);
-  gap: 12px;
-  flex-wrap: wrap;
   box-sizing: border-box;
 }
 
-.zoom-dropdown-wrapper {
+.preview-actions {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
+
+.zoom-dropdown-wrapper {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .zoom-select-container {
@@ -969,6 +978,7 @@ body.admin-body {
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .zoom-select-container:hover {
@@ -1009,12 +1019,19 @@ body.admin-body {
 }
 
 .unified-pdf-action-btn {
-  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 38px;
   font-size: 13px;
   font-weight: 700;
   gap: 8px;
   box-shadow: 0 4px 14px rgba(255, 94, 58, 0.35);
   border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
