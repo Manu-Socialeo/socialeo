@@ -96,8 +96,9 @@ const tests = [
   },
   { 
     suite: 'Real-Time Bill Management',
-    name: 'Add New Bill button is placed on the right side in the preview toolbar', 
-    pass: adminHtml.includes('id="toolbar-new-bill-btn"') && 
+    name: 'Add New Bill button is placed in topbar and Dashboard Engine Active badge is removed', 
+    pass: adminHtml.includes('id="topbar-new-bill-btn"') && 
+          !adminHtml.includes('Dashboard Engine Active') &&
           adminJs.includes('createNewBlankBill')
   },
   { 

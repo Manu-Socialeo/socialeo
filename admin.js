@@ -1043,7 +1043,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast(`Created new blank invoice #${nextInvNo}`, "📄");
   }
 
-  document.getElementById('new-invoice-btn')?.addEventListener('click', createNewBlankBill);
+  document.getElementById('topbar-new-bill-btn')?.addEventListener('click', createNewBlankBill);
   document.getElementById('toolbar-new-bill-btn')?.addEventListener('click', createNewBlankBill);
   document.getElementById('archive-new-bill-btn')?.addEventListener('click', createNewBlankBill);
 

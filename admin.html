@@ -155,10 +155,10 @@
           </div>
         </div>
         <div class="topbar-right">
-          <div class="topbar-status-pill">
-            <span class="pulse-indicator"></span>
-            <span>Dashboard Engine Active</span>
-          </div>
+          <button type="button" class="admin-btn admin-btn-secondary topbar-new-bill-btn" id="topbar-new-bill-btn" title="Create a new blank bill template">
+            <span class="btn-icon">➕</span>
+            <span>New Bill</span>
+          </button>
         </div>
       </header>
 
@@ -440,25 +440,22 @@
         <div class="studio-preview-pane">
           
           <div class="preview-toolbar no-print">
-            <!-- Clean Zoom Dropdown (Digit & % only with arrow mark) -->
-            <div class="zoom-dropdown-wrapper">
-              <div class="zoom-select-container">
-                <select id="zoom-select-dropdown" class="zoom-select-input" title="Change Zoom Scale">
-                  <option value="0.25">25%</option>
-                  <option value="0.50">50%</option>
-                  <option value="0.75">75%</option>
-                  <option value="1.00" selected>100%</option>
-                </select>
-                <span class="zoom-arrow-indicator">▾</span>
-              </div>
-            </div>
-
-            <!-- Right-Side Action Controls: New Bill & Download/Print -->
+            <!-- Right-Side Action Controls: Zoom Dropdown next to Download / Print PDF -->
             <div class="preview-actions">
-              <button type="button" class="admin-btn admin-btn-secondary" id="toolbar-new-bill-btn" title="Create a new blank bill template">
-                <span class="btn-icon">➕</span>
-                <span>New Bill</span>
-              </button>
+              <!-- Clean Zoom Dropdown (Digit & % only with arrow mark) -->
+              <div class="zoom-dropdown-wrapper">
+                <div class="zoom-select-container">
+                  <select id="zoom-select-dropdown" class="zoom-select-input" title="Change Zoom Scale">
+                    <option value="0.25">25%</option>
+                    <option value="0.50">50%</option>
+                    <option value="0.75">75%</option>
+                    <option value="1.00" selected>100%</option>
+                  </select>
+                  <span class="zoom-arrow-indicator">▾</span>
+                </div>
+              </div>
+
+              <!-- Single Unified Download / Print Action Button -->
               <button type="button" class="admin-btn admin-btn-primary unified-pdf-action-btn" id="pane-download-print-btn" title="Download direct A4 PDF with active clickable links or Print">
                 <span class="btn-icon">📥</span>
                 <span>Download / Print PDF</span>
