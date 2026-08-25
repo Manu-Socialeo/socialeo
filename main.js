@@ -375,7 +375,7 @@ _Sent via Socialeo Instant Web Portal_`;
         format: 'a4', 
         orientation: 'portrait' 
       },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+      pagebreak: { mode: 'css' },
       enableLinks: true
     };
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SOCIALEO ADMIN HUB & BILL GENERATOR STYLES (admin.css)
+   SOCIALEO ADMIN DASHBOARD & BILL GENERATOR STYLES (admin.css)
    ========================================================================== */
 
 :root {
@@ -907,35 +907,103 @@ body.admin-body {
 @keyframes pulse {
   0% { transform: scale(0.95); opacity: 0.8; }
   50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.95); opacity: 0.8; }
-}
-
-.preview-actions {
+.preview-toolbar {
   display: flex;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--admin-bg-card);
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--radius-md);
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.preview-tool-btn {
+.preview-zoom-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.zoom-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--admin-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.zoom-btn-group {
+  display: flex;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid var(--admin-border-subtle);
+  gap: 2px;
+}
+
+.zoom-pill-btn {
+  background: transparent;
+  border: none;
+  color: var(--admin-text-secondary);
   font-family: inherit;
   font-size: 12px;
   font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 4px;
-  background: var(--admin-bg-card);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.zoom-pill-btn:hover {
+  color: var(--admin-text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.zoom-pill-btn.active {
+  background: var(--admin-bg-card-elevated);
+  color: var(--admin-text-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.custom-zoom-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 4px 10px;
+  border-radius: 8px;
   border: 1px solid var(--admin-border-subtle);
-  color: var(--admin-text-secondary);
+  animation: fadeInZoom 0.2s ease;
+}
+
+@keyframes fadeInZoom {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.zoom-slider {
+  width: 90px;
+  height: 4px;
+  accent-color: #ff5e3a;
   cursor: pointer;
 }
 
-.preview-tool-btn:hover {
-  color: #fff;
-  border-color: #fff;
+.custom-zoom-val {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--admin-text-primary);
+  min-width: 32px;
 }
 
-.preview-tool-btn.preview-primary {
-  background: var(--admin-grad-primary);
-  color: #fff;
-  border: none;
+.unified-pdf-action-btn {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(255, 94, 58, 0.35);
 }
 
 /* ==========================================================================

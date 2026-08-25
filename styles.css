@@ -1907,18 +1907,28 @@ body {
 
 .brochure-page {
   width: 210mm;
-  min-height: 297mm;
-  max-height: 297mm;
+  height: 296mm;
+  min-height: 296mm;
+  max-height: 296mm;
   box-sizing: border-box;
-  padding: 14mm 16mm 12mm 16mm;
+  padding: 12mm 16mm 10mm 16mm;
   background: #ffffff;
   color: #000000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.brochure-page:not(:last-child) {
   page-break-after: always;
   break-after: page;
-  position: relative;
+}
+
+.brochure-page:last-child {
+  page-break-after: avoid;
+  break-after: avoid;
 }
 
 .brochure-header {
