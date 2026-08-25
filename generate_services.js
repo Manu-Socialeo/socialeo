@@ -273,52 +273,107 @@ function generateServicePage(service) {
   <title>${service.serviceName} Solutions &amp; Strategy — Socialeo Digital Studio</title>
   <meta name="description" content="${service.metaDesc}">
   <meta name="keywords" content="${service.keywords}">
-  <meta name="author" content="Socialeo">
+  <meta name="author" content="Manpreeth N (Manu) — Founder &amp; CEO">
   <meta name="theme-color" content="#050507">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <!-- Favicon -->
+  <!-- Favicon & PWA -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FF416C'/><circle cx='50' cy='50' r='22' fill='%23FFFFFF'/></svg>">
-
-  <!-- Open Graph / Meta -->
-  <meta property="og:title" content="${service.serviceName} Solutions — Socialeo Digital Studio">
-  <meta property="og:description" content="${service.metaDesc}">
-  <meta property="og:image" content="https://socialeo.vercel.app/${service.thumb || 'assets/hero-bg.jpg'}">
-  <meta property="og:url" content="https://socialeo.vercel.app/services/${service.slug}.html">
-  <meta property="og:type" content="article">
-
-  <!-- Canonical & Manifest -->
   <link rel="canonical" href="https://socialeo.vercel.app/services/${service.slug}.html">
   <link rel="manifest" href="../manifest.json">
 
-  <!-- Schema.org JSON-LD Structured Data for SEO -->
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Socialeo Digital Studio">
+  <meta property="og:title" content="${service.serviceName} Solutions &amp; Strategy — Socialeo Digital Studio">
+  <meta property="og:description" content="${service.metaDesc}">
+  <meta property="og:image" content="https://socialeo.vercel.app/${service.thumb || 'assets/hero-bg.jpg'}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${service.serviceName} by Socialeo">
+  <meta property="og:url" content="https://socialeo.vercel.app/services/${service.slug}.html">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://socialeo.vercel.app/services/${service.slug}.html">
+  <meta name="twitter:title" content="${service.serviceName} Solutions &amp; Strategy — Socialeo Digital Studio">
+  <meta name="twitter:description" content="${service.metaDesc}">
+  <meta name="twitter:image" content="https://socialeo.vercel.app/${service.thumb || 'assets/hero-bg.jpg'}">
+
+  <!-- Schema.org Multi-Entity JSON-LD (Service, FAQPage, BreadcrumbList) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "${service.serviceName} by Socialeo",
-    "serviceType": "${service.serviceName}",
-    "provider": {
-      "@type": "ProfessionalService",
-      "name": "Socialeo",
-      "founder": {
-        "@type": "Person",
-        "name": "Manpreeth N (Manu)",
-        "jobTitle": "Founder & CEO"
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://socialeo.vercel.app/services/${service.slug}.html#service",
+        "name": "${service.serviceName} by Socialeo",
+        "serviceType": "${service.serviceName}",
+        "url": "https://socialeo.vercel.app/services/${service.slug}.html",
+        "description": "${service.metaDesc}",
+        "provider": {
+          "@type": "ProfessionalService",
+          "name": "Socialeo",
+          "founder": {
+            "@type": "Person",
+            "name": "Manpreeth N (Manu)",
+            "jobTitle": "Founder & CEO"
+          },
+          "url": "https://socialeo.vercel.app/",
+          "telephone": "+918722163256",
+          "email": "socialeopvtltd@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1646, 5th Main, Vijayanagar 2nd Stage",
+            "addressLocality": "Mysore",
+            "addressRegion": "Karnataka",
+            "postalCode": "570017",
+            "addressCountry": "IN"
+          }
+        },
+        "areaServed": "Global"
       },
-      "url": "https://socialeo.vercel.app/",
-      "telephone": "+918722163256",
-      "email": "socialeopvtltd@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1646, 5th Main, Vijayanagar 2nd Stage",
-        "addressLocality": "Mysore",
-        "addressRegion": "Karnataka",
-        "postalCode": "570017",
-        "addressCountry": "IN"
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://socialeo.vercel.app/services/${service.slug}.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://socialeo.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://socialeo.vercel.app/#services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "${service.serviceName}",
+            "item": "https://socialeo.vercel.app/services/${service.slug}.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://socialeo.vercel.app/services/${service.slug}.html#faq",
+        "mainEntity": [
+          ${service.faqs.map(f => `{
+            "@type": "Question",
+            "name": ${JSON.stringify(f.q)},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": ${JSON.stringify(f.a)}
+            }
+          }`).join(',\n          ')}
+        ]
       }
-    },
-    "description": "${service.metaDesc}",
-    "areaServed": "Global"
+    ]
   }
   </script>
 
