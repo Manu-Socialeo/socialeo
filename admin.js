@@ -1010,8 +1010,8 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast("Loaded reference sample bill: Yoga with Srinatha #7272", "✨");
   });
 
-  // New Blank Invoice Button
-  document.getElementById('new-invoice-btn')?.addEventListener('click', () => {
+  // New Blank Invoice Action
+  function createNewBlankBill() {
     const now = new Date();
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const formattedDate = `${now.getDate()}th ${months[now.getMonth()]} ${now.getFullYear()}`;
@@ -1035,45 +1035,57 @@ document.addEventListener('DOMContentLoaded', () => {
       taxRate: 0,
       discountType: "percent",
       discountValue: 0,
-      bankInfo: { ...VO2_MAX_BILL_1.bankInfo },
-      agencyInfo: { ...VO2_MAX_BILL_1.agencyInfo }
+      bankInfo: getGlobalBankProfile(),
+      agencyInfo: getGlobalAgencyProfile()
     };
     populateFormFromBill(currentBill);
-    showToast("Created new blank invoice template", "📄");
-  });
+    switchTab('generator-tab');
+    showToast(`Created new blank invoice #${nextInvNo}`, "📄");
+  }
+
+  document.getElementById('new-invoice-btn')?.addEventListener('click', createNewBlankBill);
+  document.getElementById('toolbar-new-bill-btn')?.addEventListener('click', createNewBlankBill);
+  document.getElementById('archive-new-bill-btn')?.addEventListener('click', createNewBlankBill);
 
   // Save Invoice Button
   document.getElementById('save-invoice-btn')?.addEventListener('click', () => {
     saveCurrentStateToLocalStorage();
     
     // Check if invoice # already exists in history
-    const existingIndex = savedInvoices.findIndex(inv => inv.invoiceNumber === currentBill.invoiceNumber);
+    const existingIndex = savedInvoices.findIndex(inv => String(inv.invoiceNumber) === String(currentBill.invoiceNumber));
     if (existingIndex >= 0) {
       savedInvoices[existingIndex] = JSON.parse(JSON.stringify(currentBill));
       showToast(`Updated Invoice #${currentBill.invoiceNumber} in database`, "💾");
     } else {
       savedInvoices.unshift(JSON.parse(JSON.stringify(currentBill)));
-      showToast(`Saved new Invoice #${currentBill.invoiceNumber}`, "💾");
+      showToast(`Saved new Invoice #${currentBill.invoiceNumber} to database`, "💾");
     }
 
     localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
+    renderSavedInvoices();
     updateSavedInvoicesCount();
   });
 
   // Delete Active Invoice Button
   document.getElementById('delete-active-bill-btn')?.addEventListener('click', () => {
-    const currentNum = invNumberInput.value.trim() || currentBill.invoiceNumber;
-    if (confirm(`Are you sure you want to delete / remove Invoice #${currentNum}?`)) {
-      const idx = savedInvoices.findIndex(inv => inv.invoiceNumber === currentNum);
+    const currentNum = (invNumberInput ? invNumberInput.value.trim() : '') || currentBill.invoiceNumber;
+    if (confirm(`Are you sure you want to delete Invoice #${currentNum}?`)) {
+      const idx = savedInvoices.findIndex(inv => String(inv.invoiceNumber) === String(currentNum));
       if (idx >= 0) {
         savedInvoices.splice(idx, 1);
         localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
+        renderSavedInvoices();
         updateSavedInvoicesCount();
-        showToast(`Deleted Invoice #${currentNum} from database`, "🗑️");
-      } else {
-        showToast(`Cleared active Invoice #${currentNum}`, "🗑️");
       }
-      document.getElementById('new-invoice-btn')?.click();
+      
+      if (savedInvoices.length > 0) {
+        currentBill = JSON.parse(JSON.stringify(savedInvoices[0]));
+        populateFormFromBill(currentBill);
+        showToast(`Deleted bill. Loaded Invoice #${currentBill.invoiceNumber}`, "🗑️");
+      } else {
+        createNewBlankBill();
+        showToast(`Deleted bill. Created fresh blank template.`, "🗑️");
+      }
     }
   });
 
@@ -1125,8 +1137,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Set default view scale to 75%
-  applyZoom(0.75);
+  // Set default view scale to 100%
+  applyZoom(1.00);
 
   zoomSelectDropdown?.addEventListener('change', (e) => {
     const val = e.target.value;
@@ -1136,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const fitScale = Math.min(1, Math.max(0.2, containerWidth / sheetWidth));
       applyZoom(fitScale);
     } else {
-      const scale = parseFloat(val) || 0.75;
+      const scale = parseFloat(val) || 1.00;
       applyZoom(scale);
     }
   });

@@ -443,22 +443,25 @@
         <div class="studio-preview-pane">
           
           <div class="preview-toolbar no-print">
-            <!-- Simple Clean Zoom Dropdown Button -->
+            <!-- Clean Zoom Dropdown (Digit & % only with arrow mark) -->
             <div class="zoom-dropdown-wrapper">
               <div class="zoom-select-container">
-                <span class="zoom-icon">🔍</span>
-                <select id="zoom-select-dropdown" class="zoom-select-input" title="Change invoice preview zoom scale">
-                  <option value="0.25">25% Scale</option>
-                  <option value="0.50">50% Scale</option>
-                  <option value="0.75" selected>75% Scale (Default)</option>
-                  <option value="1.00">100% Full Size</option>
-                  <option value="fit">Fit to Screen</option>
+                <select id="zoom-select-dropdown" class="zoom-select-input" title="Change Zoom Scale">
+                  <option value="0.25">25%</option>
+                  <option value="0.50">50%</option>
+                  <option value="0.75">75%</option>
+                  <option value="1.00" selected>100%</option>
                 </select>
+                <span class="zoom-arrow-indicator">▾</span>
               </div>
             </div>
 
-            <!-- Single Unified Download / Print Action Button -->
+            <!-- Right-Side Action Controls: New Bill & Download/Print -->
             <div class="preview-actions">
+              <button type="button" class="admin-btn admin-btn-secondary" id="toolbar-new-bill-btn" title="Create a new blank bill template">
+                <span class="btn-icon">➕</span>
+                <span>New Bill</span>
+              </button>
               <button type="button" class="admin-btn admin-btn-primary unified-pdf-action-btn" id="pane-download-print-btn" title="Download direct A4 PDF with active clickable links or Print">
                 <span class="btn-icon">📥</span>
                 <span>Download / Print PDF</span>

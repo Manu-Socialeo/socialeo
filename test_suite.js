@@ -50,13 +50,13 @@ const tests = [
   },
   { 
     suite: 'A4 Sheet Zoom Engine',
-    name: 'Simple Zoom Dropdown Button exists with 25%, 50%, 75%, 100%, and Fit options', 
+    name: 'Clean Zoom Dropdown with digits & % only (25%, 50%, 75%, 100% default) and dropdown arrow', 
     pass: adminHtml.includes('id="zoom-select-dropdown"') && 
           adminHtml.includes('value="0.25"') && 
           adminHtml.includes('value="0.50"') && 
           adminHtml.includes('value="0.75"') && 
           adminHtml.includes('value="1.00"') && 
-          adminHtml.includes('value="fit"') &&
+          adminHtml.includes('zoom-arrow-indicator') &&
           adminJs.includes('zoomSelectDropdown')
   },
   { 
@@ -93,6 +93,19 @@ const tests = [
           adminJs.includes('getGlobalBankProfile') &&
           adminJs.includes('getGlobalAgencyProfile') &&
           adminJs.includes('loadSettingsTab')
+  },
+  { 
+    suite: 'Real-Time Bill Management',
+    name: 'Add New Bill button exists on right side outside the sheet and top bar', 
+    pass: adminHtml.includes('id="toolbar-new-bill-btn"') && 
+          adminHtml.includes('id="new-invoice-btn"') && 
+          adminJs.includes('createNewBlankBill')
+  },
+  { 
+    suite: 'Real-Time Bill Management',
+    name: 'Save and Delete Bill buttons exist and synchronize real-time state', 
+    pass: adminHtml.includes('id="save-invoice-btn"') && 
+          adminHtml.includes('id="delete-active-bill-btn"')
   },
   { 
     suite: 'Branding Links',

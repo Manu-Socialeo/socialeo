@@ -957,26 +957,23 @@ body.admin-body {
 }
 
 .zoom-select-container {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   background: var(--admin-bg-surface);
   border: 1px solid var(--admin-border-subtle);
   border-radius: var(--radius-sm);
-  padding: 0 12px;
+  padding: 0 8px 0 12px;
   height: 38px;
+  min-width: 80px;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .zoom-select-container:hover {
-  border-color: rgba(255, 94, 58, 0.4);
+  border-color: rgba(255, 94, 58, 0.5);
   background: rgba(255, 255, 255, 0.05);
-}
-
-.zoom-icon {
-  font-size: 13px;
-  color: var(--admin-accent-primary);
 }
 
 .zoom-select-input {
@@ -984,17 +981,31 @@ body.admin-body {
   border: none;
   color: var(--admin-text-primary);
   font-family: inherit;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   outline: none;
-  padding-right: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 16px;
+  width: 100%;
+}
+
+.zoom-arrow-indicator {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  font-size: 11px;
+  color: var(--admin-accent-primary);
+  font-weight: 900;
 }
 
 .zoom-select-input option {
   background: #12121a;
   color: #ffffff;
   padding: 8px 12px;
+  font-weight: 700;
 }
 
 .unified-pdf-action-btn {
