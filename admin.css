@@ -661,24 +661,32 @@ body.admin-body {
 }
 
 .inv-brand-logo {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.8px;
   color: #000000;
+  text-decoration: none;
   display: inline-flex;
   align-items: baseline;
   line-height: 1;
   margin-bottom: 2px;
   font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.inv-brand-logo:hover {
+  opacity: 0.85;
+  color: #000000;
 }
 
 .brand-accent-dot {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   background-color: #f59e0b;
   border-radius: 50%;
   display: inline-block;
-  margin-left: 2px;
+  margin-left: 2.5px;
 }
 
 .inv-date-text {
@@ -830,6 +838,10 @@ body.admin-body {
 
 .invoice-a4-sheet.compact-mode .inv-main-heading {
   font-size: 28px;
+}
+
+.invoice-a4-sheet.compact-mode .inv-brand-logo {
+  font-size: 24px;
 }
 
 .invoice-a4-sheet.compact-mode .inv-divider-line {
@@ -1369,6 +1381,14 @@ body.admin-body {
     font-weight: 700 !important;
     color: #334155 !important;
     white-space: nowrap !important;
+  }
+
+  .inv-brand-logo {
+    font-size: 28px !important;
+    color: #000000 !important;
+    text-decoration: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   .brand-accent-dot {
