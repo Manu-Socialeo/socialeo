@@ -227,83 +227,85 @@
       margin: 0;
     }
 
-    /* RIGHT STICKY WHATSAPP INQUIRY CARD */
+    /* RIGHT STICKY WHATSAPP INQUIRY CARD (COMPACT SINGLE DESKTOP SCREEN) */
     .sticky-inquiry-sidebar {
       position: sticky;
       top: calc(var(--header-height) + 20px);
+      max-height: calc(100vh - 100px);
+      z-index: 10;
     }
     .whatsapp-inquiry-card {
-      background: radial-gradient(circle at top right, rgba(37, 211, 102, 0.15) 0%, rgba(18, 18, 24, 0.98) 70%);
+      background: radial-gradient(circle at top right, rgba(37, 211, 102, 0.14) 0%, rgba(18, 18, 24, 0.98) 75%);
       border: 1px solid rgba(37, 211, 102, 0.35);
       border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      padding: 22px 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      box-sizing: border-box;
     }
     .wa-card-header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 16px;
+      gap: 10px;
+      margin-bottom: 12px;
     }
     .wa-icon-box {
-      width: 48px;
-      height: 48px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background: #25D366;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-size: 24px;
-      box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+      font-size: 20px;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.5);
       flex-shrink: 0;
     }
     .wa-title {
       font-family: var(--font-display);
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       color: #fff;
       margin: 0;
       font-weight: 800;
+      line-height: 1.2;
     }
     .wa-subtitle {
-      font-size: 13px;
+      font-size: 11.5px;
       color: var(--text-muted);
       margin-top: 2px;
     }
-    .wa-desc {
-      font-size: 13.5px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 22px;
-    }
     .wa-form-group {
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
     .wa-form-group label {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--text-secondary);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .wa-input, .wa-textarea, .wa-select {
+    .wa-input, .wa-textarea {
       width: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      padding: 12px 14px;
+      padding: 9px 12px;
       color: #fff;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 13px;
       box-sizing: border-box;
       outline: none;
       transition: all 0.2s;
     }
-    .wa-input:focus, .wa-textarea:focus, .wa-select:focus {
+    .wa-input:focus, .wa-textarea:focus {
       border-color: #25D366;
-      box-shadow: 0 0 14px rgba(37, 211, 102, 0.25);
+      box-shadow: 0 0 12px rgba(37, 211, 102, 0.25);
+    }
+    .wa-textarea {
+      height: 64px;
+      resize: none;
     }
     .wa-submit-btn {
       width: 100%;
@@ -311,31 +313,31 @@
       color: #ffffff;
       border: none;
       border-radius: var(--radius-sm);
-      padding: 14px 20px;
-      font-size: 14.5px;
+      padding: 12px 16px;
+      font-size: 13.5px;
       font-weight: 800;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
       transition: all 0.2s;
-      margin-top: 18px;
+      margin-top: 12px;
     }
     .wa-submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(37, 211, 102, 0.55);
       background: linear-gradient(135deg, #2ae06d 0%, #179e8e 100%);
     }
     .wa-direct-call {
-      margin-top: 18px;
-      padding-top: 16px;
+      margin-top: 12px;
+      padding-top: 10px;
       border-top: 1px solid rgba(255,255,255,0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
     }
     .wa-direct-call a {
@@ -353,6 +355,7 @@
       }
       .sticky-inquiry-sidebar {
         position: static;
+        max-height: none;
       }
     }
   </style>
@@ -512,20 +515,16 @@
 
       </article>
 
-      <!-- RIGHT COLUMN: Sticky WhatsApp Inquiry Form -->
+      <!-- RIGHT COLUMN: Compact Sticky WhatsApp Inquiry Card (Single Screen Viewport) -->
       <aside class="sticky-inquiry-sidebar">
         <div class="whatsapp-inquiry-card">
           <div class="wa-card-header">
             <div class="wa-icon-box">💬</div>
             <div>
-              <h2 class="wa-title">Start via WhatsApp</h2>
-              <div class="wa-subtitle">Direct line to Socialeo Lead Engineers</div>
+              <h2 class="wa-title">Quick WhatsApp Inquiry</h2>
+              <div class="wa-subtitle">Instant reply from Socialeo founders</div>
             </div>
           </div>
-          
-          <p class="wa-desc">
-            Submit your details below to launch an instant pre-filled WhatsApp conversation directly with our studio founders.
-          </p>
 
           <form id="whatsapp-inquiry-form" onsubmit="handleWhatsAppSubmit(event)">
             <div class="wa-form-group">
@@ -534,41 +533,23 @@
             </div>
 
             <div class="wa-form-group">
-              <label for="wa-phone">WhatsApp Phone Number *</label>
+              <label for="wa-phone">WhatsApp Number *</label>
               <input type="tel" id="wa-phone" class="wa-input" placeholder="+91 98765 43210" required>
             </div>
 
             <div class="wa-form-group">
-              <label for="wa-service">Service Requirement</label>
-              <select id="wa-service" class="wa-select">
-                <option value="Web Design" selected>Web Design (Current)</option>
-                <option value="Web Design">Web Design &amp; UI Systems</option>
-                <option value="Web Development">Full-Stack Web Development</option>
-                <option value="Mobile Apps">Mobile App Development</option>
-                <option value="Digital Marketing">Digital Marketing &amp; SEO</option>
-                <option value="UI/UX Design">UI/UX Research &amp; Wireframing</option>
-                <option value="Brand Strategy">Brand Strategy &amp; Identity</option>
-              </select>
-            </div>
-
-            <div class="wa-form-group">
-              <label for="wa-budget">Estimated Budget / Timeline</label>
-              <input type="text" id="wa-budget" class="wa-input" placeholder="e.g. ₹50,000 / 2-3 Weeks">
-            </div>
-
-            <div class="wa-form-group">
-              <label for="wa-notes">Project Scope &amp; Vision</label>
-              <textarea id="wa-notes" class="wa-textarea" rows="3" placeholder="Describe your goals, existing links, or requirements..."></textarea>
+              <label for="wa-message">Your Message *</label>
+              <textarea id="wa-message" class="wa-textarea" placeholder="Type your message or project requirements..." required></textarea>
             </div>
 
             <button type="submit" class="wa-submit-btn" id="wa-send-btn">
-              <span>Send WhatsApp Message</span>
+              <span>Send WhatsApp Message 💬</span>
               <span>→</span>
             </button>
           </form>
 
           <div class="wa-direct-call">
-            <span>Prefer a quick phone call?</span>
+            <span>Direct Phone Call:</span>
             <a href="tel:+918722163256">📞 +91 8722163256</a>
           </div>
 
@@ -590,11 +571,9 @@
       e.preventDefault();
       const name = document.getElementById('wa-name').value.trim();
       const phone = document.getElementById('wa-phone').value.trim();
-      const service = document.getElementById('wa-service').value;
-      const budget = document.getElementById('wa-budget').value.trim() || 'Flexible';
-      const notes = document.getElementById('wa-notes').value.trim() || 'Please share portfolio and initial proposal.';
+      const messageText = document.getElementById('wa-message').value.trim();
 
-      const message = `Hi Socialeo Team! 👋\n\nI would like to inquire about your *${service}* services.\n\n👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n💰 *Budget/Timeline:* ${budget}\n📝 *Project Scope:* ${notes}\n\nPlease let me know when we can connect!`;
+      const message = `Hi Socialeo Team! 👋\n\nI would like to inquire about *${service.serviceName}*.\n\n👤 *Name:* ${name}\n📱 *WhatsApp Number:* ${phone}\n💬 *Message:* ${messageText}\n\nPlease let me know when we can connect!`;
 
       const encodedMsg = encodeURIComponent(message);
       const waUrl = `https://wa.me/918722163256?text=${encodedMsg}`;
