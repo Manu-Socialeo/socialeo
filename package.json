@@ -1,0 +1,12 @@
+{
+  "name": "socialeo-web-suite",
+  "version": "1.0.0",
+  "description": "Socialeo Studio — High-Conversion Digital Agency & Real-Time Invoicing Suite",
+  "scripts": {
+    "test": "node test_suite.js",
+    "test:e2e": "node test_playwright.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
+}
