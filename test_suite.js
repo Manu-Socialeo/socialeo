@@ -124,6 +124,12 @@ const tests = [
           adminJs.includes('loadBillIntoStudio')
   },
   { 
+    suite: 'Header Navigation',
+    name: 'Header shows clean active section tab name without redundant root path', 
+    pass: adminHtml.includes('id="topbar-active-tab-name"') && 
+          !adminHtml.includes('crumb-root')
+  },
+  { 
     suite: 'Branding Links',
     name: 'Socialeo official website clickable logo preserved', 
     pass: adminHtml.includes('https://socialeo.vercel.app/') 
