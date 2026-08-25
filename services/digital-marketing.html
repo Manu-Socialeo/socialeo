@@ -382,15 +382,31 @@
           <li><a href="../index.html#process" class="nav-link">Process</a></li>
           <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
           <li><a href="../blogs.html" class="nav-link">Blogs</a></li>
+          <li><a href="../index.html#testimonials" class="nav-link">Testimonials</a></li>
           <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="https://wa.me/918722163256?text=Hi%20Socialeo%2C%20I%20would%20like%20to%20inquire%20about%20your%20Digital%20Marketing%20services." target="_blank" class="btn btn-primary" style="background:#25D366; border:none;">WhatsApp Us 💬</a>
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Dark / Light Mode" title="Toggle Mode">🌙</button>
+        <a href="../index.html#contact" class="btn btn-primary" id="nav-cta-btn">Contact Us</a>
+        <button class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Toggle Navigation">☰</button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <a href="../index.html#hero" class="nav-link">Home</a>
+    <a href="../index.html#about" class="nav-link">About Us</a>
+    <a href="../index.html#services" class="nav-link active">Services</a>
+    <a href="../index.html#process" class="nav-link">Our Process</a>
+    <a href="../index.html#projects" class="nav-link">Projects</a>
+    <a href="../blogs.html" class="nav-link">Blogs &amp; Insights</a>
+    <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
+    <a href="../index.html#contact" class="nav-link">Contact Us</a>
+    <a href="../index.html#contact" class="btn btn-primary" style="margin-top: 12px; text-align:center;">Start a Project</a>
+  </div>
 
   <!-- Main Content Layout -->
   <main class="container service-page-wrapper">
@@ -559,12 +575,66 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer style="border-top:1px solid var(--border-subtle); padding:40px 0; text-align:center; color:var(--text-muted); font-size:13.5px;">
+  <!-- Footer Section -->
+  <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 Socialeo Digital Studio. 1646, 5th Main, Vijayanagar 2nd Stage, Mysore, Karnataka 570017.</p>
+      <div class="footer-top">
+        <a href="../index.html#hero" class="logo footer-logo">
+          <div class="logo-icon"></div>
+          <span>Socialeo</span>
+        </a>
+
+        <ul class="footer-links">
+          <li><a href="../index.html#hero" class="footer-link">Home</a></li>
+          <li><a href="../index.html#about" class="footer-link">About Us</a></li>
+          <li><a href="../index.html#services" class="footer-link">Services</a></li>
+          <li><a href="../index.html#process" class="footer-link">Process</a></li>
+          <li><a href="../index.html#projects" class="footer-link">Projects</a></li>
+          <li><a href="../blogs.html" class="footer-link">Blogs</a></li>
+          <li><a href="../index.html#testimonials" class="footer-link">Testimonials</a></li>
+          <li><a href="../index.html#contact" class="footer-link">Contact</a></li>
+        </ul>
+
+        <div class="social-links" style="margin-top: 10px;">
+          <a href="https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8" target="_blank" rel="noopener" class="social-btn" aria-label="Google Maps" title="Google Maps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+          </a>
+          <a href="https://www.instagram.com/socialeo.in" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter / X" title="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://github.com/Manu-Socialeo/socialeo" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Copyright &copy; 2026 Socialeo. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container"></div>
+
+  <!-- Back to Top Floating Button -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- JavaScript -->
+  <script src="../main.js"></script>
 
   <script>
     function handleWhatsAppSubmit(e) {
