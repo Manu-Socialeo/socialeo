@@ -275,10 +275,49 @@ document.addEventListener('DOMContentLoaded', () => {
   logoutBtn?.addEventListener('click', lockAdminStudio);
 
   // ==========================================
-  // 3. TAB NAVIGATION
+  // 3. COLLAPSIBLE SIDEBAR & TAB NAVIGATION
   // ==========================================
+  const sidebarElem = document.getElementById('admin-sidebar');
+  const layoutContainer = document.getElementById('admin-layout-container');
+  const sidebarCollapseBtn = document.getElementById('sidebar-collapse-btn');
+  const topbarSidebarToggle = document.getElementById('topbar-sidebar-toggle');
+  const topbarTabName = document.getElementById('topbar-active-tab-name');
+
+  // Load saved sidebar collapsed state
+  const isSidebarCollapsed = localStorage.getItem('socialeo_sidebar_collapsed') === 'true';
+  if (isSidebarCollapsed) {
+    sidebarElem?.classList.add('collapsed');
+    layoutContainer?.classList.add('sidebar-collapsed');
+  }
+
+  function toggleSidebar() {
+    if (window.innerWidth <= 992) {
+      sidebarElem?.classList.toggle('mobile-open');
+    } else {
+      const isCollapsed = sidebarElem?.classList.toggle('collapsed');
+      layoutContainer?.classList.toggle('sidebar-collapsed', isCollapsed);
+      localStorage.setItem('socialeo_sidebar_collapsed', isCollapsed ? 'true' : 'false');
+    }
+  }
+
+  sidebarCollapseBtn?.addEventListener('click', toggleSidebar);
+  topbarSidebarToggle?.addEventListener('click', toggleSidebar);
+
+  // Close mobile sidebar on selection
+  function closeMobileSidebarOnSelection() {
+    if (window.innerWidth <= 992) {
+      sidebarElem?.classList.remove('mobile-open');
+    }
+  }
+
   const tabBtns = document.querySelectorAll('.admin-tab-btn');
   const tabContents = document.querySelectorAll('.admin-tab-content');
+
+  const tabNameMap = {
+    'generator-tab': 'Bill Generator Studio',
+    'crm-tab': 'Client CRM Database',
+    'invoices-tab': 'Saved Invoices Directory'
+  };
 
   function switchTab(targetTabId) {
     tabBtns.forEach(btn => {
@@ -287,12 +326,44 @@ document.addEventListener('DOMContentLoaded', () => {
     tabContents.forEach(content => {
       content.classList.toggle('active', content.id === targetTabId);
     });
+    if (topbarTabName && tabNameMap[targetTabId]) {
+      topbarTabName.textContent = tabNameMap[targetTabId];
+    }
+    closeMobileSidebarOnSelection();
     if (targetTabId === 'crm-tab') renderCRM();
     if (targetTabId === 'invoices-tab') renderSavedInvoices();
   }
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  // Sidebar Quick Presets
+  document.getElementById('sidebar-preset-vo2-standard')?.addEventListener('click', () => {
+    switchTab('generator-tab');
+    loadBillIntoStudio(JSON.parse(JSON.stringify(VO2_MAX_BILL_1)));
+    showToast("Loaded VO2 MAX Bill 1 (₹57,000 Standard)", "📄");
+  });
+
+  document.getElementById('sidebar-preset-vo2-offer')?.addEventListener('click', () => {
+    switchTab('generator-tab');
+    loadBillIntoStudio(JSON.parse(JSON.stringify(VO2_MAX_OFFER_BILL)));
+    showToast("Loaded VO2 MAX Bill 1 Offer (₹52,000)", "🔥");
+  });
+
+  document.getElementById('sidebar-preset-vo2-future')?.addEventListener('click', () => {
+    switchTab('generator-tab');
+    loadBillIntoStudio(JSON.parse(JSON.stringify(VO2_MAX_BILL_2)));
+    showToast("Loaded VO2 MAX Bill 2 Future Scope (₹66,000)", "🚀");
+  });
+
+  // Sidebar Quick Action Tools
+  document.getElementById('sidebar-quick-download')?.addEventListener('click', () => {
+    downloadPdfWithLinks();
+  });
+
+  document.getElementById('sidebar-quick-print')?.addEventListener('click', () => {
+    window.print();
   });
 
   // Theme Toggle

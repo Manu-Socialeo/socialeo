@@ -24,36 +24,134 @@
 </head>
 <body class="admin-body">
 
-  <!-- Top Admin Bar -->
-  <header class="admin-header no-print">
-    <div class="admin-header-left">
-      <a href="index.html" class="admin-brand" title="Socialeo Studio">
-        <div class="brand-badge-dot"></div>
-        <span class="brand-name">Socialeo</span>
-        <span class="admin-badge">ADMIN HUB</span>
-      </a>
-      <div class="header-divider"></div>
-      <nav class="admin-tabs-nav">
-        <button class="admin-tab-btn active" data-tab="generator-tab">
-          <span class="tab-icon">🧾</span> Bill Generator
+  <!-- ==========================================================================
+       ADMIN WORKSPACE LAYOUT CONTAINER
+       ========================================================================== -->
+  <div class="admin-layout-container" id="admin-layout-container">
+
+    <!-- ==========================================
+         LEFT SIDEBAR NAVIGATION (COLLAPSIBLE WITH ARROW)
+         ========================================== -->
+    <aside class="admin-sidebar no-print" id="admin-sidebar">
+      
+      <!-- Sidebar Header (Brand Logo links to Main Site + Collapse Arrow) -->
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand" title="Socialeo Studio — Return to Main Site">
+          <div class="brand-badge-dot"></div>
+          <span class="brand-name">Socialeo</span>
+          <span class="admin-badge">ADMIN</span>
+        </a>
+        <button type="button" class="sidebar-toggle-btn" id="sidebar-collapse-btn" title="Collapse / Expand Sidebar (◀ / ▶)">
+          <span class="toggle-arrow" id="sidebar-arrow-icon">◀</span>
         </button>
-        <button class="admin-tab-btn" data-tab="crm-tab">
-          <span class="tab-icon">👥</span> Client CRM
+      </div>
+
+      <!-- Sidebar Scrollable Navigation Content -->
+      <div class="sidebar-content">
+        
+        <!-- Workspace Tabs Group -->
+        <div class="sidebar-nav-group">
+          <div class="nav-group-label">WORKSPACE</div>
+          <nav class="sidebar-nav-list">
+            <button class="admin-tab-btn sidebar-nav-item active" data-tab="generator-tab" title="Bill Generator Studio">
+              <span class="tab-icon">🧾</span>
+              <span class="nav-text">Bill Generator</span>
+            </button>
+            <button class="admin-tab-btn sidebar-nav-item" data-tab="crm-tab" title="Client CRM Database">
+              <span class="tab-icon">👥</span>
+              <span class="nav-text">Client CRM</span>
+            </button>
+            <button class="admin-tab-btn sidebar-nav-item" data-tab="invoices-tab" title="Saved Invoices Directory">
+              <span class="tab-icon">📁</span>
+              <span class="nav-text">Saved Invoices</span>
+              <span class="sidebar-badge" id="saved-invoices-count">2</span>
+            </button>
+          </nav>
+        </div>
+
+        <!-- Billing Presets Group (Collapsible Quick Triggers) -->
+        <div class="sidebar-nav-group">
+          <div class="nav-group-label">BILLING PRESETS</div>
+          <div class="sidebar-presets-list">
+            <button type="button" class="sidebar-preset-item" id="sidebar-preset-vo2-standard" title="Load VO2 MAX Bill 1 (Standard ₹57,000)">
+              <span class="preset-indicator dot-orange"></span>
+              <div class="preset-info">
+                <span class="preset-name">VO2 MAX Bill 1</span>
+                <span class="preset-price">₹57,000</span>
+              </div>
+            </button>
+            <button type="button" class="sidebar-preset-item" id="sidebar-preset-vo2-offer" title="Load VO2 MAX Bill 1 Special Offer (₹52,000)">
+              <span class="preset-indicator dot-green"></span>
+              <div class="preset-info">
+                <span class="preset-name">VO2 MAX Offer</span>
+                <span class="preset-price">₹52,000</span>
+              </div>
+            </button>
+            <button type="button" class="sidebar-preset-item" id="sidebar-preset-vo2-future" title="Load VO2 MAX Bill 2 Future Scope (₹66,000)">
+              <span class="preset-indicator dot-purple"></span>
+              <div class="preset-info">
+                <span class="preset-name">VO2 MAX Bill 2</span>
+                <span class="preset-price">₹66,000</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Studio Actions Group -->
+        <div class="sidebar-nav-group">
+          <div class="nav-group-label">STUDIO TOOLS</div>
+          <div class="sidebar-presets-list">
+            <button type="button" class="sidebar-preset-item action-tool" id="sidebar-quick-download" title="Download direct A4 PDF">
+              <span class="tab-icon">📥</span>
+              <span class="nav-text">Download PDF</span>
+            </button>
+            <button type="button" class="sidebar-preset-item action-tool" id="sidebar-quick-print" title="Open system print dialog">
+              <span class="tab-icon">🖨️</span>
+              <span class="nav-text">Print Dialog</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar Bottom Controls (Lock Studio & Theme) -->
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-footer-btn" id="admin-logout-btn" title="Log Out & Lock Studio">
+          <span class="footer-icon">🔒</span>
+          <span class="nav-text">Log Out</span>
         </button>
-        <button class="admin-tab-btn" data-tab="invoices-tab">
-          <span class="tab-icon">📁</span> Saved Invoices <span class="badge" id="saved-invoices-count">2</span>
+        <button type="button" class="sidebar-footer-btn theme-btn" id="theme-toggle" title="Toggle Dark / Light Theme">
+          <span class="footer-icon" id="theme-icon">🌙</span>
+          <span class="nav-text">Theme</span>
         </button>
-      </nav>
-    </div>
-    <div class="admin-header-right">
-      <button type="button" class="admin-btn admin-btn-ghost" id="admin-logout-btn" title="Log Out & Lock Studio">
-        🔒 Log Out
-      </button>
-      <a href="index.html" class="admin-link-btn" title="Back to Socialeo Main Site">
-        ← Back to Main Site
-      </a>
-    </div>
-  </header>
+      </div>
+
+    </aside>
+
+    <!-- ==========================================
+         MAIN CONTENT WRAPPER (TOPBAR + WORKSPACE)
+         ========================================== -->
+    <div class="admin-main-wrapper" id="admin-main-wrapper">
+
+      <!-- Top Breadcrumbs & Status Bar -->
+      <header class="admin-topbar no-print">
+        <div class="topbar-left">
+          <button type="button" class="topbar-menu-toggle" id="topbar-sidebar-toggle" title="Toggle Sidebar">
+            <span class="toggle-icon">☰</span>
+          </button>
+          <div class="topbar-breadcrumbs">
+            <span class="crumb-root">Socialeo Studio</span>
+            <span class="crumb-sep">/</span>
+            <span class="crumb-active" id="topbar-active-tab-name">Bill Generator</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-status-pill">
+            <span class="pulse-indicator"></span>
+            <span>Studio Engine Active</span>
+          </div>
+        </div>
+      </header>
 
   <!-- ==========================================
        ADMIN AUTHENTICATION GATEWAY (LOGIN OVERLAY)
@@ -692,7 +790,9 @@
       </div>
     </section>
 
-  </main>
+    </main>
+  </div> <!-- end admin-main-wrapper -->
+</div> <!-- end admin-layout-container -->
 
   <!-- Add Client Modal -->
   <div class="admin-modal-backdrop no-print" id="new-client-modal">
