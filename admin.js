@@ -519,6 +519,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const calcDiscountDisplay = document.getElementById('calc-discount-display');
   const calcTotalDisplay = document.getElementById('calc-total-display');
 
+  // Load Bill Into Studio Helper
+  function loadBillIntoStudio(bill) {
+    currentBill = JSON.parse(JSON.stringify(bill));
+    populateFormFromBill(currentBill);
+  }
+  window.loadBillIntoStudio = loadBillIntoStudio;
+
   // Populate Form Fields from state
   function populateFormFromBill(bill) {
     if (invNumberInput) invNumberInput.value = bill.invoiceNumber || "";

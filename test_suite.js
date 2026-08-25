@@ -108,6 +108,15 @@ const tests = [
           adminHtml.includes('id="delete-active-bill-btn"')
   },
   { 
+    suite: 'Billing Presets & VO2 MAX Bills',
+    name: 'All sidebar presets (VO2 MAX Bill 1, Offer, Bill 2, and Srinatha) are wired up to loadBillIntoStudio', 
+    pass: adminHtml.includes('id="sidebar-preset-vo2-standard"') && 
+          adminHtml.includes('id="sidebar-preset-vo2-offer"') && 
+          adminHtml.includes('id="sidebar-preset-vo2-future"') && 
+          adminHtml.includes('id="sidebar-preset-srinatha"') && 
+          adminJs.includes('loadBillIntoStudio')
+  },
+  { 
     suite: 'Branding Links',
     name: 'Socialeo official website clickable logo preserved', 
     pass: adminHtml.includes('https://socialeo.vercel.app/') 
