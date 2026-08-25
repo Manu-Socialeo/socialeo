@@ -881,28 +881,99 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // Dynamic CRM Statistics Recalculation from Saved Invoices
+  function recalculateCrmStatsFromInvoices() {
+    if (!crmClients || !Array.isArray(crmClients)) return;
+    
+    crmClients.forEach(client => {
+      let clientTotal = 0;
+      let count = 0;
+
+      savedInvoices.forEach(inv => {
+        const invClientName = (inv.client?.name || '').toLowerCase().trim();
+        const clientName = (client.name || '').toLowerCase().trim();
+
+        if (invClientName && clientName && (invClientName === clientName || invClientName.includes(clientName) || clientName.includes(invClientName))) {
+          count++;
+          let sub = 0;
+          inv.items?.forEach(it => {
+            const a = parseFloat(String(it.amount).replace(/,/g, ''));
+            if (!isNaN(a)) sub += a;
+          });
+          const tax = (sub * (inv.taxRate || 0)) / 100;
+          let disc = 0;
+          if (inv.discountType === 'percent') disc = (sub * (inv.discountValue || 0)) / 100;
+          else disc = (inv.discountValue || 0);
+          clientTotal += Math.max(0, sub + tax - disc);
+        }
+      });
+
+      if (count > 0) {
+        client.invoicesCount = count;
+        client.totalBilled = formatCurrency(clientTotal, "₹");
+      }
+    });
+
+    // Auto-track newly typed clients in CRM if not present
+    const activeClientName = (clientNameInput ? clientNameInput.value.trim() : (currentBill.client?.name || '')).trim();
+    if (activeClientName && activeClientName !== "Client Name" && activeClientName !== "New Client" && activeClientName.length >= 3) {
+      const exists = crmClients.some(c => c.name.toLowerCase().trim() === activeClientName.toLowerCase().trim());
+      if (!exists) {
+        crmClients.push({
+          id: activeClientName.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+          name: activeClientName,
+          addressLine1: clientAddr1Input ? clientAddr1Input.value.trim() : '',
+          addressLine2: clientAddr2Input ? clientAddr2Input.value.trim() : '',
+          phone: clientPhoneInput ? clientPhoneInput.value.trim() : '',
+          email: clientEmailInput ? clientEmailInput.value.trim() : '',
+          totalBilled: formatCurrency(0, "₹"),
+          invoicesCount: 1
+        });
+      }
+    }
+
+    localStorage.setItem('socialeo_crm_clients', JSON.stringify(crmClients));
+  }
+
   function saveCurrentStateToLocalStorage() {
-    if (invNumberInput) currentBill.invoiceNumber = invNumberInput.value;
-    if (invDateInput) currentBill.invoiceDate = invDateInput.value;
-    if (invStatusInput) currentBill.status = invStatusInput.value;
-    if (invCurrencyInput) currentBill.currency = invCurrencyInput.value;
+    if (invNumberInput) currentBill.invoiceNumber = invNumberInput.value.trim() || currentBill.invoiceNumber || '8104';
+    if (invDateInput) currentBill.invoiceDate = invDateInput.value.trim() || currentBill.invoiceDate;
+    if (invStatusInput) currentBill.status = invStatusInput.value || currentBill.status || 'Pending';
+    if (invCurrencyInput) currentBill.currency = invCurrencyInput.value || currentBill.currency || '₹';
 
     currentBill.client = {
-      name: clientNameInput ? clientNameInput.value : '',
-      addressLine1: clientAddr1Input ? clientAddr1Input.value : '',
-      addressLine2: clientAddr2Input ? clientAddr2Input.value : '',
-      phone: clientPhoneInput ? clientPhoneInput.value : '',
-      email: clientEmailInput ? clientEmailInput.value : ''
+      name: clientNameInput ? clientNameInput.value.trim() || 'Client Name' : (currentBill.client?.name || 'Client Name'),
+      addressLine1: clientAddr1Input ? clientAddr1Input.value.trim() : '',
+      addressLine2: clientAddr2Input ? clientAddr2Input.value.trim() : '',
+      phone: clientPhoneInput ? clientPhoneInput.value.trim() : '',
+      email: clientEmailInput ? clientEmailInput.value.trim() : ''
     };
 
     currentBill.bankInfo = getGlobalBankProfile();
     currentBill.agencyInfo = getGlobalAgencyProfile();
 
     if (taxRateInput) currentBill.taxRate = parseFloat(taxRateInput.value) || 0;
-    if (discountTypeInput) currentBill.discountType = discountTypeInput.value;
+    if (discountTypeInput) currentBill.discountType = discountTypeInput.value || 'percent';
     if (discountValueInput) currentBill.discountValue = parseFloat(discountValueInput.value) || 0;
 
     localStorage.setItem('socialeo_active_bill', JSON.stringify(currentBill));
+
+    // Real-time synchronization into savedInvoices list
+    const currentNum = String(currentBill.invoiceNumber).trim();
+    const existingIndex = savedInvoices.findIndex(inv => String(inv.invoiceNumber).trim() === currentNum);
+    if (existingIndex >= 0) {
+      savedInvoices[existingIndex] = JSON.parse(JSON.stringify(currentBill));
+    } else {
+      const draftBill = JSON.parse(JSON.stringify(currentBill));
+      savedInvoices.unshift(draftBill);
+    }
+    localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
+
+    // Real-time synchronization into CRM & Sidebar Badge
+    recalculateCrmStatsFromInvoices();
+    updateSavedInvoicesCount();
+    renderSavedInvoices();
+    renderCRM();
   }
 
   // ==========================================
@@ -1063,7 +1134,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const now = new Date();
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const formattedDate = `${now.getDate()}th ${months[now.getMonth()]} ${now.getFullYear()}`;
-    const nextInvNo = Math.floor(1000 + Math.random() * 9000).toString();
+    
+    // Auto-calculate next invoice number
+    let highestNum = 8105;
+    savedInvoices.forEach(inv => {
+      const num = parseInt(inv.invoiceNumber);
+      if (!isNaN(num) && num > highestNum) highestNum = num;
+    });
+    const nextInvNo = String(highestNum + 1);
 
     currentBill = {
       invoiceNumber: nextInvNo,
@@ -1071,7 +1149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       status: "Draft",
       currency: "₹",
       client: {
-        name: "",
+        name: "New Client",
         addressLine1: "",
         addressLine2: "",
         phone: "",
@@ -1086,9 +1164,20 @@ document.addEventListener('DOMContentLoaded', () => {
       bankInfo: getGlobalBankProfile(),
       agencyInfo: getGlobalAgencyProfile()
     };
+
+    // Prepend to savedInvoices immediately as Draft (Unsaved New Bill)
+    const existingIndex = savedInvoices.findIndex(inv => String(inv.invoiceNumber).trim() === nextInvNo);
+    if (existingIndex >= 0) {
+      savedInvoices[existingIndex] = JSON.parse(JSON.stringify(currentBill));
+    } else {
+      savedInvoices.unshift(JSON.parse(JSON.stringify(currentBill)));
+    }
+    localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
+
     populateFormFromBill(currentBill);
+    saveCurrentStateToLocalStorage();
     switchTab('generator-tab');
-    showToast(`Created new blank invoice #${nextInvNo}`, "📄");
+    showToast(`Created new bill #${nextInvNo} (Draft / Unsaved)`, "📄");
   }
 
   document.getElementById('topbar-new-bill-btn')?.addEventListener('click', createNewBlankBill);
@@ -1097,21 +1186,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Save Invoice Button
   document.getElementById('save-invoice-btn')?.addEventListener('click', () => {
+    currentBill.status = invStatusInput.value !== "Draft" ? invStatusInput.value : "Pending";
+    if (invStatusInput) invStatusInput.value = currentBill.status;
     saveCurrentStateToLocalStorage();
-    
-    // Check if invoice # already exists in history
-    const existingIndex = savedInvoices.findIndex(inv => String(inv.invoiceNumber) === String(currentBill.invoiceNumber));
-    if (existingIndex >= 0) {
-      savedInvoices[existingIndex] = JSON.parse(JSON.stringify(currentBill));
-      showToast(`Updated Invoice #${currentBill.invoiceNumber} in database`, "💾");
-    } else {
-      savedInvoices.unshift(JSON.parse(JSON.stringify(currentBill)));
-      showToast(`Saved new Invoice #${currentBill.invoiceNumber} to database`, "💾");
-    }
-
-    localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
-    renderSavedInvoices();
-    updateSavedInvoicesCount();
+    showToast(`Saved Invoice #${currentBill.invoiceNumber} to database!`, "💾");
   });
 
   // Delete Active Invoice Button
@@ -1207,9 +1285,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function renderCRM() {
     const tbody = document.getElementById('crm-clients-tbody');
+    if (!tbody) return;
     tbody.innerHTML = '';
     
-    document.getElementById('crm-total-clients').textContent = crmClients.length;
+    const totalClientsElem = document.getElementById('crm-total-clients');
+    if (totalClientsElem) totalClientsElem.textContent = crmClients.length;
     
     crmClients.forEach((client, index) => {
       const tr = document.createElement('tr');
@@ -1242,6 +1322,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderClientDropdown() {
+    if (!crmClientSelect) return;
     crmClientSelect.innerHTML = '<option value="">-- Quick Pick Saved Client --</option>';
     crmClients.forEach((c, idx) => {
       const opt = document.createElement('option');
@@ -1251,7 +1332,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  crmClientSelect.addEventListener('change', (e) => {
+  crmClientSelect?.addEventListener('change', (e) => {
     const idx = e.target.value;
     if (idx === "") return;
     const client = crmClients[idx];
@@ -1353,7 +1434,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addressLine2: clientAddr2Input.value.trim(),
         phone: clientPhoneInput.value.trim(),
         email: clientEmailInput.value.trim(),
-        totalBilled: "₹4,18,000",
+        totalBilled: "₹0",
         invoicesCount: 1
       });
       showToast(`Saved ${name} into CRM clients!`, "👥");
@@ -1373,6 +1454,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderSavedInvoices() {
     const tbody = document.getElementById('saved-invoices-tbody');
+    if (!tbody) return;
     tbody.innerHTML = '';
 
     savedInvoices.forEach((inv, index) => {
@@ -1388,14 +1470,27 @@ document.addEventListener('DOMContentLoaded', () => {
       else disc = (inv.discountValue || 0);
       const tot = Math.max(0, sub + tax - disc);
 
+      const isActive = String(inv.invoiceNumber).trim() === String(currentBill.invoiceNumber).trim();
+      const statusText = inv.status || 'Draft';
+      let badgeClass = 'pending';
+      if (statusText === 'Paid') badgeClass = 'paid';
+      else if (statusText === 'Draft') badgeClass = 'draft';
+
       const tr = document.createElement('tr');
+      if (isActive) tr.style.background = 'rgba(255, 94, 58, 0.06)';
+
       tr.innerHTML = `
-        <td><strong>#${escapeHtml(inv.invoiceNumber)}</strong></td>
-        <td>${escapeHtml(inv.client?.name || 'Unnamed')}</td>
+        <td>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <strong>#${escapeHtml(inv.invoiceNumber)}</strong>
+            ${isActive ? '<span style="font-size:10px; font-weight:800; background:rgba(255,94,58,0.2); color:var(--admin-accent-primary); padding:2px 6px; border-radius:4px; border:1px solid rgba(255,94,58,0.4);">● Active</span>' : ''}
+          </div>
+        </td>
+        <td><strong>${escapeHtml(inv.client?.name || 'Unnamed Client')}</strong></td>
         <td>${escapeHtml(inv.invoiceDate || '---')}</td>
         <td>${inv.items?.length || 0} items</td>
         <td><strong>${formatCurrency(tot, inv.currency || "₹")}</strong></td>
-        <td><span class="status-badge ${inv.status === 'Paid' ? 'paid' : 'pending'}">${inv.status || 'Paid'}</span></td>
+        <td><span class="status-badge ${badgeClass}" style="${statusText === 'Draft' ? 'background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3);' : ''}">${escapeHtml(statusText === 'Draft' ? 'Draft / Unsaved' : statusText)}</span></td>
         <td>
           <div class="table-btn-group">
             <button class="tool-btn" onclick="window.loadSavedInvoice(${index})" title="Open and edit this bill in studio">📂 Edit</button>
