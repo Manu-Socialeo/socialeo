@@ -171,6 +171,39 @@ const blogPosts = [
     thumb: 'assets/project-ecommerce.jpg',
     excerpt: 'The proven narrative blueprint that turns raw project screenshots into compelling enterprise case studies demonstrating quantifiable business ROI, technical ingenuity, and strategic mastery.',
     keywords: 'agency case study layout, design studio portfolio framework, winning enterprise web clients'
+  },
+  {
+    slug: 'why-mysore-businesses-need-bespoke-websites-in-2026',
+    title: 'Why Mysore & Mysuru Businesses are Switching to Bespoke Web Design & Next.js in 2026',
+    tag: 'Local Growth Mysore',
+    readTime: '12 Min Read',
+    date: 'August 25, 2026',
+    image: '../assets/project-saas.jpg',
+    thumb: 'assets/project-saas.jpg',
+    excerpt: 'How modern businesses in Mysore and Mysuru are replacing slow CMS templates with bespoke Next.js web applications to achieve 100/100 Google PageSpeed, capture local search dominance, and double inbound customer inquiries.',
+    keywords: 'web design mysore, website development mysuru, custom web design company in mysore, best web designers in mysore karnataka'
+  },
+  {
+    slug: 'top-seo-strategies-to-rank-number-1-in-mysuru',
+    title: 'The Definitive Local SEO Playbook: How to Rank #1 on Google in Mysore & Mysuru',
+    tag: 'Local SEO Mysore',
+    readTime: '14 Min Read',
+    date: 'August 25, 2026',
+    image: '../assets/project-marketing.jpg',
+    thumb: 'assets/project-marketing.jpg',
+    excerpt: 'A comprehensive, data-backed roadmap for Mysore & Mysuru companies to dominate Google Maps Local 3-Pack, capture high-intent transactional search queries, and build lasting organic search authority.',
+    keywords: 'local seo mysore, seo services in mysuru, rank number 1 in mysore google, google business profile optimization mysore, seo company mysore'
+  },
+  {
+    slug: 'how-to-choose-best-mobile-app-development-company-mysore',
+    title: 'How to Choose the Best Mobile App Development Company in Mysore (Mysuru): Founder’s Guide',
+    tag: 'Mobile Engineering Mysore',
+    readTime: '11 Min Read',
+    date: 'August 25, 2026',
+    image: '../assets/project-fintech.jpg',
+    thumb: 'assets/project-fintech.jpg',
+    excerpt: 'Key evaluation criteria for founders and businesses in Mysore selecting a mobile app development agency: cross-platform frameworks, touch ergonomics, offline sync, backend scalability, and App Store approval workflows.',
+    keywords: 'mobile app development company in mysore, app developers mysuru, ios android app development mysore karnataka, react native agency mysore'
   }
 ];
 
@@ -570,4 +603,4 @@ ${blogPosts.map(post => `  <url>
 `;
 
 fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemapContent, 'utf8');
-console.log('Updated: sitemap.xml with all 15 blog posts, services, hubs, and legal suites');
+console.log('Updated: sitemap.xml with all 18 blog posts, services, hubs, and legal suites (29 URLs total)');

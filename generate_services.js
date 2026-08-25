@@ -9,18 +9,18 @@ if (!fs.existsSync(servicesDir)) {
 const services = [
   {
     slug: 'web-design',
-    serviceName: 'Web Design',
-    title: 'Bespoke Web Design & UI Systems That Convert Visitors Into High-Value Clients',
-    tag: 'Digital Craft & UX',
+    serviceName: 'Web Design in Mysore (Mysuru)',
+    title: 'Bespoke Web Design Company in Mysore & Mysuru — High-Converting Custom UI Systems',
+    tag: 'Web Design Mysore',
     readTime: '12 Min Read',
-    date: 'August 24, 2026',
+    date: 'August 25, 2026',
     image: '../assets/project-saas.jpg',
-    keywords: 'bespoke web design, conversion web design, luxury UI UX design, custom website agency',
-    metaDesc: 'Discover how Socialeo engineers custom, conversion-driven web design and intuitive user flows that captivate visitors, elevate brand trust, and drive compounding business growth.',
-    overview: 'In an era where digital first impressions determine company valuation and customer trust, generic templates no longer cut it. Socialeo crafts handcrafted web design systems tailored to your distinct market positioning, combining editorial typography, high-contrast visual hierarchy, and frictionless user flows.',
+    keywords: 'web design company in mysore, best web designers mysuru, website design agency mysore, custom UI UX mysuru, web design mysore karnataka, website maker mysore',
+    metaDesc: 'Top bespoke web design company in Mysore (Mysuru). Socialeo crafts custom, conversion-driven websites, responsive Figma UI systems, and high-speed digital experiences.',
+    overview: 'Looking for the best bespoke web design company in Mysore (Mysuru)? Socialeo engineers handcrafted digital storefronts and responsive UI systems tailored to modern enterprises. We combine editorial typography, high-contrast visual hierarchy, and frictionless user flows that convert local and global visitors into paying clients.',
     deliverables: [
-      'Custom Responsive UI/UX Layouts (Figma & Code)',
-      'Design Token Systems (Typography, Colors, Spacing)',
+      'Custom Responsive UI/UX Layouts (Figma & Clean Code)',
+      'Design Token Systems (Typography, Colors, Spacing Scales)',
       'Conversion-Optimized Customer Journey Wireframes',
       'Interactive Micro-Animations & Fluid Hover States',
       'Mobile-First Touch Ergonomics & Responsive Breakpoints',
@@ -28,8 +28,8 @@ const services = [
     ],
     sections: [
       {
-        heading: '1. Why Bespoke Visual Architecture Outperforms Standard Templates',
-        content: 'When visitors land on your digital storefront, neurological research demonstrates that subconscious credibility assessments occur within 50 milliseconds. Cookie-cutter templates dilute brand authority with predictable stock layouts. Our custom web design approach starts with an exhaustive competitor teardown and persona modeling, creating a tailored aesthetic that immediately positions your brand as the definitive category leader.'
+        heading: '1. Why Mysore Businesses Choose Bespoke Web Design Over Generic Templates',
+        content: 'When visitors land on your website in Mysore or globally, cognitive research proves that first impressions form within 50 milliseconds. Cookie-cutter templates dilute your brand authority. Our bespoke web design approach in Mysore starts with in-depth competitor analysis and persona modeling, creating a tailored digital identity that immediately establishes your company as the market leader.'
       },
       {
         heading: '2. The Neuroscience of Conversion-Driven Typography & Layouts',
@@ -37,26 +37,27 @@ const services = [
       },
       {
         heading: '3. Technical Precision Across All Screen Resolutions',
-        content: 'From 4K ultra-wide monitors down to compact mobile displays, our designs adapt seamlessly. We design across fluid CSS grids and vector SVG pipelines, ensuring crisp rendering and razor-sharp clarity on retina displays without excessive asset payloads.'
+        content: 'From 4K ultra-wide desktop monitors down to compact mobile displays, our designs adapt seamlessly. We design across fluid CSS grids and vector SVG pipelines, ensuring crisp rendering and razor-sharp clarity on retina displays without excessive asset payloads.'
       }
     ],
     faqs: [
-      { q: 'How long does a custom web design project take?', a: 'Standard bespoke design sprints take 2 to 4 weeks depending on scope, page count, and custom asset requirements.' },
-      { q: 'Will I receive Figma design files?', a: 'Yes, complete Figma design systems with organized component libraries, auto-layouts, and developer-ready tokens are delivered upon project completion.' },
-      { q: 'Do you also handle the frontend development?', a: 'Yes! We provide complete end-to-end delivery from design to full-stack production deployment on Next.js or Webflow.' }
+      { q: 'Where is Socialeo located in Mysore (Mysuru)?', a: 'Socialeo is based at 1646, 5th Main, Vijayanagar 2nd Stage, Mysore, Karnataka - 570017. We offer both in-person discovery sessions in Mysore/Bangalore and remote consultations globally.' },
+      { q: 'How long does a custom web design project take in Mysore?', a: 'Standard bespoke design sprints take 2 to 4 weeks depending on scope, page count, and custom asset requirements.' },
+      { q: 'Will I receive full Figma design files and source code?', a: 'Yes, complete Figma design systems with organized component libraries, auto-layouts, and developer-ready code tokens are delivered upon project completion.' },
+      { q: 'Do you also handle frontend development and SEO hosting?', a: 'Yes! We provide complete end-to-end delivery from design to full-stack production deployment on Next.js with sub-second cloud CDN hosting.' }
     ]
   },
   {
     slug: 'web-development',
-    serviceName: 'Web Development',
-    title: 'High-Performance Full-Stack Web Development: Scalable, Secure & Blazing Fast',
-    tag: 'Full-Stack Engineering',
+    serviceName: 'Web Development in Mysore (Mysuru)',
+    title: 'Website Development Company in Mysore (Mysuru) — High-Speed Next.js & Full-Stack Apps',
+    tag: 'Web Development Mysore',
     readTime: '15 Min Read',
-    date: 'August 23, 2026',
+    date: 'August 25, 2026',
     image: '../assets/project-cloud.jpg',
-    keywords: 'full stack web development, Next.js web apps, edge CDN hosting, custom web application agency',
-    metaDesc: 'Explore enterprise-grade web development from Socialeo: sub-second page loads, clean component architecture, robust API integrations, and 99.99% cloud uptime.',
-    overview: 'Performance is a feature. Socialeo builds modern full-stack web applications and high-speed websites powered by clean architecture, Next.js / React, Server-Side Rendering (SSR), and Edge CDN distribution.',
+    keywords: 'website development company in mysore, web development agency mysuru, Next.js developers mysore, software company mysore, full stack developer mysore karnataka',
+    metaDesc: 'Premier website development company in Mysore (Mysuru). Socialeo builds sub-second Next.js web applications, scalable APIs, and Google Core Web Vitals 100/100 platforms.',
+    overview: 'Performance is a feature. Socialeo is a leading website development studio in Mysore (Mysuru) building modern full-stack web applications and high-speed websites powered by clean architecture, Next.js / React, Server-Side Rendering (SSR), and Edge CDN cloud distribution.',
     deliverables: [
       'Full-Stack Custom Web Architecture (Next.js / Node.js / Python)',
       'Sub-Second Server-Side Rendering (SSR) & Static Generation (SSG)',
@@ -67,8 +68,8 @@ const services = [
     ],
     sections: [
       {
-        heading: '1. Engineering for Sub-Second Speed & 100% Core Web Vitals',
-        content: 'Google Core Web Vitals are a foundational ranking factor. Slow sites hemorrhage revenue and search rankings. By utilizing tree-shaking, automated image optimization with AVIF/WebP formats, and edge caching at the cloud boundary, our web solutions achieve sub-500ms Largest Contentful Paint (LCP) times globally.'
+        heading: '1. Engineering for Sub-Second Speed & 100% Core Web Vitals in Mysore',
+        content: 'Google Core Web Vitals are a foundational ranking factor for businesses in Mysore and worldwide. Slow sites hemorrhage revenue and search rankings. By utilizing tree-shaking, automated image optimization with AVIF/WebP formats, and edge caching at the cloud boundary, our web solutions achieve sub-500ms Largest Contentful Paint (LCP) times.'
       },
       {
         heading: '2. Clean, Scalable Code That Grows With Your Enterprise',
@@ -80,22 +81,22 @@ const services = [
       }
     ],
     faqs: [
+      { q: 'Why choose Socialeo for web development in Mysore?', a: 'You work directly with founder and principal engineer Manpreeth N (Manu). Zero agency bureaucracy, institutional code quality, and direct developer communication from Day One.' },
       { q: 'What tech stack do you recommend for high-growth web apps?', a: 'We specialize in Next.js, React, Node.js, TailwindCSS / Vanilla CSS, PostgreSQL, and Vercel/AWS Edge Cloud infrastructure.' },
-      { q: 'Can you migrate our legacy website to a modern stack?', a: 'Yes, we specialize in zero-downtime migrations that preserve your existing SEO rankings, backlink profiles, and user database.' },
-      { q: 'Do you provide maintenance and cloud hosting support?', a: 'Yes, our Annual Maintenance Contracts (AMC) include 24/7 uptime monitoring, security updates, quarterly speed tuning, and CDN management.' }
+      { q: 'Can you migrate our legacy website to a modern stack?', a: 'Yes, we specialize in zero-downtime migrations that preserve your existing SEO rankings, backlink profiles, and user database.' }
     ]
   },
   {
     slug: 'mobile-apps',
-    serviceName: 'Mobile Apps',
-    title: 'Native & Cross-Platform Mobile App Development Built for Touch Speed & Retention',
-    tag: 'Mobile Engineering',
+    serviceName: 'Mobile App Development in Mysore (Mysuru)',
+    title: 'Mobile App Development Company in Mysore (Mysuru) — iOS & Android Apps',
+    tag: 'Mobile Apps Mysore',
     readTime: '11 Min Read',
-    date: 'August 22, 2026',
+    date: 'August 25, 2026',
     image: '../assets/project-fintech.jpg',
-    keywords: 'mobile app development, iOS Android cross-platform apps, React Native agency, mobile UI UX',
-    metaDesc: 'Socialeo develops high-retention iOS and Android mobile applications featuring smooth haptic feedback, dark-mode ergonomics, and seamless cloud synchronization.',
-    overview: 'Turn your product vision into an intuitive mobile app that users love to open daily. We design and develop native and cross-platform mobile apps that combine fluid 60fps animations, intuitive gesture navigation, and robust offline capabilities.',
+    keywords: 'mobile app development company in mysore, app developers in mysuru, iOS Android app agency mysore, React Native developers mysore, flutter app development mysore',
+    metaDesc: 'Top mobile app development company in Mysore (Mysuru). Socialeo builds fluid iOS & Android cross-platform apps with 60fps animations, haptic feedback, and offline sync.',
+    overview: 'Turn your product vision into an intuitive mobile app that users love to open daily. Socialeo develops high-retention iOS and Android mobile apps in Mysore (Mysuru) combining fluid 60fps animations, intuitive gesture navigation, and robust offline capabilities.',
     deliverables: [
       'iOS & Android Cross-Platform Apps (React Native / Flutter)',
       'Touch-Optimized Haptic Feedback & Gesture Ergonomics',
@@ -121,20 +122,20 @@ const services = [
     faqs: [
       { q: 'Do you build for both iPhone and Android?', a: 'Yes! We build cross-platform apps that deploy simultaneously to iOS and Android from a single performant codebase, reducing development cost and timeline by 40%.' },
       { q: 'Will you assist with App Store approvals?', a: 'Yes, we manage all review processes, sandbox test credentials, metadata submissions, and compliance checks until your app is live in the stores.' },
-      { q: 'Can the app work offline?', a: 'Yes, we implement SQLite and reactive local storage with background synchronization so users can continue work seamlessly without internet connectivity.' }
+      { q: 'Can we schedule an in-person meeting in Mysore for app planning?', a: 'Yes! We welcome local founders and business owners at our Mysore studio in Vijayanagar 2nd Stage.' }
     ]
   },
   {
     slug: 'digital-marketing',
-    serviceName: 'Digital Marketing',
-    title: 'Data-Backed SEO, Performance Marketing & Conversion Rate Optimization (CRO)',
-    tag: 'Growth & SEO',
+    serviceName: 'Digital Marketing & SEO in Mysore (Mysuru)',
+    title: 'Digital Marketing & SEO Agency in Mysore (Mysuru) — Google #1 Ranking Systems',
+    tag: 'Digital Marketing Mysore',
     readTime: '13 Min Read',
-    date: 'August 21, 2026',
+    date: 'August 25, 2026',
     image: '../assets/project-marketing.jpg',
-    keywords: 'digital marketing agency, clinical SEO, performance marketing funnels, conversion rate optimization',
-    metaDesc: 'Drive predictable, compounding customer acquisition with Socialeo’s data-driven SEO strategies, high-intent Google Ads campaigns, and conversion funnel engineering.',
-    overview: 'Traffic without conversions is an expense; traffic with high conversion architecture is a compounding asset. Socialeo provides end-to-end organic SEO, technical search architecture, and targeted marketing campaigns that scale customer acquisition.',
+    keywords: 'digital marketing agency in mysore, seo company in mysore, best seo agency mysuru, local seo services mysore, clinical SEO mysuru, google ads agency mysore',
+    metaDesc: 'Premier digital marketing & SEO company in Mysore (Mysuru). Dominate Google Search, capture high-intent local customer leads, and scale your revenue with Socialeo.',
+    overview: 'Traffic without conversions is an expense; traffic with high conversion architecture is a compounding asset. Socialeo is a premier digital marketing and SEO agency in Mysore (Mysuru) delivering data-backed organic SEO, technical search architecture, and targeted marketing funnels.',
     deliverables: [
       'Comprehensive Organic Search (SEO) Strategy & Keyword Clustering',
       'Structured Data & Schema.org JSON-LD Architecture',
@@ -145,8 +146,8 @@ const services = [
     ],
     sections: [
       {
-        heading: '1. Clinical Technical SEO That Dominates Search Rankings',
-        content: 'We go beyond basic meta tags. We construct authoritative keyword topic clusters, implement Schema.org microdata (MedicalClinic, ProfessionalService, FAQPage, Article), and fix technical crawl bottlenecks to secure dominant organic positions for high-intent transactional search queries.'
+        heading: '1. Local Mysore SEO & Google Maps Local 3-Pack Mastery',
+        content: 'We optimize your complete local search presence in Mysore and Mysuru: Google Business Profile citations, local geo-tagged schemas, authentic customer review funnels, and localized keyword clustering to position your business in the coveted top 3 Google Maps positions.'
       },
       {
         heading: '2. Conversion Funnel Engineering & Friction Removal',
@@ -158,22 +159,22 @@ const services = [
       }
     ],
     faqs: [
-      { q: 'How quickly can we expect SEO results?', a: 'Technical optimizations and index fixes typically show rank improvements within 3 to 6 weeks, with compounding organic revenue growth scaling continuously over 3 to 6 months.' },
-      { q: 'Do you manage paid ad campaigns as well?', a: 'Yes, we manage Google Search Ads, Performance Max, and LinkedIn/Meta campaigns with dedicated landing page CRO.' },
-      { q: 'Do you provide regular progress reports?', a: 'Yes, you receive transparent monthly performance dashboards covering organic keyword rankings, traffic quality, conversion rates, and pipeline revenue.' }
+      { q: 'How can Socialeo help my Mysore business rank #1 on Google?', a: 'We implement comprehensive on-page SEO, high-intent localized keyword clustering for Mysore & Mysuru, schema markup, Core Web Vitals speed optimization, and Google Business Profile synchronization.' },
+      { q: 'How quickly can we expect SEO results in Mysore?', a: 'Local SEO enhancements typically show rank improvements in 3 to 6 weeks, with compounding organic revenue growth scaling over 3 to 6 months.' },
+      { q: 'Do you provide transparent monthly ranking reports?', a: 'Yes! You receive monthly dashboards tracking exact keyword positions, organic impressions, and verified phone/WhatsApp conversion leads.' }
     ]
   },
   {
     slug: 'ui-ux-design',
-    serviceName: 'UI/UX Design',
-    title: 'User-Centric UI/UX Research, Interactive Wireframing & Bespoke Design Systems',
-    tag: 'UI/UX Systems',
+    serviceName: 'UI/UX Design in Mysore (Mysuru)',
+    title: 'UI/UX Design Studio & Product Strategy in Mysore (Mysuru) — Figma Systems',
+    tag: 'UI/UX Design Mysore',
     readTime: '14 Min Read',
-    date: 'August 20, 2026',
+    date: 'August 25, 2026',
     image: '../assets/project-ecommerce.jpg',
-    keywords: 'UI UX design agency, Figma design systems, user research wireframing, UX journey mapping',
-    metaDesc: 'Elevate your software with human-centered UI/UX design: in-depth user journey research, high-fidelity prototypes, interactive micro-animations, and comprehensive Figma design systems.',
-    overview: 'Great user experience makes complex software feel effortless. Socialeo transforms complicated workflows into elegant, intuitive interfaces that reduce user fatigue, boost retention, and accelerate product adoption.',
+    keywords: 'ui ux design studio mysore, product designer mysuru, figma UI design mysore, UX agency mysore karnataka, mobile app UI design mysuru',
+    metaDesc: 'Human-centered UI/UX design studio in Mysore (Mysuru). Socialeo creates user research journey maps, interactive Figma prototypes, and scalable design token systems.',
+    overview: 'Great user experience makes complex software feel effortless. Socialeo is a human-centered UI/UX design studio in Mysore (Mysuru) transforming complicated workflows into elegant, intuitive interfaces that reduce user fatigue, boost retention, and accelerate product adoption.',
     deliverables: [
       'In-Depth User Research, Persona Discovery & Journey Maps',
       'Interactive Clickable Prototypes (Figma & Web Sandbox)',
@@ -197,22 +198,22 @@ const services = [
       }
     ],
     faqs: [
-      { q: 'What is the difference between UI and UX in your process?', a: 'UX focuses on user logic, information architecture, wireframing, and reducing friction; UI focuses on visual aesthetics, typography, color harmony, and micro-animations. We integrate both into a unified craft.' },
-      { q: 'Can you audit and redesign our existing application?', a: 'Yes, we conduct comprehensive UX usability audits with actionable heuristics evaluations and design modern overhaul blueprints.' },
+      { q: 'Do you design UI/UX for both Web and Mobile apps in Mysore?', a: 'Yes, we engineer cohesive, cross-platform design systems for responsive web apps, SaaS dashboards, and native iOS/Android mobile applications.' },
+      { q: 'Can you audit and redesign our existing product UI?', a: 'Yes, we conduct comprehensive UX usability audits with actionable heuristics evaluations and design modern overhaul blueprints.' },
       { q: 'How do you collaborate with our in-house developers?', a: 'We provide structured Figma files with auto-layouts, exported design tokens (CSS/JSON), and detailed interaction guidelines to ensure pixel-perfect engineering handoff.' }
     ]
   },
   {
     slug: 'brand-strategy',
-    serviceName: 'Brand Strategy',
-    title: 'Brand Strategy, Visual Identity Systems & Market-Defining Design Languages',
-    tag: 'Brand Architecture',
+    serviceName: 'Brand Strategy & Identity in Mysore (Mysuru)',
+    title: 'Brand Strategy & Visual Identity Studio in Mysore (Mysuru) — Enduring Brands',
+    tag: 'Brand Strategy Mysore',
     readTime: '12 Min Read',
-    date: 'August 19, 2026',
+    date: 'August 25, 2026',
     image: '../assets/project-web3.jpg',
-    keywords: 'brand strategy agency, visual identity design, logo design typography guidelines, brand positioning',
-    metaDesc: 'Build a memorable, market-defining brand with Socialeo: strategic brand positioning, iconic visual identities, typography guidelines, and digital brand style guides.',
-    overview: 'A distinctive brand identity is the highest-leverage asset in modern business. Socialeo crafts enduring visual identities, strategic market positioning, and unified design languages that inspire trust and command premium pricing.',
+    keywords: 'brand strategy agency mysore, logo design company mysuru, branding studio mysore karnataka, corporate identity mysuru, brand design agency mysore',
+    metaDesc: 'Leading brand strategy & visual identity studio in Mysore (Mysuru). Socialeo crafts enduring logo suites, brand books, typography guidelines, and digital design languages.',
+    overview: 'A distinctive brand identity is the highest-leverage asset in modern business. Socialeo is a brand strategy and design studio in Mysore (Mysuru) crafting enduring visual identities, strategic market positioning, and unified design languages that inspire trust and command premium pricing.',
     deliverables: [
       'Core Brand Positioning & Value Proposition Architecture',
       'Vector Logo Suite (Primary, Secondary, Monogram, Favicon)',
@@ -223,7 +224,7 @@ const services = [
     ],
     sections: [
       {
-        heading: '1. Finding Your Strategic Market Whitespace',
+        heading: '1. Finding Your Strategic Market Whitespace in Mysore & Beyond',
         content: 'We dissect your industry landscape to identify underexplored market whitespace and unique positioning opportunities. We articulate what makes your offering indispensable, crafting a clear brand narrative that resonates with high-value decision makers.'
       },
       {
@@ -236,7 +237,7 @@ const services = [
       }
     ],
     faqs: [
-      { q: 'What do we receive at the end of a branding sprint?', a: 'You receive vector master files (SVG, AI, EPS, PNG, PDF), font licenses/recommendations, color token specifications (HEX, RGB, CMYK, Pantone), and a comprehensive Brand Style Guide.' },
+      { q: 'What do we receive at the end of a branding sprint in Mysore?', a: 'You receive vector master files (SVG, AI, EPS, PNG, PDF), font licenses/recommendations, color token specifications (HEX, RGB, CMYK, Pantone), and a comprehensive Brand Style Guide.' },
       { q: 'Do you help with brand naming and messaging?', a: 'Yes, we provide naming workshops, tagline development, and brand voice guidelines as part of our comprehensive branding sprints.' },
       { q: 'Can you align our website and pitch deck with the new brand?', a: 'Yes! We seamlessly roll out your new brand identity across your website, product UI, pitch decks, and digital collateral for a cohesive market presence.' }
     ]
@@ -341,9 +342,22 @@ function generateServicePage(service) {
             "addressRegion": "Karnataka",
             "postalCode": "570017",
             "addressCountry": "IN"
-          }
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 12.3364,
+            "longitude": 76.6191
+          },
+          "hasMap": "https://maps.app.goo.gl/3eEMtYTEdMpLEyoz8"
         },
-        "areaServed": "Global"
+        "areaServed": [
+          { "@type": "City", "name": "Mysore" },
+          { "@type": "City", "name": "Mysuru" },
+          { "@type": "City", "name": "Bangalore" },
+          { "@type": "AdministrativeArea", "name": "Karnataka" },
+          { "@type": "Country", "name": "India" },
+          { "@type": "AdministrativeArea", "name": "Global" }
+        ]
       },
       {
         "@type": "BreadcrumbList",
