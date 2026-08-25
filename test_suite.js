@@ -96,9 +96,8 @@ const tests = [
   },
   { 
     suite: 'Real-Time Bill Management',
-    name: 'Add New Bill button exists on right side outside the sheet and top bar', 
+    name: 'Add New Bill button is placed on the right side in the preview toolbar', 
     pass: adminHtml.includes('id="toolbar-new-bill-btn"') && 
-          adminHtml.includes('id="new-invoice-btn"') && 
           adminJs.includes('createNewBlankBill')
   },
   { 
