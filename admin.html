@@ -13,10 +13,11 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- QR Code Library (Local + CDN fallback for UPI QR generation) -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  <!-- QR Code Library (Local + CDN fallback for UPI QR generation) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- HTML2PDF Library for Direct Interactive PDF Downloads with Clickable Links -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <!-- Admin Styles -->
   <link rel="stylesheet" href="admin.css">
@@ -40,34 +41,26 @@
           <span class="tab-icon">👥</span> Client CRM
         </button>
         <button class="admin-tab-btn" data-tab="invoices-tab">
-          <span class="tab-icon">📁</span> Saved Invoices (<span id="saved-invoices-count">0</span>)
-        </button>
-        <button class="admin-tab-btn" data-tab="settings-tab">
-          <span class="tab-icon">⚙️</span> Agency & Bank
+          <span class="tab-icon">📁</span> Saved Invoices <span class="badge" id="saved-invoices-count">2</span>
         </button>
       </nav>
     </div>
-
     <div class="admin-header-right">
-      <button class="admin-btn admin-btn-ghost" id="theme-toggle" title="Toggle Light/Dark Theme">🌙</button>
-      <button class="admin-btn admin-btn-primary" id="top-print-btn" title="Download or Print PDF">
-        <span>🖨️</span> Download / Print PDF
-      </button>
-      <a href="index.html" class="admin-btn admin-btn-outline" title="Return to public website">
-        <span>←</span> Exit Admin
+      <a href="index.html" class="admin-link-btn" title="Back to Socialeo Main Site">
+        ← Back to Main Site
       </a>
     </div>
   </header>
 
-  <!-- Main Container -->
+  <!-- Main Workspace -->
   <main class="admin-main">
 
     <!-- ==========================================
-         TAB 1: BILL GENERATOR
+         TAB 1: BILL GENERATOR & LIVE STUDIO
          ========================================== -->
     <section class="admin-tab-content active" id="generator-tab">
       <div class="bill-studio-layout">
-
+        
         <!-- LEFT: STUDIO CONTROLS & MISSING COMPONENTS FORM -->
         <div class="studio-controls-pane no-print">
           
@@ -86,9 +79,6 @@
               </button>
               <button type="button" class="tool-btn preset-btn" id="load-vo2max-offer-btn" title="Load VO2 MAX Bill 1 with Launch Offer (₹52,000)">
                 🏷️ VO2 MAX Launch Offer (₹52,000)
-              </button>
-              <button type="button" class="tool-btn preset-btn" id="load-sample-bill-btn" title="Load sample bill for Yoga with Srinatha">
-                ✨ Load "Yoga with Srinatha"
               </button>
               <button type="button" class="tool-btn" id="new-invoice-btn" title="Create a blank new bill">
                 ➕ New Bill
@@ -111,11 +101,11 @@
             <div class="form-grid-2">
               <div class="form-group">
                 <label for="inv-number-input">Invoice Number</label>
-                <input type="text" id="inv-number-input" class="admin-input" value="7272" placeholder="e.g. 7272 or INV-2026-01">
+                <input type="text" id="inv-number-input" class="admin-input" value="8104" placeholder="e.g. 8104 or INV-2026-01">
               </div>
               <div class="form-group">
                 <label for="inv-date-input">Invoice Date</label>
-                <input type="text" id="inv-date-input" class="admin-input" value="22nd July 2026" placeholder="e.g. 22nd July 2026">
+                <input type="text" id="inv-date-input" class="admin-input" value="25th August 2026" placeholder="e.g. 25th August 2026">
               </div>
             </div>
             <div class="form-grid-2" style="margin-top: 10px;">
@@ -148,17 +138,17 @@
               <div class="client-picker-wrapper">
                 <select id="crm-client-select" class="admin-input client-select-dropdown">
                   <option value="">-- Quick Pick Saved Client --</option>
-                  <option value="yoga-srinatha" selected>Yoga with Srinatha</option>
+                  <option value="vo2-max-mysuru" selected>VO2 MAX Sports Physiotherapy & Rehab</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label for="client-name-input">Client / Business Name</label>
-              <input type="text" id="client-name-input" class="admin-input" value="Yoga with Srinatha" placeholder="e.g. Yoga with Srinatha">
+              <input type="text" id="client-name-input" class="admin-input" value="VO2 MAX Sports Physiotherapy & Rehab" placeholder="e.g. VO2 MAX Sports Physiotherapy & Rehab">
             </div>
             <div class="form-group" style="margin-top: 10px;">
               <label for="client-address1-input">Address Line 1</label>
-              <input type="text" id="client-address1-input" class="admin-input" value="14, Contour Rd, Gokulam 3rd Stage," placeholder="e.g. 14, Contour Rd, Gokulam 3rd Stage,">
+              <input type="text" id="client-address1-input" class="admin-input" value="14, Contour Rd, Gokulam 2nd Stage," placeholder="e.g. 14, Contour Rd, Gokulam 2nd Stage,">
             </div>
             <div class="form-group" style="margin-top: 10px;">
               <label for="client-address2-input">Address Line 2 / City / State / Pincode</label>
@@ -167,11 +157,11 @@
             <div class="form-grid-2" style="margin-top: 10px;">
               <div class="form-group">
                 <label for="client-phone-input">Client Phone (Optional)</label>
-                <input type="text" id="client-phone-input" class="admin-input" placeholder="+91 9876543210">
+                <input type="text" id="client-phone-input" class="admin-input" value="+91 8722163256" placeholder="+91 8722163256">
               </div>
               <div class="form-group">
                 <label for="client-email-input">Client Email (Optional)</label>
-                <input type="email" id="client-email-input" class="admin-input" placeholder="client@domain.com">
+                <input type="email" id="client-email-input" class="admin-input" value="vo2maxphysio@gmail.com" placeholder="vo2maxphysio@gmail.com">
               </div>
             </div>
             <button type="button" class="btn-subtle-link" id="save-current-to-crm-btn">
@@ -308,9 +298,14 @@
 
           <!-- Bottom Action Buttons -->
           <div class="controls-card sticky-bottom-bar">
-            <button type="button" class="admin-btn admin-btn-primary full-width" id="bottom-print-btn">
-              🖨️ Download / Print Invoice (A4 PDF)
-            </button>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="admin-btn admin-btn-primary" style="flex: 1;" id="bottom-download-btn" title="Download direct A4 PDF with active clickable links">
+                📥 Download PDF (Live Links)
+              </button>
+              <button type="button" class="admin-btn admin-btn-outline" style="flex: 1;" id="bottom-print-btn" title="Open system print / PDF dialog">
+                🖨️ Print Dialog
+              </button>
+            </div>
           </div>
 
         </div>
@@ -321,12 +316,13 @@
           <div class="preview-toolbar no-print">
             <div class="preview-status-indicator">
               <span class="pulse-indicator"></span>
-              <strong>Live A4 Sheet Preview</strong> (Updates automatically as you type)
+              <strong>Live A4 Sheet Studio</strong> (Auto-syncs in real-time)
             </div>
             <div class="preview-actions">
               <button type="button" class="preview-tool-btn" id="zoom-fit-btn" title="Fit to width">🔍 Fit</button>
               <button type="button" class="preview-tool-btn" id="zoom-100-btn" title="100% Scale">100%</button>
-              <button type="button" class="preview-tool-btn preview-primary" id="pane-print-btn">🖨️ Print / Save PDF</button>
+              <button type="button" class="preview-tool-btn" id="pane-print-btn" title="Open system print dialog">🖨️ Print</button>
+              <button type="button" class="preview-tool-btn preview-primary" id="pane-download-btn" title="Direct download A4 PDF with active clickable links">📥 Download PDF</button>
             </div>
           </div>
 
@@ -344,8 +340,8 @@
                     <span class="brand-text">Socialeo</span>
                     <span class="brand-accent-dot"></span>
                   </div>
-                  <div class="inv-date-text" id="live-inv-date">22nd July 2026</div>
-                  <div class="inv-number-text" id="live-inv-number">Invoice No. 7272</div>
+                  <div class="inv-date-text" id="live-inv-date">25th August 2026</div>
+                  <div class="inv-number-text" id="live-inv-number">Invoice No. 8104</div>
                 </div>
               </header>
 
@@ -355,9 +351,9 @@
               <!-- Billed To Section -->
               <section class="inv-client-section">
                 <div class="inv-billed-label">Billed to:</div>
-                <div class="inv-client-name" id="live-client-name">Yoga with Srinatha</div>
+                <div class="inv-client-name" id="live-client-name">VO2 MAX Sports Physiotherapy & Rehab</div>
                 <div class="inv-client-address" id="live-client-address">
-                  14, Contour Rd, Gokulam 3rd Stage,<br>
+                  14, Contour Rd, Gokulam 2nd Stage,<br>
                   Gokulam, Mysuru, Karnataka 570002
                 </div>
               </section>
@@ -422,7 +418,7 @@
                   <div class="qr-code-frame" id="live-qr-frame">
                     <div id="live-upi-qrcode" title="Scan to pay via any UPI App"></div>
                   </div>
-                  <div class="qr-label-subtext">Scan to Pay via UPI</div>
+                  <div class="qr-label-subtext">Scan to Pay</div>
                 </div>
 
                 <!-- Right: Socialeo Address & Info -->
@@ -436,19 +432,19 @@
 
               </footer>
 
-              <!-- Interactive Action Buttons Bar (WhatsApp, Email with CC, Instant Pay Now) -->
+              <!-- Interactive Action Buttons Bar (Full-Width Divided 3-Column Grid) -->
               <div class="inv-actions-bar" id="live-actions-bar">
-                <a href="#" id="live-btn-whatsapp" target="_blank" rel="noopener" class="inv-action-pill btn-pill-whatsapp" title="Chat on WhatsApp regarding this bill">
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.68-1.2 1.25-1.66 1.29-.44.04-1 .06-3.23-.86-2.86-1.18-4.7-4.1-4.84-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.24-.28.53-.35.71-.35.18 0 .35 0 .5.01.16.01.38-.06.59.45.23.55.78 1.9.85 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.3.35-.43.47-.14.14-.29.3-.12.59.16.29.73 1.2 1.57 1.95 1.08.96 1.99 1.26 2.27 1.4.28.14.45.12.62-.07.17-.19.73-.85.92-1.14.19-.29.38-.24.64-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/></svg>
+                <a href="#" id="live-btn-whatsapp" target="_blank" rel="noopener noreferrer" class="inv-action-pill" title="Chat on WhatsApp regarding this bill">
+                  <svg class="pill-brand-icon icon-whatsapp" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.68-1.2 1.25-1.66 1.29-.44.04-1 .06-3.23-.86-2.86-1.18-4.7-4.1-4.84-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.24-.28.53-.35.71-.35.18 0 .35 0 .5.01.16.01.38-.06.59.45.23.55.78 1.9.85 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.3.35-.43.47-.14.14-.29.3-.12.59.16.29.73 1.2 1.57 1.95 1.08.96 1.99 1.26 2.27 1.4.28.14.45.12.62-.07.17-.19.73-.85.92-1.14.19-.29.38-.24.64-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/></svg>
                   <span>WhatsApp Chat</span>
                 </a>
-                <a href="#" id="live-btn-email" class="inv-action-pill btn-pill-email" title="Send official email regarding this invoice">
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                  <span>Email Socialeo (CC Included)</span>
+                <a href="#" id="live-btn-email" target="_blank" rel="noopener noreferrer" class="inv-action-pill" title="Send official email regarding this invoice">
+                  <svg class="pill-brand-icon icon-email" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>Email Socialeo</span>
                 </a>
-                <a href="#" id="live-btn-paynow" class="inv-action-pill btn-pill-paynow" title="Direct UPI Instant Payment via GPay, PhonePe, Paytm, BHIM">
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                  <span>Pay Now (UPI App)</span>
+                <a href="#" id="live-btn-paynow" target="_blank" rel="noopener noreferrer" class="inv-action-pill" title="Direct UPI Instant Payment">
+                  <svg class="pill-brand-icon icon-paynow" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  <span>Pay Now</span>
                 </a>
               </div>
 

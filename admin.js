@@ -5,53 +5,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   
   // ==========================================
-  // 1. DATA STATE & STORAGE
+  // 1. DATA STATE & STORAGE (VO2 MAX BILLS ONLY)
   // ==========================================
   
-  // 1. Reference Sample Bill: Yoga with Srinatha (#7272)
-  const SAMPLE_BILL = {
-    invoiceNumber: "7272",
-    invoiceDate: "22nd July 2026",
-    status: "Paid",
-    currency: "₹",
-    client: {
-      id: "yoga-srinatha",
-      name: "Yoga with Srinatha",
-      addressLine1: "14, Contour Rd, Gokulam 3rd Stage,",
-      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
-      phone: "+91 9845012345",
-      email: "contact@yogawithsrinatha.com"
-    },
-    items: [
-      { sno: "1.0", description: "Website Design & UX / UI", price: "40000", qty: "1", amount: "40000" },
-      { sno: "2.0", description: "Website Development (Full-Stack, incl. Backend)", price: "123000", qty: "1", amount: "123000" },
-      { sno: "3.0", description: "Mobile App Development (Full-Stack)", price: "165000", qty: "1", amount: "165000" },
-      { sno: "4.0", description: "Custom Admin Dashboard (Product Add/Delete, Inventory Mgmt)", price: "75000", qty: "1", amount: "75000" },
-      { sno: "5.0", description: "On-Page SEO", price: "15000", qty: "1", amount: "15000" },
-      { sno: "6.0", description: "User Manual / Documentation", price: "Free", qty: "1", amount: "0" },
-      { sno: "7.0", description: "Hosting & Support", price: "Client Managed", qty: "Self", amount: "0" },
-      { sno: "8.0", description: "SSL certificate", price: "Offer", qty: "1", amount: "0" }
-    ],
-    taxRate: 0,
-    discountType: "percent",
-    discountValue: 100,
-    bankInfo: {
-      beneficiary: "MANPREETH N",
-      bankName: "STATE BANK OF INDIA",
-      accountNumber: "20340118904",
-      ifsc: "SBIN0016500",
-      upiId: "8722163256@sbi"
-    },
-    agencyInfo: {
-      name: "Socialeo",
-      addressLine1: "1646, 5th Main, Vijayanagar 2nd Stage,",
-      addressLine2: "Mysore, Karnataka - 570017",
-      phone: "+91 8722163256",
-      email: "socialeopvtltd@gmail.com"
-    }
-  };
-
-  // 2. VO2 MAX — BILL 1: Work Done Till Now (19 Pages + Lead Infrastructure: ₹57,000 Standard)
+  // 1. VO2 MAX — BILL 1: Work Done Till Now (19 Pages + Lead Infrastructure: ₹57,000 Standard)
   const VO2_MAX_BILL_1 = {
     invoiceNumber: "8104",
     invoiceDate: "25th August 2026",
@@ -92,14 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 3. VO2 MAX — BILL 1: Special Launch Offer (₹52,000 with ₹5,000 Launch Discount)
+  // 2. VO2 MAX — BILL 1: Special Launch Offer (₹52,000 with ₹5,000 Launch Discount)
   const VO2_MAX_OFFER_BILL = {
     ...JSON.parse(JSON.stringify(VO2_MAX_BILL_1)),
     discountType: "fixed",
     discountValue: 5000
   };
 
-  // 4. VO2 MAX — BILL 2: Future Scope & Annual Retainers (28 Expansion Pages + 1 Year AMC: ₹66,000)
+  // 3. VO2 MAX — BILL 2: Future Scope & Annual Retainers (28 Expansion Pages + 1 Year AMC: ₹66,000)
   const VO2_MAX_BILL_2 = {
     invoiceNumber: "8105",
     invoiceDate: "25th August 2026",
@@ -166,14 +123,32 @@ document.addEventListener('DOMContentLoaded', () => {
     "branding": { sno: "10.0", desc: "Brand Identity & Visual System", price: "50000", qty: "1", amount: "50000" }
   };
 
-  // Load state from localStorage or default to VO2 MAX Bill 1
-  let currentBill = JSON.parse(localStorage.getItem('socialeo_active_bill')) || JSON.parse(JSON.stringify(VO2_MAX_BILL_1));
-  let savedInvoices = JSON.parse(localStorage.getItem('socialeo_saved_invoices')) || [
+  // Load state from localStorage and sanitize (Strictly 2 VO2 MAX Bills only)
+  let rawSavedInvoices = JSON.parse(localStorage.getItem('socialeo_saved_invoices'));
+  let savedInvoices = [
     JSON.parse(JSON.stringify(VO2_MAX_BILL_1)),
-    JSON.parse(JSON.stringify(VO2_MAX_BILL_2)),
-    JSON.parse(JSON.stringify(SAMPLE_BILL))
+    JSON.parse(JSON.stringify(VO2_MAX_BILL_2))
   ];
-  let crmClients = JSON.parse(localStorage.getItem('socialeo_crm_clients')) || [
+
+  if (Array.isArray(rawSavedInvoices) && rawSavedInvoices.length > 0) {
+    // Purge unwanted bills (e.g. invoice #7272, Yoga with Srinatha)
+    const validSaved = rawSavedInvoices.filter(inv => {
+      const isYoga = (inv.invoiceNumber === "7272") || (inv.client?.name && inv.client.name.toLowerCase().includes("yoga"));
+      return !isYoga;
+    });
+    if (validSaved.length > 0) {
+      savedInvoices = validSaved;
+    }
+  }
+  localStorage.setItem('socialeo_saved_invoices', JSON.stringify(savedInvoices));
+
+  let currentBill = JSON.parse(localStorage.getItem('socialeo_active_bill')) || JSON.parse(JSON.stringify(VO2_MAX_BILL_1));
+  if (currentBill.invoiceNumber === "7272" || (currentBill.client?.name && currentBill.client.name.toLowerCase().includes("yoga"))) {
+    currentBill = JSON.parse(JSON.stringify(VO2_MAX_BILL_1));
+    localStorage.setItem('socialeo_active_bill', JSON.stringify(currentBill));
+  }
+
+  let crmClients = [
     {
       id: "vo2-max-mysuru",
       name: "VO2 MAX Sports Physiotherapy & Rehab",
@@ -181,20 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
       addressLine2: "Gokulam, Mysuru, Karnataka 570002",
       phone: "+91 8722163256",
       email: "vo2maxphysio@gmail.com",
-      totalBilled: "₹57,000",
-      invoicesCount: 1
-    },
-    {
-      id: "yoga-srinatha",
-      name: "Yoga with Srinatha",
-      addressLine1: "14, Contour Rd, Gokulam 3rd Stage,",
-      addressLine2: "Gokulam, Mysuru, Karnataka 570002",
-      phone: "+91 9845012345",
-      email: "contact@yogawithsrinatha.com",
-      totalBilled: "₹4,18,000",
-      invoicesCount: 1
+      totalBilled: "₹1,23,000",
+      invoicesCount: 2
     }
   ];
+  localStorage.setItem('socialeo_crm_clients', JSON.stringify(crmClients));
 
   // ==========================================
   // 2. HELPER FUNCTIONS
@@ -562,38 +528,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Render QR Code
     updateQrCode(total, curr);
 
-    // 8. Update Interactive Action Buttons (WhatsApp, Email with CC, Direct UPI App)
-    const invNum = invNumberInput.value.trim() || 'INV';
-    const clientName = clientNameInput.value.trim() || 'Valued Client';
+    // 8. Update Interactive Action Buttons (WhatsApp, Email, Instant Pay Now)
+    const invNum = invNumberInput.value.trim() || '8104';
+    const clientName = clientNameInput.value.trim() || 'VO2 MAX Sports Physiotherapy & Rehab';
     const totalFormatted = formatCurrency(total, curr);
     const agencyPhoneRaw = (currentBill.agencyInfo?.phone || '+918722163256').replace(/[^0-9]/g, '');
     const agencyEmail = currentBill.agencyInfo?.email || 'socialeopvtltd@gmail.com';
     const ccEmail = 'socialeopvtltd@gmail.com';
 
-    // WhatsApp Direct Deep Link
+    // WhatsApp Direct Deep Link (100% clickable in Web & PDF)
     if (liveBtnWhatsapp) {
       const waMsg = `Hi Socialeo Team, contacting regarding Invoice #${invNum} for "${clientName}" with total payable amount: ${totalFormatted}.`;
       liveBtnWhatsapp.href = `https://wa.me/${agencyPhoneRaw}?text=${encodeURIComponent(waMsg)}`;
     }
 
-    // Email with CC Deep Link
+    // Email with CC Deep Link (100% clickable in Web & PDF)
     if (liveBtnEmail) {
       const subject = `Invoice #${invNum} - ${clientName} | Socialeo Studio`;
       const body = `Hi Socialeo Team,\n\nI am reaching out regarding Invoice #${invNum} issued for ${clientName}.\n\nTotal Payable Amount: ${totalFormatted}\nDate: ${invDateInput.value}\n\nClient Name: ${clientName}\nAddress: ${clientAddr1Input.value} ${clientAddr2Input.value}\nPhone: ${clientPhoneInput.value || 'N/A'}\n\nPlease find this billing acknowledgment.\n\nThank you!`;
       liveBtnEmail.href = `mailto:${agencyEmail}?cc=${encodeURIComponent(ccEmail)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
-    // Pay Now UPI Mobile Deep Link
+    // Pay Now UPI / Direct WhatsApp Confirmation Link (100% clickable in Web & PDF)
     if (liveBtnPaynow) {
       const upiId = upiIdInput.value.trim() || '8722163256@sbi';
       const beneficiary = bankBeneficiaryInput.value.trim() || 'MANPREETH N';
+      
+      const payConfirmMsg = `Hi Socialeo, I am initiating payment for Invoice #${invNum} (${totalFormatted}) to UPI ID: ${upiId} (Beneficiary: ${beneficiary}).`;
+      const universalPayLink = `https://wa.me/${agencyPhoneRaw}?text=${encodeURIComponent(payConfirmMsg)}`;
       const upiPayUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(beneficiary)}&am=${total}&tn=${encodeURIComponent('Socialeo Inv ' + invNum)}&cu=INR`;
-      liveBtnPaynow.href = upiPayUri;
+      
+      // Use universal link as default so PDF readers on any device can open it directly
+      liveBtnPaynow.href = universalPayLink;
+      liveBtnPaynow.setAttribute('data-upi-uri', upiPayUri);
 
-      liveBtnPaynow.onclick = function() {
+      liveBtnPaynow.onclick = function(e) {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        if (!isMobile) {
-          showToast(`Opening UPI payment prompt for ₹${total} (UPI: ${upiId})`, "⚡");
+        if (isMobile) {
+          e.preventDefault();
+          window.location.href = upiPayUri;
         }
       };
     }
@@ -606,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateQrCode(totalAmount, currencySymbol) {
     const upiId = upiIdInput.value.trim() || '8722163256@sbi';
     const beneficiary = bankBeneficiaryInput.value.trim() || 'Socialeo';
-    const invNum = invNumberInput.value.trim() || '7272';
+    const invNum = invNumberInput.value.trim() || '8104';
     
     // Standard UPI URI format
     const upiUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(beneficiary)}&am=${totalAmount}&tn=Socialeo_Inv_${encodeURIComponent(invNum)}&cu=INR`;
@@ -634,7 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderFallbackQrSvg() {
     liveUpiQrcode.innerHTML = `
-      <svg width="92" height="92" viewBox="0 0 100 100" fill="#000">
+      <svg width="76" height="76" viewBox="0 0 100 100" fill="#000">
         <rect width="100" height="100" fill="#fff"/>
         <path fill="#000" d="M10 10h30v30h-30zM15 15v20h20v-20zM22 22h6v6h-6zM60 10h30v30h-30zM65 15v20h20v-20zM72 22h6v6h-6zM10 60h30v30h-30zM15 65v20h20v-20zM22 72h6v6h-6zM50 50h10v10h-10zM65 65h10v10h-10zM80 80h10v10h-10zM50 75h10v15h-10zM75 50h15v10h-15z"/>
       </svg>
@@ -655,10 +628,6 @@ document.addEventListener('DOMContentLoaded', () => {
       email: clientEmailInput.value
     };
 
-    currentBill.taxRate = parseFloat(taxRateInput.value) || 0;
-    currentBill.discountType = discountTypeInput.value;
-    currentBill.discountValue = parseFloat(discountValueInput.value) || 0;
-
     currentBill.bankInfo = {
       beneficiary: bankBeneficiaryInput.value,
       bankName: bankNameInput.value,
@@ -666,6 +635,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ifsc: bankIfscInput.value,
       upiId: upiIdInput.value
     };
+
+    currentBill.taxRate = parseFloat(taxInput.value) || 0;
+    currentBill.discountType = discountTypeSelect.value;
+    currentBill.discountValue = parseFloat(discountValInput.value) || 0;
 
     localStorage.setItem('socialeo_active_bill', JSON.stringify(currentBill));
   }
@@ -771,8 +744,8 @@ document.addEventListener('DOMContentLoaded', () => {
       taxRate: 0,
       discountType: "percent",
       discountValue: 0,
-      bankInfo: { ...SAMPLE_BILL.bankInfo },
-      agencyInfo: { ...SAMPLE_BILL.agencyInfo }
+      bankInfo: { ...VO2_MAX_BILL_1.bankInfo },
+      agencyInfo: { ...VO2_MAX_BILL_1.agencyInfo }
     };
     populateFormFromBill(currentBill);
     showToast("Created new blank invoice template", "📄");
@@ -813,6 +786,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Direct Interactive PDF Download Engine (Preserves Active Hyperlinks)
+  function downloadPdfWithLinks() {
+    showToast("Generating high-resolution PDF with clickable links...", "⏳");
+    const element = document.getElementById('invoice-printable-target');
+    const invNo = invNumberInput.value.trim() || '8104';
+    const rawName = clientNameInput.value.trim() || 'VO2_MAX';
+    const safeClient = rawName.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 20);
+    
+    const opt = {
+      margin: 0,
+      filename: `Socialeo_Invoice_${invNo}_${safeClient}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      enableLinks: true
+    };
+
+    if (typeof html2pdf !== 'undefined') {
+      html2pdf().set(opt).from(element).save().then(() => {
+        showToast("PDF downloaded with active clickable links!", "📥");
+      }).catch(err => {
+        console.warn("html2pdf error, falling back to window.print():", err);
+        window.print();
+      });
+    } else {
+      window.print();
+    }
+  }
+
   // Print / PDF Triggers
   function triggerPrint() {
     window.print();
@@ -821,6 +823,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('top-print-btn')?.addEventListener('click', triggerPrint);
   document.getElementById('bottom-print-btn')?.addEventListener('click', triggerPrint);
   document.getElementById('pane-print-btn')?.addEventListener('click', triggerPrint);
+  
+  // Download Interactive PDF Triggers
+  document.getElementById('pane-download-btn')?.addEventListener('click', downloadPdfWithLinks);
+  document.getElementById('bottom-download-btn')?.addEventListener('click', downloadPdfWithLinks);
 
   // Zoom / Scale Controls for Preview Pane
   const a4Sheet = document.getElementById('invoice-printable-target');
