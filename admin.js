@@ -196,6 +196,85 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // 2.5 ADMIN AUTHENTICATION & DEVICE MEMORY GATEWAY
+  // ==========================================
+  const authOverlay = document.getElementById('admin-auth-overlay');
+  const authForm = document.getElementById('admin-login-form');
+  const authUsername = document.getElementById('auth-username');
+  const authPassword = document.getElementById('auth-password');
+  const authRemember = document.getElementById('auth-remember-device');
+  const authErrorMsg = document.getElementById('auth-error-msg');
+  const authTogglePwd = document.getElementById('auth-toggle-pwd-btn');
+  const logoutBtn = document.getElementById('admin-logout-btn');
+
+  // Check persistent session on this device
+  const savedToken = localStorage.getItem('socialeo_admin_session') || sessionStorage.getItem('socialeo_admin_session');
+  if (savedToken === 'authenticated_socialeo_studio') {
+    unlockAdminStudio(false);
+  }
+
+  function unlockAdminStudio(showToastMsg = true) {
+    if (authOverlay) {
+      authOverlay.classList.add('auth-granted');
+    }
+    if (showToastMsg) {
+      showToast("Welcome to Socialeo Admin Studio!", "🔓");
+    }
+  }
+
+  function lockAdminStudio() {
+    localStorage.removeItem('socialeo_admin_session');
+    sessionStorage.removeItem('socialeo_admin_session');
+    if (authOverlay) {
+      authOverlay.classList.remove('auth-granted');
+      if (authPassword) authPassword.value = '';
+    }
+    showToast("Admin studio locked.", "🔒");
+  }
+
+  // Toggle Password Visibility
+  authTogglePwd?.addEventListener('click', () => {
+    if (authPassword) {
+      const isPwd = authPassword.type === 'password';
+      authPassword.type = isPwd ? 'text' : 'password';
+      authTogglePwd.textContent = isPwd ? '🙈' : '👁️';
+    }
+  });
+
+  // Login Form Submission
+  authForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = (authUsername?.value || '').trim().toLowerCase();
+    const p = (authPassword?.value || '').trim();
+
+    // Valid credentials:
+    // Username: 'admin' or 'socialeo' or 'socialeopvtltd@gmail.com' or 'manu'
+    // Password: 'socialeo@2026' or 'socialeo2026' or 'admin123'
+    const validUsers = ['admin', 'socialeo', 'socialeopvtltd@gmail.com', 'manu'];
+    const validPass = ['socialeo@2026', 'socialeo2026', 'admin123', 'admin@2026'];
+
+    if (validUsers.includes(u) && validPass.includes(p)) {
+      if (authErrorMsg) authErrorMsg.style.display = 'none';
+
+      const rememberDevice = authRemember ? authRemember.checked : true;
+      if (rememberDevice) {
+        localStorage.setItem('socialeo_admin_session', 'authenticated_socialeo_studio');
+      } else {
+        sessionStorage.setItem('socialeo_admin_session', 'authenticated_socialeo_studio');
+      }
+
+      unlockAdminStudio(true);
+    } else {
+      if (authErrorMsg) {
+        authErrorMsg.textContent = "⚠️ Invalid credentials. Check username or password.";
+        authErrorMsg.style.display = 'flex';
+      }
+    }
+  });
+
+  logoutBtn?.addEventListener('click', lockAdminStudio);
+
+  // ==========================================
   // 3. TAB NAVIGATION
   // ==========================================
   const tabBtns = document.querySelectorAll('.admin-tab-btn');

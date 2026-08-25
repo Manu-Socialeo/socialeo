@@ -46,11 +46,65 @@
       </nav>
     </div>
     <div class="admin-header-right">
+      <button type="button" class="admin-btn admin-btn-ghost" id="admin-logout-btn" title="Log Out & Lock Studio">
+        🔒 Log Out
+      </button>
       <a href="index.html" class="admin-link-btn" title="Back to Socialeo Main Site">
         ← Back to Main Site
       </a>
     </div>
   </header>
+
+  <!-- ==========================================
+       ADMIN AUTHENTICATION GATEWAY (LOGIN OVERLAY)
+       ========================================== -->
+  <div class="admin-auth-overlay" id="admin-auth-overlay">
+    <div class="admin-auth-card">
+      <div class="auth-brand-badge">
+        <span class="auth-dot"></span>
+        <span>SOCIALEO STUDIO SECURE ACCESS</span>
+      </div>
+      <div class="auth-header">
+        <h2>Admin Studio Login</h2>
+        <p>Enter your studio credentials to access the Client CRM & Invoice Engine.</p>
+      </div>
+
+      <form id="admin-login-form" class="auth-form">
+        <div class="form-group">
+          <label for="auth-username">Username or Email</label>
+          <div class="auth-input-wrapper">
+            <input type="text" id="auth-username" class="admin-input" placeholder="e.g. admin or socialeo" autocomplete="username" required>
+            <span class="auth-input-icon">👤</span>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="auth-password">Studio Security Password</label>
+          <div class="auth-input-wrapper">
+            <input type="password" id="auth-password" class="admin-input" placeholder="••••••••••••" autocomplete="current-password" required>
+            <button type="button" class="auth-toggle-pwd" id="auth-toggle-pwd-btn" title="Toggle password visibility">👁️</button>
+          </div>
+        </div>
+
+        <div class="auth-remember-row" style="margin-top: 14px;">
+          <label class="auth-checkbox-label">
+            <input type="checkbox" id="auth-remember-device" checked>
+            <span>Remember this device (Skip login next time)</span>
+          </label>
+        </div>
+
+        <div class="auth-error-msg" id="auth-error-msg" style="display: none;"></div>
+
+        <button type="submit" class="admin-btn admin-btn-primary auth-submit-btn" id="auth-login-btn">
+          <span>🔓</span> Enter Admin Studio
+        </button>
+      </form>
+
+      <div class="auth-footer-hint">
+        <span class="lock-icon">🔒</span> Protected by Socialeo Client Security Tokens
+      </div>
+    </div>
+  </div>
 
   <!-- Main Workspace -->
   <main class="admin-main">

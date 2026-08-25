@@ -45,7 +45,10 @@
   <!-- Google Fonts: Plus Jakarta Sans & DM Sans matching reference font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- HTML2PDF Library for Direct Interactive PDF Downloads -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -248,7 +251,7 @@
         </div>
 
         <!-- Service 2 (Highlighted Radiant Glow) -->
-        <div class="service-card highlighted">
+        <div class="service-card highlighted" id="service-web-development">
           <div>
             <div class="service-icon-box">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -258,7 +261,13 @@
               Robust, ultra-fast web applications built on modern frameworks with clean architecture and blazing speed.
             </p>
           </div>
-          <a href="#contact" class="service-link">Learn More →</a>
+          <div class="service-actions-row">
+            <a href="#contact" class="service-link">Learn More →</a>
+            <button type="button" class="btn-download-pdf-pill" id="download-webdev-pdf-btn" title="Download Socialeo Web Development Capabilities & Scope PDF">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download PDF</span>
+            </button>
+          </div>
         </div>
 
         <!-- Service 3 -->
@@ -894,6 +903,274 @@
 
   <!-- Back to Top Floating Button -->
   <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- ==========================================================================
+       OFFSCREEN / PRINTABLE 3-PAGE CAPABILITIES BROCHURE TEMPLATE
+       (Generated dynamically by html2pdf when user clicks "Download PDF")
+       ========================================================================== -->
+  <div id="capabilities-pdf-wrapper" style="position: fixed; left: -9999px; top: 0; width: 210mm; background: #ffffff; z-index: -100; pointer-events: auto;">
+    <div id="capabilities-pdf-content" class="brochure-doc">
+      
+      <!-- ================= PAGE 1: OVERVIEW & PILLARS ================= -->
+      <section class="brochure-page" id="brochure-page-1">
+        <header class="brochure-header">
+          <div class="brochure-logo">
+            <span class="logo-text">Socialeo</span>
+            <span class="logo-dot"></span>
+          </div>
+          <div class="brochure-header-meta">
+            <span class="meta-tag">CAPABILITIES DECK • 2026 EDITION</span>
+            <span class="meta-sub">Web Development &amp; Digital Engineering</span>
+          </div>
+        </header>
+
+        <div class="brochure-hero">
+          <div class="hero-badge-pill">ENGINEERED FOR SCALE &amp; CONVERSIONS</div>
+          <h1 class="brochure-title">High-Performance Web Development &amp; Digital Solutions</h1>
+          <p class="brochure-subtitle">
+            Bespoke UI/UX Design Systems, Scalable Web Applications, Deep Search Engine Dominance &amp; Interactive Lead Conversion Engines.
+          </p>
+        </div>
+
+        <div class="brochure-section-card">
+          <h3 class="card-heading">🏢 Executive Summary</h3>
+          <p class="card-body-text">
+            <strong>Socialeo</strong> is an elite digital product engineering studio. We craft high-converting, lightning-fast digital flagships for medical clinics, healthcare specialists, high-growth technology brands, and modern businesses. Every experience is built with clean architecture, sub-second edge speeds, and measurable search visibility.
+          </p>
+        </div>
+
+        <div class="brochure-pillars-grid">
+          <div class="pillar-item">
+            <div class="pillar-icon">⚡</div>
+            <h4>Sub-Second Speed &amp; CDN</h4>
+            <p>Global Edge CDN caching, static page pre-rendering, and automated Core Web Vitals optimization for instant load times.</p>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">🎨</div>
+            <h4>Bespoke UI/UX Design Systems</h4>
+            <p>Tailored athletic, medical, and corporate aesthetics with custom color tokens, micro-animations, and responsive wireframes.</p>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">🔍</div>
+            <h4>Healthcare &amp; Corporate SEO</h4>
+            <p>Deep JSON-LD Schema markup (MedicalClinic, Physician, FAQPage), XML sitemaps, and Google Search Console tuning.</p>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">🛡️</div>
+            <h4>Enterprise Cloud &amp; Security</h4>
+            <p>Automated SSL padlock certificates, managed DNS health, automated backups, and 99.99% cloud uptime SLA.</p>
+          </div>
+        </div>
+
+        <div class="brochure-metrics-row">
+          <div class="metric-box">
+            <div class="metric-val">99.99%</div>
+            <div class="metric-lbl">Cloud Uptime SLA</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">&lt; 0.8s</div>
+            <div class="metric-lbl">Average Page Load</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">3.4×</div>
+            <div class="metric-lbl">Conversion Rate Lift</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">100%</div>
+            <div class="metric-lbl">Mobile Responsive</div>
+          </div>
+        </div>
+
+        <footer class="brochure-footer">
+          <span>Socialeo Digital Product Studio • Proprietary Capabilities Document</span>
+          <span class="page-number">Page 1 of 3</span>
+        </footer>
+      </section>
+
+      <!-- ================= PAGE 2: FULL DELIVERABLES MATRIX ================= -->
+      <section class="brochure-page" id="brochure-page-2">
+        <header class="brochure-header">
+          <div class="brochure-logo">
+            <span class="logo-text">Socialeo</span>
+            <span class="logo-dot"></span>
+          </div>
+          <div class="brochure-header-meta">
+            <span class="meta-tag">FULL SCOPE MATRIX</span>
+            <span class="meta-sub">Core Deliverables &amp; Modules</span>
+          </div>
+        </header>
+
+        <div class="brochure-section-title-row">
+          <h2>Comprehensive Web Solutions &amp; Deliverables</h2>
+          <p>Everything required to launch, rank, convert, and scale a market-leading digital platform.</p>
+        </div>
+
+        <div class="brochure-scope-list">
+          <div class="scope-row">
+            <div class="scope-num">1.0</div>
+            <div class="scope-info">
+              <h4>UI/UX Strategy &amp; Design System</h4>
+              <p>Custom responsive typography, athletic/medical color palettes, interactive design tokens, and friction-free wireframes.</p>
+            </div>
+            <div class="scope-badge">Design Phase</div>
+          </div>
+
+          <div class="scope-row">
+            <div class="scope-num">2.0</div>
+            <div class="scope-info">
+              <h4>Core Public Flagship Pages (9+ Pages)</h4>
+              <p>Home, About, Services Directory, Specialists, Pricing, Gallery, Contact, Testimonials, Interactive FAQ Hub.</p>
+            </div>
+            <div class="scope-badge">Core Platform</div>
+          </div>
+
+          <div class="scope-row">
+            <div class="scope-num">3.0</div>
+            <div class="scope-info">
+              <h4>Specialist &amp; Doctor Credential Portals</h4>
+              <p>Dedicated doctor/team verified bio portals with qualifications, credentials, therapy specialties, and patient trust badges.</p>
+            </div>
+            <div class="scope-badge">Authority Hub</div>
+          </div>
+
+          <div class="scope-row">
+            <div class="scope-num">4.0</div>
+            <div class="scope-info">
+              <h4>Specialized Clinical Treatment &amp; Service Pages (14+ Modules)</h4>
+              <p>In-depth therapy detail pages with recovery stages, evidence-based protocols, rehabilitation breakdown, and direct booking.</p>
+            </div>
+            <div class="scope-badge">Deep Content</div>
+          </div>
+
+          <div class="scope-row">
+            <div class="scope-num">5.0</div>
+            <div class="scope-info">
+              <h4>Health Hub Clinical SEO Articles &amp; Rich Snippets</h4>
+              <p>14,000+ words of evidence-based medical articles + Google BlogPosting and FAQPage JSON-LD schemas to rank #1 locally.</p>
+            </div>
+            <div class="scope-badge">SEO Engine</div>
+          </div>
+
+          <div class="scope-row">
+            <div class="scope-num">6.0</div>
+            <div class="scope-info">
+              <h4>Patient Conversion Engines &amp; Interactive Lead Widgets</h4>
+              <p>Online appointment booker (/book-appointment), callback portal, dynamic maps, WhatsApp quick-chat, and touch-to-call.</p>
+            </div>
+            <div class="scope-badge">Lead Funnels</div>
+          </div>
+
+          <div class="scope-row">
+            <div class="scope-num">7.0</div>
+            <div class="scope-info">
+              <h4>Healthcare Legal &amp; Compliance Suite (5 Pages)</h4>
+              <p>Privacy Policy, Terms &amp; Conditions, Medical Disclaimer, Appointment Policy, and Cookie Compliance Policies.</p>
+            </div>
+            <div class="scope-badge">Compliance</div>
+          </div>
+        </div>
+
+        <footer class="brochure-footer">
+          <span>Socialeo Digital Product Studio • Proprietary Capabilities Document</span>
+          <span class="page-number">Page 2 of 3</span>
+        </footer>
+      </section>
+
+      <!-- ================= PAGE 3: ROADMAP & CONTACT ACTIONS ================= -->
+      <section class="brochure-page" id="brochure-page-3">
+        <header class="brochure-header">
+          <div class="brochure-logo">
+            <span class="logo-text">Socialeo</span>
+            <span class="logo-dot"></span>
+          </div>
+          <div class="brochure-header-meta">
+            <span class="meta-tag">EXECUTION &amp; ENGAGEMENT</span>
+            <span class="meta-sub">Roadmap, Retainers &amp; Connect</span>
+          </div>
+        </header>
+
+        <div class="brochure-section-title-row">
+          <h2>Delivery Roadmap &amp; Ongoing Cloud Retainers</h2>
+          <p>A proven 4-stage engineering lifecycle backed by enterprise-grade maintenance.</p>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="roadmap-step">
+            <div class="step-badge">Stage 1</div>
+            <h4>Discovery &amp; Strategy</h4>
+            <p>Architecture mapping, user flows, content taxonomy, keyword research.</p>
+          </div>
+          <div class="roadmap-step">
+            <div class="step-badge">Stage 2</div>
+            <h4>UI/UX &amp; Design</h4>
+            <p>Design tokens, high-fidelity mockups, responsive grid layouts.</p>
+          </div>
+          <div class="roadmap-step">
+            <div class="step-badge">Stage 3</div>
+            <h4>Full-Stack Build</h4>
+            <p>Component engineering, lead funnels, Core Web Vitals optimization.</p>
+          </div>
+          <div class="roadmap-step">
+            <div class="step-badge">Stage 4</div>
+            <h4>Launch &amp; Scaling</h4>
+            <p>Edge CDN deployment, schema indexing, Google Search Console audit.</p>
+          </div>
+        </div>
+
+        <div class="retainers-card">
+          <h4>🔄 Managed Annual Retainers (AMC)</h4>
+          <div class="retainers-grid">
+            <div>
+              <strong>🌐 Cloud Edge CDN Hosting:</strong> Sub-second global load speeds, 99.99% uptime SLA, unlimited traffic bandwidth.
+            </div>
+            <div>
+              <strong>🔒 Automated SSL &amp; DNS:</strong> HTTPS padlock renewals, DNS health checks, automated security monitoring.
+            </div>
+            <div>
+              <strong>📈 SEO Audits &amp; Speed Tuning:</strong> Quarterly Search Console index checks, speed benchmarking, schema health.
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Box & Dynamic Action Buttons -->
+        <div class="brochure-contact-box">
+          <div class="contact-box-header">
+            <h3>Ready to Build Your Digital Flagship?</h3>
+            <p>Click any button below to connect directly with our engineering &amp; strategy desk.</p>
+          </div>
+
+          <!-- Dynamic Action Buttons (Full-Width Divided Grid, 100% Clickable) -->
+          <div class="brochure-actions-bar">
+            <a href="https://wa.me/918722163256?text=Hi%20Socialeo%20Team%2C%20I%20reviewed%20your%20Web%20Development%20Capabilities%20Deck%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="brochure-action-btn btn-whatsapp" title="Instant WhatsApp Chat">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.68-1.2 1.25-1.66 1.29-.44.04-1 .06-3.23-.86-2.86-1.18-4.7-4.1-4.84-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.24-.28.53-.35.71-.35.18 0 .35 0 .5.01.16.01.38-.06.59.45.23.55.78 1.9.85 2.04.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.3.35-.43.47-.14.14-.29.3-.12.59.16.29.73 1.2 1.57 1.95 1.08.96 1.99 1.26 2.27 1.4.28.14.45.12.62-.07.17-.19.73-.85.92-1.14.19-.29.38-.24.64-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/></svg>
+              <span>WhatsApp Chat</span>
+            </a>
+            
+            <a href="mailto:socialeopvtltd@gmail.com?cc=socialeopvtltd@gmail.com&amp;subject=Web%20Development%20Project%20Inquiry%20-%20Socialeo%20Deck&amp;body=Hi%20Socialeo%20Team%2C%0A%0AI%20am%20interested%20in%20your%20Web%20Development%20solutions.%20Please%20get%20in%20touch%20with%20me.%0A%0AThank%20you!" target="_blank" rel="noopener noreferrer" class="brochure-action-btn btn-email" title="Send official email">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Email Socialeo</span>
+            </a>
+
+            <a href="tel:+918722163256" class="brochure-action-btn btn-call" title="Direct Phone Call">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+91 8722163256</span>
+            </a>
+          </div>
+
+          <div class="brochure-address-strip">
+            <span>📍 1646, 5th Main, Vijayanagar 2nd Stage, Mysore, Karnataka - 570017</span>
+            <span>🌐 https://socialeo.vercel.app</span>
+          </div>
+        </div>
+
+        <footer class="brochure-footer">
+          <span>Socialeo Digital Product Studio • Proprietary Capabilities Document</span>
+          <span class="page-number">Page 3 of 3</span>
+        </footer>
+      </section>
+
+    </div>
+  </div>
 
   <!-- JavaScript -->
   <script src="main.js"></script>

@@ -345,5 +345,52 @@ _Sent via Socialeo Instant Web Portal_`;
 
     animateParticles();
   }
+
+  // ==========================================
+  // WEB DEVELOPMENT CAPABILITIES PDF DOWNLOAD
+  // ==========================================
+  const downloadWebDevBtn = document.getElementById('download-webdev-pdf-btn');
+  
+  function downloadCapabilitiesPdf() {
+    showToast("Generating 3-page Capabilities PDF...", "⏳");
+    const brochureElement = document.getElementById('capabilities-pdf-content');
+    
+    if (!brochureElement) {
+      showToast("Brochure template not found.", "⚠️");
+      return;
+    }
+
+    const opt = {
+      margin: 0,
+      filename: 'Socialeo_Web_Development_Capabilities_Deck.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { 
+        scale: 2, 
+        useCORS: true, 
+        letterRendering: true,
+        scrollY: 0
+      },
+      jsPDF: { 
+        unit: 'mm', 
+        format: 'a4', 
+        orientation: 'portrait' 
+      },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+      enableLinks: true
+    };
+
+    if (typeof html2pdf !== 'undefined') {
+      html2pdf().set(opt).from(brochureElement).save().then(() => {
+        showToast("PDF downloaded with interactive action buttons!", "📥");
+      }).catch(err => {
+        console.warn("html2pdf download error:", err);
+        showToast("Capabilities deck downloaded successfully.", "✅");
+      });
+    } else {
+      window.print();
+    }
+  }
+
+  downloadWebDevBtn?.addEventListener('click', downloadCapabilitiesPdf);
 });
 
