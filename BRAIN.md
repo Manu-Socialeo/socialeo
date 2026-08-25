@@ -48,13 +48,16 @@ SOCIALEO STUDIO — COMPREHENSIVE PRODUCTION VERIFICATION CHECKLIST
     │   └── Direct Call (tel:+918722163256)
     └── [✓] Client-side generation via html2pdf.js with high fidelity (scale: 2)
 
-[✓] 3. ADMIN STUDIO & SECURITY GATEWAY
-    ├── [✓] Admin Authentication Overlay on admin.html
-    ├── [✓] Credentials: Username 'admin'/'socialeo' | Password 'socialeo@2026'
-    ├── [✓] "Remember this device" feature (localStorage session token)
-    ├── [✓] Instant pre-render script preventing overlay flicker on remembered devices
-    ├── [✓] Secure "🔒 Log Out" button to re-lock studio on demand
-    └── [✓] Password visibility toggle (👁️ / 🙈) and error validation feedback
+[✓] 3. ADMIN DASHBOARD & SECURITY GATEWAY
+    ├── [✓] Renamed to 'Socialeo Admin Dashboard' across titles, breadcrumbs, badges, and auth cards
+    ├── [✓] Collapsible Left Sidebar Navigation with toggle arrow (◀ / ▶) and localStorage state persistence
+    ├── [✓] Categorized Sidebar Groups: Workspace tabs, One-click VO2 MAX presets, Studio Tools, Lock & Theme
+    ├── [✓] Cleaned header: Removed redundant back button (Socialeo brand logo links directly to main site)
+    ├── [✓] Interactive Zoom View Engine: 25%, 50%, 75% (Default), 100%, Fit to width, and Custom drag slider
+    ├── [✓] Single Unified Action: '📥 Download / Print PDF' button across toolbar, bottom card, and sidebar
+    ├── [✓] Admin Authentication Overlay with 'admin' / 'socialeo@2026' credentials
+    ├── [✓] "Remember this device" feature (localStorage session token with zero-flicker pre-render check)
+    └── [✓] Secure "🔒 Log Out" button to re-lock dashboard on demand
 
 [✓] 4. CLIENT CRM & INVOICE ENGINE (VO2 MAX GROUND TRUTH)
     ├── [✓] Cleaned unwanted sample bills; strictly 2 VO2 MAX bills in storage:
