@@ -1643,6 +1643,11 @@ body {
   color: var(--text-secondary);
 }
 
+.footer-legal a.active {
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
 /* Back to Top Button */
 .back-to-top {
   position: fixed;
