@@ -68,6 +68,10 @@
               <span class="nav-text">Saved Invoices</span>
               <span class="sidebar-badge" id="saved-invoices-count">2</span>
             </button>
+            <button class="admin-tab-btn sidebar-nav-item" data-tab="blog-studio-tab" title="Blog Studio & Reddit Automation">
+              <span class="tab-icon">✍️</span>
+              <span class="nav-text">Blog & Reddit Studio</span>
+            </button>
             <button class="admin-tab-btn sidebar-nav-item" data-tab="settings-tab" title="Agency & Bank Setup">
               <span class="tab-icon">⚙️</span>
               <span class="nav-text">Agency & Bank Setup</span>
@@ -694,7 +698,171 @@
     </section>
 
     <!-- ==========================================
-         TAB 4: AGENCY & BANK SETTINGS
+         TAB 4: BLOG & REDDIT CONTENT ENGINE
+         ========================================== -->
+    <section class="admin-tab-content no-print" id="blog-studio-tab">
+      <div class="blog-studio-container" style="max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        
+        <div class="crm-header-row">
+          <div>
+            <h2>✍️ Blog Studio &amp; Reddit Content Engine</h2>
+            <p>Draft high-ranking SEO blog masterclasses, generate structured HTML, and syndication-ready Reddit posts for <strong style="color:var(--color-primary);">u/Socialeo_</strong>.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="admin-btn admin-btn-secondary" id="blog-quick-preset-btn">
+              ⚡ Load Preset Idea
+            </button>
+            <button type="button" class="admin-btn admin-btn-secondary" id="blog-copy-reddit-btn">
+              📋 Copy Reddit Post
+            </button>
+            <button type="button" class="admin-btn admin-btn-primary" id="blog-publish-btn">
+              💾 Save Blog Post
+            </button>
+          </div>
+        </div>
+
+        <!-- Studio Grid Layout -->
+        <div class="studio-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          
+          <!-- Left Column: Blog Editor -->
+          <div class="controls-card" style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <h4>📝 Article Metadata &amp; Content</h4>
+              <span class="badge badge-success" id="blog-word-count">0 Words</span>
+            </div>
+
+            <div class="form-group">
+              <label>Topic Presets</label>
+              <select id="blog-preset-select" class="admin-input">
+                <option value="">-- Choose High-Impact Topic Idea --</option>
+                <option value="roi-design">Why Bespoke Web Design Outperforms Templates (ROI Analysis)</option>
+                <option value="nextjs-seo">How Next.js Edge Architecture Drives #1 Google Rankings</option>
+                <option value="saas-cro">High-Converting B2B SaaS Landing Page Anatomy (Teardown)</option>
+                <option value="fintech-ux">Fintech &amp; Trading App UX: Cognitive Load Principles</option>
+                <option value="webgl-3d">WebGL &amp; Three.js: When 3D Increases Conversions vs Destroys Speed</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Article Title (H1 &amp; SEO Title)</label>
+              <input type="text" id="blog-title-input" class="admin-input" placeholder="e.g. Why Bespoke Web Design Crushes Templates in 2026">
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>URL Slug</label>
+                <input type="text" id="blog-slug-input" class="admin-input" placeholder="e.g. bespoke-web-design-roi">
+              </div>
+              <div class="form-group">
+                <label>Target Subreddit</label>
+                <select id="blog-subreddit-input" class="admin-input">
+                  <option value="webdev">r/webdev</option>
+                  <option value="entrepreneur">r/entrepreneur</option>
+                  <option value="startups">r/startups</option>
+                  <option value="SEO">r/SEO</option>
+                  <option value="UI_Design">r/UI_Design</option>
+                  <option value="SideProject">r/SideProject</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Primary SEO Keyword</label>
+                <input type="text" id="blog-keyword-input" class="admin-input" placeholder="e.g. bespoke web design agency">
+              </div>
+              <div class="form-group">
+                <label>Read Time</label>
+                <input type="text" id="blog-readtime-input" class="admin-input" value="8 Min Read">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Executive Excerpt / Meta Description</label>
+              <textarea id="blog-excerpt-input" class="admin-input" rows="2" placeholder="Brief 150-character summary for Google meta description and Reddit lead paragraph..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Markdown Content Body</label>
+              <textarea id="blog-body-input" class="admin-input" rows="12" style="font-family: monospace; font-size: 13px; line-height: 1.6;" placeholder="Write your masterclass in Markdown... (Use ## Headings, - Bullet points, > Quotes)"></textarea>
+            </div>
+          </div>
+
+          <!-- Right Column: Reddit & Live Preview -->
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            
+            <!-- Reddit Preview Card -->
+            <div class="controls-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="font-size:20px;">🤖</span>
+                  <h4 style="margin:0;">Reddit Syndication Hub (<span style="color:#FF4500;">u/Socialeo_</span>)</h4>
+                </div>
+                <a href="https://www.reddit.com/user/Socialeo_/" target="_blank" rel="noopener" class="admin-btn admin-btn-secondary" style="padding:4px 10px; font-size:12px;">
+                  View Profile ↗
+                </a>
+              </div>
+
+              <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">
+                Value-first Reddit post formatted with actionable takeaways and natural organic brand attribution.
+              </p>
+
+              <div class="form-group">
+                <label>Target Subreddit URL:</label>
+                <div style="display:flex; gap:8px;">
+                  <input type="text" id="reddit-post-url" class="admin-input" readonly value="https://www.reddit.com/r/webdev/submit">
+                  <button type="button" class="admin-btn admin-btn-primary" id="reddit-open-submit-btn" style="white-space:nowrap;">
+                    🚀 Open in Reddit
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top:12px;">
+                <label>Generated Reddit Markdown Copy:</label>
+                <textarea id="reddit-markdown-preview" class="admin-input" rows="11" readonly style="font-family:monospace; font-size:12px; background:rgba(0,0,0,0.3); color:#E0E0E0;"></textarea>
+              </div>
+            </div>
+
+            <!-- Reddit API Configuration Card -->
+            <div class="controls-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                <h4>🔑 Reddit API Automation Credentials</h4>
+                <span class="badge badge-warning" id="reddit-api-status">u/Socialeo_ Ready</span>
+              </div>
+              <p style="font-size:12px; color:var(--text-muted); margin-bottom: 10px;">
+                Connect your script credentials from <a href="https://www.reddit.com/prefs/apps" target="_blank" rel="noopener" style="color:var(--color-primary);">reddit.com/prefs/apps</a> to automate posting via Node.js backend.
+              </p>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Reddit Username</label>
+                  <input type="text" id="reddit-username-input" class="admin-input" value="Socialeo_">
+                </div>
+                <div class="form-group">
+                  <label>App Client ID</label>
+                  <input type="text" id="reddit-client-id" class="admin-input" placeholder="e.g. k8s9d7f6a5s4...">
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top:8px;">
+                <label>App Client Secret</label>
+                <input type="password" id="reddit-client-secret" class="admin-input" placeholder="e.g. xYz1234_abc5678...">
+              </div>
+
+              <button type="button" class="admin-btn admin-btn-secondary" id="save-reddit-creds-btn" style="margin-top:12px; width:100%;">
+                💾 Save API Credentials (Local Encrypted)
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 5: AGENCY & BANK SETTINGS
          ========================================== -->
     <section class="admin-tab-content no-print" id="settings-tab">
       <div class="settings-container">

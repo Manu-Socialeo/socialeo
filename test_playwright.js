@@ -217,6 +217,13 @@ async function runE2ETests() {
     const liveClientName = await page.textContent('#live-client-name');
     assert(liveClientName.includes('VO2 MAX'), 'Sidebar preset VO2 MAX Bill 1 loaded seamlessly');
 
+    // 4.7 Test Blog Studio & Reddit Syndication Hub
+    await page.click('button[data-tab="blog-studio-tab"]');
+    await page.waitForTimeout(300);
+    const blogTitleVal = await page.inputValue('#blog-title-input');
+    const redditPreviewVal = await page.inputValue('#reddit-markdown-preview');
+    assert(blogTitleVal.length > 0 && redditPreviewVal.includes('Socialeo'), 'Blog Studio loads with ready-to-publish preset & Reddit syndication markdown');
+
     // ==========================================
     // SUITE 5: LEGAL PAGES (Privacy, Terms, Cookie)
     // ==========================================

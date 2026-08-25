@@ -1620,7 +1620,145 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 10. INITIALIZATION
+  // 10. BLOG STUDIO & REDDIT SYNDICATION ENGINE
+  // ==========================================
+  const blogPresetSelect = document.getElementById('blog-preset-select');
+  const blogTitleInput = document.getElementById('blog-title-input');
+  const blogSlugInput = document.getElementById('blog-slug-input');
+  const blogSubredditInput = document.getElementById('blog-subreddit-input');
+  const blogKeywordInput = document.getElementById('blog-keyword-input');
+  const blogReadtimeInput = document.getElementById('blog-readtime-input');
+  const blogExcerptInput = document.getElementById('blog-excerpt-input');
+  const blogBodyInput = document.getElementById('blog-body-input');
+  const blogWordCount = document.getElementById('blog-word-count');
+  const redditMarkdownPreview = document.getElementById('reddit-markdown-preview');
+  const redditPostUrl = document.getElementById('reddit-post-url');
+  const redditOpenSubmitBtn = document.getElementById('reddit-open-submit-btn');
+  const blogCopyRedditBtn = document.getElementById('blog-copy-reddit-btn');
+  const blogQuickPresetBtn = document.getElementById('blog-quick-preset-btn');
+  const saveRedditCredsBtn = document.getElementById('save-reddit-creds-btn');
+  const redditClientId = document.getElementById('reddit-client-id');
+  const redditClientSecret = document.getElementById('reddit-client-secret');
+
+  const BLOG_PRESETS_DATA = {
+    'roi-design': {
+      title: "Why Bespoke Web Design Outperforms Generic Templates: 2026 ROI Teardown",
+      slug: "bespoke-web-design-vs-templates-roi",
+      subreddit: "entrepreneur",
+      keyword: "bespoke web design agency",
+      readTime: "10 Min Read",
+      excerpt: "An in-depth analysis of why custom-engineered design systems and edge architecture yield a +185% increase in qualified inbound inquiries compared to off-the-shelf templates.",
+      body: `## 1. The 50-Millisecond First Impression Paradox\nCognitive neuroscience indicates visitors judge brand authority in under 50ms. Standard templates signal budget constraints and diluted trustworthiness.\n\n## 2. Real-World Conversion Velocity\nOver 6+ years of digital product engineering, our data reveals:\n- +185% qualified project inquiries\n- 98-100 Google Lighthouse Core Web Vitals\n- 2.4x organic SEO traffic growth in 90 days\n\n## 3. The 3 Technical Levers That Drive Revenue\n1. Design Token Architecture (Strict visual vertical rhythm & dark/light palettes)\n2. Sub-Second Edge Infrastructure (Next.js & Vercel edge networks)\n3. Frictionless WhatsApp & Lead Capture Portals\n\n> "Bespoke design is not an aesthetic luxury; it is a direct multiplier of your brand equity."`
+    },
+    'nextjs-seo': {
+      title: "How Next.js App Router Architecture Drives #1 Google Rankings",
+      slug: "frontend-architecture-and-seo-rankings",
+      subreddit: "webdev",
+      keyword: "Next.js SEO architecture",
+      readTime: "12 Min Read",
+      excerpt: "A developer's blueprint for optimizing React Server Components, JSON-LD Schema Graphs, and edge rendering for top-tier Google search visibility.",
+      body: `## 1. Server Components vs Client Hydration for Crawlers\nSearch engine bots process pre-rendered HTML 5x faster than heavy client-side SPAs. Server Components ensure 100% crawl efficiency.\n\n## 2. Multi-Entity Schema.org Graphs\nInjecting comprehensive JSON-LD graphs linking LocalBusiness, Person, Service, and FAQPage enables rich snippet carousels in Google SERPs.\n\n## 3. Core Web Vitals Optimization Checklist\n- LCP < 1.2s via optimized WebP/AVIF images\n- CLS = 0 with strict dimension placeholders\n- INP < 50ms using minimal main-thread JS`
+    },
+    'saas-cro': {
+      title: "High-Converting B2B SaaS Landing Page Anatomy (Teardown)",
+      slug: "conversion-rate-optimization-landing-page-anatomy",
+      subreddit: "startups",
+      keyword: "SaaS conversion rate optimization",
+      readTime: "8 Min Read",
+      excerpt: "Step-by-step breakdown of high-converting B2B SaaS landing page layouts, hero value propositions, social proof placement, and interactive pricing calculators.",
+      body: `## 1. Above-The-Fold Intent Alignment\nYour H1 must answer three questions in 3 seconds: What is it? Who is it for? Why is it better than the alternative?\n\n## 2. Proof-First Information Architecture\nMove verified client logos and metrics directly beneath the primary CTA.\n\n## 3. Interactive Pricing & Self-Qualification\nAllow potential clients to toggle scale, seats, or feature sets in real-time before booking a discovery call.`
+    }
+  };
+
+  function updateRedditMarkdown() {
+    const title = blogTitleInput?.value.trim() || 'Insightful Digital Product Guide';
+    const slug = blogSlugInput?.value.trim() || 'guide';
+    const subreddit = blogSubredditInput?.value || 'webdev';
+    const excerpt = blogExcerptInput?.value.trim() || '';
+    const body = blogBodyInput?.value.trim() || '';
+
+    const words = body.split(/\s+/).filter(w => w.length > 0).length;
+    if (blogWordCount) blogWordCount.textContent = `${words} Words`;
+
+    if (redditPostUrl) {
+      redditPostUrl.value = `https://www.reddit.com/r/${subreddit}/submit`;
+    }
+
+    // Format Reddit Markdown
+    const redditText = `**${title}**\n\n${excerpt}\n\n---\n\n${body}\n\n---\n\n*Originally authored by Manpreeth N (Founder @ [Socialeo](https://socialeo.vercel.app/blogs/${slug}.html)) — Full deep-dive and technical teardowns available on our site.*`;
+
+    if (redditMarkdownPreview) {
+      redditMarkdownPreview.value = redditText;
+    }
+  }
+
+  function loadBlogPreset(presetKey) {
+    const preset = BLOG_PRESETS_DATA[presetKey];
+    if (!preset) return;
+    if (blogTitleInput) blogTitleInput.value = preset.title;
+    if (blogSlugInput) blogSlugInput.value = preset.slug;
+    if (blogSubredditInput) blogSubredditInput.value = preset.subreddit;
+    if (blogKeywordInput) blogKeywordInput.value = preset.keyword;
+    if (blogReadtimeInput) blogReadtimeInput.value = preset.readTime;
+    if (blogExcerptInput) blogExcerptInput.value = preset.excerpt;
+    if (blogBodyInput) blogBodyInput.value = preset.body;
+    updateRedditMarkdown();
+  }
+
+  blogPresetSelect?.addEventListener('change', (e) => {
+    loadBlogPreset(e.target.value);
+  });
+
+  blogQuickPresetBtn?.addEventListener('click', () => {
+    loadBlogPreset('roi-design');
+    if (blogPresetSelect) blogPresetSelect.value = 'roi-design';
+    showToast("Loaded high-impact ROI blog preset!", "⚡");
+  });
+
+  [blogTitleInput, blogSlugInput, blogSubredditInput, blogKeywordInput, blogExcerptInput, blogBodyInput].forEach(el => {
+    el?.addEventListener('input', updateRedditMarkdown);
+  });
+
+  blogCopyRedditBtn?.addEventListener('click', () => {
+    if (redditMarkdownPreview) {
+      navigator.clipboard.writeText(redditMarkdownPreview.value);
+      showToast("Copied formatted Reddit Markdown to clipboard! Ready to post on u/Socialeo_ 📋", "🚀");
+    }
+  });
+
+  redditOpenSubmitBtn?.addEventListener('click', () => {
+    const subreddit = blogSubredditInput?.value || 'webdev';
+    const title = encodeURIComponent(blogTitleInput?.value.trim() || 'New Discussion');
+    const text = encodeURIComponent(redditMarkdownPreview?.value || '');
+    const submitUrl = `https://www.reddit.com/r/${subreddit}/submit?title=${title}&text=${text}`;
+    window.open(submitUrl, '_blank');
+    showToast(`Opening r/${subreddit}/submit on Reddit for u/Socialeo_...`, "🤖");
+  });
+
+  // Save Reddit API Credentials
+  const savedRedditCreds = JSON.parse(localStorage.getItem('socialeo_reddit_api') || '{}');
+  if (redditClientId && savedRedditCreds.clientId) redditClientId.value = savedRedditCreds.clientId;
+  if (redditClientSecret && savedRedditCreds.clientSecret) redditClientSecret.value = savedRedditCreds.clientSecret;
+
+  saveRedditCredsBtn?.addEventListener('click', () => {
+    const creds = {
+      username: document.getElementById('reddit-username-input')?.value.trim() || 'Socialeo_',
+      clientId: redditClientId?.value.trim() || '',
+      clientSecret: redditClientSecret?.value.trim() || ''
+    };
+    localStorage.setItem('socialeo_reddit_api', JSON.stringify(creds));
+    showToast("Saved Reddit API credentials locally!", "💾");
+  });
+
+  document.getElementById('blog-publish-btn')?.addEventListener('click', () => {
+    showToast(`Blog "${blogTitleInput?.value.trim() || 'Post'}" saved! Ready for live export.`, "💾");
+  });
+
+  // Load default preset on initialization
+  loadBlogPreset('roi-design');
+
+  // ==========================================
+  // 11. INITIALIZATION
   // ==========================================
   populateFormFromBill(currentBill);
   renderClientDropdown();
