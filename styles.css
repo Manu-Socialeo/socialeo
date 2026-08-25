@@ -204,7 +204,7 @@ body {
 }
 
 .section-spacing {
-  padding: 110px 0;
+  padding: 60px 0;
   position: relative;
   z-index: 1;
 }
@@ -439,13 +439,13 @@ body {
    HERO SECTION
    ========================================================================== */
 .hero-section {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-top: calc(var(--header-height) + 40px);
-  padding-bottom: 60px;
+  padding-top: calc(var(--header-height) + 24px);
+  padding-bottom: 40px;
   overflow: hidden;
 }
 
@@ -1793,7 +1793,7 @@ body {
     --header-height: 70px;
   }
   .section-spacing {
-    padding: 70px 0;
+    padding: 40px 0;
   }
   .nav-links, .nav-actions .btn-primary {
     display: none;
