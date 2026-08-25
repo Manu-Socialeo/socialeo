@@ -1119,6 +1119,267 @@ body {
 }
 
 /* ==========================================================================
+   FOUNDER & CEO SECTION
+   ========================================================================== */
+.founder-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.founder-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 65, 108, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* --- Portrait Column --- */
+.founder-portrait-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.founder-portrait-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.founder-portrait-ring {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: founderRingSpin 8s linear infinite;
+}
+
+@keyframes founderRingSpin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+.founder-portrait-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(255, 65, 108, 0.35);
+  position: relative;
+  z-index: 1;
+}
+
+.founder-avatar-initials {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
+  font-family: var(--font-primary);
+}
+
+.founder-role-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.founder-role-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+  animation: founderDotPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes founderDotPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25); }
+  50%       { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0.1); }
+}
+
+.founder-meta-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.founder-meta-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 14px 18px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.founder-meta-card:hover {
+  transform: translateX(4px);
+  border-color: rgba(255, 65, 108, 0.35);
+}
+
+.founder-meta-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.founder-meta-card strong {
+  display: block;
+  font-size: 0.87rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.founder-meta-card span {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+}
+
+/* --- Bio Column --- */
+.founder-bio-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.founder-headline {
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.founder-bio-text {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.founder-bio-text em {
+  color: var(--color-text);
+  font-style: italic;
+}
+
+/* Achievement Timeline */
+.founder-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-left: 2px solid var(--glass-border);
+  padding-left: 24px;
+  margin-top: 4px;
+}
+
+.founder-achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+}
+
+.founder-achievement-item::before {
+  content: '';
+  position: absolute;
+  left: -31px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 65, 108, 0.2);
+}
+
+.founder-achievement-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.founder-achievement-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.founder-achievement-body strong {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.founder-achievement-body span {
+  font-size: 0.83rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.founder-cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .founder-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .founder-portrait-col {
+    align-items: center;
+  }
+
+  .founder-meta-cards {
+    max-width: 400px;
+  }
+}
+
+/* ==========================================================================
    TESTIMONIALS SECTION
    ========================================================================== */
 .testimonial-section {
