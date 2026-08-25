@@ -683,17 +683,27 @@ body.admin-body {
   flex-wrap: wrap;
 }
 
+.real-time-bill-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
 .tool-btn {
   font-family: inherit;
   font-size: 12px;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
   background: var(--admin-bg-surface);
   border: 1px solid var(--admin-border-subtle);
   color: var(--admin-text-primary);
   cursor: pointer;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .tool-btn:hover {
@@ -701,10 +711,43 @@ body.admin-body {
   color: var(--admin-accent-primary);
 }
 
-.tool-btn.preset-btn {
-  background: rgba(255, 94, 58, 0.15);
-  border-color: rgba(255, 94, 58, 0.4);
-  color: #ffa800;
+.action-new-bill-btn {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+.action-new-bill-btn:hover {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: #60a5fa;
+  color: #ffffff;
+}
+
+.action-save-bill-btn {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  font-weight: 700;
+}
+
+.action-save-bill-btn:hover {
+  background: rgba(16, 185, 129, 0.26);
+  border-color: #34d399;
+  color: #ffffff;
+}
+
+.action-delete-bill-btn {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #f87171;
+  font-weight: 700;
+}
+
+.action-delete-bill-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #f87171;
+  color: #ffffff;
 }
 
 .btn-subtle-link {
