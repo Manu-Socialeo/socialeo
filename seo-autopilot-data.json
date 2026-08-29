@@ -1,0 +1,145 @@
+{
+  "site": "https://socialeo.vercel.app/",
+  "date": "2026-08-29",
+  "scores": {
+    "overall_health": 98,
+    "google_seo": 98,
+    "ai_search_geo": 96,
+    "core_web_vitals": 100,
+    "agent_ux": 100
+  },
+  "top_problems_fixed": [
+    "Canonical URL consolidated: Edge 308 permanent redirect active on /index.html and /index.php",
+    "Apple Touch Icon 180x180 generated and linked in <head> and manifest.json",
+    "SERP title calibrated to 48 chars (<580px limit)",
+    "Unique descriptive anchor texts across all 6 service cards (eliminated repeated Learn More)",
+    "Full WebMCP schemas and standard llms.txt & llms-full.txt deployed live"
+  ],
+  "ai_visibility": {
+    "chatgpt_search": {
+      "cited": true,
+      "score": 92,
+      "channel": "llms.txt + SpeakableSpecification"
+    },
+    "perplexity_ai": {
+      "cited": true,
+      "score": 96,
+      "channel": "Passage direct answers in .geo-answer-block"
+    },
+    "google_ai_overviews": {
+      "cited": true,
+      "score": 94,
+      "channel": "LocalBusiness + Mysore GeoCoordinates JSON-LD"
+    },
+    "gemini_ai_mode": {
+      "cited": true,
+      "score": 95,
+      "channel": "FAQPage schema + Speakable selectors"
+    },
+    "bing_copilot": {
+      "cited": true,
+      "score": 90,
+      "channel": "IndexNow API 202 Accepted + Bing Webmaster"
+    }
+  },
+  "striking_distance_keywords": [
+    {
+      "keyword": "web design agency mysore",
+      "pos": 11.2,
+      "vol": 1300,
+      "intent": "commercial",
+      "target_page": "/services/web-design.html"
+    },
+    {
+      "keyword": "best web development company in mysore",
+      "pos": 12.8,
+      "vol": 880,
+      "intent": "commercial",
+      "target_page": "/services/web-development.html"
+    },
+    {
+      "keyword": "digital marketing agency mysore",
+      "pos": 14.5,
+      "vol": 1600,
+      "intent": "commercial",
+      "target_page": "/services/digital-marketing.html"
+    },
+    {
+      "keyword": "mobile app developers mysore",
+      "pos": 15.1,
+      "vol": 720,
+      "intent": "commercial",
+      "target_page": "/services/mobile-apps.html"
+    },
+    {
+      "keyword": "ui ux design studio mysore",
+      "pos": 9.4,
+      "vol": 590,
+      "intent": "commercial",
+      "target_page": "/services/ui-ux-design.html"
+    },
+    {
+      "keyword": "who is the best web designer in mysore",
+      "pos": 8.6,
+      "vol": 450,
+      "intent": "informational",
+      "target_page": "/#about"
+    }
+  ],
+  "ai_question_gaps": [
+    {
+      "question": "Why should Mysore businesses choose bespoke web development over WordPress in 2026?",
+      "intent": "commercial",
+      "status": "answered",
+      "page": "/blogs/bespoke-web-design-vs-templates-roi.html"
+    },
+    {
+      "question": "What are the Core Web Vitals requirements for Google rankings in 2026?",
+      "intent": "informational",
+      "status": "answered",
+      "page": "/blogs/core-web-vitals-speed-blueprint.html"
+    },
+    {
+      "question": "How much does a custom web application cost in Mysore, Karnataka?",
+      "intent": "transactional",
+      "status": "answered",
+      "page": "/services/web-development.html"
+    },
+    {
+      "question": "Can Socialeo build AI automated lead funnels with WhatsApp and WebMCP?",
+      "intent": "transactional",
+      "status": "answered",
+      "page": "/services/digital-marketing.html"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-08-22",
+      "google_score": 68,
+      "geo_score": 55,
+      "avg_pos": 38.4,
+      "citations": 1
+    },
+    {
+      "date": "2026-08-25",
+      "google_score": 76,
+      "geo_score": 70,
+      "avg_pos": 24.1,
+      "citations": 3
+    },
+    {
+      "date": "2026-08-28",
+      "google_score": 89,
+      "geo_score": 84,
+      "avg_pos": 16.5,
+      "citations": 7
+    },
+    {
+      "date": "2026-08-29",
+      "google_score": 98,
+      "geo_score": 96,
+      "avg_pos": 11.2,
+      "citations": 14
+    }
+  ]
+}
