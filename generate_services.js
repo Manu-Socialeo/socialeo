@@ -942,27 +942,27 @@ function generateServicePage(service) {
   <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="../index.html#hero" class="logo" id="brand-logo">
+      <a href="/#hero" class="logo" id="brand-logo">
         <div class="logo-icon"></div>
         <span>Socialeo</span>
       </a>
 
       <nav>
         <ul class="nav-links">
-          <li><a href="../index.html#hero" class="nav-link">Home</a></li>
-          <li><a href="../index.html#about" class="nav-link">About Us</a></li>
-          <li><a href="../index.html#services" class="nav-link active">Services</a></li>
-          <li><a href="../index.html#process" class="nav-link">Process</a></li>
-          <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+          <li><a href="/#hero" class="nav-link">Home</a></li>
+          <li><a href="/#about" class="nav-link">About Us</a></li>
+          <li><a href="/#services" class="nav-link active">Services</a></li>
+          <li><a href="/#process" class="nav-link">Process</a></li>
+          <li><a href="/#projects" class="nav-link">Projects</a></li>
           <li><a href="../blogs.html" class="nav-link">Blogs</a></li>
-          <li><a href="../index.html#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+          <li><a href="/#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="/#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
         <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Dark / Light Mode" title="Toggle Mode">🌙</button>
-        <a href="../index.html#contact" class="btn btn-primary" id="nav-cta-btn">Contact Us</a>
+        <a href="/#contact" class="btn btn-primary" id="nav-cta-btn">Contact Us</a>
         <button class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Toggle Navigation">☰</button>
       </div>
     </div>
@@ -970,15 +970,15 @@ function generateServicePage(service) {
 
   <!-- Mobile Drawer -->
   <div class="mobile-nav-drawer" id="mobile-drawer">
-    <a href="../index.html#hero" class="nav-link">Home</a>
-    <a href="../index.html#about" class="nav-link">About Us</a>
-    <a href="../index.html#services" class="nav-link active">Services</a>
-    <a href="../index.html#process" class="nav-link">Our Process</a>
-    <a href="../index.html#projects" class="nav-link">Projects</a>
+    <a href="/#hero" class="nav-link">Home</a>
+    <a href="/#about" class="nav-link">About Us</a>
+    <a href="/#services" class="nav-link active">Services</a>
+    <a href="/#process" class="nav-link">Our Process</a>
+    <a href="/#projects" class="nav-link">Projects</a>
     <a href="../blogs.html" class="nav-link">Blogs &amp; Insights</a>
-    <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
-    <a href="../index.html#contact" class="nav-link">Contact Us</a>
-    <a href="../index.html#contact" class="btn btn-primary" style="margin-top: 12px; text-align:center;">Start a Project</a>
+    <a href="/#testimonials" class="nav-link">Testimonials</a>
+    <a href="/#contact" class="nav-link">Contact Us</a>
+    <a href="/#contact" class="btn btn-primary" style="margin-top: 12px; text-align:center;">Start a Project</a>
   </div>
 
   <!-- Main Content Layout -->
@@ -986,9 +986,9 @@ function generateServicePage(service) {
     
     <!-- Breadcrumbs -->
     <div class="service-breadcrumbs">
-      <a href="../index.html">Home</a>
+      <a href="/">Home</a>
       <span>/</span>
-      <a href="../index.html#services">Services</a>
+      <a href="/#services">Services</a>
       <span>/</span>
       <span style="color:var(--text-primary); font-weight:600;">${service.serviceName}</span>
     </div>
@@ -1103,7 +1103,7 @@ function generateServicePage(service) {
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="../index.html#hero" class="logo">
+          <a href="/#hero" class="logo">
             <div class="logo-icon"></div>
             <span>Socialeo</span>
           </a>
@@ -1116,11 +1116,11 @@ function generateServicePage(service) {
           <div class="footer-col">
             <div class="footer-col-title">Navigation</div>
             <ul>
-              <li><a href="../index.html#hero">Home</a></li>
-              <li><a href="../index.html#about">About Us</a></li>
-              <li><a href="../index.html#services">Services</a></li>
-              <li><a href="../index.html#process">Process</a></li>
-              <li><a href="../index.html#projects">Projects</a></li>
+              <li><a href="/#hero">Home</a></li>
+              <li><a href="/#about">About Us</a></li>
+              <li><a href="/#services">Services</a></li>
+              <li><a href="/#process">Process</a></li>
+              <li><a href="/#projects">Projects</a></li>
               <li><a href="../blogs.html">Blogs</a></li>
             </ul>
           </div>

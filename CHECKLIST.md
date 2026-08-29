@@ -12,4 +12,5 @@
 - [x] **Playwright E2E Verification:** 26 / 26 automated tests passing (100%).
 - [x] **llms.txt Standard Compliance:** Created standard-compliant `/llms.txt` and `/llms-full.txt` at domain root with primary `#` (H1) title, blockquote description, and structured service/blog resource links for AI search crawlers.
 - [x] **WebMCP (Web Model Context Protocol) Tools & Schemas:** Added valid declarative `<script type="application/webmcp+json">` schemas and annotated contact and inquiry forms (`toolname`, `tooldescription`, `toolparam`) plus imperative `navigator.modelContext.registerTool()` registration for Chrome Agentic Browsing.
+- [x] **URL Consolidation & 301 Redirects:** Configured edge 301 permanent redirects in `vercel.json` for `/index.html`, `/index`, and `/index.php` -> `/` to consolidate ranking authority and eliminate duplicate URL indexing. Removed internal `index.html#` references across all pages.
 - [x] **Production Deployment:** Live on `https://socialeo.vercel.app/` with 200 OK.
