@@ -428,6 +428,7 @@ function generateServicePage(service) {
 
   <!-- Favicon & PWA -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FF416C'/><circle cx='50' cy='50' r='22' fill='%23FFFFFF'/></svg>">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="canonical" href="https://socialeo.vercel.app/services/${service.slug}.html">
   <link rel="manifest" href="../manifest.json">
 

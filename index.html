@@ -13,7 +13,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Socialeo — Web Design, Apps &amp; Digital Studio Mysore</title>
+  <title>Socialeo — Web Design &amp; Apps Studio Mysore</title>
   <meta name="description" content="Socialeo is an elite digital product studio in Mysore crafting high-converting bespoke websites, native mobile apps, 3D WebGL, and scalable SEO platforms.">
   <meta name="keywords" content="web design agency mysore, best web development company in mysore, digital marketing agency mysore, mobile app developers mysore, UI UX design studio mysore, clinical SEO mysore, bespoke web development, Next.js developer, 3D web design, Three.js agency, Socialeo">
   <meta name="author" content="Manpreeth N (Manu) — Socialeo">
@@ -21,9 +21,11 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://socialeo.vercel.app/">
 
-  <!-- Favicon & PWA -->
+  <!-- Favicon, Apple Touch Icon & PWA -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FF416C'/><circle cx='50' cy='50' r='22' fill='%23FFFFFF'/></svg>">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="manifest.json">
+  <link rel="preload" as="image" href="assets/hero-bg.jpg" fetchpriority="high">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -237,8 +239,7 @@
   }
   </script>
 
-  <link rel="canonical" href="https://socialeo.vercel.app/">
-  <link rel="manifest" href="manifest.json">
+
 
   <!-- Google Fonts: Plus Jakarta Sans & DM Sans matching reference font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,7 +266,7 @@
        ========================================================================== -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="index.html#hero" class="logo" id="brand-logo">
+      <a href="#hero" class="logo" id="brand-logo">
         <div class="logo-icon"></div>
         <span>Socialeo</span>
       </a>
@@ -300,7 +301,7 @@
     <a href="index.html#projects" class="nav-link">Projects</a>
     <a href="blogs.html" class="nav-link">Blogs &amp; Insights</a>
     <a href="index.html#testimonials" class="nav-link">Testimonials</a>
-    <a href="index.html#contact" class="nav-link">Contact Us</a>
+    <a href="#contact" class="nav-link">Contact Us</a>
     <a href="#contact" class="btn btn-primary" style="margin-top: 12px; text-align:center;">Start a Project</a>
   </div>
 
@@ -449,7 +450,7 @@
               Bespoke visual design and intuitive user flows engineered to captivate visitors and tell your story.
             </p>
           </div>
-          <a href="services/web-design.html" class="service-link">Learn More →</a>
+          <a href="services/web-design.html" class="service-link">Explore Web Design →</a>
         </div>
 
         <!-- Service 2 (Highlighted Radiant Glow) -->
@@ -464,7 +465,7 @@
             </p>
           </div>
           <div class="service-actions-row">
-            <a href="services/web-development.html" class="service-link">Learn More →</a>
+            <a href="services/web-development.html" class="service-link">Explore Web Development →</a>
             <button type="button" class="btn-download-pdf-pill" id="download-webdev-pdf-btn" title="Download Socialeo Web Development Capabilities & Scope PDF">
               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               <span>Download PDF</span>
@@ -483,7 +484,7 @@
               Native and cross-platform iOS and Android mobile experiences crafted for touch interaction and speed.
             </p>
           </div>
-          <a href="services/mobile-apps.html" class="service-link">Learn More →</a>
+          <a href="services/mobile-apps.html" class="service-link">Explore Mobile Apps →</a>
         </div>
 
         <!-- Service 4 -->
@@ -497,7 +498,7 @@
               Data-backed SEO, performance marketing funnels, and high-impact campaigns designed to scale reach.
             </p>
           </div>
-          <a href="services/digital-marketing.html" class="service-link">Learn More →</a>
+          <a href="services/digital-marketing.html" class="service-link">Explore Digital Marketing →</a>
         </div>
 
         <!-- Service 5 -->
@@ -511,7 +512,7 @@
               In-depth research, journey mapping, wireframing, and interactive design systems that eliminate friction.
             </p>
           </div>
-          <a href="services/ui-ux-design.html" class="service-link">Learn More →</a>
+          <a href="services/ui-ux-design.html" class="service-link">Explore UI/UX Systems →</a>
         </div>
 
         <!-- Service 6 -->
@@ -525,7 +526,7 @@
               Memorable brand identities, typography guidelines, positioning systems, and market-defining design languages.
             </p>
           </div>
-          <a href="services/brand-strategy.html" class="service-link">Learn More →</a>
+          <a href="services/brand-strategy.html" class="service-link">Explore Brand Strategy →</a>
         </div>
       </div>
     </div>
@@ -1113,7 +1114,7 @@
 
             <label class="form-checkbox-label">
               <input type="checkbox" required>
-              <span>I agree to the <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a>.</span>
+              <span>I agree to the <a href="terms.html">Terms of Service</a> &amp; <a href="privacy-policy.html">Privacy Policy</a>.</span>
             </label>
 
             <button type="submit" class="btn btn-primary btn-block" id="contact-submit-btn">Submit</button>

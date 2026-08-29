@@ -5,5 +5,12 @@
   "display": "standalone",
   "background_color": "#050507",
   "theme_color": "#050507",
-  "description": "We Design Websites That Grow Businesses."
+  "description": "We Design Websites That Grow Businesses.",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
 }
