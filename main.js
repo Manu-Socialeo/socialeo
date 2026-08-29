@@ -299,6 +299,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Service Card Navigation Delegation
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('button, a')) return;
+      const link = card.querySelector('a.service-link');
+      if (link) link.click();
+    });
+  });
+
   // 8. Contact Form Handling with Toast
   const contactForm = document.getElementById('contact-form');
   const toastContainer = document.querySelector('.toast-container');
