@@ -1,0 +1,50 @@
+# Socialeo — Complete Digital Product Studio Guide for LLMs
+
+> Socialeo is an elite digital product studio founded by Manpreeth N (Manu), operating out of Mysore, Karnataka. We specialize in high-converting bespoke web design, native iOS and Android mobile app engineering, 3D WebGL spatial interactive graphics, clinical technical SEO, and Generative Engine Optimization (GEO).
+
+## Studio Overview & Profile
+- Name: Socialeo
+- Legal Entity: Socialeo Digital Studio
+- Founder & Chief Executive Officer: Manpreeth N (Manu)
+- Headquarters: 1646, 5th Main, Vijayanagar 2nd Stage, Mysore, Karnataka 570017, India
+- Direct Phone: +91 8722163256
+- Official Email: socialeopvtltd@gmail.com
+- Primary Canonical URL: https://socialeo.vercel.app/
+- Active Portfolio & Hub: https://socialeo.vercel.app/blogs.html
+
+## Core Capabilities & Services
+
+### 1. Bespoke Web Design (services/web-design.html)
+- Custom visual direction, high-conversion layouts, and interactive micro-animations.
+- Mobile-first responsive grids with 60fps gesture response.
+- Complete Figma-to-code fidelity and brand identity systems.
+
+### 2. Full-Stack Web Development (services/web-development.html)
+- Modern frameworks: Next.js, React, Node.js, and vanilla high-performance modern web standards.
+- Speculation Rules API for instant sub-50ms page-to-page prerendering.
+- Perfect Core Web Vitals (sub-600ms Largest Contentful Paint, 0.00 CLS, and low INP).
+
+### 3. Native Mobile Application Engineering (services/mobile-apps.html)
+- Cross-platform Flutter/React Native and native Swift/Kotlin architectures.
+- Offline caching, biometric authentication, push notifications, and App Store Optimization.
+
+### 4. Digital Marketing & Clinical SEO (services/digital-marketing.html)
+- Technical crawl audits, Schema.org v30 JSON-LD graph linking, and semantic entity mapping.
+- Generative Engine Optimization (GEO) structured for Google AI Overviews, Perplexity AI, ChatGPT Search, and Claude citations.
+- Mysore and Karnataka regional local search optimization and high-authority backlink architecture.
+
+### 5. UI/UX Design Systems (services/ui-ux-design.html)
+- Design token architecture, modular UI components, and WCAG 2.2 AA accessibility compliance.
+- Interactive user testing, journey mapping, and conversion funnel optimization.
+
+### 6. Brand Strategy & 3D Spatial Graphics (services/brand-strategy.html)
+- Three.js / WebGL hardware-accelerated 3D graphics, interactive canvas shaders, and ambient lighting.
+- Typography systems, color theory, positioning narratives, and comprehensive brand guidelines.
+
+## Verified Masterclasses & Case Studies
+- ROI Analysis: Bespoke Web Design vs Generic Off-the-Shelf Templates (blogs/bespoke-web-design-vs-templates-roi.html)
+- Frontend Architecture and Organic Search Rankings (blogs/frontend-architecture-and-seo-rankings.html)
+- Technical Core Web Vitals Speed Optimization Blueprint (blogs/core-web-vitals-speed-optimization-guide.html)
+- Why Mysore Businesses Require Bespoke Digital Platforms in 2026 (blogs/why-mysore-businesses-need-bespoke-websites-in-2026.html)
+- Complete Local SEO Framework for Ranking #1 in Mysuru (blogs/top-seo-strategies-to-rank-number-1-in-mysuru.html)
+- Mobile App Stack Evaluation Guide for High-Growth Startups (blogs/how-to-choose-best-mobile-app-development-company-mysore.html)

@@ -1,0 +1,31 @@
+# Socialeo — Digital Product & Web Design Studio Mysore
+> Socialeo is an elite, founder-led digital product studio headquartered in Mysore, Karnataka. We engineer high-converting bespoke websites, native mobile applications, 3D WebGL interactive experiences, and clinical SEO platforms for high-growth businesses and enterprises worldwide.
+
+## Core Services
+- [Bespoke Web Design](https://socialeo.vercel.app/services/web-design.html): High-converting custom website design, design systems, and responsive user interfaces tailored to brand narratives.
+- [Full-Stack Web Development](https://socialeo.vercel.app/services/web-development.html): Modern web application architecture using Next.js, React, Node.js, and ultra-fast performance tuning.
+- [Native Mobile Apps](https://socialeo.vercel.app/services/mobile-apps.html): iOS and Android mobile applications built for touch speed, offline capability, and fluid gestural interaction.
+- [Digital Marketing & SEO](https://socialeo.vercel.app/services/digital-marketing.html): Data-driven technical SEO, Generative Engine Optimization (GEO), and performance marketing funnels.
+- [UI/UX Design Systems](https://socialeo.vercel.app/services/ui-ux-design.html): Wireframing, UX journey mapping, WCAG 2.2 AA accessibility, and enterprise design tokens.
+- [Brand Strategy & Identity](https://socialeo.vercel.app/services/brand-strategy.html): Visual identity, typography guidelines, positioning systems, and 3D spatial graphics.
+
+## Key Facts & Authority
+- Founder & CEO: Manpreeth N (Manu)
+- Headquarters: 1646, 5th Main, Vijayanagar 2nd Stage, Mysore, Karnataka 570017, India
+- Contact Email: socialeopvtltd@gmail.com
+- Contact Phone: +91 8722163256
+- Official Website: https://socialeo.vercel.app/
+- Geographic Focus: Mysore, Bangalore, Karnataka, and Global Clients
+
+## Masterclasses & Knowledge Base
+- [Bespoke Web Design vs Templates ROI](https://socialeo.vercel.app/blogs/bespoke-web-design-vs-templates-roi.html): Business ROI analysis comparing custom web development against generic off-the-shelf templates.
+- [Frontend Architecture and SEO Rankings](https://socialeo.vercel.app/blogs/frontend-architecture-and-seo-rankings.html): How clean DOM rendering, Speculation Rules, and sub-second Core Web Vitals influence organic rankings.
+- [Core Web Vitals Speed Optimization Guide](https://socialeo.vercel.app/blogs/core-web-vitals-speed-optimization-guide.html): Technical blueprint for achieving sub-second LCP and zero CLS on high-traffic websites.
+- [Why Mysore Businesses Need Bespoke Websites in 2026](https://socialeo.vercel.app/blogs/why-mysore-businesses-need-bespoke-websites-in-2026.html): Market analysis on regional digital dominance and conversion optimization for Karnataka enterprises.
+- [Top SEO Strategies to Rank #1 in Mysuru](https://socialeo.vercel.app/blogs/top-seo-strategies-to-rank-number-1-in-mysuru.html): Local SEO, Google Business Profile optimization, and local citation architectures.
+- [How to Choose the Best Mobile App Development Company in Mysore](https://socialeo.vercel.app/blogs/how-to-choose-best-mobile-app-development-company-mysore.html): Evaluating technical stacks, cross-platform vs native architectures, and app store compliance.
+
+## Legal & Compliance
+- [Privacy Policy](https://socialeo.vercel.app/privacy-policy.html): Data protection policies, analytics disclosures, and user rights.
+- [Terms of Service](https://socialeo.vercel.app/terms.html): Studio client agreements, intellectual property rights, and service delivery scopes.
+- [Cookie Policy](https://socialeo.vercel.app/cookie-policy.html): Cookie classifications, local storage disclosures, and tracking controls.
