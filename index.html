@@ -25,7 +25,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FF416C'/><circle cx='50' cy='50' r='22' fill='%23FFFFFF'/></svg>">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="manifest.json">
-  <link rel="preload" as="image" href="assets/hero-bg.jpg" fetchpriority="high">
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" as="image" href="assets/hero-bg.webp" type="image/webp" fetchpriority="high">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -313,11 +314,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- HTML2PDF Library for Direct Interactive PDF Downloads -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-  <!-- Google Preferred Sources Publisher Library -->
-  <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
+  <!-- HTML2PDF Library for Direct Interactive PDF Downloads (Deferred to eliminate render blocking) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -377,7 +375,10 @@
        ========================================================================== -->
   <section class="hero-section" id="hero">
     <div class="hero-bg-container">
-      <img src="assets/hero-bg.jpg" alt="Socialeo 3D Topographical Mountain" title="Socialeo 3D Topographical Mountain" class="hero-bg-img" fetchpriority="high" width="1920" height="1080">
+      <picture>
+        <source srcset="assets/hero-bg.webp" type="image/webp">
+        <img src="assets/hero-bg.jpg" alt="Socialeo 3D Topographical Mountain" title="Socialeo 3D Topographical Mountain" class="hero-bg-img" fetchpriority="high" width="1920" height="1080">
+      </picture>
       <canvas id="hero-particles" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;"></canvas>
       <div class="hero-bg-gradient"></div>
     </div>
@@ -440,7 +441,10 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrapper">
-          <img src="assets/about-studio.jpg" alt="Socialeo Creative Studio" title="Socialeo Creative Studio" class="about-image" loading="lazy" decoding="async" width="600" height="600">
+          <picture>
+            <source srcset="assets/about-studio.webp" type="image/webp">
+            <img src="assets/about-studio.jpg" alt="Socialeo Creative Studio" title="Socialeo Creative Studio" class="about-image" loading="lazy" decoding="async" width="600" height="600">
+          </picture>
           <div class="about-floating-badge">
             <div class="badge-icon">✦</div>
             <div class="badge-text">
@@ -687,7 +691,10 @@
 
       <!-- Process Blueprint Showcase Banner -->
       <div class="process-banner">
-        <img src="assets/process-blueprints.jpg" alt="Socialeo Design Process Blueprints" title="Socialeo Design Process Blueprints" loading="lazy" decoding="async" width="600" height="600">
+        <picture>
+          <source srcset="assets/process-blueprints.webp" type="image/webp">
+          <img src="assets/process-blueprints.jpg" alt="Socialeo Design Process Blueprints" title="Socialeo Design Process Blueprints" loading="lazy" decoding="async" width="600" height="600">
+        </picture>
         <div class="process-banner-overlay"></div>
       </div>
 
@@ -772,7 +779,10 @@
         <!-- Project 1 -->
         <div class="project-card" data-category="webapp designsystem" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View E-Commerce Platform project case study">
           <div class="project-media">
-            <img src="assets/project-ecommerce.jpg" alt="E-Commerce Platform" title="E-Commerce Platform" loading="lazy" decoding="async" width="600" height="400">
+            <picture>
+              <source srcset="assets/project-ecommerce.webp" type="image/webp">
+              <img src="assets/project-ecommerce.jpg" alt="E-Commerce Platform" title="E-Commerce Platform" loading="lazy" decoding="async" width="600" height="400">
+            </picture>
           </div>
           <div class="project-info">
             <div>
@@ -793,7 +803,10 @@
         <!-- Project 2 -->
         <div class="project-card" data-category="designsystem" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Brand Identity Rebrand project case study">
           <div class="project-media">
-            <img src="assets/about-studio.jpg" alt="Brand Identity Rebrand" title="Brand Identity Rebrand" loading="lazy" decoding="async" width="600" height="400">
+            <picture>
+              <source srcset="assets/about-studio.webp" type="image/webp">
+              <img src="assets/about-studio.jpg" alt="Brand Identity Rebrand" title="Brand Identity Rebrand" loading="lazy" decoding="async" width="600" height="400">
+            </picture>
           </div>
           <div class="project-info">
             <div>
@@ -814,7 +827,10 @@
         <!-- Project 3 -->
         <div class="project-card" data-category="webapp" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View SaaS Dashboard Analytics project case study">
           <div class="project-media">
-            <img src="assets/project-saas.jpg" alt="SaaS Dashboard Analytics" title="SaaS Dashboard Analytics" loading="lazy" decoding="async" width="600" height="400">
+            <picture>
+              <source srcset="assets/project-saas.webp" type="image/webp">
+              <img src="assets/project-saas.jpg" alt="SaaS Dashboard Analytics" title="SaaS Dashboard Analytics" loading="lazy" decoding="async" width="600" height="400">
+            </picture>
           </div>
           <div class="project-info">
             <div>
@@ -835,7 +851,10 @@
         <!-- Project 4 -->
         <div class="project-card" data-category="mobile" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Fintech Mobile App project case study">
           <div class="project-media">
-            <img src="assets/project-fintech.jpg" alt="NeoTrade Mobile Trading App" title="NeoTrade Mobile Trading App" loading="lazy" decoding="async" width="600" height="400">
+            <picture>
+              <source srcset="assets/project-fintech.webp" type="image/webp">
+              <img src="assets/project-fintech.jpg" alt="NeoTrade Mobile Trading App" title="NeoTrade Mobile Trading App" loading="lazy" decoding="async" width="600" height="400">
+            </picture>
           </div>
           <div class="project-info">
             <div>
@@ -856,7 +875,10 @@
         <!-- Project 5 -->
         <div class="project-card" data-category="webapp designsystem" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Web3 Gaming Portal project case study">
           <div class="project-media">
-            <img src="assets/project-web3.jpg" alt="Neon Nexus Web3 Portal" title="Neon Nexus Web3 Portal" loading="lazy" decoding="async" width="600" height="400">
+            <picture>
+              <source srcset="assets/project-web3.webp" type="image/webp">
+              <img src="assets/project-web3.jpg" alt="Neon Nexus Web3 Portal" title="Neon Nexus Web3 Portal" loading="lazy" decoding="async" width="600" height="400">
+            </picture>
           </div>
           <div class="project-info">
             <div>
@@ -877,7 +899,10 @@
         <!-- Project 6 -->
         <div class="project-card" data-category="mobile" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View AI Health Tracker project case study">
           <div class="project-media">
-            <img src="assets/project-ai.jpg" alt="VitalPulse AI Health Tracker" title="VitalPulse AI Health Tracker" loading="lazy" decoding="async" width="600" height="400">
+            <picture>
+              <source srcset="assets/project-ai.webp" type="image/webp">
+              <img src="assets/project-ai.jpg" alt="VitalPulse AI Health Tracker" title="VitalPulse AI Health Tracker" loading="lazy" decoding="async" width="600" height="400">
+            </picture>
           </div>
           <div class="project-info">
             <div>
@@ -1004,7 +1029,10 @@
        ========================================================================== -->
   <section class="testimonial-section" id="testimonials">
     <div class="testimonial-bg-container">
-      <img src="assets/testimonial-wave.jpg" alt="Testimonial Glowing Wave Background" title="Testimonial Glowing Wave Background" class="testimonial-bg-img" loading="lazy" decoding="async" width="1920" height="600">
+      <picture>
+        <source srcset="assets/testimonial-wave.webp" type="image/webp">
+        <img src="assets/testimonial-wave.jpg" alt="Testimonial Glowing Wave Background" title="Testimonial Glowing Wave Background" class="testimonial-bg-img" loading="lazy" decoding="async" width="1920" height="600">
+      </picture>
       <div class="testimonial-bg-overlay"></div>
     </div>
 
