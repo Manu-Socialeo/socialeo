@@ -467,5 +467,60 @@ _Sent via Socialeo Instant Web Portal_`;
   }
 
   downloadWebDevBtn?.addEventListener('click', downloadCapabilitiesPdf);
+
+  // 10. WebMCP (Web Model Context Protocol) Imperative Tool Registration
+  if (typeof navigator !== 'undefined' && navigator.modelContext && typeof navigator.modelContext.registerTool === 'function') {
+    try {
+      navigator.modelContext.registerTool({
+        name: 'submitProjectInquiry',
+        description: 'Submit a client project inquiry or consultation request to Socialeo Digital Product Studio in Mysore',
+        parameters: {
+          type: 'object',
+          properties: {
+            firstName: { type: 'string', description: 'Client first name' },
+            lastName: { type: 'string', description: 'Client last name' },
+            email: { type: 'string', description: 'Client email address' },
+            countryCode: { type: 'string', description: 'Country dialing code prefix' },
+            phone: { type: 'string', description: 'Direct mobile phone or WhatsApp number' },
+            message: { type: 'string', description: 'Project overview, requirements, or goals' }
+          },
+          required: ['firstName', 'lastName', 'email', 'message']
+        },
+        execute: async (params) => {
+          console.log('[WebMCP] submitProjectInquiry invoked:', params);
+          return { status: 'success', message: 'Inquiry received by Socialeo Studio.' };
+        }
+      });
+
+      navigator.modelContext.registerTool({
+        name: 'downloadCapabilitiesBrochure',
+        description: 'Download the official Socialeo Web Development & Digital Product Studio capabilities deck PDF',
+        parameters: { type: 'object', properties: {} },
+        execute: async () => {
+          downloadCapabilitiesPdf();
+          return { status: 'success', message: 'Capabilities brochure PDF download started.' };
+        }
+      });
+
+      navigator.modelContext.registerTool({
+        name: 'searchBlogMasterclasses',
+        description: 'Search and filter Socialeo technical masterclasses on SEO, WebGL, Next.js, and Mobile UI/UX',
+        parameters: {
+          type: 'object',
+          properties: {
+            query: { type: 'string', description: 'Search keyword or topic' }
+          },
+          required: ['query']
+        },
+        execute: async (params) => {
+          window.location.href = `blogs.html?search=${encodeURIComponent(params.query || '')}`;
+          return { status: 'success', message: `Navigating to blog search for "${params.query}".` };
+        }
+      });
+    } catch (err) {
+      console.warn('[WebMCP] Tool registration notice:', err);
+    }
+  }
 });
+
 

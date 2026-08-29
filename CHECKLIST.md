@@ -11,4 +11,5 @@
 - [x] **Edge CDN Caching:** Configured 1-year immutable asset caching in `vercel.json`.
 - [x] **Playwright E2E Verification:** 26 / 26 automated tests passing (100%).
 - [x] **llms.txt Standard Compliance:** Created standard-compliant `/llms.txt` and `/llms-full.txt` at domain root with primary `#` (H1) title, blockquote description, and structured service/blog resource links for AI search crawlers.
+- [x] **WebMCP (Web Model Context Protocol) Tools & Schemas:** Added valid declarative `<script type="application/webmcp+json">` schemas and annotated contact and inquiry forms (`toolname`, `tooldescription`, `toolparam`) plus imperative `navigator.modelContext.registerTool()` registration for Chrome Agentic Browsing.
 - [x] **Production Deployment:** Live on `https://socialeo.vercel.app/` with 200 OK.

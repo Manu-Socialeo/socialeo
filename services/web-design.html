@@ -190,6 +190,37 @@
   }
   </script>
 
+  <!-- WebMCP (Web Model Context Protocol) Declarative Tool Registration -->
+  <script type="application/webmcp+json">
+  {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "tools": [
+      {
+        "name": "submitServiceWhatsAppInquiry",
+        "description": "Submit a direct WhatsApp inquiry for Web Design in Mysore (Mysuru) to Socialeo Studio founder",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "fullName": {
+              "type": "string",
+              "description": "Full name of the client or prospect"
+            },
+            "whatsAppNumber": {
+              "type": "string",
+              "description": "WhatsApp contact number with country code"
+            },
+            "projectMessage": {
+              "type": "string",
+              "description": "Specific project requirements, timeline, or consultation questions"
+            }
+          },
+          "required": ["fullName", "whatsAppNumber", "projectMessage"]
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Google Preferred Sources Publisher Library -->
   <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
 
@@ -796,20 +827,26 @@
             </div>
           </div>
 
-          <form id="whatsapp-inquiry-form" onsubmit="handleWhatsAppSubmit(event)">
+          <form id="whatsapp-inquiry-form"
+                onsubmit="handleWhatsAppSubmit(event)"
+                toolname="submitServiceWhatsAppInquiry"
+                tooldescription="Submit a direct WhatsApp inquiry for Web Design in Mysore (Mysuru) to Socialeo Studio founder">
             <div class="wa-form-group">
               <label for="wa-name">Your Full Name *</label>
-              <input type="text" id="wa-name" class="wa-input" placeholder="e.g. Rahul Sharma" required>
+              <input type="text" id="wa-name" name="fullName" class="wa-input" placeholder="e.g. Rahul Sharma"
+                     toolparam="fullName" toolparamdescription="Full name of the client or prospect" required>
             </div>
 
             <div class="wa-form-group">
               <label for="wa-phone">WhatsApp Number *</label>
-              <input type="tel" id="wa-phone" class="wa-input" placeholder="+91 98765 43210" required>
+              <input type="tel" id="wa-phone" name="whatsAppNumber" class="wa-input" placeholder="+91 98765 43210"
+                     toolparam="whatsAppNumber" toolparamdescription="WhatsApp contact number with country code" required>
             </div>
 
             <div class="wa-form-group">
               <label for="wa-message">Your Message *</label>
-              <textarea id="wa-message" class="wa-textarea" placeholder="Type your message or project requirements..." required></textarea>
+              <textarea id="wa-message" name="projectMessage" class="wa-textarea" placeholder="Type your message or project requirements..."
+                        toolparam="projectMessage" toolparamdescription="Specific project requirements, timeline, or consultation questions" required></textarea>
             </div>
 
             <button type="submit" class="wa-submit-btn" id="wa-send-btn">

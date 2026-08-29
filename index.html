@@ -239,6 +239,73 @@
   }
   </script>
 
+  <!-- WebMCP (Web Model Context Protocol) Declarative Tool Registration -->
+  <script type="application/webmcp+json">
+  {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "tools": [
+      {
+        "name": "submitProjectInquiry",
+        "description": "Submit a client project inquiry or consultation request to Socialeo Digital Product Studio in Mysore",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "description": "Client first name"
+            },
+            "lastName": {
+              "type": "string",
+              "description": "Client last name"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Client email address for communication and proposal delivery"
+            },
+            "countryCode": {
+              "type": "string",
+              "description": "International dialing prefix (e.g. +91, +1, +44)"
+            },
+            "phone": {
+              "type": "string",
+              "description": "Direct mobile phone number or WhatsApp contact"
+            },
+            "message": {
+              "type": "string",
+              "description": "Project requirements, target timeline, technical scope, and goals"
+            }
+          },
+          "required": ["firstName", "lastName", "email", "message"]
+        }
+      },
+      {
+        "name": "downloadCapabilitiesBrochure",
+        "description": "Download the official Socialeo Web Development & Digital Product Studio capabilities deck PDF",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "searchBlogMasterclasses",
+        "description": "Search and filter Socialeo technical masterclasses on SEO, WebGL, Next.js, and Mobile UI/UX",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search keyword or topic"
+            }
+          },
+          "required": ["query"]
+        }
+      }
+    ]
+  }
+  </script>
+
 
 
   <!-- Google Fonts: Plus Jakarta Sans & DM Sans matching reference font -->
@@ -1074,46 +1141,56 @@
           </div>
         </div>
 
-        <!-- Right Column (Contact Form) -->
+        <!-- Right Column (Contact Form with WebMCP Declarative Agentic Tool Support) -->
         <div class="contact-form-card">
-          <form id="contact-form">
+          <form id="contact-form"
+                action="#contact"
+                method="POST"
+                toolname="submitProjectInquiry"
+                tooldescription="Submit a client project inquiry or consultation request to Socialeo Digital Product Studio in Mysore">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="first-name">First Name <span>*</span></label>
-                <input type="text" id="first-name" class="form-input" placeholder="First Name" required>
+                <input type="text" id="first-name" name="firstName" class="form-input" placeholder="First Name"
+                       toolparam="firstName" toolparamdescription="Client or prospect first name" required>
               </div>
               <div class="form-group">
                 <label class="form-label" for="last-name">Last Name <span>*</span></label>
-                <input type="text" id="last-name" class="form-input" placeholder="Last Name" required>
+                <input type="text" id="last-name" name="lastName" class="form-input" placeholder="Last Name"
+                       toolparam="lastName" toolparamdescription="Client or prospect last name" required>
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="email">Email <span>*</span></label>
-              <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+              <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com"
+                     toolparam="email" toolparamdescription="Work or primary email address for proposal delivery" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="phone">Phone Number</label>
               <div style="display: flex; gap: 8px;">
-                <select class="form-select" style="width: 90px; flex-shrink: 0;" aria-label="Country Code">
+                <select class="form-select" id="country-code" name="countryCode" style="width: 90px; flex-shrink: 0;"
+                        aria-label="Country Code" toolparam="countryCode" toolparamdescription="International dialing country code prefix">
                   <option value="+1">🇺🇸 +1</option>
                   <option value="+44">🇬🇧 +44</option>
                   <option value="+91" selected>🇮🇳 +91</option>
                   <option value="+61">🇦🇺 +61</option>
                   <option value="+49">🇩🇪 +49</option>
                 </select>
-                <input type="tel" id="phone" class="form-input" placeholder="Phone Number">
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="Phone Number"
+                       toolparam="phone" toolparamdescription="Direct mobile phone or WhatsApp contact number">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="message">Message <span>*</span></label>
-              <textarea id="message" class="form-textarea" placeholder="Tell us about your project, timeline, and goals..." required></textarea>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project, timeline, and goals..."
+                        toolparam="message" toolparamdescription="Detailed description of the project goals, requirements, tech stack, or budget" required></textarea>
             </div>
 
             <label class="form-checkbox-label">
-              <input type="checkbox" required>
+              <input type="checkbox" name="termsAgreed" toolparam="termsAgreed" toolparamdescription="Consent to terms of service and privacy policy" required>
               <span>I agree to the <a href="terms.html">Terms of Service</a> &amp; <a href="privacy-policy.html">Privacy Policy</a>.</span>
             </label>
 
