@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtn = document.querySelector('.modal-close-btn');
 
   projectCards.forEach(card => {
-    card.addEventListener('click', (e) => {
+    function openProjectModal(e) {
       if (e.target.closest('.project-link')) return;
 
       const title = card.getAttribute('data-title') || 'Featured Project';
@@ -259,6 +259,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modalBackdrop?.classList.add('active');
       document.body.style.overflow = 'hidden';
+    }
+
+    card.addEventListener('click', openProjectModal);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openProjectModal(e);
+      }
     });
   });
 

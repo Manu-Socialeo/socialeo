@@ -13,8 +13,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Socialeo — Bespoke Web Design, Mobile Apps &amp; Digital Growth Studio</title>
-  <meta name="description" content="Socialeo is an elite founder-led digital product studio crafting high-converting bespoke websites, native apps, 3D WebGL experiences, and scalable SEO infrastructure.">
+  <title>Socialeo — Web Design, Apps &amp; Digital Studio Mysore</title>
+  <meta name="description" content="Socialeo is an elite digital product studio in Mysore crafting high-converting bespoke websites, native mobile apps, 3D WebGL, and scalable SEO platforms.">
   <meta name="keywords" content="web design agency mysore, best web development company in mysore, digital marketing agency mysore, mobile app developers mysore, UI UX design studio mysore, clinical SEO mysore, bespoke web development, Next.js developer, 3D web design, Three.js agency, Socialeo">
   <meta name="author" content="Manpreeth N (Manu) — Socialeo">
   <meta name="theme-color" content="#050507">
@@ -44,7 +44,39 @@
   <meta name="twitter:description" content="Elite founder-led digital product studio in Mysore crafting high-converting bespoke websites, native apps, 3D WebGL experiences, and scalable clinical SEO.">
   <meta name="twitter:image" content="https://socialeo.vercel.app/assets/hero-bg.jpg">
 
-  <!-- Schema.org Multi-Entity JSON-LD Graph -->
+  <!-- Speculation Rules API for Instant Sub-50ms Navigations (Chrome/Edge/Modern Browsers) -->
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "source": "list",
+        "urls": [
+          "/blogs.html",
+          "/services/web-design.html",
+          "/services/web-development.html",
+          "/services/mobile-apps.html",
+          "/services/digital-marketing.html",
+          "/services/ui-ux-design.html",
+          "/services/brand-strategy.html"
+        ]
+      }
+    ],
+    "prefetch": [
+      {
+        "source": "document",
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/admin*" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Multi-Entity JSON-LD Graph with GEO & E-E-A-T Architecture -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,14 +103,35 @@
         "email": "socialeopvtltd@gmail.com",
         "priceRange": "$$",
         "description": "Founder-led digital product studio in Mysore crafting high-converting websites, bespoke design systems, native mobile apps, 3D WebGL experiences, and scalable clinical SEO.",
+        "knowsAbout": [
+          "Bespoke Web Design",
+          "Next.js Development",
+          "Mobile App Engineering",
+          "UI/UX Design Systems",
+          "GEO (Generative Engine Optimization)",
+          "Technical SEO & Core Web Vitals",
+          "WebGL & 3D Interactive Graphics",
+          "Conversion Rate Optimization"
+        ],
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero-title", ".hero-subtitle", ".about-lead"]
+        },
         "founder": {
           "@type": "Person",
+          "@id": "https://socialeo.vercel.app/#founder",
           "name": "Manpreeth N (Manu)",
           "jobTitle": "Founder & CEO",
           "url": "https://socialeo.vercel.app/#about",
           "sameAs": [
             "https://www.instagram.com/socialeo.in",
             "https://github.com/Manu-Socialeo/socialeo"
+          ],
+          "knowsAbout": [
+            "Digital Product Strategy",
+            "Full-Stack Frontend Architecture",
+            "Generative Search Optimization (GEO)",
+            "Clinical SEO & Speed Tuning"
           ]
         },
         "address": {
@@ -102,6 +155,7 @@
         ],
         "areaServed": [
           { "@type": "City", "name": "Mysore" },
+          { "@type": "City", "name": "Mysuru" },
           { "@type": "City", "name": "Bangalore" },
           { "@type": "AdministrativeArea", "name": "Karnataka" },
           { "@type": "Country", "name": "India" },
@@ -169,6 +223,15 @@
             "closes": "20:00"
           }
         ]
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://socialeo.vercel.app/#founder-profile",
+        "url": "https://socialeo.vercel.app/#about",
+        "name": "Manpreeth N (Manu) — Founder & CEO Profile",
+        "mainEntity": {
+          "@id": "https://socialeo.vercel.app/#founder"
+        }
       }
     ]
   }
@@ -184,6 +247,9 @@
 
   <!-- HTML2PDF Library for Direct Interactive PDF Downloads -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Google Preferred Sources Publisher Library -->
+  <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -243,7 +309,7 @@
        ========================================================================== -->
   <section class="hero-section" id="hero">
     <div class="hero-bg-container">
-      <img src="assets/hero-bg.jpg" alt="Socialeo 3D Topographical Mountain" class="hero-bg-img" fetchpriority="high">
+      <img src="assets/hero-bg.jpg" alt="Socialeo 3D Topographical Mountain" class="hero-bg-img" fetchpriority="high" width="1920" height="1080">
       <canvas id="hero-particles" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;"></canvas>
       <div class="hero-bg-gradient"></div>
     </div>
@@ -306,7 +372,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrapper">
-          <img src="assets/about-studio.jpg" alt="Socialeo Creative Studio" class="about-image" loading="lazy" decoding="async">
+          <img src="assets/about-studio.jpg" alt="Socialeo Creative Studio" class="about-image" loading="lazy" decoding="async" width="600" height="600">
           <div class="about-floating-badge">
             <div class="badge-icon">✦</div>
             <div class="badge-text">
@@ -335,15 +401,15 @@
 
           <div class="about-stats">
             <div class="stat-item">
-              <h3 class="stat-number" data-target="150" data-suffix="+">150+</h3>
+              <div class="stat-number" data-target="150" data-suffix="+">150+</div>
               <p>Projects Delivered</p>
             </div>
             <div class="stat-item">
-              <h3 class="stat-number" data-target="7" data-suffix="+ Yrs">7+ Yrs</h3>
+              <div class="stat-number" data-target="7" data-suffix="+ Yrs">7+ Yrs</div>
               <p>Active Mastery (Since 2019)</p>
             </div>
             <div class="stat-item">
-              <h3 class="stat-number" data-target="100" data-suffix="%">100%</h3>
+              <div class="stat-number" data-target="100" data-suffix="%">100%</div>
               <p>Direct Founder Touch</p>
             </div>
           </div>
@@ -512,7 +578,7 @@
 
           <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 32px 28px;">
             <div class="section-tag" style="margin-bottom: 10px;">Target Audience</div>
-            <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: #fff; margin-bottom: 18px;">Ideal For Ambitious Teams</h3>
+            <div style="font-family: var(--font-display); font-size: 1.4rem; color: #fff; margin-bottom: 18px; font-weight: 700;">Ideal For Ambitious Teams</div>
             
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <div style="display:flex; align-items:center; gap:12px; font-size:15px; color:var(--text-secondary);">
@@ -553,7 +619,7 @@
 
       <!-- Process Blueprint Showcase Banner -->
       <div class="process-banner">
-        <img src="assets/process-blueprints.jpg" alt="Socialeo Design Process Blueprints" loading="lazy" decoding="async">
+        <img src="assets/process-blueprints.jpg" alt="Socialeo Design Process Blueprints" loading="lazy" decoding="async" width="600" height="600">
         <div class="process-banner-overlay"></div>
       </div>
 
@@ -562,7 +628,7 @@
         <div class="process-row-top">
           <div class="process-step-card">
             <div class="step-num">01</div>
-            <h3 class="step-title">Discover</h3>
+            <div class="step-title">Discover</div>
             <p class="step-desc">
               Deep dive into brand goals, market dynamics, audience behaviors, and technical feasibility scoping.
             </p>
@@ -570,7 +636,7 @@
 
           <div class="process-step-card">
             <div class="step-num">02</div>
-            <h3 class="step-title">Strategize</h3>
+            <div class="step-title">Strategize</div>
             <p class="step-desc">
               Formulating architecture, user journey maps, wireframes, and conversion roadmaps for guaranteed scale.
             </p>
@@ -581,7 +647,7 @@
           <div class="process-step-card process-horizontal">
             <div class="step-num">03</div>
             <div class="process-card-content">
-              <h3 class="step-title">Design</h3>
+              <div class="step-title">Design</div>
               <p class="step-desc">
                 High-fidelity UI prototypes, bespoke visual assets, micro-interactions, and comprehensive design systems.
               </p>
@@ -591,7 +657,7 @@
           <div class="process-step-card process-horizontal">
             <div class="step-num">04</div>
             <div class="process-card-content">
-              <h3 class="step-title">Develop</h3>
+              <div class="step-title">Develop</div>
               <p class="step-desc">
                 Pixel-perfect clean code, modern animations, SEO optimization, responsive layout architecture, and API integration.
               </p>
@@ -601,7 +667,7 @@
           <div class="process-step-card process-horizontal">
             <div class="step-num">05</div>
             <div class="process-card-content">
-              <h3 class="step-title">Launch</h3>
+              <div class="step-title">Launch</div>
               <p class="step-desc">
                 Rigorous cross-device QA testing, cloud deployment, analytics tracking, and continuous performance optimization.
               </p>
@@ -636,9 +702,9 @@
 
       <div class="projects-grid">
         <!-- Project 1 -->
-        <div class="project-card" data-category="webapp designsystem">
+        <div class="project-card" data-category="webapp designsystem" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View E-Commerce Platform project case study">
           <div class="project-media">
-            <img src="assets/project-ecommerce.jpg" alt="E-Commerce Platform" loading="lazy" decoding="async">
+            <img src="assets/project-ecommerce.jpg" alt="E-Commerce Platform" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <div class="project-info">
             <div>
@@ -657,9 +723,9 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card" data-category="designsystem">
+        <div class="project-card" data-category="designsystem" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Brand Identity Rebrand project case study">
           <div class="project-media">
-            <img src="assets/about-studio.jpg" alt="Brand Identity Rebrand" loading="lazy" decoding="async">
+            <img src="assets/about-studio.jpg" alt="Brand Identity Rebrand" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <div class="project-info">
             <div>
@@ -678,9 +744,9 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card" data-category="webapp">
+        <div class="project-card" data-category="webapp" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View SaaS Dashboard Analytics project case study">
           <div class="project-media">
-            <img src="assets/project-saas.jpg" alt="SaaS Dashboard Analytics" loading="lazy" decoding="async">
+            <img src="assets/project-saas.jpg" alt="SaaS Dashboard Analytics" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <div class="project-info">
             <div>
@@ -699,9 +765,9 @@
         </div>
 
         <!-- Project 4 -->
-        <div class="project-card" data-category="mobile">
+        <div class="project-card" data-category="mobile" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Fintech Mobile App project case study">
           <div class="project-media">
-            <img src="assets/project-fintech.jpg" alt="NeoTrade Mobile Trading App" loading="lazy" decoding="async">
+            <img src="assets/project-fintech.jpg" alt="NeoTrade Mobile Trading App" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <div class="project-info">
             <div>
@@ -720,9 +786,9 @@
         </div>
 
         <!-- Project 5 -->
-        <div class="project-card" data-category="webapp designsystem">
+        <div class="project-card" data-category="webapp designsystem" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View Web3 Gaming Portal project case study">
           <div class="project-media">
-            <img src="assets/project-web3.jpg" alt="Neon Nexus Web3 Portal" loading="lazy" decoding="async">
+            <img src="assets/project-web3.jpg" alt="Neon Nexus Web3 Portal" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <div class="project-info">
             <div>
@@ -741,9 +807,9 @@
         </div>
 
         <!-- Project 6 -->
-        <div class="project-card" data-category="mobile">
+        <div class="project-card" data-category="mobile" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View AI Health Tracker project case study">
           <div class="project-media">
-            <img src="assets/project-ai.jpg" alt="VitalPulse AI Health Tracker" loading="lazy" decoding="async">
+            <img src="assets/project-ai.jpg" alt="VitalPulse AI Health Tracker" loading="lazy" decoding="async" width="600" height="400">
           </div>
           <div class="project-info">
             <div>
@@ -870,7 +936,7 @@
        ========================================================================== -->
   <section class="testimonial-section" id="testimonials">
     <div class="testimonial-bg-container">
-      <img src="assets/testimonial-wave.jpg" alt="Testimonial Glowing Wave Background" class="testimonial-bg-img" loading="lazy" decoding="async">
+      <img src="assets/testimonial-wave.jpg" alt="Testimonial Glowing Wave Background" class="testimonial-bg-img" loading="lazy" decoding="async" width="1920" height="600">
       <div class="testimonial-bg-overlay"></div>
     </div>
 
@@ -930,19 +996,19 @@
         <!-- Avatar Selector with 5 Avatars & Active Indicator -->
         <div class="testimonial-nav">
           <button class="avatar-btn active" aria-label="Client 1">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 1" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Client Reviewer Priya Patel" loading="lazy" decoding="async" width="48" height="48">
           </button>
           <button class="avatar-btn" aria-label="Client 2">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 2" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Client Reviewer Rahul Deshmukh" loading="lazy" decoding="async" width="48" height="48">
           </button>
           <button class="avatar-btn" aria-label="Client 3">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 3" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="Client Reviewer Ananya Rao" loading="lazy" decoding="async" width="48" height="48">
           </button>
           <button class="avatar-btn" aria-label="Client 4">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 4" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Client Reviewer Karthik Sundaram" loading="lazy" decoding="async" width="48" height="48">
           </button>
           <button class="avatar-btn" aria-label="Client 5">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Client Avatar 5" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Client Reviewer Maya Iyer" loading="lazy" decoding="async" width="48" height="48">
           </button>
         </div>
       </div>
@@ -1099,6 +1165,27 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           </a>
         </div>
+
+        <!-- Google Preferred Sources Badge & Button -->
+        <div class="preferred-source-badge-wrap">
+          <div class="preferred-source-badge-header">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>Trusted Publisher on Google Search</span>
+          </div>
+          <div class="preferred-source-actions">
+            <div google-add-preferred-source-btn data-theme="dark" data-lang="en"></div>
+            <a href="https://google.com/preferences/source?q=socialeo.vercel.app" target="_blank" rel="noopener" class="google-pref-fallback-btn" aria-label="Add Socialeo to Google Preferred Sources">
+              <svg class="g-icon" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+              <span>Add as Preferred Source</span>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
 
       <div class="footer-bottom">
@@ -1120,7 +1207,7 @@
         <img src="" id="modal-img" alt="Project Preview">
       </div>
       <div class="modal-body">
-        <h3 class="modal-title" id="modal-title">Project Title</h3>
+        <div class="modal-title" id="modal-title">Project Title</div>
         <div class="project-tags" id="modal-tags" style="margin-bottom: 16px;"></div>
         <p class="modal-desc" id="modal-desc">Project details and technical description.</p>
         <div style="display:flex; gap:12px;">
@@ -1158,14 +1245,14 @@
 
         <div class="brochure-hero">
           <div class="hero-badge-pill">ENGINEERED FOR SCALE &amp; CONVERSIONS</div>
-          <h1 class="brochure-title">High-Performance Web Development &amp; Digital Solutions</h1>
+          <div class="brochure-title">High-Performance Web Development &amp; Digital Solutions</div>
           <p class="brochure-subtitle">
             Bespoke UI/UX Design Systems, Scalable Web Applications, Deep Search Engine Dominance &amp; Interactive Lead Conversion Engines.
           </p>
         </div>
 
         <div class="brochure-section-card">
-          <h3 class="card-heading">🏢 Executive Summary</h3>
+          <div class="card-heading">🏢 Executive Summary</div>
           <p class="card-body-text">
             <strong>Socialeo</strong> is an elite digital product engineering studio. We craft high-converting, lightning-fast digital flagships for medical clinics, healthcare specialists, high-growth technology brands, and modern businesses. Every experience is built with clean architecture, sub-second edge speeds, and measurable search visibility.
           </p>
@@ -1174,22 +1261,22 @@
         <div class="brochure-pillars-grid">
           <div class="pillar-item">
             <div class="pillar-icon">⚡</div>
-            <h4>Sub-Second Speed &amp; CDN</h4>
+            <div class="pillar-title">Sub-Second Speed &amp; CDN</div>
             <p>Global Edge CDN caching, static page pre-rendering, and automated Core Web Vitals optimization for instant load times.</p>
           </div>
           <div class="pillar-item">
             <div class="pillar-icon">🎨</div>
-            <h4>Bespoke UI/UX Design Systems</h4>
+            <div class="pillar-title">Bespoke UI/UX Design Systems</div>
             <p>Tailored athletic, medical, and corporate aesthetics with custom color tokens, micro-animations, and responsive wireframes.</p>
           </div>
           <div class="pillar-item">
             <div class="pillar-icon">🔍</div>
-            <h4>Healthcare &amp; Corporate SEO</h4>
+            <div class="pillar-title">Healthcare &amp; Corporate SEO</div>
             <p>Deep JSON-LD Schema markup (MedicalClinic, Physician, FAQPage), XML sitemaps, and Google Search Console tuning.</p>
           </div>
           <div class="pillar-item">
             <div class="pillar-icon">🛡️</div>
-            <h4>Enterprise Cloud &amp; Security</h4>
+            <div class="pillar-title">Enterprise Cloud &amp; Security</div>
             <p>Automated SSL padlock certificates, managed DNS health, automated backups, and 99.99% cloud uptime SLA.</p>
           </div>
         </div>
@@ -1233,7 +1320,7 @@
         </header>
 
         <div class="brochure-section-title-row">
-          <h2>Comprehensive Web Solutions &amp; Deliverables</h2>
+          <div class="brochure-sec-title">Comprehensive Web Solutions &amp; Deliverables</div>
           <p>Everything required to launch, rank, convert, and scale a market-leading digital platform.</p>
         </div>
 
@@ -1241,7 +1328,7 @@
           <div class="scope-row">
             <div class="scope-num">1.0</div>
             <div class="scope-info">
-              <h4>UI/UX Strategy &amp; Design System</h4>
+              <div class="scope-title">UI/UX Strategy &amp; Design System</div>
               <p>Custom responsive typography, athletic/medical color palettes, interactive design tokens, and friction-free wireframes.</p>
             </div>
             <div class="scope-badge">Design Phase</div>
@@ -1250,7 +1337,7 @@
           <div class="scope-row">
             <div class="scope-num">2.0</div>
             <div class="scope-info">
-              <h4>Core Public Flagship Pages (9+ Pages)</h4>
+              <div class="scope-title">Core Public Flagship Pages (9+ Pages)</div>
               <p>Home, About, Services Directory, Specialists, Pricing, Gallery, Contact, Testimonials, Interactive FAQ Hub.</p>
             </div>
             <div class="scope-badge">Core Platform</div>
@@ -1259,7 +1346,7 @@
           <div class="scope-row">
             <div class="scope-num">3.0</div>
             <div class="scope-info">
-              <h4>Specialist &amp; Doctor Credential Portals</h4>
+              <div class="scope-title">Specialist &amp; Doctor Credential Portals</div>
               <p>Dedicated doctor/team verified bio portals with qualifications, credentials, therapy specialties, and patient trust badges.</p>
             </div>
             <div class="scope-badge">Authority Hub</div>
@@ -1268,7 +1355,7 @@
           <div class="scope-row">
             <div class="scope-num">4.0</div>
             <div class="scope-info">
-              <h4>Specialized Clinical Treatment &amp; Service Pages (14+ Modules)</h4>
+              <div class="scope-title">Specialized Clinical Treatment &amp; Service Pages (14+ Modules)</div>
               <p>In-depth therapy detail pages with recovery stages, evidence-based protocols, rehabilitation breakdown, and direct booking.</p>
             </div>
             <div class="scope-badge">Deep Content</div>
@@ -1277,7 +1364,7 @@
           <div class="scope-row">
             <div class="scope-num">5.0</div>
             <div class="scope-info">
-              <h4>Health Hub Clinical SEO Articles &amp; Rich Snippets</h4>
+              <div class="scope-title">Health Hub Clinical SEO Articles &amp; Rich Snippets</div>
               <p>14,000+ words of evidence-based medical articles + Google BlogPosting and FAQPage JSON-LD schemas to rank #1 locally.</p>
             </div>
             <div class="scope-badge">SEO Engine</div>
@@ -1286,7 +1373,7 @@
           <div class="scope-row">
             <div class="scope-num">6.0</div>
             <div class="scope-info">
-              <h4>Patient Conversion Engines &amp; Interactive Lead Widgets</h4>
+              <div class="scope-title">Patient Conversion Engines &amp; Interactive Lead Widgets</div>
               <p>Online appointment booker (/book-appointment), callback portal, dynamic maps, WhatsApp quick-chat, and touch-to-call.</p>
             </div>
             <div class="scope-badge">Lead Funnels</div>
@@ -1295,7 +1382,7 @@
           <div class="scope-row">
             <div class="scope-num">7.0</div>
             <div class="scope-info">
-              <h4>Healthcare Legal &amp; Compliance Suite (5 Pages)</h4>
+              <div class="scope-title">Healthcare Legal &amp; Compliance Suite (5 Pages)</div>
               <p>Privacy Policy, Terms &amp; Conditions, Medical Disclaimer, Appointment Policy, and Cookie Compliance Policies.</p>
             </div>
             <div class="scope-badge">Compliance</div>
@@ -1322,35 +1409,35 @@
         </header>
 
         <div class="brochure-section-title-row">
-          <h2>Delivery Roadmap &amp; Ongoing Cloud Retainers</h2>
+          <div class="brochure-sec-title">Delivery Roadmap &amp; Ongoing Cloud Retainers</div>
           <p>A proven 4-stage engineering lifecycle backed by enterprise-grade maintenance.</p>
         </div>
 
         <div class="roadmap-grid">
           <div class="roadmap-step">
             <div class="step-badge">Stage 1</div>
-            <h4>Discovery &amp; Strategy</h4>
+            <div class="roadmap-title">Discovery &amp; Strategy</div>
             <p>Architecture mapping, user flows, content taxonomy, keyword research.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-badge">Stage 2</div>
-            <h4>UI/UX &amp; Design</h4>
+            <div class="roadmap-title">UI/UX &amp; Design</div>
             <p>Design tokens, high-fidelity mockups, responsive grid layouts.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-badge">Stage 3</div>
-            <h4>Full-Stack Build</h4>
+            <div class="roadmap-title">Full-Stack Build</div>
             <p>Component engineering, lead funnels, Core Web Vitals optimization.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-badge">Stage 4</div>
-            <h4>Launch &amp; Scaling</h4>
+            <div class="roadmap-title">Launch &amp; Scaling</div>
             <p>Edge CDN deployment, schema indexing, Google Search Console audit.</p>
           </div>
         </div>
 
         <div class="retainers-card">
-          <h4>🔄 Managed Annual Retainers (AMC)</h4>
+          <div class="retainers-title">🔄 Managed Annual Retainers (AMC)</div>
           <div class="retainers-grid">
             <div>
               <strong>🌐 Cloud Edge CDN Hosting:</strong> Sub-second global load speeds, 99.99% uptime SLA, unlimited traffic bandwidth.
@@ -1367,7 +1454,7 @@
         <!-- Contact Box & Dynamic Action Buttons -->
         <div class="brochure-contact-box">
           <div class="contact-box-header">
-            <h3>Ready to Build Your Digital Flagship?</h3>
+            <div class="card-heading" style="font-size:16px; font-weight:800; color:#000; margin-bottom:4px;">Ready to Build Your Digital Flagship?</div>
             <p>Click any button below to connect directly with our engineering &amp; strategy desk.</p>
           </div>
 
