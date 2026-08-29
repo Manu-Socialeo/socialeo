@@ -1009,7 +1009,7 @@ function generateServicePage(service) {
         </div>
 
         <div class="service-hero-img-box">
-          <img src="${service.image}" alt="${service.serviceName} - Socialeo Digital Studio" fetchpriority="high">
+          <img src="${service.image}" alt="${service.serviceName} - Socialeo Digital Studio" title="${service.serviceName} - Socialeo Digital Studio" fetchpriority="high">
         </div>
 
         <div class="service-lead-overview">
