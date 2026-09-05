@@ -13,19 +13,20 @@ const ROOT_DIR = __dirname;
 // 1. Audit HTML pages in workspace
 const pagesToAudit = [
   { file: 'index.html', url: LIVE_URL, name: 'Homepage & Core Studio' },
-  { file: 'blogs.html', url: LIVE_URL + 'blogs.html', name: 'Knowledge Hub / Blogs' },
+  { file: 'blogs.html', url: LIVE_URL + 'blogs', name: 'Knowledge Hub / Blogs' },
   { file: 'admin.html', url: LIVE_URL + 'admin.html', name: 'Admin Studio' },
-  { file: 'cookie-policy.html', url: LIVE_URL + 'cookie-policy.html', name: 'Cookie Policy' },
-  { file: 'privacy-policy.html', url: LIVE_URL + 'privacy-policy.html', name: 'Privacy Policy' },
-  { file: 'terms.html', url: LIVE_URL + 'terms.html', name: 'Terms of Service' },
-  { file: 'seo-geo-dashboard.html', url: LIVE_URL + 'seo-geo-dashboard.html', name: 'GEO / AI SEO Dashboard' }
+  { file: 'cookie-policy.html', url: LIVE_URL + 'cookie-policy', name: 'Cookie Policy' },
+  { file: 'privacy-policy.html', url: LIVE_URL + 'privacy-policy', name: 'Privacy Policy' },
+  { file: 'terms.html', url: LIVE_URL + 'terms', name: 'Terms of Service' },
+  { file: 'seo-geo-dashboard.html', url: LIVE_URL + 'seo-geo-dashboard', name: 'GEO / AI SEO Dashboard' }
 ];
 
 // Check service pages
 const servicesDir = path.join(ROOT_DIR, 'services');
 if (fs.existsSync(servicesDir)) {
   fs.readdirSync(servicesDir).filter(f => f.endsWith('.html')).forEach(f => {
-    pagesToAudit.push({ file: path.join('services', f), url: LIVE_URL + 'services/' + f, name: `Service: ${f}` });
+    const slug = f.replace(/\.html$/, '');
+    pagesToAudit.push({ file: path.join('services', f), url: LIVE_URL + 'services/' + slug, name: `Service: ${slug}` });
   });
 }
 
@@ -33,7 +34,8 @@ if (fs.existsSync(servicesDir)) {
 const blogsDir = path.join(ROOT_DIR, 'blogs');
 if (fs.existsSync(blogsDir)) {
   fs.readdirSync(blogsDir).filter(f => f.endsWith('.html')).forEach(f => {
-    pagesToAudit.push({ file: path.join('blogs', f), url: LIVE_URL + 'blogs/' + f, name: `Blog: ${f}` });
+    const slug = f.replace(/\.html$/, '');
+    pagesToAudit.push({ file: path.join('blogs', f), url: LIVE_URL + 'blogs/' + slug, name: `Blog: ${slug}` });
   });
 }
 

@@ -7,11 +7,11 @@ const TODAY = new Date().toISOString().split('T')[0];
 
 const corePages = [
   { path: '', priority: '1.0', changefreq: 'weekly' },
-  { path: 'blogs.html', priority: '0.9', changefreq: 'daily' },
-  { path: 'cookie-policy.html', priority: '0.5', changefreq: 'yearly' },
-  { path: 'privacy-policy.html', priority: '0.5', changefreq: 'yearly' },
-  { path: 'terms.html', priority: '0.5', changefreq: 'yearly' },
-  { path: 'seo-geo-dashboard.html', priority: '0.7', changefreq: 'weekly' }
+  { path: 'blogs', priority: '0.9', changefreq: 'daily' },
+  { path: 'cookie-policy', priority: '0.5', changefreq: 'yearly' },
+  { path: 'privacy-policy', priority: '0.5', changefreq: 'yearly' },
+  { path: 'terms', priority: '0.5', changefreq: 'yearly' },
+  { path: 'seo-geo-dashboard', priority: '0.7', changefreq: 'weekly' }
 ];
 
 const urls = [];
@@ -21,19 +21,21 @@ corePages.forEach(p => {
   urls.push({ loc: url, lastmod: TODAY, changefreq: p.changefreq, priority: p.priority });
 });
 
-// Services
+// Services (Clean URLs without .html)
 const servicesDir = path.join(ROOT_DIR, 'services');
 if (fs.existsSync(servicesDir)) {
   fs.readdirSync(servicesDir).filter(f => f.endsWith('.html')).forEach(f => {
-    urls.push({ loc: `${BASE_URL}/services/${f}`, lastmod: TODAY, changefreq: 'weekly', priority: '0.9' });
+    const slug = f.replace(/\.html$/, '');
+    urls.push({ loc: `${BASE_URL}/services/${slug}`, lastmod: TODAY, changefreq: 'weekly', priority: '0.9' });
   });
 }
 
-// Blogs
+// Blogs (Clean URLs without .html)
 const blogsDir = path.join(ROOT_DIR, 'blogs');
 if (fs.existsSync(blogsDir)) {
   fs.readdirSync(blogsDir).filter(f => f.endsWith('.html')).forEach(f => {
-    urls.push({ loc: `${BASE_URL}/blogs/${f}`, lastmod: TODAY, changefreq: 'monthly', priority: '0.8' });
+    const slug = f.replace(/\.html$/, '');
+    urls.push({ loc: `${BASE_URL}/blogs/${slug}`, lastmod: TODAY, changefreq: 'monthly', priority: '0.8' });
   });
 }
 
