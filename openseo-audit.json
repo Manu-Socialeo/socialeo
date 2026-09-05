@@ -1,0 +1,541 @@
+{
+  "domain": "socialeo.vercel.app",
+  "auditDate": "2026-09-05",
+  "totalPages": 31,
+  "pages": [
+    {
+      "file": "index.html",
+      "url": "https://socialeo.vercel.app/",
+      "title": "Socialeo — Web Design &amp; Apps Studio Mysore",
+      "titleLength": 46,
+      "metaDesc": "Socialeo is an elite digital product studio in Mysore crafting high-converting bespoke websites, native mobile apps, 3D WebGL, and scalable SEO platforms.",
+      "metaDescLength": 154,
+      "canonical": "https://socialeo.vercel.app/",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 16,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs.html",
+      "url": "https://socialeo.vercel.app/blogs.html",
+      "title": "Digital Product Engineering, SEO &amp; Growth Insights | Socialeo",
+      "titleLength": 65,
+      "metaDesc": "Explore 15 in-depth guides and masterclasses on bespoke web design, UI/UX systems, Next.js performance, Google Core Web Vitals, and conversion-driven digital product strategy from Socialeo.",
+      "metaDescLength": 189,
+      "canonical": "https://socialeo.vercel.app/blogs.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        [
+          "Blog",
+          "CollectionPage"
+        ]
+      ],
+      "h1Count": 1,
+      "imgCount": 18,
+      "missingAlt": 0
+    },
+    {
+      "file": "admin.html",
+      "url": "https://socialeo.vercel.app/admin.html",
+      "title": "Socialeo Admin Dashboard — Client CRM & Bill Generator",
+      "titleLength": 54,
+      "metaDesc": null,
+      "metaDescLength": 0,
+      "canonical": null,
+      "ogTitle": false,
+      "ogImage": false,
+      "schemas": [],
+      "h1Count": 1,
+      "imgCount": 0,
+      "missingAlt": 0
+    },
+    {
+      "file": "cookie-policy.html",
+      "url": "https://socialeo.vercel.app/cookie-policy.html",
+      "title": "Cookie Policy | Socialeo Digital Studio",
+      "titleLength": 39,
+      "metaDesc": "Cookie Policy and Local Storage Tracking Disclosures for Socialeo Digital Studio. Transparent explanation of necessary, preference, and performance cookies.",
+      "metaDescLength": 156,
+      "canonical": "https://socialeo.vercel.app/cookie-policy.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [],
+      "h1Count": 1,
+      "imgCount": 0,
+      "missingAlt": 0
+    },
+    {
+      "file": "privacy-policy.html",
+      "url": "https://socialeo.vercel.app/privacy-policy.html",
+      "title": "Privacy Policy | Socialeo Digital Studio",
+      "titleLength": 40,
+      "metaDesc": "Privacy Policy and Data Protection Standards for Socialeo Digital Studio. Fully compliant with GDPR, CCPA, and India Digital Personal Data Protection (DPDP) Act 2023.",
+      "metaDescLength": 166,
+      "canonical": "https://socialeo.vercel.app/privacy-policy.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [],
+      "h1Count": 1,
+      "imgCount": 0,
+      "missingAlt": 0
+    },
+    {
+      "file": "terms.html",
+      "url": "https://socialeo.vercel.app/terms.html",
+      "title": "Terms of Service | Socialeo Digital Studio",
+      "titleLength": 42,
+      "metaDesc": "Terms of Service and Digital Product Studio Master Agreement for Socialeo Digital Studio. Intellectual property, deliverables, billing, SLA, and governing law.",
+      "metaDescLength": 159,
+      "canonical": "https://socialeo.vercel.app/terms.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [],
+      "h1Count": 1,
+      "imgCount": 0,
+      "missingAlt": 0
+    },
+    {
+      "file": "seo-geo-dashboard.html",
+      "url": "https://socialeo.vercel.app/seo-geo-dashboard.html",
+      "title": "SEO + GEO Autopilot Command Center · Socialeo",
+      "titleLength": 45,
+      "metaDesc": "Autonomous SEO + Generative Engine Optimization command center for Socialeo. Live rank tracking, AI search citation audit, gap analysis, and instant fixes.",
+      "metaDescLength": 155,
+      "canonical": null,
+      "ogTitle": false,
+      "ogImage": false,
+      "schemas": [],
+      "h1Count": 0,
+      "imgCount": 0,
+      "missingAlt": 0
+    },
+    {
+      "file": "services\\brand-strategy.html",
+      "url": "https://socialeo.vercel.app/services/brand-strategy.html",
+      "title": "Brand Strategy & Identity in Mysore (Mysuru) | Socialeo Studio",
+      "titleLength": 62,
+      "metaDesc": "Leading brand strategy & visual identity studio in Mysore (Mysuru). Socialeo crafts enduring logo suites, brand books, typography guidelines, and digital design languages.",
+      "metaDescLength": 171,
+      "canonical": "https://socialeo.vercel.app/services/brand-strategy.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 1,
+      "missingAlt": 0
+    },
+    {
+      "file": "services\\digital-marketing.html",
+      "url": "https://socialeo.vercel.app/services/digital-marketing.html",
+      "title": "Digital Marketing & SEO in Mysore (Mysuru) | Socialeo Studio",
+      "titleLength": 60,
+      "metaDesc": "Premier digital marketing & SEO company in Mysore (Mysuru). Dominate Google Search, capture high-intent local customer leads, and scale your revenue with Socialeo.",
+      "metaDescLength": 163,
+      "canonical": "https://socialeo.vercel.app/services/digital-marketing.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 1,
+      "missingAlt": 0
+    },
+    {
+      "file": "services\\mobile-apps.html",
+      "url": "https://socialeo.vercel.app/services/mobile-apps.html",
+      "title": "Mobile App Development in Mysore (Mysuru) | Socialeo Studio",
+      "titleLength": 59,
+      "metaDesc": "Top mobile app development company in Mysore (Mysuru). Socialeo builds fluid iOS & Android apps with React Native, Flutter, and scalable cloud backends.",
+      "metaDescLength": 152,
+      "canonical": "https://socialeo.vercel.app/services/mobile-apps.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 1,
+      "missingAlt": 0
+    },
+    {
+      "file": "services\\ui-ux-design.html",
+      "url": "https://socialeo.vercel.app/services/ui-ux-design.html",
+      "title": "UI/UX Design Systems in Mysore (Mysuru) | Socialeo Studio",
+      "titleLength": 57,
+      "metaDesc": "Elite UI/UX design studio in Mysore (Mysuru). Socialeo crafts comprehensive Figma design systems, intuitive SaaS dashboards, and conversion-optimized mobile interfaces.",
+      "metaDescLength": 168,
+      "canonical": "https://socialeo.vercel.app/services/ui-ux-design.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 1,
+      "missingAlt": 0
+    },
+    {
+      "file": "services\\web-design.html",
+      "url": "https://socialeo.vercel.app/services/web-design.html",
+      "title": "Web Design in Mysore (Mysuru) | Socialeo Studio",
+      "titleLength": 47,
+      "metaDesc": "Top bespoke web design company in Mysore (Mysuru). Socialeo crafts custom, conversion-driven websites, responsive Figma UI systems, and high-speed digital experiences.",
+      "metaDescLength": 167,
+      "canonical": "https://socialeo.vercel.app/services/web-design.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 1,
+      "missingAlt": 0
+    },
+    {
+      "file": "services\\web-development.html",
+      "url": "https://socialeo.vercel.app/services/web-development.html",
+      "title": "Web Development in Mysore (Mysuru) | Socialeo Studio",
+      "titleLength": 52,
+      "metaDesc": "Premier website development company in Mysore (Mysuru). Socialeo builds sub-second Next.js web applications, scalable APIs, and Google Core Web Vitals 100/100 platforms.",
+      "metaDescLength": 169,
+      "canonical": "https://socialeo.vercel.app/services/web-development.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 1,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\5-step-product-design-process-startups.html",
+      "url": "https://socialeo.vercel.app/blogs/5-step-product-design-process-startups.html",
+      "title": "5-Step Product Design Process for Startups | Socialeo",
+      "titleLength": 53,
+      "metaDesc": "A transparent architectural breakdown of how Discovery, User Research, Interactive Wireframing, High-Fidelity Design Systems, and Performance Engineering transform raw startup concepts into market leaders.",
+      "metaDescLength": 205,
+      "canonical": "https://socialeo.vercel.app/blogs/5-step-product-design-process-startups.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\accessible-web-design-wcag-compliance.html",
+      "url": "https://socialeo.vercel.app/blogs/accessible-web-design-wcag-compliance.html",
+      "title": "Accessible Web Design & WCAG 2.2 Compliance Guide | Socialeo",
+      "titleLength": 60,
+      "metaDesc": "How forward-thinking digital studios implement WCAG 2.2 Level AA accessibility compliance, keyboard navigation focus rings, and screen-reader semantics while creating visually stunning, premium aesthetics.",
+      "metaDescLength": 205,
+      "canonical": "https://socialeo.vercel.app/blogs/accessible-web-design-wcag-compliance.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\ai-analytics-dashboard-design-patterns.html",
+      "url": "https://socialeo.vercel.app/blogs/ai-analytics-dashboard-design-patterns.html",
+      "title": "AI Analytics Dashboard UI & Telemetry Patterns | Socialeo",
+      "titleLength": 57,
+      "metaDesc": "How to distill millions of real-time data points, predictive AI models, and complex metrics into glanceable, intuitive visual dashboards that empower fast executive decision-making.",
+      "metaDescLength": 181,
+      "canonical": "https://socialeo.vercel.app/blogs/ai-analytics-dashboard-design-patterns.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\b2b-saas-website-redesign-playbook.html",
+      "url": "https://socialeo.vercel.app/blogs/b2b-saas-website-redesign-playbook.html",
+      "title": "B2B SaaS Website Redesign Playbook: 2x Conversions | Socialeo",
+      "titleLength": 61,
+      "metaDesc": "The step-by-step framework for diagnosing UX friction, rewriting benefit-driven product copy, redesigning interactive feature tours, and doubling qualified demo requests without increasing ad spend.",
+      "metaDescLength": 198,
+      "canonical": "https://socialeo.vercel.app/blogs/b2b-saas-website-redesign-playbook.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\bespoke-web-design-vs-templates-roi.html",
+      "url": "https://socialeo.vercel.app/blogs/bespoke-web-design-vs-templates-roi.html",
+      "title": "Bespoke Web Design vs Templates: 2026 ROI Guide | Socialeo",
+      "titleLength": 58,
+      "metaDesc": "Discover why high-growth brands are moving away from bloated website builders toward custom-engineered digital experiences that deliver higher conversions, superior organic SEO rankings, and distinctive brand credibility.",
+      "metaDescLength": 221,
+      "canonical": "https://socialeo.vercel.app/blogs/bespoke-web-design-vs-templates-roi.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\branding-and-digital-identity-strategy.html",
+      "url": "https://socialeo.vercel.app/blogs/branding-and-digital-identity-strategy.html",
+      "title": "Digital Brand Identity Strategy & Visual Design | Socialeo",
+      "titleLength": 58,
+      "metaDesc": "How foundational brand identity systems, custom typographic pairings, and psychological color harmonies create magnetic customer resonance that outlasts short-lived aesthetic fads.",
+      "metaDescLength": 180,
+      "canonical": "https://socialeo.vercel.app/blogs/branding-and-digital-identity-strategy.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\conversion-rate-optimization-landing-page-anatomy.html",
+      "url": "https://socialeo.vercel.app/blogs/conversion-rate-optimization-landing-page-anatomy.html",
+      "title": "Anatomy of a High-Converting Landing Page | Socialeo",
+      "titleLength": 52,
+      "metaDesc": "Deconstructing the exact visual triggers, cognitive fluency models, sticky CTA mechanisms, and social proof placement strategies that consistently achieve double-digit landing page conversions.",
+      "metaDescLength": 193,
+      "canonical": "https://socialeo.vercel.app/blogs/conversion-rate-optimization-landing-page-anatomy.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\core-web-vitals-speed-optimization-guide.html",
+      "url": "https://socialeo.vercel.app/blogs/core-web-vitals-speed-optimization-guide.html",
+      "title": "Core Web Vitals Speed Mastery Guide: 100/100 | Socialeo",
+      "titleLength": 55,
+      "metaDesc": "The definitive technical guide to optimizing Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS) for flawless mobile and desktop audit scores.",
+      "metaDescLength": 189,
+      "canonical": "https://socialeo.vercel.app/blogs/core-web-vitals-speed-optimization-guide.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\creative-agency-portfolio-case-study-framework.html",
+      "url": "https://socialeo.vercel.app/blogs/creative-agency-portfolio-case-study-framework.html",
+      "title": "Creative Agency Portfolio Case Study Framework | Socialeo",
+      "titleLength": 57,
+      "metaDesc": "The proven narrative blueprint that turns raw project screenshots into compelling enterprise case studies demonstrating quantifiable business ROI, technical ingenuity, and strategic mastery.",
+      "metaDescLength": 190,
+      "canonical": "https://socialeo.vercel.app/blogs/creative-agency-portfolio-case-study-framework.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\design-systems-for-growing-brands.html",
+      "url": "https://socialeo.vercel.app/blogs/design-systems-for-growing-brands.html",
+      "title": "Building Scalable Design Systems: Figma to Code | Socialeo",
+      "titleLength": 58,
+      "metaDesc": "How multi-disciplinary product teams establish synchronized token architectures across Figma variables, CSS custom properties, and React component libraries to accelerate feature velocity by 300%.",
+      "metaDescLength": 196,
+      "canonical": "https://socialeo.vercel.app/blogs/design-systems-for-growing-brands.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\fintech-and-trading-mobile-app-ux.html",
+      "url": "https://socialeo.vercel.app/blogs/fintech-and-trading-mobile-app-ux.html",
+      "title": "Fintech & Trading Mobile App UX: Dark Mode Design | Socialeo",
+      "titleLength": 60,
+      "metaDesc": "Optimizing high-frequency institutional trading interfaces with tactile haptic feedback, OLED high-contrast typography, and instantaneous gesture response for zero-latency financial operations.",
+      "metaDescLength": 193,
+      "canonical": "https://socialeo.vercel.app/blogs/fintech-and-trading-mobile-app-ux.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\frontend-architecture-and-seo-rankings.html",
+      "url": "https://socialeo.vercel.app/blogs/frontend-architecture-and-seo-rankings.html",
+      "title": "Frontend Architecture & Next.js SEO Ranking Boost | Socialeo",
+      "titleLength": 60,
+      "metaDesc": "Mastering Server-Side Rendering (SSR), Incremental Static Regeneration (ISR), Google Core Web Vitals, and edge caching to consistently outrank enterprise competitors on Google Search results.",
+      "metaDescLength": 191,
+      "canonical": "https://socialeo.vercel.app/blogs/frontend-architecture-and-seo-rankings.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\high-converting-ecommerce-design-systems.html",
+      "url": "https://socialeo.vercel.app/blogs/high-converting-ecommerce-design-systems.html",
+      "title": "High-Converting E-Commerce Design Systems Guide | Socialeo",
+      "titleLength": 58,
+      "metaDesc": "How modern luxury streetwear and direct-to-consumer brands combine editorial typography hierarchy, fluid micro-interactions, and frictionless checkout funnels to turn casual shoppers into lifetime advocates.",
+      "metaDescLength": 207,
+      "canonical": "https://socialeo.vercel.app/blogs/high-converting-ecommerce-design-systems.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\how-to-choose-best-mobile-app-development-company-mysore.html",
+      "url": "https://socialeo.vercel.app/blogs/how-to-choose-best-mobile-app-development-company-mysore.html",
+      "title": "Best Mobile App Development Company in Mysore | Socialeo",
+      "titleLength": 56,
+      "metaDesc": "Key evaluation criteria for founders and businesses in Mysore selecting a mobile app development agency: cross-platform frameworks, touch ergonomics, offline sync, backend scalability, and App Store approval workflows.",
+      "metaDescLength": 218,
+      "canonical": "https://socialeo.vercel.app/blogs/how-to-choose-best-mobile-app-development-company-mysore.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\top-seo-strategies-to-rank-number-1-in-mysuru.html",
+      "url": "https://socialeo.vercel.app/blogs/top-seo-strategies-to-rank-number-1-in-mysuru.html",
+      "title": "Top Local SEO Strategies to Rank #1 in Mysore | Socialeo",
+      "titleLength": 56,
+      "metaDesc": "A comprehensive, data-backed roadmap for Mysore & Mysuru companies to dominate Google Maps Local 3-Pack, capture high-intent transactional search queries, and build lasting organic search authority.",
+      "metaDescLength": 198,
+      "canonical": "https://socialeo.vercel.app/blogs/top-seo-strategies-to-rank-number-1-in-mysuru.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\webflow-vs-custom-code-for-agencies.html",
+      "url": "https://socialeo.vercel.app/blogs/webflow-vs-custom-code-for-agencies.html",
+      "title": "Webflow vs Custom Code: Agency Tech Stack Guide | Socialeo",
+      "titleLength": 58,
+      "metaDesc": "An unbiased technical comparison exploring when marketing teams should leverage Webflow visual CMS versus when custom full-stack React/Next.js architectures are essential for enterprise scalability.",
+      "metaDescLength": 198,
+      "canonical": "https://socialeo.vercel.app/blogs/webflow-vs-custom-code-for-agencies.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\webgl-3d-interactive-web-experiences.html",
+      "url": "https://socialeo.vercel.app/blogs/webgl-3d-interactive-web-experiences.html",
+      "title": "WebGL & 3D Interactive Web Experiences Guide | Socialeo",
+      "titleLength": 55,
+      "metaDesc": "Implementing shader canvases, topographical terrain models, and lightweight 3D scenes using Three.js and WebGL without compromising mobile frame rates or Core Web Vitals scores.",
+      "metaDescLength": 177,
+      "canonical": "https://socialeo.vercel.app/blogs/webgl-3d-interactive-web-experiences.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    },
+    {
+      "file": "blogs\\why-mysore-businesses-need-bespoke-websites-in-2026.html",
+      "url": "https://socialeo.vercel.app/blogs/why-mysore-businesses-need-bespoke-websites-in-2026.html",
+      "title": "Why Mysore Businesses Need Bespoke Websites in 2026 | Socialeo",
+      "titleLength": 62,
+      "metaDesc": "How modern businesses in Mysore and Mysuru are replacing slow CMS templates with bespoke Next.js web applications to achieve 100/100 Google PageSpeed, capture local search dominance, and double inbound customer inquiries.",
+      "metaDescLength": 221,
+      "canonical": "https://socialeo.vercel.app/blogs/why-mysore-businesses-need-bespoke-websites-in-2026.html",
+      "ogTitle": true,
+      "ogImage": true,
+      "schemas": [
+        "Graph"
+      ],
+      "h1Count": 1,
+      "imgCount": 2,
+      "missingAlt": 0
+    }
+  ],
+  "issues": [
+    {
+      "severity": "low",
+      "file": "seo-geo-dashboard.html",
+      "msg": "Missing rel=canonical link tag"
+    },
+    {
+      "severity": "medium",
+      "file": "seo-geo-dashboard.html",
+      "msg": "No <h1> tag found on page"
+    }
+  ],
+  "passes": [],
+  "summary": {}
+}

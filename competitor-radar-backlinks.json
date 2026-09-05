@@ -1,0 +1,46 @@
+{
+  "competitors": [
+    {
+      "name": "Regional Competitor A (Mysore Web Dev)",
+      "location": "Mysore, Karnataka",
+      "strengths": [
+        "Established local map pack listings",
+        "Long domain age"
+      ],
+      "weaknesses": [
+        "Slow page speed (>3.5s LCP)",
+        "No AI/GEO optimization",
+        "Template-based WordPress code",
+        "No dark mode or modern WebGL"
+      ],
+      "gapOpportunity": "Outrank on bespoke performance, 100/100 Core Web Vitals, and interactive 3D demos."
+    },
+    {
+      "name": "Regional Competitor B (Bangalore Digital Agency)",
+      "location": "Bangalore, Karnataka",
+      "strengths": [
+        "High domain authority",
+        "Corporate enterprise portfolio"
+      ],
+      "weaknesses": [
+        "High pricing overhead",
+        "Generic stock design",
+        "Poor local Mysore relevance"
+      ],
+      "gapOpportunity": "Win mid-market Karnataka clients with agile pricing, founder-led execution, and superior UX polish."
+    }
+  ],
+  "backlinkOutreachTemplates": [
+    {
+      "targetType": "Design Award & Tech Showcase (Awwwards, CSSDA, SiteInspire, Mobbin)",
+      "subject": "Submission: Socialeo — Bespoke Vanilla WebGL & Minimalist Dark Mode Studio",
+      "body": "Hi [Editor Name],\n\nI wanted to share Socialeo (https://socialeo.vercel.app/), a bespoke digital product studio built from scratch in vanilla HTML5/CSS3 and lightweight WebGL with 0 framework overhead.\n\nKey Highlights:\n- 100/100 Core Web Vitals score on mobile\n- Bespoke custom cursor physics & interactive 3D cards\n- Clean typography and micro-animations\n\nWould love for you to consider featuring Socialeo in your latest showcase or design inspiration roundup.\n\nBest regards,\nManpreet Singh\nFounder, Socialeo Digital Product Studio"
+    },
+    {
+      "targetType": "Tech & Startup Publications (YourStory, Inc42, DailyIO, Bangalore Tech Media)",
+      "subject": "Guest Contribution: Why Karnataka Enterprises are Shifting from WordPress to Bespoke Next.js Web Architectures",
+      "body": "Hi [Editor Name],\n\nI've been following your coverage on South Indian tech ecosystems and digital transformation.\n\nI've put together an in-depth data-backed breakdown on \"Why Bespoke Web Architecture Outperforms CMS Templates in 2026\", analyzing conversion rates, sub-second LCP impact on Google rankings, and AI-first Generative Engine Optimization (GEO).\n\nI'd love to share an exclusive guest article tailored for your readers. Let me know if you'd be interested in reviewing the draft!\n\nWarm regards,\nManpreet Singh\nFounder & Lead Architect, Socialeo"
+    }
+  ],
+  "generatedAt": "2026-09-05T11:10:31.687Z"
+}

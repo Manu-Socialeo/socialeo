@@ -4,7 +4,11 @@
   "description": "Socialeo Studio — High-Conversion Digital Agency & Real-Time Invoicing Suite",
   "scripts": {
     "test": "node test_suite.js",
-    "test:e2e": "node test_playwright.js"
+    "test:e2e": "node test_playwright.js",
+    "seo:audit": "node run_openseo_suite.js",
+    "seo:all": "node scripts/run_all_seo_agents.js",
+    "seo:sitemap": "node scripts/generate_sitemap.js",
+    "seo:test-api": "node scripts/test_dataforseo.js"
   },
   "devDependencies": {
     "playwright": "^1.62.1"

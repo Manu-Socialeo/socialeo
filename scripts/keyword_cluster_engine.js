@@ -1,0 +1,75 @@
+const fs = require('fs');
+const path = require('path');
+
+const ROOT_DIR = path.resolve(__dirname, '..');
+
+const keywordClusters = {
+  hub1_local_dev: {
+    name: "Hyper-Local Mysore & Karnataka Web Engineering",
+    pillarPage: "/services/web-development.html",
+    targetKeywords: [
+      { kw: "web design agency mysore", intent: "Commercial", volume: 1300, kd: 12, target: "/services/web-design.html" },
+      { kw: "best web development company in mysore", intent: "Commercial", volume: 880, kd: 14, target: "/services/web-development.html" },
+      { kw: "mobile app developers mysore", intent: "Commercial", volume: 720, kd: 15, target: "/services/mobile-apps.html" },
+      { kw: "digital marketing agency mysore", intent: "Commercial", volume: 1600, kd: 18, target: "/services/digital-marketing.html" },
+      { kw: "top seo company in mysuru", intent: "Commercial", volume: 540, kd: 11, target: "/blogs/top-seo-strategies-to-rank-number-1-in-mysuru.html" },
+      { kw: "ui ux design studio mysore", intent: "Commercial", volume: 590, kd: 9, target: "/services/ui-ux-design.html" }
+    ],
+    supportingArticles: [
+      "why-mysore-businesses-need-bespoke-websites-in-2026.html",
+      "how-to-choose-best-mobile-app-development-company-mysore.html",
+      "top-seo-strategies-to-rank-number-1-in-mysuru.html"
+    ]
+  },
+  hub2_cro_b2b_saas: {
+    name: "B2B SaaS & High-Converting Web Architecture",
+    pillarPage: "/services/web-design.html",
+    targetKeywords: [
+      { kw: "b2b saas website redesign", intent: "Informational/Commercial", volume: 1900, kd: 28, target: "/blogs/b2b-saas-website-redesign-playbook.html" },
+      { kw: "high converting landing page anatomy", intent: "Informational", volume: 2400, kd: 22, target: "/blogs/conversion-rate-optimization-landing-page-anatomy.html" },
+      { kw: "bespoke web design vs templates roi", intent: "Commercial", volume: 1100, kd: 19, target: "/blogs/bespoke-web-design-vs-templates-roi.html" }
+    ],
+    supportingArticles: [
+      "b2b-saas-website-redesign-playbook.html",
+      "conversion-rate-optimization-landing-page-anatomy.html",
+      "bespoke-web-design-vs-templates-roi.html"
+    ]
+  },
+  hub3_fintech_mobile_design: {
+    name: "Fintech, Mobile UX & Design Systems",
+    pillarPage: "/services/ui-ux-design.html",
+    targetKeywords: [
+      { kw: "fintech mobile app ux design", intent: "Informational", volume: 1800, kd: 24, target: "/blogs/fintech-and-trading-mobile-app-ux.html" },
+      { kw: "design systems figma to react", intent: "Informational", volume: 3200, kd: 31, target: "/blogs/design-systems-for-growing-brands.html" },
+      { kw: "dark mode ui design principles", intent: "Informational", volume: 2900, kd: 20, target: "/blogs/fintech-and-trading-mobile-app-ux.html" }
+    ],
+    supportingArticles: [
+      "fintech-and-trading-mobile-app-ux.html",
+      "design-systems-for-growing-brands.html",
+      "ai-analytics-dashboard-design-patterns.html"
+    ]
+  },
+  hub4_performance_webgl: {
+    name: "Core Web Vitals, Next.js & 3D Web Experiences",
+    pillarPage: "/services/web-development.html",
+    targetKeywords: [
+      { kw: "core web vitals 100 speed optimization", intent: "Informational", volume: 4100, kd: 35, target: "/blogs/core-web-vitals-speed-optimization-guide.html" },
+      { kw: "nextjs seo best practices 2026", intent: "Informational", volume: 3800, kd: 32, target: "/blogs/frontend-architecture-and-seo-rankings.html" },
+      { kw: "webgl 3d website interactive design", intent: "Informational", volume: 2200, kd: 26, target: "/blogs/webgl-3d-interactive-web-experiences.html" }
+    ],
+    supportingArticles: [
+      "core-web-vitals-speed-optimization-guide.html",
+      "frontend-architecture-and-seo-rankings.html",
+      "webgl-3d-interactive-web-experiences.html"
+    ]
+  }
+};
+
+const outputPath = path.join(ROOT_DIR, 'keyword-clusters.json');
+fs.writeFileSync(outputPath, JSON.stringify(keywordClusters, null, 2), 'utf8');
+
+console.log("=================================================");
+console.log("✅ OPENSEO KEYWORD CLUSTERING & TOPIC HUBS BUILT");
+console.log(`  - 4 Topic Hubs mapped with 15+ high-intent keywords`);
+console.log(`  - Output saved to keyword-clusters.json`);
+console.log("=================================================");

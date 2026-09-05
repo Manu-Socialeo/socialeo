@@ -3,4 +3,10 @@ node_modules/
 Thumbs.db
 *.log
 deploy.js
+.env
+.env.local
+.env.*
+open-seo/
+open-seo/.env
+open-seo/.env.local
 
